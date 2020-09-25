@@ -63,6 +63,26 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode-3</title>
+    <url>/2020/09/25/Leetcode-3/</url>
+    <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p> Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward. </p>
+<p> <strong>Example 1</strong> </p>
+<blockquote>
+<p><strong>Input : </strong> 121<br><strong>Output : </strong> true</p>
+</blockquote>
+<p> <strong>Example 2</strong></p>
+<blockquote>
+<p><strong>Input : </strong> -121<br><strong>Output : </strong> false<br><strong>Explanation : </strong> From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.  </p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Two Pointers Technique</title>
     <url>/2020/01/14/Two-Pointers/</url>
     <content><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>  &emsp;&emsp;双指针，顾名思义就是利用两个指针去遍历数组。一般来说遍历数组都是使用单指针(index)去遍历的，<br>  两个指针一般是在有序数组中使用，一个放首，一个放尾，同时向中间遍历，直到两个指针相交，完成遍历，时间复杂度<br>  也是O(n).</p>
