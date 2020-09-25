@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Leetcode-1</title>
-    <url>/2020/09/12/Leetcode-1-1/</url>
+    <url>/2020/01/12/Leetcode-1-1/</url>
     <content><![CDATA[<h2 id="Qestion"><a href="#Qestion" class="headerlink" title="Qestion"></a>Qestion</h2><p>Give an array of intergets <code>nums</code> and an integer <code>target</code>,return indices of the two numbers such that they add up to <code>target</code>.<br>You may assume that each input would have exctly one solution,and you may use the same element twice.<br>You can return the answer in any order.  </p>
 <p> <strong>Example 1</strong></p>
 <blockquote>
@@ -34,6 +34,56 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-2</title>
+    <url>/2020/09/23/Leetcode-2/</url>
+    <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p> Given a 32-bit signed integer, reverse digits of an integer.</p>
+<p> <strong>Example 1</strong></p>
+<blockquote>
+<p><strong>iput</strong> : 123<br><strong>Output</strong> : 321</p>
+</blockquote>
+<p> <strong>Example 2</strong></p>
+<blockquote>
+<p><strong>Input</strong> : -123<br><strong>Output</strong> : -321</p>
+</blockquote>
+<p> <strong>Example 3</strong></p>
+<blockquote>
+<p><strong>Input</strong> : 120<br><strong>Output</strong> : 21</p>
+</blockquote>
+<p> <strong>Note :</strong><br>&emsp;&emsp;Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [$(-2)^{31}$, $2^{31}$-1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="计算法"><a href="#计算法" class="headerlink" title="计算法"></a>计算法</h3><p> 这是一个比较投机的方案，因为使用了数字类型long后，就不会再有溢出的问题，最后再和INT_MAX比较一下就可以了。时间复杂度为O(nlogn)<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int reverse(int x) &#123;</span><br><span class="line">        long res &#x3D; 0;</span><br><span class="line">        for (;x !&#x3D; 0 ; x &#x2F;&#x3D; 10)  res &#x3D; res * 10 + x % 10;</span><br><span class="line">        return (res &gt; INT_MAX || res &lt; INT_MIN) ? 0 : res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Two Pointers Technique</title>
+    <url>/2020/01/14/Two-Pointers/</url>
+    <content><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>  &emsp;&emsp;双指针，顾名思义就是利用两个指针去遍历数组。一般来说遍历数组都是使用单指针(index)去遍历的，<br>  两个指针一般是在有序数组中使用，一个放首，一个放尾，同时向中间遍历，直到两个指针相交，完成遍历，时间复杂度<br>  也是O(n).</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>  一般会有两个指针 <code>font</code>,<code>tail</code>。分别指向开始和结束的位置。</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">front &#x3D; 0;</span><br><span class="line">tail &#x3D; A.length()-1</span><br></pre></td></tr></table></figure>
+<p>  一般循环结束条件采用的是判断两个指针是否相遇</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">while (front &lt; tail)</span><br><span class="line">  &#123;</span><br><span class="line">    ....</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>  对于in place 交换问题，循环结束条件一般是其中一个指针遍历完成的</p>
+<h2 id="使用范围"><a href="#使用范围" class="headerlink" title="使用范围"></a>使用范围</h2><p>  一般双指针在有序数组中使用的特别多。(部分情况下，未排序数组也有应用)一般用来解决下列问题</p>
+<ul>
+<li><p>两数求和<br>一般这种问题都是问，寻找两个数的和为一个特定值，这时候，如果数组有序，我们采用两个指针，分别从<br>前和后往中间遍历,front移动和增大，tail移动和减小，通过特定的判断，可以求出特定的和<br>时间复杂度为O(n)，如果要使用双重循环则时间复杂度为O($n^{2}$)</p>
+</li>
+<li><p>in place 交换<br>数组的in place原地交换一般都得用双指针，不然数组中添加或这删除一个元素，需要移动大量的元素。这时候一般是一个指针遍历，一个指针用来找可以交换的元素。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>theory</tag>
       </tags>
   </entry>
 </search>
