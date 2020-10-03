@@ -207,7 +207,18 @@
         <category>algorithm</category>
       </categories>
       <tags>
-        <tag>leetocde</tag>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-6</title>
+    <url>/2020/10/04/Leetcode-6/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -232,17 +243,6 @@
       </categories>
       <tags>
         <tag>theory</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-6</title>
-    <url>/2020/10/04/Leetcode-6/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
       </tags>
   </entry>
 </search>
