@@ -63,6 +63,49 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode-3</title>
+    <url>/2020/09/25/Leetcode-3/</url>
+    <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p> Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward. </p>
+<p> <strong>Example 1</strong> </p>
+<blockquote>
+<p><strong>Input : </strong> 121<br><strong>Output : </strong> true</p>
+</blockquote>
+<p> <strong>Example 2</strong></p>
+<blockquote>
+<p><strong>Input : </strong> -121<br><strong>Output : </strong> false<br><strong>Explanation : </strong> From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.  </p>
+</blockquote>
+<p> <strong>Example 3</strong></p>
+<blockquote>
+<p><strong>Input : </strong> 10<br><strong>Output : </strong> false<br><strong>Explanation : </strong> Reads 01 from right to left. Therefore it is not a palindrome.</p>
+</blockquote>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h3><p>  简单的把数字进行一个逆转，最后判断反转后的数字和原来的数字是否一样。时间复杂度O(n)<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(int x) &#123;</span><br><span class="line">        if (x &lt; 0) return false;</span><br><span class="line">        long res &#x3D; 0;</span><br><span class="line">        long s &#x3D; x;</span><br><span class="line">        for (;s !&#x3D; 0 ; s &#x2F;&#x3D;10)  res &#x3D; res * 10 + s %10;</span><br><span class="line">        return (res &#x3D;&#x3D; x) ? true : false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h3><p>我们可以不需要等数字全逆转结束，只需要逆转一半看是否符合条件就可以了</p>
+<ul>
+<li><p>如何一半停止</p>
+<ul>
+<li>如果 x&lt;=r 时就可以停止了</li>
+<li>如果是偶数长度，并且是回文，那么 x == r</li>
+<li>如果是奇数长度，并且是回文，那么 x &lt; r，这时候r比x多一位数</li>
+</ul>
+</li>
+<li><p>停止后判断是否是回文</p>
+<ul>
+<li>如果偶数长度，判断 r == x;</li>
+<li>如果奇数长度，判断 r/10 == x;</li>
+</ul>
+<p>时间复杂度为O(n)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(int x) &#123;</span><br><span class="line">        if (x &lt; 0 || (x !&#x3D; 0 &amp;&amp; x %10 &#x3D;&#x3D; 0)) return false;</span><br><span class="line">        int res &#x3D; 0;</span><br><span class="line">        while (x &gt; res) &#123;</span><br><span class="line">            res &#x3D; res * 10 + x % 10;</span><br><span class="line">            x &#x2F;&#x3D; 10;</span><br><span class="line">        &#125;</span><br><span class="line">        return (res &#x3D;&#x3D; x) || (res&#x2F;10 &#x3D;&#x3D; x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-4</title>
     <url>/2020/09/28/Leetcode-4/</url>
     <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Roman numerals are represented by seven different symbols: <code>I</code>, <code>V</code> ,<code>X</code>,<code>L</code>, <code>C</code>, <code>D</code> and <code>M</code>.</p>
@@ -144,46 +187,27 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-3</title>
-    <url>/2020/09/25/Leetcode-3/</url>
-    <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p> Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward. </p>
-<p> <strong>Example 1</strong> </p>
+    <title>Leetcode-5</title>
+    <url>/2020/10/03/Leetcode-5/</url>
+    <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Write a function to find the longest common prefix string amongst an array of strings.  </p>
+<p>If there is no common prefix, return an empty string “”.</p>
+<p> <strong>Example 1:</strong></p>
 <blockquote>
-<p><strong>Input : </strong> 121<br><strong>Output : </strong> true</p>
+<p><strong>Input : </strong> [“flower”,”flow”,”flight”]<br><strong>Output : </strong> “fl”</p>
 </blockquote>
-<p> <strong>Example 2</strong></p>
+<p> <strong>Example 2: </strong></p>
 <blockquote>
-<p><strong>Input : </strong> -121<br><strong>Output : </strong> false<br><strong>Explanation : </strong> From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.  </p>
+<p><strong>Input : </strong> [“dog”,”racecar”,”car”]<br><strong>Output : </strong> “”<br><strong>Explanation : </strong> There is no common prefix among the input strings.</p>
 </blockquote>
-<p> <strong>Example 3</strong></p>
-<blockquote>
-<p><strong>Input : </strong> 10<br><strong>Output : </strong> false<br><strong>Explanation : </strong> Reads 01 from right to left. Therefore it is not a palindrome.</p>
-</blockquote>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h3><p>  简单的把数字进行一个逆转，最后判断反转后的数字和原来的数字是否一样。时间复杂度O(n)<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(int x) &#123;</span><br><span class="line">        if (x &lt; 0) return false;</span><br><span class="line">        long res &#x3D; 0;</span><br><span class="line">        long s &#x3D; x;</span><br><span class="line">        for (;s !&#x3D; 0 ; s &#x2F;&#x3D;10)  res &#x3D; res * 10 + s %10;</span><br><span class="line">        return (res &#x3D;&#x3D; x) ? true : false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h3 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h3><p>我们可以不需要等数字全逆转结束，只需要逆转一半看是否符合条件就可以了</p>
-<ul>
-<li><p>如何一半停止</p>
-<ul>
-<li>如果 x&lt;=r 时就可以停止了</li>
-<li>如果是偶数长度，并且是回文，那么 x == r</li>
-<li>如果是奇数长度，并且是回文，那么 x &lt; r，这时候r比x多一位数</li>
-</ul>
-</li>
-<li><p>停止后判断是否是回文</p>
-<ul>
-<li>如果偶数长度，判断 r == x;</li>
-<li>如果奇数长度，判断 r/10 == x;</li>
-</ul>
-<p>时间复杂度为O(n)</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(int x) &#123;</span><br><span class="line">        if (x &lt; 0 || (x !&#x3D; 0 &amp;&amp; x %10 &#x3D;&#x3D; 0)) return false;</span><br><span class="line">        int res &#x3D; 0;</span><br><span class="line">        while (x &gt; res) &#123;</span><br><span class="line">            res &#x3D; res * 10 + x % 10;</span><br><span class="line">            x &#x2F;&#x3D; 10;</span><br><span class="line">        &#125;</span><br><span class="line">        return (res &#x3D;&#x3D; x) || (res&#x2F;10 &#x3D;&#x3D; x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<p>  <strong>Note : </strong><br>  All given inputs are in lowercase letters a-z.</p>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h3><p>  <strong>暴力破解法:</strong> 首先通过循环把这个字符串中最长的一个字符设置为第一个字符串，再使用循环将这第一个字符串去和所有的字符比较，不对就输出””，对了就有ans存储并输出.时间复杂度为O($n^{2})$,空间复杂度为O(n).整体代码如下<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string longestCommonPrefix(vector&lt;string&gt;&amp; strs) &#123;</span><br><span class="line">        string ans &#x3D; &quot;&quot;;</span><br><span class="line">        int n &#x3D; strs.size();</span><br><span class="line">        if (n &#x3D;&#x3D; 0) return &quot;&quot;;</span><br><span class="line">        </span><br><span class="line">        int l &#x3D; strs[0].size();</span><br><span class="line">        for (string a : strs) &#123;</span><br><span class="line">            if (l &lt; strs.size()) &#123;</span><br><span class="line">                l &#x3D; strs.size();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        int index &#x3D; 0;</span><br><span class="line">        </span><br><span class="line">        for (char s : strs[0]) &#123;</span><br><span class="line">            for (int i &#x3D; 0 ;i &lt; n ;i++) &#123;</span><br><span class="line">                if (strs[i][index] !&#x3D; s || index &gt; l)</span><br><span class="line">                    return ans;</span><br><span class="line">               &#125;</span><br><span class="line">            ans +&#x3D; s;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h3><p> <strong>排序法 : </strong> 首先把这个字符串用sort函数从小到达排序一遍，然后选择第一个和最后一个,比较他们是否存在公共字符就可以了(选择第一个和最后一个，是因为他们的区别是最大的，可以更加快速的得到结果),最后我们只需要比较有多少公共字符就行了. 时间复杂度为O(n)，空间复杂度为O(n).具体代码如下:<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string longestCommonPrefix(vector&lt;string&gt;&amp; strs) &#123;</span><br><span class="line">        string ans &#x3D; &quot;&quot;;</span><br><span class="line">        int n &#x3D; strs.size();</span><br><span class="line">        if (n &#x3D;&#x3D; 0) return ans;</span><br><span class="line">        </span><br><span class="line">        sort(strs.begin(),strs.end());</span><br><span class="line">        string a &#x3D; strs[0];</span><br><span class="line">        string b &#x3D; strs[n-1];</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; a.size() ; i++) &#123;</span><br><span class="line">            if (a[i] &#x3D;&#x3D; b[i]) &#123;</span><br><span class="line">                ans +&#x3D; a[i];</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>algorithm</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
+        <tag>leetocde</tag>
       </tags>
   </entry>
   <entry>
@@ -208,6 +232,17 @@
       </categories>
       <tags>
         <tag>theory</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-6</title>
+    <url>/2020/10/04/Leetcode-6/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
       </tags>
   </entry>
 </search>
