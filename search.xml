@@ -1,51 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Leetcode-3</title>
-    <url>/2020/09/25/Leetcode-3/</url>
-    <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p> Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward. </p>
-<p> <strong>Example 1</strong> </p>
-<blockquote>
-<p><strong>Input : </strong> 121<br><strong>Output : </strong> true</p>
-</blockquote>
-<p> <strong>Example 2</strong></p>
-<blockquote>
-<p><strong>Input : </strong> -121<br><strong>Output : </strong> false<br><strong>Explanation : </strong> From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.  </p>
-</blockquote>
-<p> <strong>Example 3</strong></p>
-<blockquote>
-<p><strong>Input : </strong> 10<br><strong>Output : </strong> false<br><strong>Explanation : </strong> Reads 01 from right to left. Therefore it is not a palindrome.</p>
-</blockquote>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h3><p>  简单的把数字进行一个逆转，最后判断反转后的数字和原来的数字是否一样。时间复杂度O(n)<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(int x) &#123;</span><br><span class="line">        if (x &lt; 0) return false;</span><br><span class="line">        long res &#x3D; 0;</span><br><span class="line">        long s &#x3D; x;</span><br><span class="line">        for (;s !&#x3D; 0 ; s &#x2F;&#x3D;10)  res &#x3D; res * 10 + s %10;</span><br><span class="line">        return (res &#x3D;&#x3D; x) ? true : false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h3 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h3><p>我们可以不需要等数字全逆转结束，只需要逆转一半看是否符合条件就可以了</p>
-<ul>
-<li><p>如何一半停止</p>
-<ul>
-<li>如果 x&lt;=r 时就可以停止了</li>
-<li>如果是偶数长度，并且是回文，那么 x == r</li>
-<li>如果是奇数长度，并且是回文，那么 x &lt; r，这时候r比x多一位数</li>
-</ul>
-</li>
-<li><p>停止后判断是否是回文</p>
-<ul>
-<li>如果偶数长度，判断 r == x;</li>
-<li>如果奇数长度，判断 r/10 == x;</li>
-</ul>
-<p>时间复杂度为O(n)</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(int x) &#123;</span><br><span class="line">        if (x &lt; 0 || (x !&#x3D; 0 &amp;&amp; x %10 &#x3D;&#x3D; 0)) return false;</span><br><span class="line">        int res &#x3D; 0;</span><br><span class="line">        while (x &gt; res) &#123;</span><br><span class="line">            res &#x3D; res * 10 + x % 10;</span><br><span class="line">            x &#x2F;&#x3D; 10;</span><br><span class="line">        &#125;</span><br><span class="line">        return (res &#x3D;&#x3D; x) || (res&#x2F;10 &#x3D;&#x3D; x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode-1</title>
-    <url>/2020/01/12/Leetcode-1-1/</url>
+    <url>/2020/01/12/Leetcode-1/</url>
     <content><![CDATA[<h2 id="Qestion"><a href="#Qestion" class="headerlink" title="Qestion"></a>Qestion</h2><p>Give an array of intergets <code>nums</code> and an integer <code>target</code>,return indices of the two numbers such that they add up to <code>target</code>.<br>You may assume that each input would have exctly one solution,and you may use the same element twice.<br>You can return the answer in any order.  </p>
 <p> <strong>Example 1</strong></p>
 <blockquote>
@@ -97,6 +54,49 @@
 </blockquote>
 <p> <strong>Note :</strong><br>&emsp;&emsp;Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [$(-2)^{31}$, $2^{31}$-1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
 <h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="计算法"><a href="#计算法" class="headerlink" title="计算法"></a>计算法</h3><p> 这是一个比较投机的方案，因为使用了数字类型long后，就不会再有溢出的问题，最后再和INT_MAX比较一下就可以了。时间复杂度为O(nlogn)<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int reverse(int x) &#123;</span><br><span class="line">        long res &#x3D; 0;</span><br><span class="line">        for (;x !&#x3D; 0 ; x &#x2F;&#x3D; 10)  res &#x3D; res * 10 + x % 10;</span><br><span class="line">        return (res &gt; INT_MAX || res &lt; INT_MIN) ? 0 : res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-3</title>
+    <url>/2020/09/25/Leetcode-3/</url>
+    <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p> Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward. </p>
+<p> <strong>Example 1</strong> </p>
+<blockquote>
+<p><strong>Input : </strong> 121<br><strong>Output : </strong> true</p>
+</blockquote>
+<p> <strong>Example 2</strong></p>
+<blockquote>
+<p><strong>Input : </strong> -121<br><strong>Output : </strong> false<br><strong>Explanation : </strong> From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.  </p>
+</blockquote>
+<p> <strong>Example 3</strong></p>
+<blockquote>
+<p><strong>Input : </strong> 10<br><strong>Output : </strong> false<br><strong>Explanation : </strong> Reads 01 from right to left. Therefore it is not a palindrome.</p>
+</blockquote>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h3><p>  简单的把数字进行一个逆转，最后判断反转后的数字和原来的数字是否一样。时间复杂度O(n)<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(int x) &#123;</span><br><span class="line">        if (x &lt; 0) return false;</span><br><span class="line">        long res &#x3D; 0;</span><br><span class="line">        long s &#x3D; x;</span><br><span class="line">        for (;s !&#x3D; 0 ; s &#x2F;&#x3D;10)  res &#x3D; res * 10 + s %10;</span><br><span class="line">        return (res &#x3D;&#x3D; x) ? true : false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h3><p>我们可以不需要等数字全逆转结束，只需要逆转一半看是否符合条件就可以了</p>
+<ul>
+<li><p>如何一半停止</p>
+<ul>
+<li>如果 x&lt;=r 时就可以停止了</li>
+<li>如果是偶数长度，并且是回文，那么 x == r</li>
+<li>如果是奇数长度，并且是回文，那么 x &lt; r，这时候r比x多一位数</li>
+</ul>
+</li>
+<li><p>停止后判断是否是回文</p>
+<ul>
+<li>如果偶数长度，判断 r == x;</li>
+<li>如果奇数长度，判断 r/10 == x;</li>
+</ul>
+<p>时间复杂度为O(n)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(int x) &#123;</span><br><span class="line">        if (x &lt; 0 || (x !&#x3D; 0 &amp;&amp; x %10 &#x3D;&#x3D; 0)) return false;</span><br><span class="line">        int res &#x3D; 0;</span><br><span class="line">        while (x &gt; res) &#123;</span><br><span class="line">            res &#x3D; res * 10 + x % 10;</span><br><span class="line">            x &#x2F;&#x3D; 10;</span><br><span class="line">        &#125;</span><br><span class="line">        return (res &#x3D;&#x3D; x) || (res&#x2F;10 &#x3D;&#x3D; x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>algorithm</category>
@@ -211,62 +211,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-7</title>
-    <url>/2020/10/04/Leetcode-7/</url>
-    <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Merge two sorted linked lists and return it as a new sorted list. The new list should be made by splicing together the nodes of the first two lists.</p>
-<p><strong>Example 1 : </strong><br>  <img src="https://assets.leetcode.com/uploads/2020/10/03/merge_ex1.jpg" alt="avatar"></p>
-<blockquote>
-<p><strong>Input : </strong> l1 = [1,2,4],l2 = [1,3,4]<br><strong>Output : </strong> [1,1,2,3,4,4]</p>
-</blockquote>
-<p><strong>Example 2 : </strong></p>
-<blockquote>
-<p><strong>Input : </strong> l1 = [], l2 = []<br><strong>Output : </strong> []</p>
-</blockquote>
-<p><strong>Example 3 : </strong> </p>
-<blockquote>
-<p><strong>Input : </strong> l1 = [], l2 = [0]<br><strong>Output : </strong> [0]</p>
-</blockquote>
-<p><strong>Constraints : </strong></p>
-<ul>
-<li>The number of nodes in both lists is in the range <code>[0, 50]</code>.</li>
-<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
-<li>Both <code>l1</code> and <code>l2</code> are sorted in <strong>non-decreasing</strong> order.</li>
-</ul>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h3><p>  <strong>递归法 : </strong> 首先判断两个链表中的一个是否为空，如果有一个为空，那么就以这个链表为输出结果。为了保存其他两个链表，我就需要新建一个链表。因为要顺序保存，所有通过值大小的比较存入t，作t的头节点。之后t-&gt;next用递归的方式依次存入。时间复杂度为O(n),具体代码如下:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) &#123;</span><br><span class="line">        if (!l1) return l2;</span><br><span class="line">        if (!l2) return l1;</span><br><span class="line">        </span><br><span class="line">        ListNode* t;</span><br><span class="line">        if (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">            t &#x3D; l1;</span><br><span class="line">            l1 &#x3D; l1-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        else &#123;</span><br><span class="line">            t &#x3D; l2;</span><br><span class="line">            l2 &#x3D; l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        t-&gt;next &#x3D; mergeTwoLists(l1,l2);</span><br><span class="line">        return t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h3 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h3><p>  <strong>迭代法 : </strong> 首先设置一个前哨节点，为了之后输出方便。程序主体:通过值的比较，把每个链表的值都挨个存入cur链表中。while判断的问题，一定还有最有一个没有存入到链表中，所以我们还需要单独的把最后一位加入到链表中来。最后输出前哨节点的下一个也就是dummy-&gt;next。时间复杂度为O(n),具体代码如下 :<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) &#123;</span><br><span class="line">        ListNode* dummy &#x3D; new ListNode(-1);</span><br><span class="line">        ListNode* cur &#x3D; dummy;</span><br><span class="line">        </span><br><span class="line">        while (l1 &amp;&amp; l2) &#123;</span><br><span class="line">            if (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                cur-&gt;next &#x3D; l1;</span><br><span class="line">                l1 &#x3D; l1-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                cur-&gt;next &#x3D; l2;</span><br><span class="line">                l2 &#x3D; l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            cur &#x3D; cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        cur-&gt;next &#x3D; l1 &#x3D;&#x3D; NULL ? l2 : l1;</span><br><span class="line">        return dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Two Pointers Technique</title>
-    <url>/2020/01/14/Two-Pointers/</url>
-    <content><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>  &emsp;&emsp;双指针，顾名思义就是利用两个指针去遍历数组。一般来说遍历数组都是使用单指针(index)去遍历的，<br>  两个指针一般是在有序数组中使用，一个放首，一个放尾，同时向中间遍历，直到两个指针相交，完成遍历，时间复杂度<br>  也是O(n).</p>
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>  一般会有两个指针 <code>font</code>,<code>tail</code>。分别指向开始和结束的位置。</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">front &#x3D; 0;</span><br><span class="line">tail &#x3D; A.length()-1</span><br></pre></td></tr></table></figure>
-<p>  一般循环结束条件采用的是判断两个指针是否相遇</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">while (front &lt; tail)</span><br><span class="line">  &#123;</span><br><span class="line">    ....</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>  对于in place 交换问题，循环结束条件一般是其中一个指针遍历完成的</p>
-<h2 id="使用范围"><a href="#使用范围" class="headerlink" title="使用范围"></a>使用范围</h2><p>  一般双指针在有序数组中使用的特别多。(部分情况下，未排序数组也有应用)一般用来解决下列问题</p>
-<ul>
-<li><p>两数求和<br>一般这种问题都是问，寻找两个数的和为一个特定值，这时候，如果数组有序，我们采用两个指针，分别从<br>前和后往中间遍历,front移动和增大，tail移动和减小，通过特定的判断，可以求出特定的和<br>时间复杂度为O(n)，如果要使用双重循环则时间复杂度为O($n^{2}$)</p>
-</li>
-<li><p>in place 交换<br>数组的in place原地交换一般都得用双指针，不然数组中添加或这删除一个元素，需要移动大量的元素。这时候一般是一个指针遍历，一个指针用来找可以交换的元素。</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>theory</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode-6</title>
     <url>/2020/10/04/Leetcode-6/</url>
     <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given a string s containing just the characters <code>&#39;(&#39;</code>,<code>&#39;)&#39;</code>,<code>&#39;&#123;&#39;</code>,<code>&#39;&#125;&#39;</code>,<code>&#39;[&#39;</code> and<code>&#39;]&#39;</code>, determine if the input string is valid.<br>An input string is valid if:</p>
@@ -307,6 +251,90 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-7</title>
+    <url>/2020/10/04/Leetcode-7/</url>
+    <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Merge two sorted linked lists and return it as a new sorted list. The new list should be made by splicing together the nodes of the first two lists.</p>
+<p><strong>Example 1 : </strong><br>  <img src="https://assets.leetcode.com/uploads/2020/10/03/merge_ex1.jpg" alt="avatar"></p>
+<blockquote>
+<p><strong>Input : </strong> l1 = [1,2,4],l2 = [1,3,4]<br><strong>Output : </strong> [1,1,2,3,4,4]</p>
+</blockquote>
+<p><strong>Example 2 : </strong></p>
+<blockquote>
+<p><strong>Input : </strong> l1 = [], l2 = []<br><strong>Output : </strong> []</p>
+</blockquote>
+<p><strong>Example 3 : </strong> </p>
+<blockquote>
+<p><strong>Input : </strong> l1 = [], l2 = [0]<br><strong>Output : </strong> [0]</p>
+</blockquote>
+<p><strong>Constraints : </strong></p>
+<ul>
+<li>The number of nodes in both lists is in the range <code>[0, 50]</code>.</li>
+<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
+<li>Both <code>l1</code> and <code>l2</code> are sorted in <strong>non-decreasing</strong> order.</li>
+</ul>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h3><p>  <strong>递归法 : </strong> 首先判断两个链表中的一个是否为空，如果有一个为空，那么就以这个链表为输出结果。为了保存其他两个链表，我就需要新建一个链表。因为要顺序保存，所有通过值大小的比较存入t，作t的头节点。之后t-&gt;next用递归的方式依次存入。时间复杂度为O(n),具体代码如下:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) &#123;</span><br><span class="line">        if (!l1) return l2;</span><br><span class="line">        if (!l2) return l1;</span><br><span class="line">        </span><br><span class="line">        ListNode* t;</span><br><span class="line">        if (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">            t &#x3D; l1;</span><br><span class="line">            l1 &#x3D; l1-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        else &#123;</span><br><span class="line">            t &#x3D; l2;</span><br><span class="line">            l2 &#x3D; l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        t-&gt;next &#x3D; mergeTwoLists(l1,l2);</span><br><span class="line">        return t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h3><p>  <strong>迭代法 : </strong> 首先设置一个前哨节点，为了之后输出方便。程序主体:通过值的比较，把每个链表的值都挨个存入cur链表中。while判断的问题，一定还有最有一个没有存入到链表中，所以我们还需要单独的把最后一位加入到链表中来。最后输出前哨节点的下一个也就是dummy-&gt;next。时间复杂度为O(n),具体代码如下 :<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) &#123;</span><br><span class="line">        ListNode* dummy &#x3D; new ListNode(-1);</span><br><span class="line">        ListNode* cur &#x3D; dummy;</span><br><span class="line">        </span><br><span class="line">        while (l1 &amp;&amp; l2) &#123;</span><br><span class="line">            if (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                cur-&gt;next &#x3D; l1;</span><br><span class="line">                l1 &#x3D; l1-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                cur-&gt;next &#x3D; l2;</span><br><span class="line">                l2 &#x3D; l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            cur &#x3D; cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        cur-&gt;next &#x3D; l1 &#x3D;&#x3D; NULL ? l2 : l1;</span><br><span class="line">        return dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Operation_System_experiment</title>
+    <url>/2020/10/06/Operation-System-experiment/</url>
+    <content><![CDATA[<h2 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>&emsp;&emsp;设置进程PCB结构和进程队列(就绪、执行、阻塞)</p>
+<h3 id="循环执行菜单"><a href="#循环执行菜单" class="headerlink" title="循环执行菜单"></a>循环执行菜单</h3><ol>
+<li><p>创建原语<br>&emsp;&emsp;输入进程的名字、优先级(用数字0-9表示，0级最高，9级最低).建议一个节点，插入就绪队列</p>
+</li>
+<li><p>撤销原语<br>&emsp;&emsp;将执行态进程删除</p>
+</li>
+<li><p>阻塞原语<br>&emsp;&emsp;将执行态的进程插入到阻塞队列</p>
+</li>
+<li><p>唤醒原理<br>&emsp;&emsp;输入唤醒进程的名字，插入就绪队列</p>
+</li>
+<li><p>处理器调度<br>&emsp;&emsp;选择一个优先级最高的就绪态进程，插入执行队列</p>
+</li>
+<li><p>结束</p>
+</li>
+</ol>
+<h2 id="实验代码"><a href="#实验代码" class="headerlink" title="实验代码"></a>实验代码</h2><h3 id="算法介绍"><a href="#算法介绍" class="headerlink" title="算法介绍"></a>算法介绍</h3><p>  &emsp;&emsp;优先算法:进程就绪队列是按<strong>优先数大小从高到底排序，队首进程首先投入运行。每过一个时间片，运行进程所需的时间片减1，优先数减3</strong>，说明他已经运行了一个时间片，如果在一个时间内完成不了，应该降低其优先数。接着比较现行进程和就绪队列队首进程的优先数，如果仍是现行进程优先数高或者相同，就让现行进程继续运行，否则，调度就绪队列队首进程投入运行。原运行进程再按优先数大小插入就绪队列，且改变它们对应进程的状态，直至所有进程都运行完各自的时间片数。</p>
+<h3 id="程序简介"><a href="#程序简介" class="headerlink" title="程序简介"></a>程序简介</h3><p>  &emsp;&emsp;每一个进程控制块(PCB)标志(进程标识号、优先数、占用CPU时间数、进程所需时间片数、进程状态)。每一个进程都会处于运行(run)、就绪(ready)、阻塞(blocked)和完成(finish)状态之一。具体注释在代码中:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  #include&lt;iostream&gt;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;malloc.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">enum process_status&#123;READY , RUN , FINISH&#125;; &#x2F;&#x2F;进程的三种状态</span><br><span class="line">&#x2F;&#x2F;定义进程数据结构</span><br><span class="line">typedef struct pcb</span><br><span class="line">&#123;</span><br><span class="line">    char process_tag[20] ; &#x2F;&#x2F;存储进程标识符</span><br><span class="line">    struct pcb *next ; &#x2F;&#x2F;连接下一个进程的指针</span><br><span class="line">    int priority_num ; &#x2F;&#x2F;优先调度算法中为优先级 ， 轮转调度算法中为轮转时间片</span><br><span class="line">    int take_cpu_time ; &#x2F;&#x2F;占用CPU时间片数</span><br><span class="line">    int process_time ; &#x2F;&#x2F;进程所需时间片数</span><br><span class="line">    process_status status ; &#x2F;&#x2F;进程当前的状态</span><br><span class="line">&#125; PCB ;</span><br><span class="line">&#x2F;&#x2F;定义进程控制块的链结构</span><br><span class="line">typedef struct</span><br><span class="line">&#123;</span><br><span class="line">    PCB *run ; &#x2F;&#x2F;当前运行的进程指针</span><br><span class="line">    PCB *ready ; &#x2F;&#x2F;当前准备队列的头指针</span><br><span class="line">    PCB *tail ; &#x2F;&#x2F;准备队列的队尾指针</span><br><span class="line">    PCB *finish ; &#x2F;&#x2F;完成队列的指针</span><br><span class="line">&#125; PCBC ;</span><br><span class="line">void init_pcbc(PCBC *p)</span><br><span class="line">&#123;</span><br><span class="line">    p-&gt;run &#x3D; NULL ;</span><br><span class="line">    p-&gt;ready &#x3D; NULL ;</span><br><span class="line">    p-&gt;tail &#x3D; NULL ;</span><br><span class="line">    p-&gt;finish &#x3D; NULL ;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;输入进程，并加入就绪队列</span><br><span class="line">void input_process(PCBC *pcbc)</span><br><span class="line">&#123;</span><br><span class="line">   PCB *pcb ;</span><br><span class="line">   pcb &#x3D; (PCB*)malloc(sizeof(PCB)) ;</span><br><span class="line">   printf(&quot;请输入进程标识符：&quot;) ;</span><br><span class="line">   scanf(&quot;%s&quot; , &amp;pcb-&gt;process_tag) ;</span><br><span class="line">   printf(&quot;输入格式为： （优先级，占用CPU时间片数，进程所需时间片数） : &quot;) ;</span><br><span class="line">   scanf(&quot;%d,%d,%d&quot; , &amp;pcb-&gt;priority_num , &amp;pcb-&gt;take_cpu_time , &amp;pcb-&gt;process_time) ;</span><br><span class="line">   pcb-&gt;status &#x3D; READY ; &#x2F;&#x2F;初始化就绪状态</span><br><span class="line">   &#x2F;&#x2F;当就绪队列为空时</span><br><span class="line">   if(pcbc-&gt;ready &#x3D;&#x3D; NULL &amp;&amp; pcbc-&gt;tail &#x3D;&#x3D; NULL)</span><br><span class="line">   &#123;</span><br><span class="line">       pcbc-&gt;ready &#x3D; pcbc-&gt;tail &#x3D; pcb ;</span><br><span class="line">       pcb-&gt;next &#x3D; NULL ;</span><br><span class="line">   &#125;</span><br><span class="line">   else</span><br><span class="line">   &#123;</span><br><span class="line">       &#x2F;&#x2F;将新进入的队列加入队尾</span><br><span class="line">       pcb-&gt;next &#x3D; pcbc-&gt;tail-&gt;next ;</span><br><span class="line">       pcbc-&gt;tail-&gt;next &#x3D; pcb ;</span><br><span class="line">       pcbc-&gt;tail &#x3D; pcb ;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">void swapx(PCB  * p1 , PCB *p2)</span><br><span class="line">&#123;</span><br><span class="line">    int  i , priority_num , take_cpu_time , process_time ;</span><br><span class="line">    char temp ;</span><br><span class="line">    &#x2F;&#x2F;进行标识符的交换</span><br><span class="line">    for(i &#x3D; 0 ; i &lt; 20 ; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        temp &#x3D; p1-&gt;process_tag[i];</span><br><span class="line">        p1-&gt;process_tag[i] &#x3D; p2-&gt;process_tag[i] ;</span><br><span class="line">        p2-&gt;process_tag[i] &#x3D; temp ;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;优先值的交换</span><br><span class="line">    priority_num &#x3D; p1-&gt;priority_num ;</span><br><span class="line">    p1-&gt;priority_num &#x3D; p2-&gt;priority_num ;</span><br><span class="line">    p2-&gt;priority_num &#x3D; priority_num ;</span><br><span class="line">    &#x2F;&#x2F;占用CPU时间片的交换</span><br><span class="line">    take_cpu_time &#x3D; p1-&gt;take_cpu_time ;</span><br><span class="line">    p1-&gt;take_cpu_time &#x3D; p2-&gt;take_cpu_time ;</span><br><span class="line">    p2-&gt;take_cpu_time &#x3D; take_cpu_time ;</span><br><span class="line">    &#x2F;&#x2F;进程所需时间片数的交换</span><br><span class="line">    process_time &#x3D; p1-&gt;process_time ;</span><br><span class="line">    p1-&gt;process_time &#x3D; p2-&gt;process_time ;</span><br><span class="line">    p2-&gt;process_time &#x3D; process_time ;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;将就绪队列按优先级别大小进行排序,按冒泡排序算法</span><br><span class="line">void sort_pcbc(PCBC *pcbc , int pcb_num)</span><br><span class="line">&#123;</span><br><span class="line">    PCB *p  , *p1 ;</span><br><span class="line">    p &#x3D; pcbc-&gt;ready ;</span><br><span class="line">   for(p &#x3D; pcbc-&gt;ready ; p !&#x3D; NULL ; p &#x3D; p-&gt;next)</span><br><span class="line">   &#123;</span><br><span class="line">       for(p1 &#x3D; p-&gt;next ; p1 !&#x3D; NULL ; p1 &#x3D; p1-&gt;next)</span><br><span class="line">       &#123;</span><br><span class="line">           if(p-&gt;priority_num &lt; p1-&gt;priority_num)</span><br><span class="line">           &#123;</span><br><span class="line">               swapx(p , p1) ; &#x2F;&#x2F;只是进行指针内部数据的交换，不改变指针指向</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;*</span><br><span class="line"> *打印当前进程控制块中的情况</span><br><span class="line"> *&#x2F;</span><br><span class="line"> void print_log(PCBC *pcbc)</span><br><span class="line"> &#123;</span><br><span class="line">     PCB *ready , *finish ;</span><br><span class="line">     ready &#x3D; pcbc-&gt;ready ;</span><br><span class="line">     finish &#x3D; pcbc-&gt;finish ;</span><br><span class="line">     printf(&quot;--------------------------------------------------  \n&quot;) ;</span><br><span class="line">     printf(&quot;Run： \n&quot;) ;</span><br><span class="line">     if(pcbc-&gt;run !&#x3D; NULL)</span><br><span class="line">     &#123;</span><br><span class="line">        printf(&quot;%s  %04d  %04d  %04d \n&quot; , pcbc-&gt;run-&gt;process_tag ,pcbc-&gt;run-&gt;priority_num , pcbc-&gt;run-&gt;take_cpu_time , pcbc-&gt;run-&gt;process_time) ;</span><br><span class="line">     &#125;</span><br><span class="line">     else</span><br><span class="line">     &#123;</span><br><span class="line">         printf(&quot;Run is empty! \n&quot;) ;</span><br><span class="line">     &#125;</span><br><span class="line">     printf(&quot;Ready：\n&quot;) ;</span><br><span class="line">     while(ready !&#x3D; NULL)</span><br><span class="line">     &#123;</span><br><span class="line">         printf(&quot;%s  %04d  %04d  %04d \n&quot; , ready-&gt;process_tag ,ready-&gt;priority_num , ready-&gt;take_cpu_time , ready-&gt;process_time) ;</span><br><span class="line">         ready &#x3D; ready-&gt;next ;</span><br><span class="line">     &#125;</span><br><span class="line">     printf(&quot;Finish：\n&quot;) ;</span><br><span class="line">     while(finish !&#x3D; NULL)</span><br><span class="line">     &#123;</span><br><span class="line">         printf(&quot;%s  %04d  %04d  %04d \n&quot; , finish-&gt;process_tag ,finish-&gt;priority_num , finish-&gt;take_cpu_time , finish-&gt;process_time) ;</span><br><span class="line">         finish &#x3D; finish-&gt;next ;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#x2F;*</span><br><span class="line"> *运行进程控制块</span><br><span class="line"> *&#x2F;</span><br><span class="line"> void run_pcbc_priority(PCBC *xpcbc)</span><br><span class="line"> &#123;</span><br><span class="line">     PCBC *pcbc &#x3D; xpcbc ;</span><br><span class="line">     PCB *temp , *pre , *tail ;</span><br><span class="line">     &#x2F;&#x2F;进行那个CPU的循环调用</span><br><span class="line">     while(pcbc-&gt;ready !&#x3D; NULL</span><br><span class="line">     &#123;</span><br><span class="line">         pcbc-&gt;run &#x3D; pcbc-&gt;ready ; &#x2F;&#x2F;将就绪队列队首加入运行队列</span><br><span class="line">         pcbc-&gt;ready &#x3D; pcbc-&gt;ready-&gt;next ; &#x2F;&#x2F;改变队首元素</span><br><span class="line">         print_log(pcbc) ;</span><br><span class="line">         pcbc-&gt;run-&gt;priority_num -&#x3D; 3 ;</span><br><span class="line">         pcbc-&gt;run-&gt;process_time -&#x3D; 1 ;</span><br><span class="line">         if(pcbc-&gt;run-&gt;process_time &#x3D;&#x3D; 0)</span><br><span class="line">         &#123;</span><br><span class="line">           if(pcbc-&gt;finish &#x3D;&#x3D; NULL)</span><br><span class="line">           &#123;</span><br><span class="line">               pcbc-&gt;finish &#x3D; pcbc-&gt;run ;</span><br><span class="line">               pcbc-&gt;finish-&gt;next &#x3D; NULL ;</span><br><span class="line">               tail &#x3D; pcbc-&gt;finish ;</span><br><span class="line">           &#125;</span><br><span class="line">           else</span><br><span class="line">           &#123;</span><br><span class="line">              tail-&gt;next &#x3D; pcbc-&gt;run ;</span><br><span class="line">              tail &#x3D; tail-&gt;next ;</span><br><span class="line">              tail-&gt;next &#x3D; NULL ;</span><br><span class="line">           &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         else</span><br><span class="line">         &#123;</span><br><span class="line">             if(pcbc-&gt;ready !&#x3D; NULL)</span><br><span class="line">             &#123;</span><br><span class="line">                 temp &#x3D; pcbc-&gt;ready ;</span><br><span class="line">                 while(temp !&#x3D; NULL)</span><br><span class="line">                 &#123;</span><br><span class="line">                     if(pcbc-&gt;run-&gt;priority_num &gt; temp-&gt;priority_num)</span><br><span class="line">                     &#123;</span><br><span class="line">                         break ;</span><br><span class="line">                     &#125;</span><br><span class="line">                     pre &#x3D; temp ;</span><br><span class="line">                     temp &#x3D; temp-&gt;next ;</span><br><span class="line">                 &#125;</span><br><span class="line">                 if(temp &#x3D;&#x3D; pcbc-&gt;ready)</span><br><span class="line">                 &#123;</span><br><span class="line">                     pcbc-&gt;run-&gt;next &#x3D; pcbc-&gt;ready ;</span><br><span class="line">                     pcbc-&gt;ready &#x3D; pcbc-&gt;run ;</span><br><span class="line">                 &#125;</span><br><span class="line">                 else</span><br><span class="line">                 &#123;</span><br><span class="line">                    pcbc-&gt;run-&gt;next &#x3D; pre-&gt;next ;</span><br><span class="line">                    pre-&gt;next &#x3D; pcbc-&gt;run ;</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;</span><br><span class="line">             else</span><br><span class="line">             &#123;</span><br><span class="line">                 pcbc-&gt;ready &#x3D; pcbc-&gt;run ;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     pcbc-&gt;run &#x3D; NULL ;</span><br><span class="line">     print_log(pcbc) ;</span><br><span class="line"> &#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    PCBC *pcbc ; &#x2F;&#x2F;创建进程控制块链 ;</span><br><span class="line">    int pcb_num ; &#x2F;&#x2F;记录处理进程数目</span><br><span class="line">    pcbc &#x3D; (PCBC*)malloc(sizeof(PCBC)) ;</span><br><span class="line">    printf(&quot;请输入要处理的进程数目： &quot;) ;</span><br><span class="line">    scanf(&quot;%d&quot; , &amp;pcb_num) ;</span><br><span class="line">    init_pcbc(pcbc) ; &#x2F;&#x2F;初始化进程控制块链</span><br><span class="line">    for(int i &#x3D; 0 ; i &lt; pcb_num ; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        input_process(pcbc) ; &#x2F;&#x2F;输入所有进程，并进入就绪队列</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;根据队列优先级进行排序</span><br><span class="line">    sort_pcbc(pcbc , pcb_num) ;</span><br><span class="line">    &#x2F;&#x2F;通过优先调度算法运行</span><br><span class="line">    printf(&quot;By the priority--------------------------\n&quot;) ;</span><br><span class="line">    run_pcbc_priority(pcbc) ;</span><br><span class="line">    return 0 ;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>Experiment</category>
+      </categories>
+      <tags>
+        <tag>Operatiron_System</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Two Pointers Technique</title>
+    <url>/2020/01/14/Two-Pointers/</url>
+    <content><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>  &emsp;&emsp;双指针，顾名思义就是利用两个指针去遍历数组。一般来说遍历数组都是使用单指针(index)去遍历的，<br>  两个指针一般是在有序数组中使用，一个放首，一个放尾，同时向中间遍历，直到两个指针相交，完成遍历，时间复杂度<br>  也是O(n).</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>  一般会有两个指针 <code>font</code>,<code>tail</code>。分别指向开始和结束的位置。</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">front &#x3D; 0;</span><br><span class="line">tail &#x3D; A.length()-1</span><br></pre></td></tr></table></figure>
+<p>  一般循环结束条件采用的是判断两个指针是否相遇</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">while (front &lt; tail)</span><br><span class="line">  &#123;</span><br><span class="line">    ....</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>  对于in place 交换问题，循环结束条件一般是其中一个指针遍历完成的</p>
+<h2 id="使用范围"><a href="#使用范围" class="headerlink" title="使用范围"></a>使用范围</h2><p>  一般双指针在有序数组中使用的特别多。(部分情况下，未排序数组也有应用)一般用来解决下列问题</p>
+<ul>
+<li><p>两数求和<br>一般这种问题都是问，寻找两个数的和为一个特定值，这时候，如果数组有序，我们采用两个指针，分别从<br>前和后往中间遍历,front移动和增大，tail移动和减小，通过特定的判断，可以求出特定的和<br>时间复杂度为O(n)，如果要使用双重循环则时间复杂度为O($n^{2}$)</p>
+</li>
+<li><p>in place 交换<br>数组的in place原地交换一般都得用双指针，不然数组中添加或这删除一个元素，需要移动大量的元素。这时候一般是一个指针遍历，一个指针用来找可以交换的元素。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>theory</tag>
       </tags>
   </entry>
 </search>
