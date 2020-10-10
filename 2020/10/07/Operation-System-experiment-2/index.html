@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="死锁的避免">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Operation_System_experiment_2">
+<meta property="og:url" content="http://yoursite.com/2020/10/07/Operation-System-experiment-2/index.html">
+<meta property="og:site_name" content="Rabbet">
+<meta property="og:description" content="死锁的避免">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://proud-field-4c1a.nnop.workers.dev/Blog/screenshot_2.png">
+<meta property="article:published_time" content="2020-10-07T00:32:00.000Z">
+<meta property="article:modified_time" content="2020-10-09T07:31:24.672Z">
+<meta property="article:author" content="Rabbet">
+<meta property="article:tag" content="Operation_System">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://proud-field-4c1a.nnop.workers.dev/Blog/screenshot_2.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/10/07/Operation-System-experiment-2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Operation_System_experiment_2 | Rabbet</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/WDXC" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rabbet</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Saty Happy</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/07/Operation-System-experiment-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://proud-field-4c1a.nnop.workers.dev/Blog/header.jpg">
+      <meta itemprop="name" content="Rabbet">
+      <meta itemprop="description" content="个人Blog网站">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbet">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Operation_System_experiment_2
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-07 08:32:00" itemprop="dateCreated datePublished" datetime="2020-10-07T08:32:00+08:00">2020-10-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-09 15:31:24" itemprop="dateModified" datetime="2020-10-09T15:31:24+08:00">2020-10-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Experiment/" itemprop="url" rel="index"><span itemprop="name">Experiment</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+            <div class="post-description">死锁的避免</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h2><h3 id="实验目标"><a href="#实验目标" class="headerlink" title="实验目标"></a>实验目标</h3><p> &emsp;&emsp;进程在执行过程中提出资源请求，使用银行家算法决定是否进行分配</p>
+<h3 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h3><ol>
+<li>设置资源总数</li>
+<li>新建进程(进程名称、最大需求数)</li>
+<li>提出资源请求 (进程名称、需要资源数)</li>
+<li>资源分配情况显示</li>
+<li>结束</li>
+</ol>
+<h2 id="实验代码"><a href="#实验代码" class="headerlink" title="实验代码"></a>实验代码</h2><h3 id="银行家算法介绍"><a href="#银行家算法介绍" class="headerlink" title="银行家算法介绍"></a>银行家算法介绍</h3><p>  &emsp;&emsp;银行家算法 : 实质就是<strong>保证系统动态分配资源后不进入不安全状态，以避免可能产生的死锁。</strong> 即没当进程提出进程请求且系统资源能够满足请求时,系统将判断此次资源请求后系统是否安全。如果判断是安全，则分给该进程资源，否则不分配资源，申请资源的进程将被阻塞。<br>  &emsp;&emsp;银行家算法执行有个前提，即要求进程预先提出自己的最大资源请求，并假设系统拥有固定的资源总量。</p>
+<h3 id="银行家算法的数据结构"><a href="#银行家算法的数据结构" class="headerlink" title="银行家算法的数据结构"></a>银行家算法的数据结构</h3><pre><code>1. 可用资源向量available,它记录系统中各类资源的当前可利用数目
+2. 最大需求矩阵 max ,它记录每个进程对各类资源的最大需求量。
+3. 分配矩阵 allocation ,它记录每个进程对各类资源当前的占有量。
+4. 需求矩阵   need , 它记录每个进程对各类资源需要的数目(即等于最大需求矩阵与分配矩阵的差)。
+5. 请求向量 request ,它记录某个进程当前对各类资源的申请量，是银行家算法的入口参数。
+</code></pre><h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>  &emsp;&emsp;设进程P<sub>i</sub> 向系统提出request<sub>i</sub>资源请求 :</p>
+<ol>
+<li>若 request<sub>i</sub> &gt; need<sub>i</sub>,则进程P<sub>i</sub>出错</li>
+<li>若 request<sub>i</sub> &lt; available,则进程P<sub>i</sub>阻塞</li>
+<li>系统试着把资源分配给进程P<sub>i</sub>,并对相应数据结构作如下修改 :<br>available - request<sub>i</sub> ; allocation<sub>i</sub> + request<sub>i</sub> ; need<sub>i</sub> - request<sub>i</sub>;</li>
+<li>系统执行安全性检测子算法，以判断试分配后系统状态是否安全</li>
+<li>若第4步返回真值，即安全，则完成本次分配，返回</li>
+<li>否则，撤销此次(即第三步中的试分配) ,进程P<sub>i</sub>阻塞</li>
+</ol>
+<h3 id="算法的组成"><a href="#算法的组成" class="headerlink" title="算法的组成"></a>算法的组成</h3><p>  银行家算法主要是由 <code>Safety algorithm</code> 和 <code>Resource request algorithm</code> 组成</p>
+<h4 id="Safety-algorithm"><a href="#Safety-algorithm" class="headerlink" title="Safety algorithm"></a>Safety algorithm</h4><p>  判断系统是否处于安全状态的算法可以描述如下 : </p>
+<ol>
+<li>Let Work And Finish be vectors of lengh ‘m’ and ‘n’ respectively<br>Initialize: Work = Avaliable<br>Finish[i] = false;for = 1,2,3,4…n</li>
+<li>Find an i such that both<br>a. Finish[i] = false<br>b. Need<sub>i</sub> &lt;= Work<br>if no such i exists goto step(4)</li>
+<li>Work = Work + Allocation[i]<br>Finish[i] = true<br>goto step(2)</li>
+<li>if Finish[i] = true for all i<br> then the system is in a safe state</li>
+</ol>
+<h5 id="Safety-algorithm-Example"><a href="#Safety-algorithm-Example" class="headerlink" title="Safety algorithm Example"></a>Safety algorithm Example</h5><h4 id="Resource-request-algorithm"><a href="#Resource-request-algorithm" class="headerlink" title="Resource-request algorithm"></a>Resource-request algorithm</h4><p>  令Request<sub>i</sub>为进程P<sub>i</sub>的请求数组。Request[j] = k 表示进程P<sub>i</sub>想要k个资源类型R<sub>j</sub>的实例。当进程P<sub>i</sub>提出资源请求时，将采取一下措施。</p>
+<ol>
+<li>if Request<sub>i</sub> &lt;= Need<sub>i</sub><br>Goto step (2) ; otherwise, raise an error condition, since the process has exceeded its maximum claim.</li>
+<li>if Request<sub>i</sub> &lt;= Avaliable<br>Goto step (3); otherwise, Pi must wait, since the resources are not available</li>
+<li>Have the system pretend to have allocated the requested resources to process Pi by modifying the state as follows<br>Avaliable = Avaliable - Request<sub>i</sub><br>Allocation<sub>i</sub> = Allocation<sub>i</sub> + Request<sub>i</sub><br>Need<sub>i</sub> = Need<sub>i</sub> - Request<sub>i</sub></li>
+</ol>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int p;  &#x2F;&#x2F;Process 进程数</span><br><span class="line">int r;  &#x2F;&#x2F;Rescource 资源类别</span><br><span class="line">int Max[10][10];   &#x2F;&#x2F;最大需求矩阵</span><br><span class="line">int allocation[10][10];    &#x2F;&#x2F;分配矩阵</span><br><span class="line">int need[10][10];    &#x2F;&#x2F;需求矩阵</span><br><span class="line">int Available[10];   &#x2F;&#x2F;可用资源量</span><br><span class="line">int request[10];   &#x2F;&#x2F;请求量</span><br><span class="line"></span><br><span class="line">void input() &#123;</span><br><span class="line">  int i,j ;</span><br><span class="line">  cout &lt;&lt; &quot;请输入最大矩阵Max : \n&quot;;</span><br><span class="line">  for (i &#x3D; 0; i &lt; p ; i++) &#123;</span><br><span class="line">    for (j &#x3D; 0; j &lt; r ;j++) &#123;</span><br><span class="line">      cin &gt;&gt; Max[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  cout &lt;&lt; &quot;请输入分配矩阵 allocation : \n&quot;;</span><br><span class="line">  for (i &#x3D; 0; i &lt; p ; i++) &#123;</span><br><span class="line">    for (j &#x3D; 0; j &lt; r ; j++) &#123;</span><br><span class="line">      cin &gt;&gt; allocation[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  cout &lt;&lt; &quot;需求矩阵need : \n&quot;;</span><br><span class="line">  for (i &#x3D; 0; i &lt; p ;i++) &#123;</span><br><span class="line">    for (j &#x3D; 0; j &lt; r; j++) &#123;</span><br><span class="line">      need[i][j] &#x3D; Max[i][j] - allocation[i][j];</span><br><span class="line">      cout &lt;&lt; need[i][j] &lt;&lt; &quot;\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  cout &lt;&lt; &quot;请输入可用资源量Available : \n&quot;;</span><br><span class="line">  for (i &#x3D; 0;i &lt; r; i++) &#123;</span><br><span class="line">    cin &gt;&gt; Available[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int Compare(int m[],int n[]) &#123;</span><br><span class="line">  for (int i &#x3D; 0; i &lt; r;i++) &#123;</span><br><span class="line">    if (m[i] &lt; n[i]) &#123;</span><br><span class="line">      return 0;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int SafeTest() &#123;</span><br><span class="line">  int flag &#x3D; 0;</span><br><span class="line">  int finish[p];</span><br><span class="line">  int Work[r];</span><br><span class="line">  for (int i &#x3D; 0;i &lt; p;i++) &#123;</span><br><span class="line">    finish[i] &#x3D; 0;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  for (int i &#x3D; 0 ;i &lt; r;i++) &#123;</span><br><span class="line">    Work[i] &#x3D; Available[i];</span><br><span class="line">  &#125;</span><br><span class="line">  cout &lt;&lt; &quot;分配序列 : \n&quot;;</span><br><span class="line">  cout &lt;&lt; &quot;     allocation      need          available&quot; &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">  for (int i &#x3D; 0 ; i &lt; p;i++) &#123;</span><br><span class="line">    for (int j &#x3D; 0 ; j &lt; p ;j++) &#123;</span><br><span class="line">      if (finish[j] &#x3D;&#x3D; 1) &#123;</span><br><span class="line">        continue;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      else &#123;</span><br><span class="line"></span><br><span class="line">        if (Compare(Work,need[j])) &#123;    &#x2F;&#x2F;work &gt;&#x3D; need </span><br><span class="line"></span><br><span class="line">          finish[j] &#x3D; 1;</span><br><span class="line">          cout &lt;&lt; &quot;\n&quot; &lt;&lt; &quot;进程&quot; &lt;&lt; j+1 &lt;&lt; &quot;\t&quot;;</span><br><span class="line">          flag &#x3D; 1;</span><br><span class="line"></span><br><span class="line">          for (int k &#x3D; 0;k &lt; r; k++) &#123;</span><br><span class="line">            printf(&quot;  %2d &quot;, allocation[j][k]);</span><br><span class="line">          &#125;</span><br><span class="line">          cout &lt;&lt; &quot;      &quot;;</span><br><span class="line"></span><br><span class="line">          for (int k &#x3D; 0 ; k &lt; r;k++) &#123;</span><br><span class="line">            printf(&quot;  %2d &quot;,need[j][k]);</span><br><span class="line">          &#125;</span><br><span class="line">          cout &lt;&lt; &quot;      &quot;;</span><br><span class="line"></span><br><span class="line">          for (int k &#x3D; 0; k &lt; r;k++) &#123;</span><br><span class="line">            printf(&quot;  %2d &quot;,Work[k]+allocation[j][k]);</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          for (int k &#x3D; 0;k &lt; r;k++) &#123;</span><br><span class="line">            Work[k] &#x3D; Work[k] + allocation[j][k];</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          break;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      if (flag &#x3D;&#x3D; 1) &#123;</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  cout &lt;&lt; &quot;\n&quot;;</span><br><span class="line">  for (int i &#x3D; 0 ; i &lt; p ;i++) &#123;</span><br><span class="line">    if (finish[i] &#x3D;&#x3D; 0)</span><br><span class="line">      return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void rtest(int n) &#123;</span><br><span class="line">  if (Compare(Available,request) &amp;&amp; Compare(need[n-1],request)) &#123;</span><br><span class="line">    for (int j &#x3D; 0; j &lt; r;j++) &#123;</span><br><span class="line">      allocation[n-1][j] +&#x3D; request[j];</span><br><span class="line">      need[n-1][j] -&#x3D; request[j];</span><br><span class="line">      Available[j] -&#x3D; request[j];</span><br><span class="line">    &#125;</span><br><span class="line">    if (SafeTest())&#123;</span><br><span class="line">      cout &lt;&lt; &quot;允许&quot; &lt;&lt; n &lt;&lt; &quot;进程申请资源！ \n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">      else &#123;</span><br><span class="line">        cout &lt;&lt; &quot;不允许&quot;&lt;&lt;n&lt;&lt;&quot;进程申请资源! \n&quot;;</span><br><span class="line">        for (int j &#x3D; 0;j &lt; r;j++) &#123;</span><br><span class="line">          allocation[n-1][j] +&#x3D; request[j];</span><br><span class="line">          need[n-1][j] -&#x3D; request[j];</span><br><span class="line">          Available[j] -&#x3D; request[j];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  else &#123;</span><br><span class="line">    cout &lt;&lt; &quot;申请资源越界！ \n&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int i,n;       &#x2F;&#x2F;n-第n个资源申请</span><br><span class="line">    cout&lt;&lt;&quot;请输入进程数：&quot;;</span><br><span class="line">    cin&gt;&gt;p;</span><br><span class="line">    cout&lt;&lt;&quot;请输入资源种类数：&quot;;</span><br><span class="line">    cin&gt;&gt;r;</span><br><span class="line">    &#x2F;&#x2F;默认状态4、3</span><br><span class="line">    input();&#x2F;&#x2F;输入函数</span><br><span class="line">    if(SafeTest()&#x3D;&#x3D;1)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;存在安全序列，初始状态安全。\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;不存在安全序列，初始状态不安全。\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;&quot;请输入发出请求向量request的进程编号：&quot;;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    cout&lt;&lt;&quot;请输入请求向量request\n&quot;;</span><br><span class="line">    for(i&#x3D;0; i&lt;r; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;request[i];</span><br><span class="line">    &#125;</span><br><span class="line">    rtest(n);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="代码测试结果"><a href="#代码测试结果" class="headerlink" title="代码测试结果"></a>代码测试结果</h3><p><img src="https://proud-field-4c1a.nnop.workers.dev/Blog/screenshot_2.png" alt="avatar"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Operation-System/" rel="tag"># Operation_System</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/06/Operation-System-experiment-1/" rel="prev" title="Operation_System_experiment_1">
+      <i class="fa fa-chevron-left"></i> Operation_System_experiment_1
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/10/10/Basic%20of%20Assembly%20Language/" rel="next" title="Basic of Assembly Language">
+      Basic of Assembly Language <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="nav-number">1.</span> <span class="nav-text">实验内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%9B%AE%E6%A0%87"><span class="nav-number">1.1.</span> <span class="nav-text">实验目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%A6%81%E6%B1%82"><span class="nav-number">1.2.</span> <span class="nav-text">实验要求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">实验代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.1.</span> <span class="nav-text">银行家算法介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.2.</span> <span class="nav-text">银行家算法的数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.3.</span> <span class="nav-text">算法描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E7%9A%84%E7%BB%84%E6%88%90"><span class="nav-number">2.4.</span> <span class="nav-text">算法的组成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Safety-algorithm"><span class="nav-number">2.4.1.</span> <span class="nav-text">Safety algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Safety-algorithm-Example"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">Safety algorithm Example</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Resource-request-algorithm"><span class="nav-number">2.4.2.</span> <span class="nav-text">Resource-request algorithm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.5.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="nav-number">2.6.</span> <span class="nav-text">代码测试结果</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Rabbet"
+      src="https://proud-field-4c1a.nnop.workers.dev/Blog/header.jpg">
+  <p class="site-author-name" itemprop="name">Rabbet</p>
+  <div class="site-description" itemprop="description">个人Blog网站</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wdxc" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wdxc" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/1508498108@qq.com" title="E-Mail → 1508498108@qq.com"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Rabbet</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">25k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">23 分钟</span>
+</div>
+
+
+<div id="days"></div>
+<script>
+function show_date_time(){
+    window.setTimeout("show_date_time()", 1000);
+    BirthDay=new Date("01/01/2019 15:13:14");//修改为自己的blog建站时间
+    today=new Date();
+    timeold=(today.getTime()-BirthDay.getTime());
+    sectimeold=timeold/1000
+    secondsold=Math.floor(sectimeold);
+    msPerDay=24*60*60*1000
+    e_daysold=timeold/msPerDay
+    daysold=Math.floor(e_daysold);
+    e_hrsold=(e_daysold-daysold)*24;
+    hrsold=setzero(Math.floor(e_hrsold));
+    e_minsold=(e_hrsold-hrsold)*60;
+    minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+    seconds=setzero(Math.floor((e_minsold-minsold)*60));
+    document.getElementById('days').innerHTML="本站已安全运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+    if (i<10)
+    {i="0" + i};
+    return i;
+}
+show_date_time();
+</script>
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">苏ICP备19033310 </a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

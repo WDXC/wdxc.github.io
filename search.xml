@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Basic of Assembly Language</title>
+    <url>/2020/10/10/Basic%20of%20Assembly%20Language/</url>
+    <content><![CDATA[<h2 id="汇编语言的组成"><a href="#汇编语言的组成" class="headerlink" title="汇编语言的组成"></a>汇编语言的组成</h2><ul>
+<li>汇编指令: 机器码的助记符，有对应的机器编码</li>
+<li>伪指令: 没有对应的机器码，由编译器执行，计算机并不执行</li>
+<li>其他符号: 如+、-、*、/等，由编译器识别，没有对应的机器码</li>
+</ul>
+<h2 id="CPU-对存储器的读写"><a href="#CPU-对存储器的读写" class="headerlink" title="CPU 对存储器的读写"></a>CPU 对存储器的读写</h2><p>  &emsp;&emsp;存储器是被划分为多个存储单元，存储单元<font color = red>从零开始顺序编号</font>。那么CPU要从内存中读取数据，就要首先就要指定存<font color=red>储单元的地址</font>。也就是说要确定他要读取哪一个存储单元的数据。CPU在读取数据的时候还要指明，它要对哪一个器件进行操作，进行哪种操作,是从中读取，还是向其中写入。如果CPU要想进行数据的读写，必须要和外部器件(标准说法是芯片)进行下面三类信息的交互。</p>
+<ul>
+<li>存储单元的地址(地址信息)</li>
+<li>器件的选择，读或写的命令(控制信息)</li>
+<li>读或写的数据(数据信息)</li>
+</ul>
+<p>  <strong>下图是CPU从内存中读取数据的过程</strong><br>  <img src="https://proud-field-4c1a.nnop.workers.dev/Blog/CPU对存储器读写.png" alt="avatar"></p>
+<h2 id="地址总线"><a href="#地址总线" class="headerlink" title="地址总线"></a>地址总线</h2><p>  &emsp;&emsp;CPU是通过地址总线来指定存储器单元的。所以地址总线上能传送多少个不同的信息，CPU就可以对多少个存储单位进行寻址。下图是地址总线上发送的地址信息的示意图:</p>
+<p>  <img src="https://proud-field-4c1a.nnop.workers.dev/Blog/地址总线.png" alt="avatar"></p>
+<h2 id="数据总线"><a href="#数据总线" class="headerlink" title="数据总线"></a>数据总线</h2><p>  &emsp;&emsp;CPU与内存或其他器件之间的数据传送是通过数据总线来进行的。数据总线的宽度决定了CPU和外界的数据传达速度。8根数据总线一次可以传送八位二进制(即一个字节),16根数据总线一次可以传送两个字节。</p>
+<h2 id="控制总线"><a href="#控制总线" class="headerlink" title="控制总线"></a>控制总线</h2><p>  &emsp;&emsp;CPU对外部器件的控制是通过控制总线来进行的。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ol>
+<li>汇编指令是机器指令的助记符，同机器指令一一对应</li>
+<li>每一种CPU都有自己的汇编指令集</li>
+<li>CPU可以直接使用的信息在存储器中存放</li>
+<li>在存储器中指令和数据没有任何区别，都是二进制信息</li>
+<li>存储单元从零开始顺序编号</li>
+</ol>
+]]></content>
+      <categories>
+        <category>计算机底层</category>
+      </categories>
+      <tags>
+        <tag>汇编</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-1</title>
     <url>/2020/01/12/Leetcode-1/</url>
     <content><![CDATA[<h2 id="Qestion"><a href="#Qestion" class="headerlink" title="Qestion"></a>Qestion</h2><p>Give an array of intergets <code>nums</code> and an integer <code>target</code>,return indices of the two numbers such that they add up to <code>target</code>.<br>You may assume that each input would have exctly one solution,and you may use the same element twice.<br>You can return the answer in any order.  </p>
@@ -286,8 +320,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Operation_System_experiment</title>
-    <url>/2020/10/06/Operation-System-experiment/</url>
+    <title>Operation_System_experiment_1</title>
+    <url>/2020/10/06/Operation-System-experiment-1/</url>
     <content><![CDATA[<h2 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>&emsp;&emsp;设置进程PCB结构和进程队列(就绪、执行、阻塞)</p>
 <h3 id="循环执行菜单"><a href="#循环执行菜单" class="headerlink" title="循环执行菜单"></a>循环执行菜单</h3><ol>
 <li><p>创建原语<br>&emsp;&emsp;输入进程的名字、优先级(用数字0-9表示，0级最高，9级最低).建议一个节点，插入就绪队列</p>
@@ -304,13 +338,347 @@
 </li>
 </ol>
 <h2 id="实验代码"><a href="#实验代码" class="headerlink" title="实验代码"></a>实验代码</h2><h3 id="算法介绍"><a href="#算法介绍" class="headerlink" title="算法介绍"></a>算法介绍</h3><p>  &emsp;&emsp;优先算法:进程就绪队列是按<strong>优先数大小从高到底排序，队首进程首先投入运行。每过一个时间片，运行进程所需的时间片减1，优先数减3</strong>，说明他已经运行了一个时间片，如果在一个时间内完成不了，应该降低其优先数。接着比较现行进程和就绪队列队首进程的优先数，如果仍是现行进程优先数高或者相同，就让现行进程继续运行，否则，调度就绪队列队首进程投入运行。原运行进程再按优先数大小插入就绪队列，且改变它们对应进程的状态，直至所有进程都运行完各自的时间片数。</p>
-<h3 id="程序简介"><a href="#程序简介" class="headerlink" title="程序简介"></a>程序简介</h3><p>  &emsp;&emsp;每一个进程控制块(PCB)标志(进程标识号、优先数、占用CPU时间数、进程所需时间片数、进程状态)。每一个进程都会处于运行(run)、就绪(ready)、阻塞(blocked)和完成(finish)状态之一。具体注释在代码中:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  #include&lt;iostream&gt;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;malloc.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">enum process_status&#123;READY , RUN , FINISH&#125;; &#x2F;&#x2F;进程的三种状态</span><br><span class="line">&#x2F;&#x2F;定义进程数据结构</span><br><span class="line">typedef struct pcb</span><br><span class="line">&#123;</span><br><span class="line">    char process_tag[20] ; &#x2F;&#x2F;存储进程标识符</span><br><span class="line">    struct pcb *next ; &#x2F;&#x2F;连接下一个进程的指针</span><br><span class="line">    int priority_num ; &#x2F;&#x2F;优先调度算法中为优先级 ， 轮转调度算法中为轮转时间片</span><br><span class="line">    int take_cpu_time ; &#x2F;&#x2F;占用CPU时间片数</span><br><span class="line">    int process_time ; &#x2F;&#x2F;进程所需时间片数</span><br><span class="line">    process_status status ; &#x2F;&#x2F;进程当前的状态</span><br><span class="line">&#125; PCB ;</span><br><span class="line">&#x2F;&#x2F;定义进程控制块的链结构</span><br><span class="line">typedef struct</span><br><span class="line">&#123;</span><br><span class="line">    PCB *run ; &#x2F;&#x2F;当前运行的进程指针</span><br><span class="line">    PCB *ready ; &#x2F;&#x2F;当前准备队列的头指针</span><br><span class="line">    PCB *tail ; &#x2F;&#x2F;准备队列的队尾指针</span><br><span class="line">    PCB *finish ; &#x2F;&#x2F;完成队列的指针</span><br><span class="line">&#125; PCBC ;</span><br><span class="line">void init_pcbc(PCBC *p)</span><br><span class="line">&#123;</span><br><span class="line">    p-&gt;run &#x3D; NULL ;</span><br><span class="line">    p-&gt;ready &#x3D; NULL ;</span><br><span class="line">    p-&gt;tail &#x3D; NULL ;</span><br><span class="line">    p-&gt;finish &#x3D; NULL ;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;输入进程，并加入就绪队列</span><br><span class="line">void input_process(PCBC *pcbc)</span><br><span class="line">&#123;</span><br><span class="line">   PCB *pcb ;</span><br><span class="line">   pcb &#x3D; (PCB*)malloc(sizeof(PCB)) ;</span><br><span class="line">   printf(&quot;请输入进程标识符：&quot;) ;</span><br><span class="line">   scanf(&quot;%s&quot; , &amp;pcb-&gt;process_tag) ;</span><br><span class="line">   printf(&quot;输入格式为： （优先级，占用CPU时间片数，进程所需时间片数） : &quot;) ;</span><br><span class="line">   scanf(&quot;%d,%d,%d&quot; , &amp;pcb-&gt;priority_num , &amp;pcb-&gt;take_cpu_time , &amp;pcb-&gt;process_time) ;</span><br><span class="line">   pcb-&gt;status &#x3D; READY ; &#x2F;&#x2F;初始化就绪状态</span><br><span class="line">   &#x2F;&#x2F;当就绪队列为空时</span><br><span class="line">   if(pcbc-&gt;ready &#x3D;&#x3D; NULL &amp;&amp; pcbc-&gt;tail &#x3D;&#x3D; NULL)</span><br><span class="line">   &#123;</span><br><span class="line">       pcbc-&gt;ready &#x3D; pcbc-&gt;tail &#x3D; pcb ;</span><br><span class="line">       pcb-&gt;next &#x3D; NULL ;</span><br><span class="line">   &#125;</span><br><span class="line">   else</span><br><span class="line">   &#123;</span><br><span class="line">       &#x2F;&#x2F;将新进入的队列加入队尾</span><br><span class="line">       pcb-&gt;next &#x3D; pcbc-&gt;tail-&gt;next ;</span><br><span class="line">       pcbc-&gt;tail-&gt;next &#x3D; pcb ;</span><br><span class="line">       pcbc-&gt;tail &#x3D; pcb ;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">void swapx(PCB  * p1 , PCB *p2)</span><br><span class="line">&#123;</span><br><span class="line">    int  i , priority_num , take_cpu_time , process_time ;</span><br><span class="line">    char temp ;</span><br><span class="line">    &#x2F;&#x2F;进行标识符的交换</span><br><span class="line">    for(i &#x3D; 0 ; i &lt; 20 ; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        temp &#x3D; p1-&gt;process_tag[i];</span><br><span class="line">        p1-&gt;process_tag[i] &#x3D; p2-&gt;process_tag[i] ;</span><br><span class="line">        p2-&gt;process_tag[i] &#x3D; temp ;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;优先值的交换</span><br><span class="line">    priority_num &#x3D; p1-&gt;priority_num ;</span><br><span class="line">    p1-&gt;priority_num &#x3D; p2-&gt;priority_num ;</span><br><span class="line">    p2-&gt;priority_num &#x3D; priority_num ;</span><br><span class="line">    &#x2F;&#x2F;占用CPU时间片的交换</span><br><span class="line">    take_cpu_time &#x3D; p1-&gt;take_cpu_time ;</span><br><span class="line">    p1-&gt;take_cpu_time &#x3D; p2-&gt;take_cpu_time ;</span><br><span class="line">    p2-&gt;take_cpu_time &#x3D; take_cpu_time ;</span><br><span class="line">    &#x2F;&#x2F;进程所需时间片数的交换</span><br><span class="line">    process_time &#x3D; p1-&gt;process_time ;</span><br><span class="line">    p1-&gt;process_time &#x3D; p2-&gt;process_time ;</span><br><span class="line">    p2-&gt;process_time &#x3D; process_time ;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;将就绪队列按优先级别大小进行排序,按冒泡排序算法</span><br><span class="line">void sort_pcbc(PCBC *pcbc , int pcb_num)</span><br><span class="line">&#123;</span><br><span class="line">    PCB *p  , *p1 ;</span><br><span class="line">    p &#x3D; pcbc-&gt;ready ;</span><br><span class="line">   for(p &#x3D; pcbc-&gt;ready ; p !&#x3D; NULL ; p &#x3D; p-&gt;next)</span><br><span class="line">   &#123;</span><br><span class="line">       for(p1 &#x3D; p-&gt;next ; p1 !&#x3D; NULL ; p1 &#x3D; p1-&gt;next)</span><br><span class="line">       &#123;</span><br><span class="line">           if(p-&gt;priority_num &lt; p1-&gt;priority_num)</span><br><span class="line">           &#123;</span><br><span class="line">               swapx(p , p1) ; &#x2F;&#x2F;只是进行指针内部数据的交换，不改变指针指向</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;*</span><br><span class="line"> *打印当前进程控制块中的情况</span><br><span class="line"> *&#x2F;</span><br><span class="line"> void print_log(PCBC *pcbc)</span><br><span class="line"> &#123;</span><br><span class="line">     PCB *ready , *finish ;</span><br><span class="line">     ready &#x3D; pcbc-&gt;ready ;</span><br><span class="line">     finish &#x3D; pcbc-&gt;finish ;</span><br><span class="line">     printf(&quot;--------------------------------------------------  \n&quot;) ;</span><br><span class="line">     printf(&quot;Run： \n&quot;) ;</span><br><span class="line">     if(pcbc-&gt;run !&#x3D; NULL)</span><br><span class="line">     &#123;</span><br><span class="line">        printf(&quot;%s  %04d  %04d  %04d \n&quot; , pcbc-&gt;run-&gt;process_tag ,pcbc-&gt;run-&gt;priority_num , pcbc-&gt;run-&gt;take_cpu_time , pcbc-&gt;run-&gt;process_time) ;</span><br><span class="line">     &#125;</span><br><span class="line">     else</span><br><span class="line">     &#123;</span><br><span class="line">         printf(&quot;Run is empty! \n&quot;) ;</span><br><span class="line">     &#125;</span><br><span class="line">     printf(&quot;Ready：\n&quot;) ;</span><br><span class="line">     while(ready !&#x3D; NULL)</span><br><span class="line">     &#123;</span><br><span class="line">         printf(&quot;%s  %04d  %04d  %04d \n&quot; , ready-&gt;process_tag ,ready-&gt;priority_num , ready-&gt;take_cpu_time , ready-&gt;process_time) ;</span><br><span class="line">         ready &#x3D; ready-&gt;next ;</span><br><span class="line">     &#125;</span><br><span class="line">     printf(&quot;Finish：\n&quot;) ;</span><br><span class="line">     while(finish !&#x3D; NULL)</span><br><span class="line">     &#123;</span><br><span class="line">         printf(&quot;%s  %04d  %04d  %04d \n&quot; , finish-&gt;process_tag ,finish-&gt;priority_num , finish-&gt;take_cpu_time , finish-&gt;process_time) ;</span><br><span class="line">         finish &#x3D; finish-&gt;next ;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#x2F;*</span><br><span class="line"> *运行进程控制块</span><br><span class="line"> *&#x2F;</span><br><span class="line"> void run_pcbc_priority(PCBC *xpcbc)</span><br><span class="line"> &#123;</span><br><span class="line">     PCBC *pcbc &#x3D; xpcbc ;</span><br><span class="line">     PCB *temp , *pre , *tail ;</span><br><span class="line">     &#x2F;&#x2F;进行那个CPU的循环调用</span><br><span class="line">     while(pcbc-&gt;ready !&#x3D; NULL</span><br><span class="line">     &#123;</span><br><span class="line">         pcbc-&gt;run &#x3D; pcbc-&gt;ready ; &#x2F;&#x2F;将就绪队列队首加入运行队列</span><br><span class="line">         pcbc-&gt;ready &#x3D; pcbc-&gt;ready-&gt;next ; &#x2F;&#x2F;改变队首元素</span><br><span class="line">         print_log(pcbc) ;</span><br><span class="line">         pcbc-&gt;run-&gt;priority_num -&#x3D; 3 ;</span><br><span class="line">         pcbc-&gt;run-&gt;process_time -&#x3D; 1 ;</span><br><span class="line">         if(pcbc-&gt;run-&gt;process_time &#x3D;&#x3D; 0)</span><br><span class="line">         &#123;</span><br><span class="line">           if(pcbc-&gt;finish &#x3D;&#x3D; NULL)</span><br><span class="line">           &#123;</span><br><span class="line">               pcbc-&gt;finish &#x3D; pcbc-&gt;run ;</span><br><span class="line">               pcbc-&gt;finish-&gt;next &#x3D; NULL ;</span><br><span class="line">               tail &#x3D; pcbc-&gt;finish ;</span><br><span class="line">           &#125;</span><br><span class="line">           else</span><br><span class="line">           &#123;</span><br><span class="line">              tail-&gt;next &#x3D; pcbc-&gt;run ;</span><br><span class="line">              tail &#x3D; tail-&gt;next ;</span><br><span class="line">              tail-&gt;next &#x3D; NULL ;</span><br><span class="line">           &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         else</span><br><span class="line">         &#123;</span><br><span class="line">             if(pcbc-&gt;ready !&#x3D; NULL)</span><br><span class="line">             &#123;</span><br><span class="line">                 temp &#x3D; pcbc-&gt;ready ;</span><br><span class="line">                 while(temp !&#x3D; NULL)</span><br><span class="line">                 &#123;</span><br><span class="line">                     if(pcbc-&gt;run-&gt;priority_num &gt; temp-&gt;priority_num)</span><br><span class="line">                     &#123;</span><br><span class="line">                         break ;</span><br><span class="line">                     &#125;</span><br><span class="line">                     pre &#x3D; temp ;</span><br><span class="line">                     temp &#x3D; temp-&gt;next ;</span><br><span class="line">                 &#125;</span><br><span class="line">                 if(temp &#x3D;&#x3D; pcbc-&gt;ready)</span><br><span class="line">                 &#123;</span><br><span class="line">                     pcbc-&gt;run-&gt;next &#x3D; pcbc-&gt;ready ;</span><br><span class="line">                     pcbc-&gt;ready &#x3D; pcbc-&gt;run ;</span><br><span class="line">                 &#125;</span><br><span class="line">                 else</span><br><span class="line">                 &#123;</span><br><span class="line">                    pcbc-&gt;run-&gt;next &#x3D; pre-&gt;next ;</span><br><span class="line">                    pre-&gt;next &#x3D; pcbc-&gt;run ;</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;</span><br><span class="line">             else</span><br><span class="line">             &#123;</span><br><span class="line">                 pcbc-&gt;ready &#x3D; pcbc-&gt;run ;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     pcbc-&gt;run &#x3D; NULL ;</span><br><span class="line">     print_log(pcbc) ;</span><br><span class="line"> &#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    PCBC *pcbc ; &#x2F;&#x2F;创建进程控制块链 ;</span><br><span class="line">    int pcb_num ; &#x2F;&#x2F;记录处理进程数目</span><br><span class="line">    pcbc &#x3D; (PCBC*)malloc(sizeof(PCBC)) ;</span><br><span class="line">    printf(&quot;请输入要处理的进程数目： &quot;) ;</span><br><span class="line">    scanf(&quot;%d&quot; , &amp;pcb_num) ;</span><br><span class="line">    init_pcbc(pcbc) ; &#x2F;&#x2F;初始化进程控制块链</span><br><span class="line">    for(int i &#x3D; 0 ; i &lt; pcb_num ; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        input_process(pcbc) ; &#x2F;&#x2F;输入所有进程，并进入就绪队列</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;根据队列优先级进行排序</span><br><span class="line">    sort_pcbc(pcbc , pcb_num) ;</span><br><span class="line">    &#x2F;&#x2F;通过优先调度算法运行</span><br><span class="line">    printf(&quot;By the priority--------------------------\n&quot;) ;</span><br><span class="line">    run_pcbc_priority(pcbc) ;</span><br><span class="line">    return 0 ;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="程序简介"><a href="#程序简介" class="headerlink" title="程序简介"></a>程序简介</h3><p>  &emsp;&emsp;每一个进程控制块(PCB)标志(进程标识号、优先数、占用CPU时间数、进程所需时间片数、进程状态)。每一个进程都会处于运行(run)、就绪(ready)、阻塞(blocked)和完成(finish)状态之一。程序分为初始化(输入数据)、算法模拟、输出三大模块，核心就是处理就绪队列(readyQueue)、运行队列(runQueue)、阻塞队列(blockQueue)、完成队列(finishQueue)四个队列的相互转化。具体代码如下:</p>
+<pre><code>
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;iomanip&gt;
+#include &lt;ctime&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;queue&gt;
+#define IsRun 1 // 运行
+#define isFinish 0 // 完成
+#define isReady 2 // 就绪
+#define isBlock -1 // 阻塞
+using namespace std;
+const int processNum = 110; // 进程数量110以内
+
+int randomBlockTime[processNum]; // 随机等待时间
+bool visBlock[processNum]; // 记录当前是否为阻塞状态
+
+struct PCB // 进程控制块
+&#123;
+    int processId; // 进程标识号
+    int priority; // 优先级
+    int cpuTime; // 进程占用CPU时间
+    int needTime; // 进程执行所需时间
+    int blockTime; // 阻塞时间
+    int processState; // 进程状态
+
+    PCB() &#123;&#125;
+
+    // 自定义构造函数
+    PCB(int pi, int p, int ct, int nt, int ps): processId(pi), priority(p), cpuTime(ct), needTime(nt), processState(ps) &#123;&#125;
+
+    // 自定义构造函数
+    PCB(bool isRand, int id)
+    &#123;
+        if (isRand) // 随机
+        &#123;
+            this-&gt;cpuTime = 0;
+            this-&gt;blockTime = 0;
+            this-&gt;needTime = rand() % 10 + 1;
+            this-&gt;priority = rand() % 30 + 1;
+            this-&gt;processState = isReady;
+            this-&gt;processId = id;
+        &#125;
+        else // 手动输入
+        &#123;
+            cout &lt;&lt; &quot;Process ID: &quot;;
+            cin &gt;&gt; this-&gt;processId;
+            cout &lt;&lt; &quot;Need Time: &quot;;
+            cin &gt;&gt; this-&gt;needTime;
+            this-&gt;cpuTime = 0;
+            this-&gt;blockTime = 0;
+            this-&gt;priority = rand() % 30 + 1;
+            this-&gt;processState = isReady;
+        &#125;
+    &#125;
+
+    // 重载&lt;，按优先数从大到小输出
+    bool operator &lt; (const PCB &amp; r) const
+    &#123;
+        return priority &lt; r.priority;
+    &#125;
+&#125;pcb[processNum];
+
+string statue_to_str(int statue) //  将进程状态转化为字符
+&#123;
+    string str;
+    if (statue == 1) // 对应状态
+        str = &quot;run   &quot;;
+    else if (statue == 0)
+        str = &quot;finish&quot;;
+    else if (statue == 2)
+        str = &quot;ready &quot;;
+    else if (statue == -1)
+        str = &quot;block &quot;;
+    return str;
+&#125;
+
+priority_queue &lt;PCB&gt; runQueue, readyQueue, blockQueue, finishQueue; // 运行队列， 就绪队列， 阻塞队列， 完成队列
+
+void init(int processCnt, bool isRandom) // 初始化进程, 默认为随机
+&#123;
+    srand((unsigned)time(NULL)); // 设置随机数种子
+
+    memset(randomBlockTime, 0, sizeof(randomBlockTime));
+    memset(visBlock, false, sizeof(visBlock)); // 默认为flase
+
+    while (!runQueue.empty()) // 清空队列
+        runQueue.pop();
+    while (!readyQueue.empty())
+        readyQueue.pop();
+    while (!blockQueue.empty())
+        blockQueue.pop();
+    while (!finishQueue.empty())
+        finishQueue.pop();
+
+    for (int i = 1; i &lt;= processCnt; ++i) // 生成数据
+        pcb[i] = PCB(isRandom, i);
+
+    for (int i = 1; i &lt;= processCnt; ++i) // 初始程序加入就绪队列
+        readyQueue.push(pcb[i]);
+
+&#125;
+
+void display() // 输出
+&#123;
+    priority_queue &lt;PCB&gt; _readyQueue = readyQueue;
+    priority_queue &lt;PCB&gt; _runQueue = runQueue;
+    priority_queue &lt;PCB&gt; _blockQueue = blockQueue;
+    priority_queue &lt;PCB&gt; _finishQueue = finishQueue;
+
+    cout &lt;&lt; &quot;ProcessId    |    &quot; &lt;&lt; &quot;Priority    |    &quot; &lt;&lt; &quot;ProcessState    |    &quot; &lt;&lt; &quot;CPUTime    |    &quot; &lt;&lt; &quot;NeedTime    |    &quot; &lt;&lt; &quot;BlockTime&quot; &lt;&lt;  endl;
+
+    while (!_runQueue.empty()) // 运行队列
+    &#123;
+        PCB now = _runQueue.top();
+        cout &lt;&lt; setw(5) &lt;&lt; now.processId  &lt;&lt; setw(16) &lt;&lt; now.priority &lt;&lt; setw(20) &lt;&lt; statue_to_str(now.processState) &lt;&lt; setw(18) &lt;&lt; now.cpuTime &lt;&lt; setw(17) &lt;&lt; now.needTime &lt;&lt; setw(17) &lt;&lt; now.blockTime &lt;&lt; endl;
+        _runQueue.pop();
+    &#125;
+
+    while (!_blockQueue.empty()) // 阻塞队列
+    &#123;
+        PCB now = _blockQueue.top();
+        cout &lt;&lt; setw(5) &lt;&lt; now.processId  &lt;&lt; setw(16) &lt;&lt; now.priority &lt;&lt; setw(20) &lt;&lt; statue_to_str(now.processState) &lt;&lt; setw(18) &lt;&lt; now.cpuTime &lt;&lt; setw(17) &lt;&lt; now.needTime &lt;&lt; setw(17) &lt;&lt; now.blockTime &lt;&lt; endl;
+        _blockQueue.pop();
+    &#125;
+
+    while (!_readyQueue.empty()) // 就绪队列
+    &#123;
+        PCB now = _readyQueue.top();
+        cout &lt;&lt; setw(5) &lt;&lt; now.processId  &lt;&lt; setw(16) &lt;&lt; now.priority &lt;&lt; setw(20) &lt;&lt; statue_to_str(now.processState) &lt;&lt; setw(18) &lt;&lt; now.cpuTime &lt;&lt; setw(17) &lt;&lt; now.needTime &lt;&lt; setw(17) &lt;&lt; now.blockTime &lt;&lt; endl;
+        _readyQueue.pop();
+    &#125;
+
+    while (!_finishQueue.empty()) // 完成队列
+    &#123;
+        PCB now = _finishQueue.top();
+        cout &lt;&lt; setw(5) &lt;&lt; now.processId  &lt;&lt; setw(16) &lt;&lt; now.priority &lt;&lt; setw(20) &lt;&lt; statue_to_str(now.processState) &lt;&lt; setw(18) &lt;&lt; now.cpuTime &lt;&lt; setw(17) &lt;&lt; now.needTime &lt;&lt; setw(17) &lt;&lt; now.blockTime &lt;&lt; endl;
+        _finishQueue.pop();
+    &#125;
+
+    cout &lt;&lt; &quot;---------------------------------------------------------------------------------------------------&quot; &lt;&lt; endl;
+&#125;
+
+void Priority(int processCnt, bool isRandom) // 优先数法
+&#123;
+    init(processCnt, isRandom);
+
+    cout &lt;&lt; &quot;-------------------------------------------Initial State-------------------------------------------&quot; &lt;&lt; endl;
+    display(); // 初始等待状态
+
+    cout &lt;&lt; endl;
+
+    int totalTime = 0; // 程序运行总时间
+
+    cout &lt;&lt; &quot;-------------------------------------------Running State-------------------------------------------&quot; &lt;&lt; endl;
+    priority_queue &lt;PCB&gt; _tmpblockQueue; // 使用_tmpblockQueue临时储存就绪队列进程信息
+    while (!readyQueue.empty() || !blockQueue.empty()) // 程序执行
+    &#123;
+        totalTime++;
+
+        while (!_tmpblockQueue.empty())
+            _tmpblockQueue.pop();
+
+        while (!blockQueue.empty()) // 依次判断阻塞队列中的所有进程
+        &#123;
+            PCB block = blockQueue.top();
+            blockQueue.pop();
+            if (block.blockTime &gt; randomBlockTime[block.processId]) // 达到阻塞等待时间，退出
+            &#123;
+                block.processState = isReady;
+                block.blockTime = 0;
+                visBlock[block.processId] = false; // 退出阻塞状态
+                readyQueue.push(block);
+            &#125;
+            else // 阻塞时间更新
+            &#123;
+                block.blockTime++;
+                _tmpblockQueue.push(block);
+            &#125;
+        &#125;
+
+        while (!_tmpblockQueue.empty()) // “恢复信息”
+        &#123;
+            blockQueue.push(_tmpblockQueue.top());
+            _tmpblockQueue.pop();
+        &#125;
+
+        if (readyQueue.empty()) // 当前就绪队列已经为空，则单独处理阻塞队列
+        &#123;
+            display();
+            continue;
+        &#125;
+
+        PCB now = readyQueue.top();
+        readyQueue.pop();
+
+        if (rand() % 2 == 0 &amp;&amp; !visBlock[now.processId]) // 当前程序未处于阻塞状态，随机进入
+        &#123;
+            now.processState = isBlock;
+            visBlock[now.processId] = true; // 标记处于阻塞状态
+            now.blockTime++; // 阻塞时间
+            randomBlockTime[now.processId] = rand() % 2 + 1;
+            blockQueue.push(now); // 进入阻塞队列
+            display();
+            continue;
+        &#125;
+
+        now.processState = IsRun;
+        now.priority -= 3; // 优先数减3
+        now.needTime -= 1; // 需要时间减1
+        now.cpuTime += 1; // 运行时间加1
+        runQueue.push(now);
+
+        display();
+
+        if (now.needTime &gt; 0) // 执行所需时间大于0，进入就绪队列
+        &#123;
+            now.processState = isReady;
+            readyQueue.push(now);
+        &#125;
+        else //  程序执行完成
+        &#123;
+            now.processState = isFinish;
+            finishQueue.push(now);
+        &#125;
+
+        runQueue.pop();
+    &#125;
+
+    cout &lt;&lt; endl;
+
+    cout &lt;&lt; &quot;-------------------------------------------Finished State------------------------------------------&quot; &lt;&lt; endl;
+    display(); // 完成状态
+
+    cout &lt;&lt; &quot;The total running time of all programs is: &quot; &lt;&lt; totalTime &lt;&lt;  &quot;.&quot; &lt;&lt; endl;
+&#125;
+
+int main()
+&#123;
+    char ch;
+    cout &lt;&lt; &quot;Please choose whether to randomly generate data(y for yes, n for no): &quot;; // 是否创建随机进程
+    cin &gt;&gt; ch;
+    int processCnt;
+    bool isRandom;
+    if (ch == &#39;y&#39;) // 随机
+    &#123;
+        cout &lt;&lt; &quot;Please enter the number of random processes(1~100): &quot;;
+        cin &gt;&gt; processCnt;
+        isRandom = true;
+        //freopen(&quot;out.txt&quot;,&quot;w&quot;,stdout); // 输出到文件
+        Priority(processCnt, isRandom);
+    &#125;
+    else if (ch == &#39;n&#39;) // 非随机
+    &#123;
+        cout &lt;&lt; &quot;Please enter the number of threads you need to create(1~100): &quot;;
+        cin &gt;&gt; processCnt;
+        isRandom = false;
+        cout &lt;&lt; &quot;Please enter the process ID and the corresponding running time.&quot; &lt;&lt; endl;
+        //freopen(&quot;out.txt&quot;,&quot;w&quot;,stdout); // 输出到文件
+        Priority(processCnt, isRandom);
+    &#125;
+    else
+        cout &lt;&lt; &quot;Input errors, please input again.&quot; &lt;&lt; endl;
+    return 0;
+&#125;
+</code></pre><h3 id="代码测试"><a href="#代码测试" class="headerlink" title="代码测试"></a>代码测试</h3><ul>
+<li><p>随机产生六组数据<br><img src="https://proud-field-4c1a.nnop.workers.dev/Blog/screenshot.png" alt="avatar"></p>
+</li>
+<li><p>手动输入数据<br><img src="https://proud-field-4c1a.nnop.workers.dev/Blog/screenshot.png" alt="avatar"></p>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>Experiment</category>
       </categories>
       <tags>
         <tag>Operatiron_System</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Operation_System_experiment_2</title>
+    <url>/2020/10/07/Operation-System-experiment-2/</url>
+    <content><![CDATA[<h2 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h2><h3 id="实验目标"><a href="#实验目标" class="headerlink" title="实验目标"></a>实验目标</h3><p> &emsp;&emsp;进程在执行过程中提出资源请求，使用银行家算法决定是否进行分配</p>
+<h3 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h3><ol>
+<li>设置资源总数</li>
+<li>新建进程(进程名称、最大需求数)</li>
+<li>提出资源请求 (进程名称、需要资源数)</li>
+<li>资源分配情况显示</li>
+<li>结束</li>
+</ol>
+<h2 id="实验代码"><a href="#实验代码" class="headerlink" title="实验代码"></a>实验代码</h2><h3 id="银行家算法介绍"><a href="#银行家算法介绍" class="headerlink" title="银行家算法介绍"></a>银行家算法介绍</h3><p>  &emsp;&emsp;银行家算法 : 实质就是<strong>保证系统动态分配资源后不进入不安全状态，以避免可能产生的死锁。</strong> 即没当进程提出进程请求且系统资源能够满足请求时,系统将判断此次资源请求后系统是否安全。如果判断是安全，则分给该进程资源，否则不分配资源，申请资源的进程将被阻塞。<br>  &emsp;&emsp;银行家算法执行有个前提，即要求进程预先提出自己的最大资源请求，并假设系统拥有固定的资源总量。</p>
+<h3 id="银行家算法的数据结构"><a href="#银行家算法的数据结构" class="headerlink" title="银行家算法的数据结构"></a>银行家算法的数据结构</h3><pre><code>1. 可用资源向量available,它记录系统中各类资源的当前可利用数目
+2. 最大需求矩阵 max ,它记录每个进程对各类资源的最大需求量。
+3. 分配矩阵 allocation ,它记录每个进程对各类资源当前的占有量。
+4. 需求矩阵   need , 它记录每个进程对各类资源需要的数目(即等于最大需求矩阵与分配矩阵的差)。
+5. 请求向量 request ,它记录某个进程当前对各类资源的申请量，是银行家算法的入口参数。
+</code></pre><h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>  &emsp;&emsp;设进程P<sub>i</sub> 向系统提出request<sub>i</sub>资源请求 :</p>
+<ol>
+<li>若 request<sub>i</sub> &gt; need<sub>i</sub>,则进程P<sub>i</sub>出错</li>
+<li>若 request<sub>i</sub> &lt; available,则进程P<sub>i</sub>阻塞</li>
+<li>系统试着把资源分配给进程P<sub>i</sub>,并对相应数据结构作如下修改 :<br>available - request<sub>i</sub> ; allocation<sub>i</sub> + request<sub>i</sub> ; need<sub>i</sub> - request<sub>i</sub>;</li>
+<li>系统执行安全性检测子算法，以判断试分配后系统状态是否安全</li>
+<li>若第4步返回真值，即安全，则完成本次分配，返回</li>
+<li>否则，撤销此次(即第三步中的试分配) ,进程P<sub>i</sub>阻塞</li>
+</ol>
+<h3 id="算法的组成"><a href="#算法的组成" class="headerlink" title="算法的组成"></a>算法的组成</h3><p>  银行家算法主要是由 <code>Safety algorithm</code> 和 <code>Resource request algorithm</code> 组成</p>
+<h4 id="Safety-algorithm"><a href="#Safety-algorithm" class="headerlink" title="Safety algorithm"></a>Safety algorithm</h4><p>  判断系统是否处于安全状态的算法可以描述如下 : </p>
+<ol>
+<li>Let Work And Finish be vectors of lengh ‘m’ and ‘n’ respectively<br>Initialize: Work = Avaliable<br>Finish[i] = false;for = 1,2,3,4…n</li>
+<li>Find an i such that both<br>a. Finish[i] = false<br>b. Need<sub>i</sub> &lt;= Work<br>if no such i exists goto step(4)</li>
+<li>Work = Work + Allocation[i]<br>Finish[i] = true<br>goto step(2)</li>
+<li>if Finish[i] = true for all i<br> then the system is in a safe state</li>
+</ol>
+<h5 id="Safety-algorithm-Example"><a href="#Safety-algorithm-Example" class="headerlink" title="Safety algorithm Example"></a>Safety algorithm Example</h5><h4 id="Resource-request-algorithm"><a href="#Resource-request-algorithm" class="headerlink" title="Resource-request algorithm"></a>Resource-request algorithm</h4><p>  令Request<sub>i</sub>为进程P<sub>i</sub>的请求数组。Request[j] = k 表示进程P<sub>i</sub>想要k个资源类型R<sub>j</sub>的实例。当进程P<sub>i</sub>提出资源请求时，将采取一下措施。</p>
+<ol>
+<li>if Request<sub>i</sub> &lt;= Need<sub>i</sub><br>Goto step (2) ; otherwise, raise an error condition, since the process has exceeded its maximum claim.</li>
+<li>if Request<sub>i</sub> &lt;= Avaliable<br>Goto step (3); otherwise, Pi must wait, since the resources are not available</li>
+<li>Have the system pretend to have allocated the requested resources to process Pi by modifying the state as follows<br>Avaliable = Avaliable - Request<sub>i</sub><br>Allocation<sub>i</sub> = Allocation<sub>i</sub> + Request<sub>i</sub><br>Need<sub>i</sub> = Need<sub>i</sub> - Request<sub>i</sub></li>
+</ol>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int p;  &#x2F;&#x2F;Process 进程数</span><br><span class="line">int r;  &#x2F;&#x2F;Rescource 资源类别</span><br><span class="line">int Max[10][10];   &#x2F;&#x2F;最大需求矩阵</span><br><span class="line">int allocation[10][10];    &#x2F;&#x2F;分配矩阵</span><br><span class="line">int need[10][10];    &#x2F;&#x2F;需求矩阵</span><br><span class="line">int Available[10];   &#x2F;&#x2F;可用资源量</span><br><span class="line">int request[10];   &#x2F;&#x2F;请求量</span><br><span class="line"></span><br><span class="line">void input() &#123;</span><br><span class="line">  int i,j ;</span><br><span class="line">  cout &lt;&lt; &quot;请输入最大矩阵Max : \n&quot;;</span><br><span class="line">  for (i &#x3D; 0; i &lt; p ; i++) &#123;</span><br><span class="line">    for (j &#x3D; 0; j &lt; r ;j++) &#123;</span><br><span class="line">      cin &gt;&gt; Max[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  cout &lt;&lt; &quot;请输入分配矩阵 allocation : \n&quot;;</span><br><span class="line">  for (i &#x3D; 0; i &lt; p ; i++) &#123;</span><br><span class="line">    for (j &#x3D; 0; j &lt; r ; j++) &#123;</span><br><span class="line">      cin &gt;&gt; allocation[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  cout &lt;&lt; &quot;需求矩阵need : \n&quot;;</span><br><span class="line">  for (i &#x3D; 0; i &lt; p ;i++) &#123;</span><br><span class="line">    for (j &#x3D; 0; j &lt; r; j++) &#123;</span><br><span class="line">      need[i][j] &#x3D; Max[i][j] - allocation[i][j];</span><br><span class="line">      cout &lt;&lt; need[i][j] &lt;&lt; &quot;\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  cout &lt;&lt; &quot;请输入可用资源量Available : \n&quot;;</span><br><span class="line">  for (i &#x3D; 0;i &lt; r; i++) &#123;</span><br><span class="line">    cin &gt;&gt; Available[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int Compare(int m[],int n[]) &#123;</span><br><span class="line">  for (int i &#x3D; 0; i &lt; r;i++) &#123;</span><br><span class="line">    if (m[i] &lt; n[i]) &#123;</span><br><span class="line">      return 0;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int SafeTest() &#123;</span><br><span class="line">  int flag &#x3D; 0;</span><br><span class="line">  int finish[p];</span><br><span class="line">  int Work[r];</span><br><span class="line">  for (int i &#x3D; 0;i &lt; p;i++) &#123;</span><br><span class="line">    finish[i] &#x3D; 0;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  for (int i &#x3D; 0 ;i &lt; r;i++) &#123;</span><br><span class="line">    Work[i] &#x3D; Available[i];</span><br><span class="line">  &#125;</span><br><span class="line">  cout &lt;&lt; &quot;分配序列 : \n&quot;;</span><br><span class="line">  cout &lt;&lt; &quot;     allocation      need          available&quot; &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">  for (int i &#x3D; 0 ; i &lt; p;i++) &#123;</span><br><span class="line">    for (int j &#x3D; 0 ; j &lt; p ;j++) &#123;</span><br><span class="line">      if (finish[j] &#x3D;&#x3D; 1) &#123;</span><br><span class="line">        continue;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      else &#123;</span><br><span class="line"></span><br><span class="line">        if (Compare(Work,need[j])) &#123;    &#x2F;&#x2F;work &gt;&#x3D; need </span><br><span class="line"></span><br><span class="line">          finish[j] &#x3D; 1;</span><br><span class="line">          cout &lt;&lt; &quot;\n&quot; &lt;&lt; &quot;进程&quot; &lt;&lt; j+1 &lt;&lt; &quot;\t&quot;;</span><br><span class="line">          flag &#x3D; 1;</span><br><span class="line"></span><br><span class="line">          for (int k &#x3D; 0;k &lt; r; k++) &#123;</span><br><span class="line">            printf(&quot;  %2d &quot;, allocation[j][k]);</span><br><span class="line">          &#125;</span><br><span class="line">          cout &lt;&lt; &quot;      &quot;;</span><br><span class="line"></span><br><span class="line">          for (int k &#x3D; 0 ; k &lt; r;k++) &#123;</span><br><span class="line">            printf(&quot;  %2d &quot;,need[j][k]);</span><br><span class="line">          &#125;</span><br><span class="line">          cout &lt;&lt; &quot;      &quot;;</span><br><span class="line"></span><br><span class="line">          for (int k &#x3D; 0; k &lt; r;k++) &#123;</span><br><span class="line">            printf(&quot;  %2d &quot;,Work[k]+allocation[j][k]);</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          for (int k &#x3D; 0;k &lt; r;k++) &#123;</span><br><span class="line">            Work[k] &#x3D; Work[k] + allocation[j][k];</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          break;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      if (flag &#x3D;&#x3D; 1) &#123;</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  cout &lt;&lt; &quot;\n&quot;;</span><br><span class="line">  for (int i &#x3D; 0 ; i &lt; p ;i++) &#123;</span><br><span class="line">    if (finish[i] &#x3D;&#x3D; 0)</span><br><span class="line">      return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void rtest(int n) &#123;</span><br><span class="line">  if (Compare(Available,request) &amp;&amp; Compare(need[n-1],request)) &#123;</span><br><span class="line">    for (int j &#x3D; 0; j &lt; r;j++) &#123;</span><br><span class="line">      allocation[n-1][j] +&#x3D; request[j];</span><br><span class="line">      need[n-1][j] -&#x3D; request[j];</span><br><span class="line">      Available[j] -&#x3D; request[j];</span><br><span class="line">    &#125;</span><br><span class="line">    if (SafeTest())&#123;</span><br><span class="line">      cout &lt;&lt; &quot;允许&quot; &lt;&lt; n &lt;&lt; &quot;进程申请资源！ \n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">      else &#123;</span><br><span class="line">        cout &lt;&lt; &quot;不允许&quot;&lt;&lt;n&lt;&lt;&quot;进程申请资源! \n&quot;;</span><br><span class="line">        for (int j &#x3D; 0;j &lt; r;j++) &#123;</span><br><span class="line">          allocation[n-1][j] +&#x3D; request[j];</span><br><span class="line">          need[n-1][j] -&#x3D; request[j];</span><br><span class="line">          Available[j] -&#x3D; request[j];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  else &#123;</span><br><span class="line">    cout &lt;&lt; &quot;申请资源越界！ \n&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int i,n;       &#x2F;&#x2F;n-第n个资源申请</span><br><span class="line">    cout&lt;&lt;&quot;请输入进程数：&quot;;</span><br><span class="line">    cin&gt;&gt;p;</span><br><span class="line">    cout&lt;&lt;&quot;请输入资源种类数：&quot;;</span><br><span class="line">    cin&gt;&gt;r;</span><br><span class="line">    &#x2F;&#x2F;默认状态4、3</span><br><span class="line">    input();&#x2F;&#x2F;输入函数</span><br><span class="line">    if(SafeTest()&#x3D;&#x3D;1)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;存在安全序列，初始状态安全。\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;不存在安全序列，初始状态不安全。\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;&quot;请输入发出请求向量request的进程编号：&quot;;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    cout&lt;&lt;&quot;请输入请求向量request\n&quot;;</span><br><span class="line">    for(i&#x3D;0; i&lt;r; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;request[i];</span><br><span class="line">    &#125;</span><br><span class="line">    rtest(n);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="代码测试结果"><a href="#代码测试结果" class="headerlink" title="代码测试结果"></a>代码测试结果</h3><p><img src="https://proud-field-4c1a.nnop.workers.dev/Blog/screenshot_2.png" alt="avatar"></p>
+]]></content>
+      <categories>
+        <category>Experiment</category>
+      </categories>
+      <tags>
+        <tag>Operation_System</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Register</title>
+    <url>/2020/10/10/Register/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>计算机底层</category>
+      </categories>
+      <tags>
+        <tag>汇编</tag>
       </tags>
   </entry>
   <entry>
