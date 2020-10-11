@@ -1,40 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Basic of Assembly Language</title>
-    <url>/2020/10/10/Basic%20of%20Assembly%20Language/</url>
-    <content><![CDATA[<h2 id="汇编语言的组成"><a href="#汇编语言的组成" class="headerlink" title="汇编语言的组成"></a>汇编语言的组成</h2><ul>
-<li>汇编指令: 机器码的助记符，有对应的机器编码</li>
-<li>伪指令: 没有对应的机器码，由编译器执行，计算机并不执行</li>
-<li>其他符号: 如+、-、*、/等，由编译器识别，没有对应的机器码</li>
-</ul>
-<h2 id="CPU-对存储器的读写"><a href="#CPU-对存储器的读写" class="headerlink" title="CPU 对存储器的读写"></a>CPU 对存储器的读写</h2><p>  &emsp;&emsp;存储器是被划分为多个存储单元，存储单元<font color = red>从零开始顺序编号</font>。那么CPU要从内存中读取数据，就要首先就要指定存<font color=red>储单元的地址</font>。也就是说要确定他要读取哪一个存储单元的数据。CPU在读取数据的时候还要指明，它要对哪一个器件进行操作，进行哪种操作,是从中读取，还是向其中写入。如果CPU要想进行数据的读写，必须要和外部器件(标准说法是芯片)进行下面三类信息的交互。</p>
-<ul>
-<li>存储单元的地址(地址信息)</li>
-<li>器件的选择，读或写的命令(控制信息)</li>
-<li>读或写的数据(数据信息)</li>
-</ul>
-<p>  <strong>下图是CPU从内存中读取数据的过程</strong><br>  <img src="https://proud-field-4c1a.nnop.workers.dev/Blog/CPU对存储器读写.png" alt="avatar"></p>
-<h2 id="地址总线"><a href="#地址总线" class="headerlink" title="地址总线"></a>地址总线</h2><p>  &emsp;&emsp;CPU是通过地址总线来指定存储器单元的。所以地址总线上能传送多少个不同的信息，CPU就可以对多少个存储单位进行寻址。下图是地址总线上发送的地址信息的示意图:</p>
-<p>  <img src="https://proud-field-4c1a.nnop.workers.dev/Blog/地址总线.png" alt="avatar"></p>
-<h2 id="数据总线"><a href="#数据总线" class="headerlink" title="数据总线"></a>数据总线</h2><p>  &emsp;&emsp;CPU与内存或其他器件之间的数据传送是通过数据总线来进行的。数据总线的宽度决定了CPU和外界的数据传达速度。8根数据总线一次可以传送八位二进制(即一个字节),16根数据总线一次可以传送两个字节。</p>
-<h2 id="控制总线"><a href="#控制总线" class="headerlink" title="控制总线"></a>控制总线</h2><p>  &emsp;&emsp;CPU对外部器件的控制是通过控制总线来进行的。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ol>
-<li>汇编指令是机器指令的助记符，同机器指令一一对应</li>
-<li>每一种CPU都有自己的汇编指令集</li>
-<li>CPU可以直接使用的信息在存储器中存放</li>
-<li>在存储器中指令和数据没有任何区别，都是二进制信息</li>
-<li>存储单元从零开始顺序编号</li>
-</ol>
-]]></content>
-      <categories>
-        <category>计算机底层</category>
-      </categories>
-      <tags>
-        <tag>汇编</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode-1</title>
     <url>/2020/01/12/Leetcode-1/</url>
     <content><![CDATA[<h2 id="Qestion"><a href="#Qestion" class="headerlink" title="Qestion"></a>Qestion</h2><p>Give an array of intergets <code>nums</code> and an integer <code>target</code>,return indices of the two numbers such that they add up to <code>target</code>.<br>You may assume that each input would have exctly one solution,and you may use the same element twice.<br>You can return the answer in any order.  </p>
@@ -68,6 +34,40 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Basic of Assembly Language</title>
+    <url>/2020/10/10/Basic%20of%20Assembly%20Language/</url>
+    <content><![CDATA[<h2 id="汇编语言的组成"><a href="#汇编语言的组成" class="headerlink" title="汇编语言的组成"></a>汇编语言的组成</h2><ul>
+<li>汇编指令: 机器码的助记符，有对应的机器编码</li>
+<li>伪指令: 没有对应的机器码，由编译器执行，计算机并不执行</li>
+<li>其他符号: 如+、-、*、/等，由编译器识别，没有对应的机器码</li>
+</ul>
+<h2 id="CPU-对存储器的读写"><a href="#CPU-对存储器的读写" class="headerlink" title="CPU 对存储器的读写"></a>CPU 对存储器的读写</h2><p>  &emsp;&emsp;存储器是被划分为多个存储单元，存储单元<font color = red>从零开始顺序编号</font>。那么CPU要从内存中读取数据，就要首先就要指定存<font color=red>储单元的地址</font>。也就是说要确定他要读取哪一个存储单元的数据。CPU在读取数据的时候还要指明，它要对哪一个器件进行操作，进行哪种操作,是从中读取，还是向其中写入。如果CPU要想进行数据的读写，必须要和外部器件(标准说法是芯片)进行下面三类信息的交互。</p>
+<ul>
+<li>存储单元的地址(地址信息)</li>
+<li>器件的选择，读或写的命令(控制信息)</li>
+<li>读或写的数据(数据信息)</li>
+</ul>
+<p>  <strong>下图是CPU从内存中读取数据的过程</strong><br>  <img src="https://proud-field-4c1a.nnop.workers.dev/Blog/CPU对存储器读写.png" alt="avatar"></p>
+<h2 id="地址总线"><a href="#地址总线" class="headerlink" title="地址总线"></a>地址总线</h2><p>  &emsp;&emsp;CPU是通过地址总线来指定存储器单元的。所以地址总线上能传送多少个不同的信息，CPU就可以对多少个存储单位进行寻址。下图是地址总线上发送的地址信息的示意图:</p>
+<p>  <img src="https://proud-field-4c1a.nnop.workers.dev/Blog/地址总线.png" alt="avatar"></p>
+<h2 id="数据总线"><a href="#数据总线" class="headerlink" title="数据总线"></a>数据总线</h2><p>  &emsp;&emsp;CPU与内存或其他器件之间的数据传送是通过数据总线来进行的。数据总线的宽度决定了CPU和外界的数据传达速度。8根数据总线一次可以传送八位二进制(即一个字节),16根数据总线一次可以传送两个字节。</p>
+<h2 id="控制总线"><a href="#控制总线" class="headerlink" title="控制总线"></a>控制总线</h2><p>  &emsp;&emsp;CPU对外部器件的控制是通过控制总线来进行的。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ol>
+<li>汇编指令是机器指令的助记符，同机器指令一一对应</li>
+<li>每一种CPU都有自己的汇编指令集</li>
+<li>CPU可以直接使用的信息在存储器中存放</li>
+<li>在存储器中指令和数据没有任何区别，都是二进制信息</li>
+<li>存储单元从零开始顺序编号</li>
+</ol>
+]]></content>
+      <categories>
+        <category>计算机底层</category>
+      </categories>
+      <tags>
+        <tag>汇编</tag>
       </tags>
   </entry>
   <entry>
@@ -618,6 +618,28 @@ int main()
       </categories>
       <tags>
         <tag>Operatiron_System</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-8</title>
+    <url>/2020/10/11/Leetcode-8/</url>
+    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p>  Given a sorted array nums, remove the duplicates in-place such that each element appears only once and returns the new length.<br>  Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.</p>
+<p>  <strong>Example 1: </strong></p>
+<blockquote>
+<p>Given nums = [1,1,2],<br>Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.<br>It doesn’t matter what you leave beyond the returned length.</p>
+</blockquote>
+<p>  <strong>Example 2: </strong></p>
+<blockquote>
+<p>Given nums = [0,0,1,1,1,2,2,3,3,4],<br>Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.<br>It doesn’t matter what values are set beyond the returned length.</p>
+</blockquote>
+<p>  <strong>Clarification: </strong><br>  Confused why the returned value is an integer but your answer is an array?<br>  Note that the input array is passed in by reference, which means a modification to the input array will be known to the caller as well.<br>  Internally you can think of this:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; nums is passed in by reference. (i.e., without making a copy)</span><br><span class="line">int len &#x3D; removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; any modification to nums in your function would be known by the caller.</span><br><span class="line">&#x2F;&#x2F; using the length returned by your function, it prints the first len elements.</span><br><span class="line">for (int i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><p>  <strong>双指针法: </strong> 首先这是有序的数组，那么如果出现重复，就一定是重复数字的下一个(只会重复一次)。那么我就只需要比较当前位和下一位是否产生重复，如果产生了重复。那么我就用下一位来覆盖当前位，最后返回的数组长度。时间复杂度为O(n),空间复杂度为O(1),具体代码如下:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeDuplicates(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        if (nums.size() &#x3D;&#x3D; 0) return 0;</span><br><span class="line">        int i &#x3D;0 ,j &#x3D; 1;</span><br><span class="line">        while (j &lt; nums.size()) &#123;</span><br><span class="line">            if (nums[i] !&#x3D; nums[j])</span><br><span class="line">                nums[++i] &#x3D; nums[j];</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        return i+1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
