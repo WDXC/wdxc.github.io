@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Two Sums">
+  <meta name="description" content="Search Insert Position">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode-1">
-<meta property="og:url" content="http://yoursite.com/2020/01/12/Leetcode-1/index.html">
+<meta property="og:title" content="Leetcode-11">
+<meta property="og:url" content="http://yoursite.com/2020/11/02/Leetcode-11/index.html">
 <meta property="og:site_name" content="Rabbet">
-<meta property="og:description" content="Two Sums">
+<meta property="og:description" content="Search Insert Position">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-01-12T08:46:00.000Z">
-<meta property="article:modified_time" content="2020-09-25T03:17:03.433Z">
+<meta property="article:published_time" content="2020-11-02T12:08:00.000Z">
+<meta property="article:modified_time" content="2020-11-02T23:10:22.108Z">
 <meta property="article:author" content="Rabbet">
 <meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/01/12/Leetcode-1/">
+<link rel="canonical" href="http://yoursite.com/2020/11/02/Leetcode-11/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>Leetcode-1 | Rabbet</title>
+  <title>Leetcode-11 | Rabbet</title>
   
 
 
@@ -200,7 +200,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/12/Leetcode-1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/02/Leetcode-11/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://sunu-my.sharepoint.com/personal/23333_sch_bz/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2F23333%5Fsch%5Fbz%2FDocuments%2Fpicture%2Fheader%2Ejpg">
@@ -213,7 +213,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Leetcode-1
+          Leetcode-11
         </h1>
 
         <div class="post-meta">
@@ -223,14 +223,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-01-12 16:46:00" itemprop="dateCreated datePublished" datetime="2020-01-12T16:46:00+08:00">2020-01-12</time>
+              <time title="创建时间：2020-11-02 20:08:00" itemprop="dateCreated datePublished" datetime="2020-11-02T20:08:00+08:00">2020-11-02</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-25 11:17:03" itemprop="dateModified" datetime="2020-09-25T11:17:03+08:00">2020-09-25</time>
+                <time title="修改时间：2020-11-03 07:10:22" itemprop="dateModified" datetime="2020-11-03T07:10:22+08:00">2020-11-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -248,16 +248,16 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.1k</span>
+              <span>1.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>1 分钟</span>
             </span>
-            <div class="post-description">Two Sums</div>
+            <div class="post-description">Search Insert Position</div>
 
         </div>
       </header>
@@ -268,31 +268,36 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Qestion"><a href="#Qestion" class="headerlink" title="Qestion"></a>Qestion</h2><p>Give an array of intergets <code>nums</code> and an integer <code>target</code>,return indices of the two numbers such that they add up to <code>target</code>.<br>You may assume that each input would have exctly one solution,and you may use the same element twice.<br>You can return the answer in any order.  </p>
-<p> <strong>Example 1</strong></p>
+        <h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p> &emsp;&emsp; Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
+<p><strong>Example 1:</strong></p>
 <blockquote>
-<p><strong>Input</strong> : nums [2,7,11,15] , target = 9<br><strong>Output</strong> : [0,1]<br><strong>Output</strong> :Because nums[0] + nums[1] == 9, we return [0,1].</p>
+<p><strong>Input:</strong> nums = [1,3,5,6], target = 5<br><strong>Output:</strong> 2</p>
 </blockquote>
-<p> <strong>Examp 2</strong></p>
+<p><strong>Example 2:</strong></p>
 <blockquote>
-<p><strong>Input</strong> : nums[3,2,4],target = 6<br><strong>Output</strong> : [1,2]</p>
+<p><strong>Input:</strong> nums = [1,3,5,6], target = 2<br><strong>Output:</strong> 1</p>
 </blockquote>
-<p> <strong>Example 3</strong></p>
+<p><strong>Example 3:</strong></p>
 <blockquote>
-<p><strong>Input</strong> : nums = [3,3],target = 6<br><strong>Output</strong> : [0,1]</p>
+<p><strong>Input:</strong> nums = [1,3,5,6], target = 7<br><strong>Output:</strong> 4</p>
 </blockquote>
-<p> <strong>ConStraints</strong></p>
+<p><strong>Example 4:</strong></p>
 <blockquote>
+<p><strong>Input:</strong> nums = [1,3,5,6], target = 0<br><strong>Output:</strong> 0</p>
+</blockquote>
+<p><strong>Example 5:</strong></p>
+<blockquote>
+<p><strong>Input:</strong> nums = [1], target = 0<br><strong>Output:</strong> 0</p>
+</blockquote>
+<p><strong>Constraints:</strong></p>
 <ul>
-<li>2 &lt;= nums.length &lt;= $ 2^{10} $</li>
-<li>$-10^{9}$&lt;= nums[i] &lt;= $ 10^{9} $</li>
-<li>$-10^{9}$ &lt;= target &lt;= $ 10^{9} $</li>
-<li><strong>Only one valid anser exits.</strong></li>
+<li><code> 1 &lt;= nums.length &lt;= 10<sup>4</sup> </code> </li>
+<li><code> -10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4<sup> </code></li>
+<li><code>nums</code> contains <strong>distinct</strong> values sorted in <strong>ascending</strong> order</li>
+<li><code> -10<sup>4</sup> &lt;= target &lt;= 10<sup>4<sup> </code></li>
 </ul>
-</blockquote>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="hash法"><a href="#hash法" class="headerlink" title="hash法"></a>hash法</h3><p>  利用unordered_map数组构造映射,遍历nums[i]时，看target-nums[i]是否存在于hash表中<br>  时间复杂度 O(n),空间复杂度O(n)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        unordered_map&lt;int, int&gt; indices;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; nums.size(); i++) &#123;</span><br><span class="line">            if (indices.find(target - nums[i]) !&#x3D; indices.end()) &#123;</span><br><span class="line">                return &#123;indices[target - nums[i]], i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            indices[nums[i]] &#x3D; i;</span><br><span class="line">        &#125;</span><br><span class="line">        return &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h3 id="暴力破解法"><a href="#暴力破解法" class="headerlink" title="暴力破解法"></a>暴力破解法</h3><p>  暴力破解时间复杂度O($n^{2}$),空间复杂度O(1)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        vector&lt;int&gt; ans;</span><br><span class="line">        for(int i&#x3D;0;i&lt;nums.size();i++)&#123;</span><br><span class="line">              for(int j&#x3D;i+1;j&lt;nums.size();j++)&#123;</span><br><span class="line">                  if(nums[i]+nums[j]&#x3D;&#x3D;target)&#123;</span><br><span class="line">                      ans.push_back(i);</span><br><span class="line">                      ans.push_back(j);</span><br><span class="line">                      return ans;</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h3 id="排序-双指针法"><a href="#排序-双指针法" class="headerlink" title="排序+双指针法"></a>排序+双指针法</h3><p>  先将数组的顺序排好O(nlogn),再利用双指针法遍历一遍O(n)得到结果<br>  为保存下标信息另开一个数组<br>  时间复杂度O(nlogn),空间复杂度O(n)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        vector&lt;int&gt; ans;</span><br><span class="line">        vector&lt;int&gt; temp;</span><br><span class="line">        temp&#x3D;nums;</span><br><span class="line">        int n&#x3D;temp.size();</span><br><span class="line">       sort(temp.begin(),temp.end());</span><br><span class="line">       int i&#x3D;0,j&#x3D;n-1;</span><br><span class="line">       while(i&lt;j)&#123;</span><br><span class="line">           if(temp[i]+temp[j]&gt;target)j--;</span><br><span class="line">          else if(temp[i]+temp[j]&lt;target)i++;</span><br><span class="line">          else break;</span><br><span class="line">       &#125;</span><br><span class="line">       if(i&lt;j)&#123;</span><br><span class="line">      for(int k&#x3D;0;k&lt;n;k++)&#123;</span><br><span class="line">          if(i&lt;n&amp;&amp;nums[k]&#x3D;&#x3D;temp[i])&#123;</span><br><span class="line">              ans.push_back(k);</span><br><span class="line">              i&#x3D;n;</span><br><span class="line">          &#125;</span><br><span class="line">         else if(j&lt;n&amp;&amp;nums[k]&#x3D;&#x3D;temp[j])&#123;</span><br><span class="line">              ans.push_back(k);</span><br><span class="line">              j&#x3D;n;</span><br><span class="line">          &#125;</span><br><span class="line">          if(i&#x3D;&#x3D;n&amp;&amp;j&#x3D;&#x3D;n)return ans;</span><br><span class="line">      &#125;</span><br><span class="line">      &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><p>&emsp;&emsp;<strong>二分法查找(binary Search):</strong> 首先先确定最高位和最低位的值,因为随着low和high的位置不断变化,<br>所以middle的值是不断再改变的。这里用移位(&gt;&gt;1)代替了除法,这样不会增加运算的复杂性。<br>&emsp;&emsp;如果目标值大于中间值,那么low就要变化;相反，如果目标值小于中间值，high就需要变化;如果目标值正好等于中间值就可以直接输出了。<br>时间复杂度为O(logn),具体代码如下:<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int searchInsert(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        int low &#x3D; 0,high &#x3D; nums.size() - 1,n &#x3D; nums.size();</span><br><span class="line">        </span><br><span class="line">        while (low &lt;&#x3D; high) &#123;</span><br><span class="line">            int middle &#x3D; low + ((high - low) &gt;&gt; 1);</span><br><span class="line">            if (target &gt; nums[middle]) low &#x3D; middle + 1;</span><br><span class="line">            else if (target &lt; nums[middle]) high &#x3D; middle - 1;</span><br><span class="line">            else return middle;</span><br><span class="line">        &#125;</span><br><span class="line">        return low;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h2><p>  &emsp;&emsp;<strong>线性查找(linear search):</strong> 将nums的值挨个赋给i,如果i小于目标值,result就自增。相反如果大于等于目标值，就可以直接跳出循环，输出结果了。时间复杂度为O(n),具体代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int searchInsert(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        int result &#x3D; 0;</span><br><span class="line">        for (auto&amp; i : nums) &#123;</span><br><span class="line">            if (i &lt; target)&#123;</span><br><span class="line">                result++;</span><br><span class="line">            &#125; </span><br><span class="line">            else break;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 
     </div>
 
@@ -310,11 +315,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/01/14/Two-Pointers/" rel="next" title="Two Pointers Technique">
-      Two Pointers Technique <i class="fa fa-chevron-right"></i>
+    <a href="/2020/10/28/Leetcode-10/" rel="prev" title="Leetcode-10">
+      <i class="fa fa-chevron-left"></i> Leetcode-10
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -373,7 +378,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Qestion"><span class="nav-number">1.</span> <span class="nav-text">Qestion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Answer"><span class="nav-number">2.</span> <span class="nav-text">Answer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hash%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">hash法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">暴力破解法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F-%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">排序+双指针法</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Question"><span class="nav-number">1.</span> <span class="nav-text">Question</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Answer"><span class="nav-number">2.</span> <span class="nav-text">Answer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF%E4%B8%80"><span class="nav-number">2.1.</span> <span class="nav-text">思路一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF%E4%BA%8C"><span class="nav-number">2.2.</span> <span class="nav-text">思路二</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
