@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Leetcode-10</title>
+    <url>/2020/10/28/Leetcode-10/</url>
+    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p> &emsp;&emsp;Implement <code>strStr()</code>.Return the index of the first occurrence of needle in haystack, or <code>-1</code> if <code>needle</code> is not part of <code>haystack</code>.<br> <strong>Clarification:</strong><br> &emsp;&emsp;What should we return when needle is an empty string? This is a great question to ask during an interview.</p>
+<p> &emsp;&emsp;For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C’s strstr() and Java’s indexOf().</p>
+<p> <strong>Example1:</strong></p>
+<blockquote>
+<p><strong>Input:</strong> haystack = “hello”, needle = “ll”<br><strong>Output:</strong> 2</p>
+</blockquote>
+<p> <strong>Example2:</strong></p>
+<blockquote>
+<p><strong>Input:</strong> haystack = “aaaaa”, needle = “bba”<br><strong>Output:</strong> -1</p>
+</blockquote>
+<p> <strong>Example3:</strong></p>
+<blockquote>
+<p><strong>Input:</strong> haystack = “”, needle = “”<br><strong>Output:</strong> 0</p>
+</blockquote>
+<p> <strong>Constraints:</strong></p>
+<ul>
+<li><code> 0 &lt;= haystack.length, needle.length &lt;= 5 * 10<sup>4</sup> </code></li>
+<li><code>haystack</code>and <code>needle</code> consist of only lower-case English characters.</li>
+</ul>
+<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一:"></a>思路一:</h2><p>  &emsp;&emsp;两个字符长度相减+1得到的长度就是需要比较的长度，当needle长度为0时，返回0。当haystack与needle不匹配时，返回-1。当haystack与needle匹配时，返回i的值。时间复杂度为O($n^{2}$),空间复杂度为O(n),具体代码如下：<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        int m &#x3D; haystack.size();</span><br><span class="line">        int n &#x3D; needle.size();</span><br><span class="line">        int r &#x3D; m - n + 1;</span><br><span class="line">        </span><br><span class="line">        if (n &#x3D;&#x3D; 0) return 0;</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; r; i++) &#123;</span><br><span class="line">            int  j &#x3D; i,k &#x3D; 0;</span><br><span class="line">            while (k &lt; n &amp;&amp; haystack[j] &#x3D;&#x3D; needle[k]) </span><br><span class="line">                k++,j++;</span><br><span class="line">            if (k &#x3D;&#x3D; n) return i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二:"></a>思路二:</h2><p>&emsp;&emsp;KMP(字符串查找算法),lps是needle的索引。这里使用的kmp算法，把needle作为kmp前缀,来进行字符比对。如果字符相同，那么len增加。如果不相等，就要看len的值，如果len的值为0那么就将lps[i]的值设置为0。如果len不为零，那么就把lps[len-1]的值赋给len，这一步是为了防止对应字符中间出现了不相等的，将字符串右移。时间复杂度为O(n); </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        if (needle.empty()) return 0;</span><br><span class="line">        </span><br><span class="line">        string kmp &#x3D; needle + &quot;#&quot; + haystack;</span><br><span class="line">        int m &#x3D; kmp.size(),n &#x3D; needle.size();</span><br><span class="line">        vector&lt;int&gt; lps(m,0);</span><br><span class="line">        </span><br><span class="line">        for (int len &#x3D; 0,i &#x3D; 1; i &lt; m;) &#123;</span><br><span class="line">            if (kmp[len] &#x3D;&#x3D; kmp[i]) &#123;</span><br><span class="line">                lps[i] &#x3D; ++len;</span><br><span class="line">                if (len &#x3D;&#x3D; n) </span><br><span class="line">                    return i - 2 * n;</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (len &#x3D;&#x3D; 0) </span><br><span class="line">                 lps[i++] &#x3D; 0;</span><br><span class="line">            else </span><br><span class="line">                len &#x3D; lps[len - 1];</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-1</title>
     <url>/2020/01/12/Leetcode-1/</url>
     <content><![CDATA[<h2 id="Qestion"><a href="#Qestion" class="headerlink" title="Qestion"></a>Qestion</h2><p>Give an array of intergets <code>nums</code> and an integer <code>target</code>,return indices of the two numbers such that they add up to <code>target</code>.<br>You may assume that each input would have exctly one solution,and you may use the same element twice.<br>You can return the answer in any order.  </p>
@@ -28,39 +61,6 @@
 <h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="hash法"><a href="#hash法" class="headerlink" title="hash法"></a>hash法</h3><p>  利用unordered_map数组构造映射,遍历nums[i]时，看target-nums[i]是否存在于hash表中<br>  时间复杂度 O(n),空间复杂度O(n)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        unordered_map&lt;int, int&gt; indices;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; nums.size(); i++) &#123;</span><br><span class="line">            if (indices.find(target - nums[i]) !&#x3D; indices.end()) &#123;</span><br><span class="line">                return &#123;indices[target - nums[i]], i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            indices[nums[i]] &#x3D; i;</span><br><span class="line">        &#125;</span><br><span class="line">        return &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <h3 id="暴力破解法"><a href="#暴力破解法" class="headerlink" title="暴力破解法"></a>暴力破解法</h3><p>  暴力破解时间复杂度O($n^{2}$),空间复杂度O(1)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        vector&lt;int&gt; ans;</span><br><span class="line">        for(int i&#x3D;0;i&lt;nums.size();i++)&#123;</span><br><span class="line">              for(int j&#x3D;i+1;j&lt;nums.size();j++)&#123;</span><br><span class="line">                  if(nums[i]+nums[j]&#x3D;&#x3D;target)&#123;</span><br><span class="line">                      ans.push_back(i);</span><br><span class="line">                      ans.push_back(j);</span><br><span class="line">                      return ans;</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <h3 id="排序-双指针法"><a href="#排序-双指针法" class="headerlink" title="排序+双指针法"></a>排序+双指针法</h3><p>  先将数组的顺序排好O(nlogn),再利用双指针法遍历一遍O(n)得到结果<br>  为保存下标信息另开一个数组<br>  时间复杂度O(nlogn),空间复杂度O(n)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        vector&lt;int&gt; ans;</span><br><span class="line">        vector&lt;int&gt; temp;</span><br><span class="line">        temp&#x3D;nums;</span><br><span class="line">        int n&#x3D;temp.size();</span><br><span class="line">       sort(temp.begin(),temp.end());</span><br><span class="line">       int i&#x3D;0,j&#x3D;n-1;</span><br><span class="line">       while(i&lt;j)&#123;</span><br><span class="line">           if(temp[i]+temp[j]&gt;target)j--;</span><br><span class="line">          else if(temp[i]+temp[j]&lt;target)i++;</span><br><span class="line">          else break;</span><br><span class="line">       &#125;</span><br><span class="line">       if(i&lt;j)&#123;</span><br><span class="line">      for(int k&#x3D;0;k&lt;n;k++)&#123;</span><br><span class="line">          if(i&lt;n&amp;&amp;nums[k]&#x3D;&#x3D;temp[i])&#123;</span><br><span class="line">              ans.push_back(k);</span><br><span class="line">              i&#x3D;n;</span><br><span class="line">          &#125;</span><br><span class="line">         else if(j&lt;n&amp;&amp;nums[k]&#x3D;&#x3D;temp[j])&#123;</span><br><span class="line">              ans.push_back(k);</span><br><span class="line">              j&#x3D;n;</span><br><span class="line">          &#125;</span><br><span class="line">          if(i&#x3D;&#x3D;n&amp;&amp;j&#x3D;&#x3D;n)return ans;</span><br><span class="line">      &#125;</span><br><span class="line">      &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-10</title>
-    <url>/2020/10/28/Leetcode-10/</url>
-    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p> &emsp;&emsp;Implement <code>strStr()</code>.Return the index of the first occurrence of needle in haystack, or <code>-1</code> if <code>needle</code> is not part of <code>haystack</code>.<br> <strong>Clarification:</strong><br> &emsp;&emsp;What should we return when needle is an empty string? This is a great question to ask during an interview.</p>
-<p> &emsp;&emsp;For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C’s strstr() and Java’s indexOf().</p>
-<p> <strong>Example1:</strong></p>
-<blockquote>
-<p><strong>Input:</strong> haystack = “hello”, needle = “ll”<br><strong>Output:</strong> 2</p>
-</blockquote>
-<p> <strong>Example2:</strong></p>
-<blockquote>
-<p><strong>Input:</strong> haystack = “aaaaa”, needle = “bba”<br><strong>Output:</strong> -1</p>
-</blockquote>
-<p> <strong>Example3:</strong></p>
-<blockquote>
-<p><strong>Input:</strong> haystack = “”, needle = “”<br><strong>Output:</strong> 0</p>
-</blockquote>
-<p> <strong>Constraints:</strong></p>
-<ul>
-<li><code> 0 &lt;= haystack.length, needle.length &lt;= 5 * 10<sup>4</sup> </code></li>
-<li><code>haystack</code>and <code>needle</code> consist of only lower-case English characters.</li>
-</ul>
-<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一:"></a>思路一:</h2><p>  &emsp;&emsp;两个字符长度相减+1得到的长度就是需要比较的长度，当needle长度为0时，返回0。当haystack与needle不匹配时，返回-1。当haystack与needle匹配时，返回i的值。时间复杂度为O($n^{2}$),空间复杂度为O(n),具体代码如下：<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        int m &#x3D; haystack.size();</span><br><span class="line">        int n &#x3D; needle.size();</span><br><span class="line">        int r &#x3D; m - n + 1;</span><br><span class="line">        </span><br><span class="line">        if (n &#x3D;&#x3D; 0) return 0;</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; r; i++) &#123;</span><br><span class="line">            int  j &#x3D; i,k &#x3D; 0;</span><br><span class="line">            while (k &lt; n &amp;&amp; haystack[j] &#x3D;&#x3D; needle[k]) </span><br><span class="line">                k++,j++;</span><br><span class="line">            if (k &#x3D;&#x3D; n) return i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二:"></a>思路二:</h2><p>&emsp;&emsp;KMP(字符串查找算法),lps是needle的索引。这里使用的kmp算法，把needle作为kmp前缀,来进行字符比对。如果字符相同，那么len增加。如果不相等，就要看len的值，如果len的值为0那么就将lps[i]的值设置为0。如果len不为零，那么就把lps[len-1]的值赋给len，这一步是为了防止对应字符中间出现了不相等的，将字符串右移。时间复杂度为O(n); </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        if (needle.empty()) return 0;</span><br><span class="line">        </span><br><span class="line">        string kmp &#x3D; needle + &quot;#&quot; + haystack;</span><br><span class="line">        int m &#x3D; kmp.size(),n &#x3D; needle.size();</span><br><span class="line">        vector&lt;int&gt; lps(m,0);</span><br><span class="line">        </span><br><span class="line">        for (int len &#x3D; 0,i &#x3D; 1; i &lt; m;) &#123;</span><br><span class="line">            if (kmp[len] &#x3D;&#x3D; kmp[i]) &#123;</span><br><span class="line">                lps[i] &#x3D; ++len;</span><br><span class="line">                if (len &#x3D;&#x3D; n) </span><br><span class="line">                    return i - 2 * n;</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (len &#x3D;&#x3D; 0) </span><br><span class="line">                 lps[i++] &#x3D; 0;</span><br><span class="line">            else </span><br><span class="line">                len &#x3D; lps[len - 1];</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>algorithm</category>
@@ -124,6 +124,32 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode-2</title>
+    <url>/2020/09/23/Leetcode-2/</url>
+    <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p> Given a 32-bit signed integer, reverse digits of an integer.</p>
+<p> <strong>Example 1</strong></p>
+<blockquote>
+<p><strong>iput</strong> : 123<br><strong>Output</strong> : 321</p>
+</blockquote>
+<p> <strong>Example 2</strong></p>
+<blockquote>
+<p><strong>Input</strong> : -123<br><strong>Output</strong> : -321</p>
+</blockquote>
+<p> <strong>Example 3</strong></p>
+<blockquote>
+<p><strong>Input</strong> : 120<br><strong>Output</strong> : 21</p>
+</blockquote>
+<p> <strong>Note :</strong><br>&emsp;&emsp;Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [$(-2)^{31}$, $2^{31}$-1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="计算法"><a href="#计算法" class="headerlink" title="计算法"></a>计算法</h3><p> 这是一个比较投机的方案，因为使用了数字类型long后，就不会再有溢出的问题，最后再和INT_MAX比较一下就可以了。时间复杂度为O(nlogn)<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int reverse(int x) &#123;</span><br><span class="line">        long res &#x3D; 0;</span><br><span class="line">        for (;x !&#x3D; 0 ; x &#x2F;&#x3D; 10)  res &#x3D; res * 10 + x % 10;</span><br><span class="line">        return (res &gt; INT_MAX || res &lt; INT_MIN) ? 0 : res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-12</title>
     <url>/2020/11/04/Leetcode-12/</url>
     <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p>&emsp;&emsp;The <strong>count-and-say</strong> sequence is a sequence of digit strings defined by the recursive formula:</p>
@@ -157,32 +183,6 @@
 <li><code> 1 &lt;= n &lt;= 30 </code></li>
 </ul>
 <h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><p>  &emsp;&emsp;<strong>暴力破解法:</strong> 首先确定基础case “1”, ans用于存储输出的字符。count用于计数,如果想要知道4所对应的值，那么知道了3所对应的数值就行了。如果出现了重复就通过while语句来增加对应的值。时间复杂度为O(n),具体代码如下:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string countAndSay(int n) &#123;</span><br><span class="line">        string res &#x3D; &quot;1&quot;;</span><br><span class="line">        </span><br><span class="line">        while (--n) &#123;</span><br><span class="line">            string ans &#x3D; &quot;&quot;;</span><br><span class="line">            for (int i &#x3D; 0 ;i &lt; res.size() ;i++) &#123;</span><br><span class="line">                int count &#x3D; 1;</span><br><span class="line">                while ( (i+1 &lt; res.size()) &amp;&amp; (res[i] &#x3D;&#x3D; res[i+1]))</span><br><span class="line">                    i++,count++;</span><br><span class="line">                ans +&#x3D; to_string(count) + res[i];</span><br><span class="line">            &#125;</span><br><span class="line">            res &#x3D; ans;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-2</title>
-    <url>/2020/09/23/Leetcode-2/</url>
-    <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p> Given a 32-bit signed integer, reverse digits of an integer.</p>
-<p> <strong>Example 1</strong></p>
-<blockquote>
-<p><strong>iput</strong> : 123<br><strong>Output</strong> : 321</p>
-</blockquote>
-<p> <strong>Example 2</strong></p>
-<blockquote>
-<p><strong>Input</strong> : -123<br><strong>Output</strong> : -321</p>
-</blockquote>
-<p> <strong>Example 3</strong></p>
-<blockquote>
-<p><strong>Input</strong> : 120<br><strong>Output</strong> : 21</p>
-</blockquote>
-<p> <strong>Note :</strong><br>&emsp;&emsp;Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [$(-2)^{31}$, $2^{31}$-1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="计算法"><a href="#计算法" class="headerlink" title="计算法"></a>计算法</h3><p> 这是一个比较投机的方案，因为使用了数字类型long后，就不会再有溢出的问题，最后再和INT_MAX比较一下就可以了。时间复杂度为O(nlogn)<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int reverse(int x) &#123;</span><br><span class="line">        long res &#x3D; 0;</span><br><span class="line">        for (;x !&#x3D; 0 ; x &#x2F;&#x3D; 10)  res &#x3D; res * 10 + x % 10;</span><br><span class="line">        return (res &gt; INT_MAX || res &lt; INT_MIN) ? 0 : res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>algorithm</category>
@@ -383,6 +383,28 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode-8</title>
+    <url>/2020/10/11/Leetcode-8/</url>
+    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p>  Given a sorted array nums, remove the duplicates in-place such that each element appears only once and returns the new length.<br>  Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.</p>
+<p>  <strong>Example 1: </strong></p>
+<blockquote>
+<p>Given nums = [1,1,2],<br>Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.<br>It doesn’t matter what you leave beyond the returned length.</p>
+</blockquote>
+<p>  <strong>Example 2: </strong></p>
+<blockquote>
+<p>Given nums = [0,0,1,1,1,2,2,3,3,4],<br>Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.<br>It doesn’t matter what values are set beyond the returned length.</p>
+</blockquote>
+<p>  <strong>Clarification: </strong><br>  Confused why the returned value is an integer but your answer is an array?<br>  Note that the input array is passed in by reference, which means a modification to the input array will be known to the caller as well.<br>  Internally you can think of this:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; nums is passed in by reference. (i.e., without making a copy)</span><br><span class="line">int len &#x3D; removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; any modification to nums in your function would be known by the caller.</span><br><span class="line">&#x2F;&#x2F; using the length returned by your function, it prints the first len elements.</span><br><span class="line">for (int i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><p>  <strong>双指针法: </strong> 首先这是有序的数组，那么如果出现重复，就一定是重复数字的下一个(只会重复一次)。那么我就只需要比较当前位和下一位是否产生重复，如果产生了重复。那么我就用下一位来覆盖当前位，最后返回的数组长度。时间复杂度为O(n),空间复杂度为O(1),具体代码如下:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeDuplicates(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        if (nums.size() &#x3D;&#x3D; 0) return 0;</span><br><span class="line">        int i &#x3D;0 ,j &#x3D; 1;</span><br><span class="line">        while (j &lt; nums.size()) &#123;</span><br><span class="line">            if (nums[i] !&#x3D; nums[j])</span><br><span class="line">                nums[++i] &#x3D; nums[j];</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        return i+1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-7</title>
     <url>/2020/10/04/Leetcode-7/</url>
     <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Merge two sorted linked lists and return it as a new sorted list. The new list should be made by splicing together the nodes of the first two lists.</p>
@@ -406,28 +428,6 @@
 </ul>
 <h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h3><p>  <strong>递归法 : </strong> 首先判断两个链表中的一个是否为空，如果有一个为空，那么就以这个链表为输出结果。为了保存其他两个链表，我就需要新建一个链表。因为要顺序保存，所有通过值大小的比较存入t，作t的头节点。之后t-&gt;next用递归的方式依次存入。时间复杂度为O(n),具体代码如下:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) &#123;</span><br><span class="line">        if (!l1) return l2;</span><br><span class="line">        if (!l2) return l1;</span><br><span class="line">        </span><br><span class="line">        ListNode* t;</span><br><span class="line">        if (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">            t &#x3D; l1;</span><br><span class="line">            l1 &#x3D; l1-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        else &#123;</span><br><span class="line">            t &#x3D; l2;</span><br><span class="line">            l2 &#x3D; l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        t-&gt;next &#x3D; mergeTwoLists(l1,l2);</span><br><span class="line">        return t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <h3 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h3><p>  <strong>迭代法 : </strong> 首先设置一个前哨节点，为了之后输出方便。程序主体:通过值的比较，把每个链表的值都挨个存入cur链表中。while判断的问题，一定还有最有一个没有存入到链表中，所以我们还需要单独的把最后一位加入到链表中来。最后输出前哨节点的下一个也就是dummy-&gt;next。时间复杂度为O(n),具体代码如下 :<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) &#123;</span><br><span class="line">        ListNode* dummy &#x3D; new ListNode(-1);</span><br><span class="line">        ListNode* cur &#x3D; dummy;</span><br><span class="line">        </span><br><span class="line">        while (l1 &amp;&amp; l2) &#123;</span><br><span class="line">            if (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                cur-&gt;next &#x3D; l1;</span><br><span class="line">                l1 &#x3D; l1-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                cur-&gt;next &#x3D; l2;</span><br><span class="line">                l2 &#x3D; l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            cur &#x3D; cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        cur-&gt;next &#x3D; l1 &#x3D;&#x3D; NULL ? l2 : l1;</span><br><span class="line">        return dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-8</title>
-    <url>/2020/10/11/Leetcode-8/</url>
-    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p>  Given a sorted array nums, remove the duplicates in-place such that each element appears only once and returns the new length.<br>  Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.</p>
-<p>  <strong>Example 1: </strong></p>
-<blockquote>
-<p>Given nums = [1,1,2],<br>Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.<br>It doesn’t matter what you leave beyond the returned length.</p>
-</blockquote>
-<p>  <strong>Example 2: </strong></p>
-<blockquote>
-<p>Given nums = [0,0,1,1,1,2,2,3,3,4],<br>Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.<br>It doesn’t matter what values are set beyond the returned length.</p>
-</blockquote>
-<p>  <strong>Clarification: </strong><br>  Confused why the returned value is an integer but your answer is an array?<br>  Note that the input array is passed in by reference, which means a modification to the input array will be known to the caller as well.<br>  Internally you can think of this:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; nums is passed in by reference. (i.e., without making a copy)</span><br><span class="line">int len &#x3D; removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; any modification to nums in your function would be known by the caller.</span><br><span class="line">&#x2F;&#x2F; using the length returned by your function, it prints the first len elements.</span><br><span class="line">for (int i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><p>  <strong>双指针法: </strong> 首先这是有序的数组，那么如果出现重复，就一定是重复数字的下一个(只会重复一次)。那么我就只需要比较当前位和下一位是否产生重复，如果产生了重复。那么我就用下一位来覆盖当前位，最后返回的数组长度。时间复杂度为O(n),空间复杂度为O(1),具体代码如下:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeDuplicates(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        if (nums.size() &#x3D;&#x3D; 0) return 0;</span><br><span class="line">        int i &#x3D;0 ,j &#x3D; 1;</span><br><span class="line">        while (j &lt; nums.size()) &#123;</span><br><span class="line">            if (nums[i] !&#x3D; nums[j])</span><br><span class="line">                nums[++i] &#x3D; nums[j];</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        return i+1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>algorithm</category>
