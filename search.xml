@@ -70,6 +70,102 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode-11</title>
+    <url>/2020/11/02/Leetcode-11/</url>
+    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p> &emsp;&emsp; Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
+<p><strong>Example 1:</strong></p>
+<p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> nums = [1,3,5,6], target = 5 <br>
+  <strong>Output:</strong> 2
+</p>
+
+
+<p><strong>Example 2:</strong></p>
+<p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> nums = [1,3,5,6], target = 2 <br>
+  <strong>Output:</strong> 1
+</p>
+
+<p><strong>Example 3:</strong></p>
+<p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> nums = [1,3,5,6], target = 7 <br>
+  <strong>Output:</strong> 4
+</p>
+
+
+<p><strong>Example 4:</strong></p>
+<p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> nums = [1,3,5,6], target = 0 <br>
+  <strong>Output:</strong> 0
+</p>
+
+<p><strong>Example 5:</strong></p>
+<p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> nums = [1], target = 0 <br>
+  <strong>Output:</strong> 0
+</p>
+
+
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code> 1 &lt;= nums.length &lt;= 10<sup>4</sup> </code> </li>
+<li><code> -10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4<sup> </code></li>
+<li><code>nums</code> contains <strong>distinct</strong> values sorted in <strong>ascending</strong> order</li>
+<li><code> -10<sup>4</sup> &lt;= target &lt;= 10<sup>4<sup> </code></li>
+</ul>
+<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><p>&emsp;&emsp;<strong>二分法查找(binary Search):</strong> 首先先确定最高位和最低位的值,因为随着low和high的位置不断变化,<br>所以middle的值是不断再改变的。这里用移位(&gt;&gt;1)代替了除法,这样不会增加运算的复杂性。<br>&emsp;&emsp;如果目标值大于中间值,那么low就要变化;相反，如果目标值小于中间值，high就需要变化;如果目标值正好等于中间值就可以直接输出了。<br>时间复杂度为O(logn),具体代码如下:<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int searchInsert(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        int low &#x3D; 0,high &#x3D; nums.size() - 1,n &#x3D; nums.size();</span><br><span class="line">        </span><br><span class="line">        while (low &lt;&#x3D; high) &#123;</span><br><span class="line">            int middle &#x3D; low + ((high - low) &gt;&gt; 1);</span><br><span class="line">            if (target &gt; nums[middle]) low &#x3D; middle + 1;</span><br><span class="line">            else if (target &lt; nums[middle]) high &#x3D; middle - 1;</span><br><span class="line">            else return middle;</span><br><span class="line">        &#125;</span><br><span class="line">        return low;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h2><p>  &emsp;&emsp;<strong>线性查找(linear search):</strong> 将nums的值挨个赋给i,如果i小于目标值,result就自增。相反如果大于等于目标值，就可以直接跳出循环，输出结果了。时间复杂度为O(n),具体代码如下:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int searchInsert(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        int result &#x3D; 0;</span><br><span class="line">        for (auto&amp; i : nums) &#123;</span><br><span class="line">            if (i &lt; target)&#123;</span><br><span class="line">                result++;</span><br><span class="line">            &#125; </span><br><span class="line">            else break;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-12</title>
+    <url>/2020/11/04/Leetcode-12/</url>
+    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p>&emsp;&emsp;The <strong>count-and-say</strong> sequence is a sequence of digit strings defined by the recursive formula:</p>
+<ul>
+<li><code>countAndSay(1) = “1” </code></li>
+<li><code>countAndSay(n)</code> is the way you would “say” digit string from <code>countAndSay(n-1)</code>,which is then converted into a different digit string.</li>
+</ul>
+<p>&emsp;&emsp;To determine how you “say” a digit string, split it into the <strong>minimal</strong> number of groups so that each group is a contiguous section all of the <strong>same character</strong>.<br>&emsp;&emsp;Then for each group, say the number of characters,then say the character. To convert the saying into a digit string, replace the counts with a number and concatenate every saying.  </p>
+<p>For example, the saying and conversion for digit string <code>“3322251”</code>:<br><img src="https://assets.leetcode.com/uploads/2020/10/23/countandsay.jpg" alt="avatar"></p>
+<p>Given a positive integer <code>n</code>, return the <code>n<sup>th</sup></code> term of the <strong>count-and-say</strong> sequence.</p>
+<p><strong>Example 1:</strong></p>
+<p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> n = 1 <br>
+  <strong>Output:</strong> "1" <br>
+  <strong>Explanation:</strong> This is base case
+</p>
+
+<p><strong>Example 2:</strong></p>
+<p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> n = 4
+  <strong>Output:</strong> "1211"
+  <strong>Explanation:</strong> <br>
+  countAndSay(1) = "1" <br>
+  countAndSay(2) = say "1" = one 1 = "11" <br>
+  countAndSay(3) = say "11" two 1's = "21" <br>
+  countAndSay(4) = say "21" = one 2 + one 1 = "12" + "11" = "1211" <br>
+</p>
+
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code> 1 &lt;= n &lt;= 30 </code></li>
+</ul>
+<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><p>  &emsp;&emsp;<strong>暴力破解法:</strong> 首先确定基础case “1”, ans用于存储输出的字符。count用于计数,如果想要知道4所对应的值，那么知道了3所对应的数值就行了。如果出现了重复就通过while语句来增加对应的值。时间复杂度为O(n),具体代码如下:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string countAndSay(int n) &#123;</span><br><span class="line">        string res &#x3D; &quot;1&quot;;</span><br><span class="line">        </span><br><span class="line">        while (--n) &#123;</span><br><span class="line">            string ans &#x3D; &quot;&quot;;</span><br><span class="line">            for (int i &#x3D; 0 ;i &lt; res.size() ;i++) &#123;</span><br><span class="line">                int count &#x3D; 1;</span><br><span class="line">                while ( (i+1 &lt; res.size()) &amp;&amp; (res[i] &#x3D;&#x3D; res[i+1]))</span><br><span class="line">                    i++,count++;</span><br><span class="line">                ans +&#x3D; to_string(count) + res[i];</span><br><span class="line">            &#125;</span><br><span class="line">            res &#x3D; ans;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-2</title>
     <url>/2020/09/23/Leetcode-2/</url>
     <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p> Given a 32-bit signed integer, reverse digits of an integer.</p>
@@ -87,47 +183,6 @@
 </blockquote>
 <p> <strong>Note :</strong><br>&emsp;&emsp;Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [$(-2)^{31}$, $2^{31}$-1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
 <h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="计算法"><a href="#计算法" class="headerlink" title="计算法"></a>计算法</h3><p> 这是一个比较投机的方案，因为使用了数字类型long后，就不会再有溢出的问题，最后再和INT_MAX比较一下就可以了。时间复杂度为O(nlogn)<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int reverse(int x) &#123;</span><br><span class="line">        long res &#x3D; 0;</span><br><span class="line">        for (;x !&#x3D; 0 ; x &#x2F;&#x3D; 10)  res &#x3D; res * 10 + x % 10;</span><br><span class="line">        return (res &gt; INT_MAX || res &lt; INT_MIN) ? 0 : res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-11</title>
-    <url>/2020/11/02/Leetcode-11/</url>
-    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p> &emsp;&emsp; Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
-<p><strong>Example 1:</strong></p>
-<blockquote>
-<p><strong>Input:</strong> nums = [1,3,5,6], target = 5<br><strong>Output:</strong> 2</p>
-</blockquote>
-<p><strong>Example 2:</strong></p>
-<blockquote>
-<p><strong>Input:</strong> nums = [1,3,5,6], target = 2<br><strong>Output:</strong> 1</p>
-</blockquote>
-<p><strong>Example 3:</strong></p>
-<blockquote>
-<p><strong>Input:</strong> nums = [1,3,5,6], target = 7<br><strong>Output:</strong> 4</p>
-</blockquote>
-<p><strong>Example 4:</strong></p>
-<blockquote>
-<p><strong>Input:</strong> nums = [1,3,5,6], target = 0<br><strong>Output:</strong> 0</p>
-</blockquote>
-<p><strong>Example 5:</strong></p>
-<blockquote>
-<p><strong>Input:</strong> nums = [1], target = 0<br><strong>Output:</strong> 0</p>
-</blockquote>
-<p><strong>Constraints:</strong></p>
-<ul>
-<li><code> 1 &lt;= nums.length &lt;= 10<sup>4</sup> </code> </li>
-<li><code> -10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4<sup> </code></li>
-<li><code>nums</code> contains <strong>distinct</strong> values sorted in <strong>ascending</strong> order</li>
-<li><code> -10<sup>4</sup> &lt;= target &lt;= 10<sup>4<sup> </code></li>
-</ul>
-<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><p>&emsp;&emsp;<strong>二分法查找(binary Search):</strong> 首先先确定最高位和最低位的值,因为随着low和high的位置不断变化,<br>所以middle的值是不断再改变的。这里用移位(&gt;&gt;1)代替了除法,这样不会增加运算的复杂性。<br>&emsp;&emsp;如果目标值大于中间值,那么low就要变化;相反，如果目标值小于中间值，high就需要变化;如果目标值正好等于中间值就可以直接输出了。<br>时间复杂度为O(logn),具体代码如下:<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int searchInsert(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        int low &#x3D; 0,high &#x3D; nums.size() - 1,n &#x3D; nums.size();</span><br><span class="line">        </span><br><span class="line">        while (low &lt;&#x3D; high) &#123;</span><br><span class="line">            int middle &#x3D; low + ((high - low) &gt;&gt; 1);</span><br><span class="line">            if (target &gt; nums[middle]) low &#x3D; middle + 1;</span><br><span class="line">            else if (target &lt; nums[middle]) high &#x3D; middle - 1;</span><br><span class="line">            else return middle;</span><br><span class="line">        &#125;</span><br><span class="line">        return low;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h2><p>  &emsp;&emsp;<strong>线性查找(linear search):</strong> 将nums的值挨个赋给i,如果i小于目标值,result就自增。相反如果大于等于目标值，就可以直接跳出循环，输出结果了。时间复杂度为O(n),具体代码如下:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int searchInsert(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        int result &#x3D; 0;</span><br><span class="line">        for (auto&amp; i : nums) &#123;</span><br><span class="line">            if (i &lt; target)&#123;</span><br><span class="line">                result++;</span><br><span class="line">            &#125; </span><br><span class="line">            else break;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>algorithm</category>
@@ -360,6 +415,28 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode-8</title>
+    <url>/2020/10/11/Leetcode-8/</url>
+    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p>  Given a sorted array nums, remove the duplicates in-place such that each element appears only once and returns the new length.<br>  Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.</p>
+<p>  <strong>Example 1: </strong></p>
+<blockquote>
+<p>Given nums = [1,1,2],<br>Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.<br>It doesn’t matter what you leave beyond the returned length.</p>
+</blockquote>
+<p>  <strong>Example 2: </strong></p>
+<blockquote>
+<p>Given nums = [0,0,1,1,1,2,2,3,3,4],<br>Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.<br>It doesn’t matter what values are set beyond the returned length.</p>
+</blockquote>
+<p>  <strong>Clarification: </strong><br>  Confused why the returned value is an integer but your answer is an array?<br>  Note that the input array is passed in by reference, which means a modification to the input array will be known to the caller as well.<br>  Internally you can think of this:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; nums is passed in by reference. (i.e., without making a copy)</span><br><span class="line">int len &#x3D; removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; any modification to nums in your function would be known by the caller.</span><br><span class="line">&#x2F;&#x2F; using the length returned by your function, it prints the first len elements.</span><br><span class="line">for (int i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><p>  <strong>双指针法: </strong> 首先这是有序的数组，那么如果出现重复，就一定是重复数字的下一个(只会重复一次)。那么我就只需要比较当前位和下一位是否产生重复，如果产生了重复。那么我就用下一位来覆盖当前位，最后返回的数组长度。时间复杂度为O(n),空间复杂度为O(1),具体代码如下:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeDuplicates(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        if (nums.size() &#x3D;&#x3D; 0) return 0;</span><br><span class="line">        int i &#x3D;0 ,j &#x3D; 1;</span><br><span class="line">        while (j &lt; nums.size()) &#123;</span><br><span class="line">            if (nums[i] !&#x3D; nums[j])</span><br><span class="line">                nums[++i] &#x3D; nums[j];</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        return i+1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-9</title>
     <url>/2020/10/11/Leetcode-9/</url>
     <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p> &emsp;&emsp;Given an array nums and a value val, remove all instances of that value in-place and return the new length.<br> &emsp;&emsp;Do not allocate extra space for another array, you must do this by <font color = red>modifying the input array in-place</font> with <code>O(1)</code> extra memory.</p>
@@ -381,28 +458,6 @@
 </ul>
 <h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><p>&emsp;&emsp;<strong>堆栈法:</strong> 首先将nums中不等于val的值全部入栈，再将nums清空。再将没有val值的res的值重新的一一赋给nums，同时将res中的值一一弹出，最后直接返回nums数组的size即可。时间复杂度为O(n),空间复杂度为O(1).具体代码如下:<br>     <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">     class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeElement(vector&lt;int&gt;&amp; nums, int val) &#123;</span><br><span class="line">        int n &#x3D; nums.size();</span><br><span class="line">        stack&lt;int&gt; res;</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; n ;i++) &#123;</span><br><span class="line">            if (nums[i] !&#x3D; val) </span><br><span class="line">                res.push(nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        nums.clear();</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; n ; i++) &#123;</span><br><span class="line">            if (!res.empty())</span><br><span class="line">                nums.push_back(res.top()),res.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        return nums.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h2><p>&emsp;&emsp;<strong>双指针法:</strong> 首先快慢指针置0，进入循环。如果nums数组对应的值不等于val,那么就把当前nums[fast]的值赋给nums[slow++]。如果相等那么fast就自增，最后结果返回slow的值。时间复杂度位O(n),空间复杂度O(1),具体代码如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeElement(vector&lt;int&gt;&amp; nums, int val) &#123;</span><br><span class="line">        int slow &#x3D; 0,size &#x3D; nums.size(),fast &#x3D; 0;</span><br><span class="line">        </span><br><span class="line">        while (fast &lt; size) &#123;</span><br><span class="line">            if (nums[fast] !&#x3D; val) &#123;</span><br><span class="line">                nums[slow++] &#x3D; nums[fast];</span><br><span class="line">            &#125;</span><br><span class="line">            fast++;</span><br><span class="line">        &#125;</span><br><span class="line">        return slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-8</title>
-    <url>/2020/10/11/Leetcode-8/</url>
-    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p>  Given a sorted array nums, remove the duplicates in-place such that each element appears only once and returns the new length.<br>  Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.</p>
-<p>  <strong>Example 1: </strong></p>
-<blockquote>
-<p>Given nums = [1,1,2],<br>Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.<br>It doesn’t matter what you leave beyond the returned length.</p>
-</blockquote>
-<p>  <strong>Example 2: </strong></p>
-<blockquote>
-<p>Given nums = [0,0,1,1,1,2,2,3,3,4],<br>Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.<br>It doesn’t matter what values are set beyond the returned length.</p>
-</blockquote>
-<p>  <strong>Clarification: </strong><br>  Confused why the returned value is an integer but your answer is an array?<br>  Note that the input array is passed in by reference, which means a modification to the input array will be known to the caller as well.<br>  Internally you can think of this:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; nums is passed in by reference. (i.e., without making a copy)</span><br><span class="line">int len &#x3D; removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; any modification to nums in your function would be known by the caller.</span><br><span class="line">&#x2F;&#x2F; using the length returned by your function, it prints the first len elements.</span><br><span class="line">for (int i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><p>  <strong>双指针法: </strong> 首先这是有序的数组，那么如果出现重复，就一定是重复数字的下一个(只会重复一次)。那么我就只需要比较当前位和下一位是否产生重复，如果产生了重复。那么我就用下一位来覆盖当前位，最后返回的数组长度。时间复杂度为O(n),空间复杂度为O(1),具体代码如下:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeDuplicates(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        if (nums.size() &#x3D;&#x3D; 0) return 0;</span><br><span class="line">        int i &#x3D;0 ,j &#x3D; 1;</span><br><span class="line">        while (j &lt; nums.size()) &#123;</span><br><span class="line">            if (nums[i] !&#x3D; nums[j])</span><br><span class="line">                nums[++i] &#x3D; nums[j];</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        return i+1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>algorithm</category>
@@ -709,7 +764,7 @@ int main()
         <category>Experiment</category>
       </categories>
       <tags>
-        <tag>Operatiron_System</tag>
+        <tag>Operation_System</tag>
       </tags>
   </entry>
   <entry>
