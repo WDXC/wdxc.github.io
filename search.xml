@@ -1,39 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Leetcode-10</title>
-    <url>/2020/10/28/Leetcode-10/</url>
-    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p> &emsp;&emsp;Implement <code>strStr()</code>.Return the index of the first occurrence of needle in haystack, or <code>-1</code> if <code>needle</code> is not part of <code>haystack</code>.<br> <strong>Clarification:</strong><br> &emsp;&emsp;What should we return when needle is an empty string? This is a great question to ask during an interview.</p>
-<p> &emsp;&emsp;For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C’s strstr() and Java’s indexOf().</p>
-<p> <strong>Example1:</strong></p>
-<blockquote>
-<p><strong>Input:</strong> haystack = “hello”, needle = “ll”<br><strong>Output:</strong> 2</p>
-</blockquote>
-<p> <strong>Example2:</strong></p>
-<blockquote>
-<p><strong>Input:</strong> haystack = “aaaaa”, needle = “bba”<br><strong>Output:</strong> -1</p>
-</blockquote>
-<p> <strong>Example3:</strong></p>
-<blockquote>
-<p><strong>Input:</strong> haystack = “”, needle = “”<br><strong>Output:</strong> 0</p>
-</blockquote>
-<p> <strong>Constraints:</strong></p>
-<ul>
-<li><code> 0 &lt;= haystack.length, needle.length &lt;= 5 * 10<sup>4</sup> </code></li>
-<li><code>haystack</code>and <code>needle</code> consist of only lower-case English characters.</li>
-</ul>
-<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一:"></a>思路一:</h2><p>  &emsp;&emsp;两个字符长度相减+1得到的长度就是需要比较的长度，当needle长度为0时，返回0。当haystack与needle不匹配时，返回-1。当haystack与needle匹配时，返回i的值。时间复杂度为O($n^{2}$),空间复杂度为O(n),具体代码如下：<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        int m &#x3D; haystack.size();</span><br><span class="line">        int n &#x3D; needle.size();</span><br><span class="line">        int r &#x3D; m - n + 1;</span><br><span class="line">        </span><br><span class="line">        if (n &#x3D;&#x3D; 0) return 0;</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; r; i++) &#123;</span><br><span class="line">            int  j &#x3D; i,k &#x3D; 0;</span><br><span class="line">            while (k &lt; n &amp;&amp; haystack[j] &#x3D;&#x3D; needle[k]) </span><br><span class="line">                k++,j++;</span><br><span class="line">            if (k &#x3D;&#x3D; n) return i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二:"></a>思路二:</h2><p>&emsp;&emsp;KMP(字符串查找算法),lps是needle的索引。这里使用的kmp算法，把needle作为kmp前缀,来进行字符比对。如果字符相同，那么len增加。如果不相等，就要看len的值，如果len的值为0那么就将lps[i]的值设置为0。如果len不为零，那么就把lps[len-1]的值赋给len，这一步是为了防止对应字符中间出现了不相等的，将字符串右移。时间复杂度为O(n); </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        if (needle.empty()) return 0;</span><br><span class="line">        </span><br><span class="line">        string kmp &#x3D; needle + &quot;#&quot; + haystack;</span><br><span class="line">        int m &#x3D; kmp.size(),n &#x3D; needle.size();</span><br><span class="line">        vector&lt;int&gt; lps(m,0);</span><br><span class="line">        </span><br><span class="line">        for (int len &#x3D; 0,i &#x3D; 1; i &lt; m;) &#123;</span><br><span class="line">            if (kmp[len] &#x3D;&#x3D; kmp[i]) &#123;</span><br><span class="line">                lps[i] &#x3D; ++len;</span><br><span class="line">                if (len &#x3D;&#x3D; n) </span><br><span class="line">                    return i - 2 * n;</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (len &#x3D;&#x3D; 0) </span><br><span class="line">                 lps[i++] &#x3D; 0;</span><br><span class="line">            else </span><br><span class="line">                len &#x3D; lps[len - 1];</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode-1</title>
     <url>/2020/01/12/Leetcode-1/</url>
     <content><![CDATA[<h2 id="Qestion"><a href="#Qestion" class="headerlink" title="Qestion"></a>Qestion</h2><p>Give an array of intergets <code>nums</code> and an integer <code>target</code>,return indices of the two numbers such that they add up to <code>target</code>.<br>You may assume that each input would have exctly one solution,and you may use the same element twice.<br>You can return the answer in any order.  </p>
@@ -124,32 +91,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-2</title>
-    <url>/2020/09/23/Leetcode-2/</url>
-    <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p> Given a 32-bit signed integer, reverse digits of an integer.</p>
-<p> <strong>Example 1</strong></p>
-<blockquote>
-<p><strong>iput</strong> : 123<br><strong>Output</strong> : 321</p>
-</blockquote>
-<p> <strong>Example 2</strong></p>
-<blockquote>
-<p><strong>Input</strong> : -123<br><strong>Output</strong> : -321</p>
-</blockquote>
-<p> <strong>Example 3</strong></p>
-<blockquote>
-<p><strong>Input</strong> : 120<br><strong>Output</strong> : 21</p>
-</blockquote>
-<p> <strong>Note :</strong><br>&emsp;&emsp;Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [$(-2)^{31}$, $2^{31}$-1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="计算法"><a href="#计算法" class="headerlink" title="计算法"></a>计算法</h3><p> 这是一个比较投机的方案，因为使用了数字类型long后，就不会再有溢出的问题，最后再和INT_MAX比较一下就可以了。时间复杂度为O(nlogn)<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int reverse(int x) &#123;</span><br><span class="line">        long res &#x3D; 0;</span><br><span class="line">        for (;x !&#x3D; 0 ; x &#x2F;&#x3D; 10)  res &#x3D; res * 10 + x % 10;</span><br><span class="line">        return (res &gt; INT_MAX || res &lt; INT_MIN) ? 0 : res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode-12</title>
     <url>/2020/11/04/Leetcode-12/</url>
     <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p>&emsp;&emsp;The <strong>count-and-say</strong> sequence is a sequence of digit strings defined by the recursive formula:</p>
@@ -182,7 +123,33 @@
 <ul>
 <li><code> 1 &lt;= n &lt;= 30 </code></li>
 </ul>
-<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><p>  &emsp;&emsp;<strong>暴力破解法:</strong> 首先确定基础case “1”, ans用于存储输出的字符。count用于计数,如果想要知道4所对应的值，那么知道了3所对应的数值就行了。如果出现了重复就通过while语句来增加对应的值。时间复杂度为O(n),具体代码如下:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string countAndSay(int n) &#123;</span><br><span class="line">        string res &#x3D; &quot;1&quot;;</span><br><span class="line">        </span><br><span class="line">        while (--n) &#123;</span><br><span class="line">            string ans &#x3D; &quot;&quot;;</span><br><span class="line">            for (int i &#x3D; 0 ;i &lt; res.size() ;i++) &#123;</span><br><span class="line">                int count &#x3D; 1;</span><br><span class="line">                while ( (i+1 &lt; res.size()) &amp;&amp; (res[i] &#x3D;&#x3D; res[i+1]))</span><br><span class="line">                    i++,count++;</span><br><span class="line">                ans +&#x3D; to_string(count) + res[i];</span><br><span class="line">            &#125;</span><br><span class="line">            res &#x3D; ans;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><p>  &emsp;&emsp;<strong>暴力破解法:</strong> 首先确定基础case “1”, ans用于存储输出的字符。count用于计数,如果想要知道4所对应的值，那么知道了3所对应的数值就行了。如果出现了重复就通过while语句来增加对应的值。时间复杂度为O(n),具体代码如下:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string countAndSay(int n) &#123;</span><br><span class="line">        string res &#x3D; &quot;1&quot;;</span><br><span class="line">        </span><br><span class="line">        while (--n) &#123;</span><br><span class="line">            string ans &#x3D; &quot;&quot;;</span><br><span class="line">            for (int i &#x3D; 0 ;i &lt; res.size() ;i++) &#123;</span><br><span class="line">                int count &#x3D; 1;</span><br><span class="line">                while ( (i+1 &lt; res.size()) &amp;&amp; (res[i] &#x3D;&#x3D; res[i+1]))</span><br><span class="line">                    i++,count++;</span><br><span class="line">                ans +&#x3D; to_string(count) + res[i];</span><br><span class="line">            &#125;</span><br><span class="line">            res &#x3D; ans;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-2</title>
+    <url>/2020/09/23/Leetcode-2/</url>
+    <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p> Given a 32-bit signed integer, reverse digits of an integer.</p>
+<p> <strong>Example 1</strong></p>
+<blockquote>
+<p><strong>iput</strong> : 123<br><strong>Output</strong> : 321</p>
+</blockquote>
+<p> <strong>Example 2</strong></p>
+<blockquote>
+<p><strong>Input</strong> : -123<br><strong>Output</strong> : -321</p>
+</blockquote>
+<p> <strong>Example 3</strong></p>
+<blockquote>
+<p><strong>Input</strong> : 120<br><strong>Output</strong> : 21</p>
+</blockquote>
+<p> <strong>Note :</strong><br>&emsp;&emsp;Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [$(-2)^{31}$, $2^{31}$-1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="计算法"><a href="#计算法" class="headerlink" title="计算法"></a>计算法</h3><p> 这是一个比较投机的方案，因为使用了数字类型long后，就不会再有溢出的问题，最后再和INT_MAX比较一下就可以了。时间复杂度为O(nlogn)<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int reverse(int x) &#123;</span><br><span class="line">        long res &#x3D; 0;</span><br><span class="line">        for (;x !&#x3D; 0 ; x &#x2F;&#x3D; 10)  res &#x3D; res * 10 + x % 10;</span><br><span class="line">        return (res &gt; INT_MAX || res &lt; INT_MIN) ? 0 : res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>algorithm</category>
@@ -226,6 +193,39 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(int x) &#123;</span><br><span class="line">        if (x &lt; 0 || (x !&#x3D; 0 &amp;&amp; x %10 &#x3D;&#x3D; 0)) return false;</span><br><span class="line">        int res &#x3D; 0;</span><br><span class="line">        while (x &gt; res) &#123;</span><br><span class="line">            res &#x3D; res * 10 + x % 10;</span><br><span class="line">            x &#x2F;&#x3D; 10;</span><br><span class="line">        &#125;</span><br><span class="line">        return (res &#x3D;&#x3D; x) || (res&#x2F;10 &#x3D;&#x3D; x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-10</title>
+    <url>/2020/10/28/Leetcode-10/</url>
+    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p> &emsp;&emsp;Implement <code>strStr()</code>.Return the index of the first occurrence of needle in haystack, or <code>-1</code> if <code>needle</code> is not part of <code>haystack</code>.<br> <strong>Clarification:</strong><br> &emsp;&emsp;What should we return when needle is an empty string? This is a great question to ask during an interview.</p>
+<p> &emsp;&emsp;For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C’s strstr() and Java’s indexOf().</p>
+<p> <strong>Example1:</strong></p>
+<blockquote>
+<p><strong>Input:</strong> haystack = “hello”, needle = “ll”<br><strong>Output:</strong> 2</p>
+</blockquote>
+<p> <strong>Example2:</strong></p>
+<blockquote>
+<p><strong>Input:</strong> haystack = “aaaaa”, needle = “bba”<br><strong>Output:</strong> -1</p>
+</blockquote>
+<p> <strong>Example3:</strong></p>
+<blockquote>
+<p><strong>Input:</strong> haystack = “”, needle = “”<br><strong>Output:</strong> 0</p>
+</blockquote>
+<p> <strong>Constraints:</strong></p>
+<ul>
+<li><code> 0 &lt;= haystack.length, needle.length &lt;= 5 * 10<sup>4</sup> </code></li>
+<li><code>haystack</code>and <code>needle</code> consist of only lower-case English characters.</li>
+</ul>
+<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一:"></a>思路一:</h2><p>  &emsp;&emsp;两个字符长度相减+1得到的长度就是需要比较的长度，当needle长度为0时，返回0。当haystack与needle不匹配时，返回-1。当haystack与needle匹配时，返回i的值。时间复杂度为O($n^{2}$),空间复杂度为O(n),具体代码如下：<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        int m &#x3D; haystack.size();</span><br><span class="line">        int n &#x3D; needle.size();</span><br><span class="line">        int r &#x3D; m - n + 1;</span><br><span class="line">        </span><br><span class="line">        if (n &#x3D;&#x3D; 0) return 0;</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; r; i++) &#123;</span><br><span class="line">            int  j &#x3D; i,k &#x3D; 0;</span><br><span class="line">            while (k &lt; n &amp;&amp; haystack[j] &#x3D;&#x3D; needle[k]) </span><br><span class="line">                k++,j++;</span><br><span class="line">            if (k &#x3D;&#x3D; n) return i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二:"></a>思路二:</h2><p>&emsp;&emsp;KMP(字符串查找算法),lps是needle的索引。这里使用的kmp算法，把needle作为kmp前缀,来进行字符比对。如果字符相同，那么len增加。如果不相等，就要看len的值，如果len的值为0那么就将lps[i]的值设置为0。如果len不为零，那么就把lps[len-1]的值赋给len，这一步是为了防止对应字符中间出现了不相等的，将字符串右移。时间复杂度为O(n); </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        if (needle.empty()) return 0;</span><br><span class="line">        </span><br><span class="line">        string kmp &#x3D; needle + &quot;#&quot; + haystack;</span><br><span class="line">        int m &#x3D; kmp.size(),n &#x3D; needle.size();</span><br><span class="line">        vector&lt;int&gt; lps(m,0);</span><br><span class="line">        </span><br><span class="line">        for (int len &#x3D; 0,i &#x3D; 1; i &lt; m;) &#123;</span><br><span class="line">            if (kmp[len] &#x3D;&#x3D; kmp[i]) &#123;</span><br><span class="line">                lps[i] &#x3D; ++len;</span><br><span class="line">                if (len &#x3D;&#x3D; n) </span><br><span class="line">                    return i - 2 * n;</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (len &#x3D;&#x3D; 0) </span><br><span class="line">                 lps[i++] &#x3D; 0;</span><br><span class="line">            else </span><br><span class="line">                len &#x3D; lps[len - 1];</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>algorithm</category>
@@ -405,6 +405,36 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode-9</title>
+    <url>/2020/10/11/Leetcode-9/</url>
+    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p> &emsp;&emsp;Given an array nums and a value val, remove all instances of that value in-place and return the new length.<br> &emsp;&emsp;Do not allocate extra space for another array, you must do this by <font color = red>modifying the input array in-place</font> with <code>O(1)</code> extra memory.</p>
+<p><strong>Clarification:</strong><br> &emsp;&emsp;Confused why the returned value is an integer but your answer is an array?<br> &emsp;&emsp;Note that the input array is passed in by <strong>reference</strong>, which means a modification to the input array will be known to the caller as well.  </p>
+<p>  <strong>Internally you can think of this:</strong><br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> &#x2F;&#x2F; nums is passed in by reference. (i.e., without making a copy)</span><br><span class="line">int len &#x3D; removeElement(nums, val);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; any modification to nums in your function would be known by the caller.</span><br><span class="line">&#x2F;&#x2F; using the length returned by your function, it prints the first len elements.</span><br><span class="line">for (int i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 1: </strong></p>
+<blockquote>
+<p><strong>Input:</strong> nums = [3,2,2,3], val = 3<br><strong>Output:</strong> 2, nums = [2,2]<br><strong>Explanation:</strong> Your function should return length = <strong>2</strong>, with the first two elements of nums being <strong>2</strong><br>It doesn’t matter what you leave beyond the returned length. For example if you return 2 with nums = [2,2,3,3] or nums = [2,3,0,0], your answer will be accepted.</p>
+</blockquote>
+<p><strong>Example 2: </strong></p>
+<blockquote>
+<p><strong>Input:</strong> nums = [0,1,2,2,3,0,4,2], val = 2<br><strong>Output:</strong>  5, nums = [0,1,4,0,3]<br><strong>Explanation:</strong> Your function should return length = <strong>5</strong> ,with the first five elements of nums containing <strong>0, 1, 3, 0</strong> and <strong>4</strong>.Note that the order of those five elements can be arbitrary. It doesn’t matter what values are set beyond the returned length.</p>
+</blockquote>
+<p><strong>Constrains:</strong></p>
+<ul>
+<li><code>0 &lt;= nums.length() &lt;= 100</code></li>
+<li><code>0 &lt;= nums[i] &lt;= 50</code></li>
+<li><code>0 &lt;= val &lt;= 100</code></li>
+</ul>
+<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><p>&emsp;&emsp;<strong>堆栈法:</strong> 首先将nums中不等于val的值全部入栈，再将nums清空。再将没有val值的res的值重新的一一赋给nums，同时将res中的值一一弹出，最后直接返回nums数组的size即可。时间复杂度为O(n),空间复杂度为O(1).具体代码如下:<br>     <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">     class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeElement(vector&lt;int&gt;&amp; nums, int val) &#123;</span><br><span class="line">        int n &#x3D; nums.size();</span><br><span class="line">        stack&lt;int&gt; res;</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; n ;i++) &#123;</span><br><span class="line">            if (nums[i] !&#x3D; val) </span><br><span class="line">                res.push(nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        nums.clear();</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; n ; i++) &#123;</span><br><span class="line">            if (!res.empty())</span><br><span class="line">                nums.push_back(res.top()),res.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        return nums.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h2><p>&emsp;&emsp;<strong>双指针法:</strong> 首先快慢指针置0，进入循环。如果nums数组对应的值不等于val,那么就把当前nums[fast]的值赋给nums[slow++]。如果相等那么fast就自增，最后结果返回slow的值。时间复杂度位O(n),空间复杂度O(1),具体代码如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeElement(vector&lt;int&gt;&amp; nums, int val) &#123;</span><br><span class="line">        int slow &#x3D; 0,size &#x3D; nums.size(),fast &#x3D; 0;</span><br><span class="line">        </span><br><span class="line">        while (fast &lt; size) &#123;</span><br><span class="line">            if (nums[fast] !&#x3D; val) &#123;</span><br><span class="line">                nums[slow++] &#x3D; nums[fast];</span><br><span class="line">            &#125;</span><br><span class="line">            fast++;</span><br><span class="line">        &#125;</span><br><span class="line">        return slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-7</title>
     <url>/2020/10/04/Leetcode-7/</url>
     <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Merge two sorted linked lists and return it as a new sorted list. The new list should be made by splicing together the nodes of the first two lists.</p>
@@ -428,36 +458,6 @@
 </ul>
 <h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h3><p>  <strong>递归法 : </strong> 首先判断两个链表中的一个是否为空，如果有一个为空，那么就以这个链表为输出结果。为了保存其他两个链表，我就需要新建一个链表。因为要顺序保存，所有通过值大小的比较存入t，作t的头节点。之后t-&gt;next用递归的方式依次存入。时间复杂度为O(n),具体代码如下:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) &#123;</span><br><span class="line">        if (!l1) return l2;</span><br><span class="line">        if (!l2) return l1;</span><br><span class="line">        </span><br><span class="line">        ListNode* t;</span><br><span class="line">        if (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">            t &#x3D; l1;</span><br><span class="line">            l1 &#x3D; l1-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        else &#123;</span><br><span class="line">            t &#x3D; l2;</span><br><span class="line">            l2 &#x3D; l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        t-&gt;next &#x3D; mergeTwoLists(l1,l2);</span><br><span class="line">        return t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <h3 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h3><p>  <strong>迭代法 : </strong> 首先设置一个前哨节点，为了之后输出方便。程序主体:通过值的比较，把每个链表的值都挨个存入cur链表中。while判断的问题，一定还有最有一个没有存入到链表中，所以我们还需要单独的把最后一位加入到链表中来。最后输出前哨节点的下一个也就是dummy-&gt;next。时间复杂度为O(n),具体代码如下 :<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) &#123;</span><br><span class="line">        ListNode* dummy &#x3D; new ListNode(-1);</span><br><span class="line">        ListNode* cur &#x3D; dummy;</span><br><span class="line">        </span><br><span class="line">        while (l1 &amp;&amp; l2) &#123;</span><br><span class="line">            if (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                cur-&gt;next &#x3D; l1;</span><br><span class="line">                l1 &#x3D; l1-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                cur-&gt;next &#x3D; l2;</span><br><span class="line">                l2 &#x3D; l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            cur &#x3D; cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        cur-&gt;next &#x3D; l1 &#x3D;&#x3D; NULL ? l2 : l1;</span><br><span class="line">        return dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-9</title>
-    <url>/2020/10/11/Leetcode-9/</url>
-    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p> &emsp;&emsp;Given an array nums and a value val, remove all instances of that value in-place and return the new length.<br> &emsp;&emsp;Do not allocate extra space for another array, you must do this by <font color = red>modifying the input array in-place</font> with <code>O(1)</code> extra memory.</p>
-<p><strong>Clarification:</strong><br> &emsp;&emsp;Confused why the returned value is an integer but your answer is an array?<br> &emsp;&emsp;Note that the input array is passed in by <strong>reference</strong>, which means a modification to the input array will be known to the caller as well.  </p>
-<p>  <strong>Internally you can think of this:</strong><br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> &#x2F;&#x2F; nums is passed in by reference. (i.e., without making a copy)</span><br><span class="line">int len &#x3D; removeElement(nums, val);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; any modification to nums in your function would be known by the caller.</span><br><span class="line">&#x2F;&#x2F; using the length returned by your function, it prints the first len elements.</span><br><span class="line">for (int i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Example 1: </strong></p>
-<blockquote>
-<p><strong>Input:</strong> nums = [3,2,2,3], val = 3<br><strong>Output:</strong> 2, nums = [2,2]<br><strong>Explanation:</strong> Your function should return length = <strong>2</strong>, with the first two elements of nums being <strong>2</strong><br>It doesn’t matter what you leave beyond the returned length. For example if you return 2 with nums = [2,2,3,3] or nums = [2,3,0,0], your answer will be accepted.</p>
-</blockquote>
-<p><strong>Example 2: </strong></p>
-<blockquote>
-<p><strong>Input:</strong> nums = [0,1,2,2,3,0,4,2], val = 2<br><strong>Output:</strong>  5, nums = [0,1,4,0,3]<br><strong>Explanation:</strong> Your function should return length = <strong>5</strong> ,with the first five elements of nums containing <strong>0, 1, 3, 0</strong> and <strong>4</strong>.Note that the order of those five elements can be arbitrary. It doesn’t matter what values are set beyond the returned length.</p>
-</blockquote>
-<p><strong>Constrains:</strong></p>
-<ul>
-<li><code>0 &lt;= nums.length() &lt;= 100</code></li>
-<li><code>0 &lt;= nums[i] &lt;= 50</code></li>
-<li><code>0 &lt;= val &lt;= 100</code></li>
-</ul>
-<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><p>&emsp;&emsp;<strong>堆栈法:</strong> 首先将nums中不等于val的值全部入栈，再将nums清空。再将没有val值的res的值重新的一一赋给nums，同时将res中的值一一弹出，最后直接返回nums数组的size即可。时间复杂度为O(n),空间复杂度为O(1).具体代码如下:<br>     <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">     class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeElement(vector&lt;int&gt;&amp; nums, int val) &#123;</span><br><span class="line">        int n &#x3D; nums.size();</span><br><span class="line">        stack&lt;int&gt; res;</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; n ;i++) &#123;</span><br><span class="line">            if (nums[i] !&#x3D; val) </span><br><span class="line">                res.push(nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        nums.clear();</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; n ; i++) &#123;</span><br><span class="line">            if (!res.empty())</span><br><span class="line">                nums.push_back(res.top()),res.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        return nums.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h2><p>&emsp;&emsp;<strong>双指针法:</strong> 首先快慢指针置0，进入循环。如果nums数组对应的值不等于val,那么就把当前nums[fast]的值赋给nums[slow++]。如果相等那么fast就自增，最后结果返回slow的值。时间复杂度位O(n),空间复杂度O(1),具体代码如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeElement(vector&lt;int&gt;&amp; nums, int val) &#123;</span><br><span class="line">        int slow &#x3D; 0,size &#x3D; nums.size(),fast &#x3D; 0;</span><br><span class="line">        </span><br><span class="line">        while (fast &lt; size) &#123;</span><br><span class="line">            if (nums[fast] !&#x3D; val) &#123;</span><br><span class="line">                nums[slow++] &#x3D; nums[fast];</span><br><span class="line">            &#125;</span><br><span class="line">            fast++;</span><br><span class="line">        &#125;</span><br><span class="line">        return slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>algorithm</category>
@@ -753,13 +753,7 @@ int main()
         cout &lt;&lt; &quot;Input errors, please input again.&quot; &lt;&lt; endl;
     return 0;
 &#125;
-</code></pre><h3 id="代码测试"><a href="#代码测试" class="headerlink" title="代码测试"></a>代码测试</h3><ul>
-<li><p>随机产生六组数据<br><img src="https://sunu-my.sharepoint.com/personal/23333_sch_bz/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2F23333%5Fsch%5Fbz%2FDocuments%2Fblog%2Fscreenshot%2Epng" alt="avatar"></p>
-</li>
-<li><p>手动输入数据<br><img src="https://sunu-my.sharepoint.com/personal/23333_sch_bz/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2F23333%5Fsch%5Fbz%2FDocuments%2Fblog%2Fscreenshot%5F1%2Epng" alt="avatar"></p>
-</li>
-</ul>
-]]></content>
+</code></pre>]]></content>
       <categories>
         <category>Experiment</category>
       </categories>
@@ -807,9 +801,7 @@ int main()
 <li>if Request<sub>i</sub> &lt;= Avaliable<br>Goto step (3); otherwise, Pi must wait, since the resources are not available</li>
 <li>Have the system pretend to have allocated the requested resources to process Pi by modifying the state as follows<br>Avaliable = Avaliable - Request<sub>i</sub><br>Allocation<sub>i</sub> = Allocation<sub>i</sub> + Request<sub>i</sub><br>Need<sub>i</sub> = Need<sub>i</sub> - Request<sub>i</sub></li>
 </ol>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int p;  &#x2F;&#x2F;Process 进程数</span><br><span class="line">int r;  &#x2F;&#x2F;Rescource 资源类别</span><br><span class="line">int Max[10][10];   &#x2F;&#x2F;最大需求矩阵</span><br><span class="line">int allocation[10][10];    &#x2F;&#x2F;分配矩阵</span><br><span class="line">int need[10][10];    &#x2F;&#x2F;需求矩阵</span><br><span class="line">int Available[10];   &#x2F;&#x2F;可用资源量</span><br><span class="line">int request[10];   &#x2F;&#x2F;请求量</span><br><span class="line"></span><br><span class="line">void input() &#123;</span><br><span class="line">  int i,j ;</span><br><span class="line">  cout &lt;&lt; &quot;请输入最大矩阵Max : \n&quot;;</span><br><span class="line">  for (i &#x3D; 0; i &lt; p ; i++) &#123;</span><br><span class="line">    for (j &#x3D; 0; j &lt; r ;j++) &#123;</span><br><span class="line">      cin &gt;&gt; Max[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  cout &lt;&lt; &quot;请输入分配矩阵 allocation : \n&quot;;</span><br><span class="line">  for (i &#x3D; 0; i &lt; p ; i++) &#123;</span><br><span class="line">    for (j &#x3D; 0; j &lt; r ; j++) &#123;</span><br><span class="line">      cin &gt;&gt; allocation[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  cout &lt;&lt; &quot;需求矩阵need : \n&quot;;</span><br><span class="line">  for (i &#x3D; 0; i &lt; p ;i++) &#123;</span><br><span class="line">    for (j &#x3D; 0; j &lt; r; j++) &#123;</span><br><span class="line">      need[i][j] &#x3D; Max[i][j] - allocation[i][j];</span><br><span class="line">      cout &lt;&lt; need[i][j] &lt;&lt; &quot;\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  cout &lt;&lt; &quot;请输入可用资源量Available : \n&quot;;</span><br><span class="line">  for (i &#x3D; 0;i &lt; r; i++) &#123;</span><br><span class="line">    cin &gt;&gt; Available[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int Compare(int m[],int n[]) &#123;</span><br><span class="line">  for (int i &#x3D; 0; i &lt; r;i++) &#123;</span><br><span class="line">    if (m[i] &lt; n[i]) &#123;</span><br><span class="line">      return 0;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int SafeTest() &#123;</span><br><span class="line">  int flag &#x3D; 0;</span><br><span class="line">  int finish[p];</span><br><span class="line">  int Work[r];</span><br><span class="line">  for (int i &#x3D; 0;i &lt; p;i++) &#123;</span><br><span class="line">    finish[i] &#x3D; 0;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  for (int i &#x3D; 0 ;i &lt; r;i++) &#123;</span><br><span class="line">    Work[i] &#x3D; Available[i];</span><br><span class="line">  &#125;</span><br><span class="line">  cout &lt;&lt; &quot;分配序列 : \n&quot;;</span><br><span class="line">  cout &lt;&lt; &quot;     allocation      need          available&quot; &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">  for (int i &#x3D; 0 ; i &lt; p;i++) &#123;</span><br><span class="line">    for (int j &#x3D; 0 ; j &lt; p ;j++) &#123;</span><br><span class="line">      if (finish[j] &#x3D;&#x3D; 1) &#123;</span><br><span class="line">        continue;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      else &#123;</span><br><span class="line"></span><br><span class="line">        if (Compare(Work,need[j])) &#123;    &#x2F;&#x2F;work &gt;&#x3D; need </span><br><span class="line"></span><br><span class="line">          finish[j] &#x3D; 1;</span><br><span class="line">          cout &lt;&lt; &quot;\n&quot; &lt;&lt; &quot;进程&quot; &lt;&lt; j+1 &lt;&lt; &quot;\t&quot;;</span><br><span class="line">          flag &#x3D; 1;</span><br><span class="line"></span><br><span class="line">          for (int k &#x3D; 0;k &lt; r; k++) &#123;</span><br><span class="line">            printf(&quot;  %2d &quot;, allocation[j][k]);</span><br><span class="line">          &#125;</span><br><span class="line">          cout &lt;&lt; &quot;      &quot;;</span><br><span class="line"></span><br><span class="line">          for (int k &#x3D; 0 ; k &lt; r;k++) &#123;</span><br><span class="line">            printf(&quot;  %2d &quot;,need[j][k]);</span><br><span class="line">          &#125;</span><br><span class="line">          cout &lt;&lt; &quot;      &quot;;</span><br><span class="line"></span><br><span class="line">          for (int k &#x3D; 0; k &lt; r;k++) &#123;</span><br><span class="line">            printf(&quot;  %2d &quot;,Work[k]+allocation[j][k]);</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          for (int k &#x3D; 0;k &lt; r;k++) &#123;</span><br><span class="line">            Work[k] &#x3D; Work[k] + allocation[j][k];</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          break;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      if (flag &#x3D;&#x3D; 1) &#123;</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  cout &lt;&lt; &quot;\n&quot;;</span><br><span class="line">  for (int i &#x3D; 0 ; i &lt; p ;i++) &#123;</span><br><span class="line">    if (finish[i] &#x3D;&#x3D; 0)</span><br><span class="line">      return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void rtest(int n) &#123;</span><br><span class="line">  if (Compare(Available,request) &amp;&amp; Compare(need[n-1],request)) &#123;</span><br><span class="line">    for (int j &#x3D; 0; j &lt; r;j++) &#123;</span><br><span class="line">      allocation[n-1][j] +&#x3D; request[j];</span><br><span class="line">      need[n-1][j] -&#x3D; request[j];</span><br><span class="line">      Available[j] -&#x3D; request[j];</span><br><span class="line">    &#125;</span><br><span class="line">    if (SafeTest())&#123;</span><br><span class="line">      cout &lt;&lt; &quot;允许&quot; &lt;&lt; n &lt;&lt; &quot;进程申请资源！ \n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">      else &#123;</span><br><span class="line">        cout &lt;&lt; &quot;不允许&quot;&lt;&lt;n&lt;&lt;&quot;进程申请资源! \n&quot;;</span><br><span class="line">        for (int j &#x3D; 0;j &lt; r;j++) &#123;</span><br><span class="line">          allocation[n-1][j] +&#x3D; request[j];</span><br><span class="line">          need[n-1][j] -&#x3D; request[j];</span><br><span class="line">          Available[j] -&#x3D; request[j];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  else &#123;</span><br><span class="line">    cout &lt;&lt; &quot;申请资源越界！ \n&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int i,n;       &#x2F;&#x2F;n-第n个资源申请</span><br><span class="line">    cout&lt;&lt;&quot;请输入进程数：&quot;;</span><br><span class="line">    cin&gt;&gt;p;</span><br><span class="line">    cout&lt;&lt;&quot;请输入资源种类数：&quot;;</span><br><span class="line">    cin&gt;&gt;r;</span><br><span class="line">    &#x2F;&#x2F;默认状态4、3</span><br><span class="line">    input();&#x2F;&#x2F;输入函数</span><br><span class="line">    if(SafeTest()&#x3D;&#x3D;1)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;存在安全序列，初始状态安全。\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;不存在安全序列，初始状态不安全。\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;&quot;请输入发出请求向量request的进程编号：&quot;;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    cout&lt;&lt;&quot;请输入请求向量request\n&quot;;</span><br><span class="line">    for(i&#x3D;0; i&lt;r; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;request[i];</span><br><span class="line">    &#125;</span><br><span class="line">    rtest(n);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="代码测试结果"><a href="#代码测试结果" class="headerlink" title="代码测试结果"></a>代码测试结果</h3><p><img src="https://sunu-my.sharepoint.com/personal/23333_sch_bz/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2F23333%5Fsch%5Fbz%2FDocuments%2Fblog%2Fscreenshot%5F2%2Epng" alt="avatar"></p>
-]]></content>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int p;  &#x2F;&#x2F;Process 进程数</span><br><span class="line">int r;  &#x2F;&#x2F;Rescource 资源类别</span><br><span class="line">int Max[10][10];   &#x2F;&#x2F;最大需求矩阵</span><br><span class="line">int allocation[10][10];    &#x2F;&#x2F;分配矩阵</span><br><span class="line">int need[10][10];    &#x2F;&#x2F;需求矩阵</span><br><span class="line">int Available[10];   &#x2F;&#x2F;可用资源量</span><br><span class="line">int request[10];   &#x2F;&#x2F;请求量</span><br><span class="line"></span><br><span class="line">void input() &#123;</span><br><span class="line">  int i,j ;</span><br><span class="line">  cout &lt;&lt; &quot;请输入最大矩阵Max : \n&quot;;</span><br><span class="line">  for (i &#x3D; 0; i &lt; p ; i++) &#123;</span><br><span class="line">    for (j &#x3D; 0; j &lt; r ;j++) &#123;</span><br><span class="line">      cin &gt;&gt; Max[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  cout &lt;&lt; &quot;请输入分配矩阵 allocation : \n&quot;;</span><br><span class="line">  for (i &#x3D; 0; i &lt; p ; i++) &#123;</span><br><span class="line">    for (j &#x3D; 0; j &lt; r ; j++) &#123;</span><br><span class="line">      cin &gt;&gt; allocation[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  cout &lt;&lt; &quot;需求矩阵need : \n&quot;;</span><br><span class="line">  for (i &#x3D; 0; i &lt; p ;i++) &#123;</span><br><span class="line">    for (j &#x3D; 0; j &lt; r; j++) &#123;</span><br><span class="line">      need[i][j] &#x3D; Max[i][j] - allocation[i][j];</span><br><span class="line">      cout &lt;&lt; need[i][j] &lt;&lt; &quot;\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  cout &lt;&lt; &quot;请输入可用资源量Available : \n&quot;;</span><br><span class="line">  for (i &#x3D; 0;i &lt; r; i++) &#123;</span><br><span class="line">    cin &gt;&gt; Available[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int Compare(int m[],int n[]) &#123;</span><br><span class="line">  for (int i &#x3D; 0; i &lt; r;i++) &#123;</span><br><span class="line">    if (m[i] &lt; n[i]) &#123;</span><br><span class="line">      return 0;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int SafeTest() &#123;</span><br><span class="line">  int flag &#x3D; 0;</span><br><span class="line">  int finish[p];</span><br><span class="line">  int Work[r];</span><br><span class="line">  for (int i &#x3D; 0;i &lt; p;i++) &#123;</span><br><span class="line">    finish[i] &#x3D; 0;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  for (int i &#x3D; 0 ;i &lt; r;i++) &#123;</span><br><span class="line">    Work[i] &#x3D; Available[i];</span><br><span class="line">  &#125;</span><br><span class="line">  cout &lt;&lt; &quot;分配序列 : \n&quot;;</span><br><span class="line">  cout &lt;&lt; &quot;     allocation      need          available&quot; &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">  for (int i &#x3D; 0 ; i &lt; p;i++) &#123;</span><br><span class="line">    for (int j &#x3D; 0 ; j &lt; p ;j++) &#123;</span><br><span class="line">      if (finish[j] &#x3D;&#x3D; 1) &#123;</span><br><span class="line">        continue;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      else &#123;</span><br><span class="line"></span><br><span class="line">        if (Compare(Work,need[j])) &#123;    &#x2F;&#x2F;work &gt;&#x3D; need </span><br><span class="line"></span><br><span class="line">          finish[j] &#x3D; 1;</span><br><span class="line">          cout &lt;&lt; &quot;\n&quot; &lt;&lt; &quot;进程&quot; &lt;&lt; j+1 &lt;&lt; &quot;\t&quot;;</span><br><span class="line">          flag &#x3D; 1;</span><br><span class="line"></span><br><span class="line">          for (int k &#x3D; 0;k &lt; r; k++) &#123;</span><br><span class="line">            printf(&quot;  %2d &quot;, allocation[j][k]);</span><br><span class="line">          &#125;</span><br><span class="line">          cout &lt;&lt; &quot;      &quot;;</span><br><span class="line"></span><br><span class="line">          for (int k &#x3D; 0 ; k &lt; r;k++) &#123;</span><br><span class="line">            printf(&quot;  %2d &quot;,need[j][k]);</span><br><span class="line">          &#125;</span><br><span class="line">          cout &lt;&lt; &quot;      &quot;;</span><br><span class="line"></span><br><span class="line">          for (int k &#x3D; 0; k &lt; r;k++) &#123;</span><br><span class="line">            printf(&quot;  %2d &quot;,Work[k]+allocation[j][k]);</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          for (int k &#x3D; 0;k &lt; r;k++) &#123;</span><br><span class="line">            Work[k] &#x3D; Work[k] + allocation[j][k];</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          break;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      if (flag &#x3D;&#x3D; 1) &#123;</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  cout &lt;&lt; &quot;\n&quot;;</span><br><span class="line">  for (int i &#x3D; 0 ; i &lt; p ;i++) &#123;</span><br><span class="line">    if (finish[i] &#x3D;&#x3D; 0)</span><br><span class="line">      return 0;</span><br><span class="line">  &#125;</span><br><span class="line">  return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void rtest(int n) &#123;</span><br><span class="line">  if (Compare(Available,request) &amp;&amp; Compare(need[n-1],request)) &#123;</span><br><span class="line">    for (int j &#x3D; 0; j &lt; r;j++) &#123;</span><br><span class="line">      allocation[n-1][j] +&#x3D; request[j];</span><br><span class="line">      need[n-1][j] -&#x3D; request[j];</span><br><span class="line">      Available[j] -&#x3D; request[j];</span><br><span class="line">    &#125;</span><br><span class="line">    if (SafeTest())&#123;</span><br><span class="line">      cout &lt;&lt; &quot;允许&quot; &lt;&lt; n &lt;&lt; &quot;进程申请资源！ \n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">      else &#123;</span><br><span class="line">        cout &lt;&lt; &quot;不允许&quot;&lt;&lt;n&lt;&lt;&quot;进程申请资源! \n&quot;;</span><br><span class="line">        for (int j &#x3D; 0;j &lt; r;j++) &#123;</span><br><span class="line">          allocation[n-1][j] +&#x3D; request[j];</span><br><span class="line">          need[n-1][j] -&#x3D; request[j];</span><br><span class="line">          Available[j] -&#x3D; request[j];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  else &#123;</span><br><span class="line">    cout &lt;&lt; &quot;申请资源越界！ \n&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int i,n;       &#x2F;&#x2F;n-第n个资源申请</span><br><span class="line">    cout&lt;&lt;&quot;请输入进程数：&quot;;</span><br><span class="line">    cin&gt;&gt;p;</span><br><span class="line">    cout&lt;&lt;&quot;请输入资源种类数：&quot;;</span><br><span class="line">    cin&gt;&gt;r;</span><br><span class="line">    &#x2F;&#x2F;默认状态4、3</span><br><span class="line">    input();&#x2F;&#x2F;输入函数</span><br><span class="line">    if(SafeTest()&#x3D;&#x3D;1)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;存在安全序列，初始状态安全。\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;不存在安全序列，初始状态不安全。\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;&quot;请输入发出请求向量request的进程编号：&quot;;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    cout&lt;&lt;&quot;请输入请求向量request\n&quot;;</span><br><span class="line">    for(i&#x3D;0; i&lt;r; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;request[i];</span><br><span class="line">    &#125;</span><br><span class="line">    rtest(n);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Experiment</category>
       </categories>
@@ -836,6 +828,219 @@ int main()
 ]]></content>
       <categories>
         <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>theory</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Inside the C++ Object Model reading note</title>
+    <url>/2021/01/11/%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2C-%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/</url>
+    <content><![CDATA[<h2 id="第一章-关于对象"><a href="#第一章-关于对象" class="headerlink" title="第一章 关于对象"></a><center>第一章 关于对象</center></h2><p>介绍了C++ 如何在背后实现一个对象，内存中的布局以及空间上的关系</p>
+<ol>
+<li>C++ 中以类对数据进行封装后，布局成本是否会增加？<ul>
+<li>一般来说，并不会增加成本。每个data member直接内含在每一个class object中，就像C struct的情况一样。而member funcitons虽然含在class声明中，却不出现在object中。<font color="purple">所以类的封装并不会增加布局成本</font></li>
+</ul>
+</li>
+<li><font color="red">C++在布局以及存取时间上主要的额外负担是由virtual引起的</font>，包括：<ul>
+<li><strong>virtual funcitons机制</strong>:每一个class有一个virtual table内含class之中有作用的virtual funcitons地址，每个object有一个vptr指向virtual table所在</li>
+<li><strong>virtual base class</strong>: 用以实现 “多次出现在继承体系中的base class有一个单一而被共享的实例”</li>
+</ul>
+</li>
+<li><u>C++ 布局成本的主要来源就是virtual机制</u></li>
+<li><font color="red">C++对象模型(The C++ Object Model)</font><br><img src="https://i.postimg.cc/8kbqdbDp/C-object-model.png =100x100" alt="avatar"><ul>
+<li>non-static data members被配置于每一个class object之内</li>
+<li>static data members则被存放在所有class object之外</li>
+<li>static/non-static funciton members也被放在所有class object之外</li>
+</ul>
+</li>
+<li><font color="blue">virtual funciton 机制由以下两个步骤来支持</font>：<ul>
+<li>每一个class产生出一系列<font color="blue">virtual funciton的指针,放在一个被称为virtual table(vtbl,vtable</font>的表格中;</li>
+<li>每一个class object被添加一个<font color="blue">vptr指向相应的vtable</font>,vptr的设置由编译器全权负责，程序员无须关心</li>
+</ul>
+</li>
+<li><font color="blue">RTTI</font> : 一般来说，每一个class相关联的type_info object通常也保存在vtable的第一个slot中</li>
+<li>需要清楚明白的一个概念: <u>一个vtbl对应一个class,一个vptr对应一个class object</u></li>
+<li><font color="blue">引入继承后对象模型成本</font>:<ul>
+<li>普通继承 : 父对象被直接包含在子对象中,这样对父对象的存取也是直接的,没有额外成本;</li>
+<li>虚拟继承 : 父对象会由一个指针指出来，这样对于父对象的存取就多了一层间接性,必须由一个指针来访问，这样就添加了一次间接的额外成本</li>
+</ul>
+</li>
+<li><font color="blue">C++优先判断一个语句为声明</font> : 当语言无法区分一个语句是声明还是表达式时，就需要用一个超越语言范围的规则——C++优先判断为声明</li>
+<li><font color="blue">struct和class关键字的意义</font> :<ul>
+<li>它们之间并无本质区别,<u>更多的是概念和编程思想上的区别</u>。</li>
+<li>struct 用来表现那些只有数据的集合体POD(Plain OI’ Data)、而class则希望表达的是ADT(abstract data type)的思想;</li>
+<li>两个关键字本质是无区别的,所以class并没有必须引入,但是引入它的确非常令人满意，因为这个语言所引入的不止是这个关键字,还有它所支持的封装和继承的哲学;</li>
+<li>struct方便C程序员迁移到C++</li>
+</ul>
+</li>
+<li><font color="fuchsia">C++只保证处于同一个access section 的数据,一定以声明的次序出现在内存布局当中</font>。</li>
+<li><font color="blue">与C兼容的内存布局</font> : <u>组合,而非继承,才是把C的C++结合在一起的<strong>唯一可行</strong>的方法</u><ul>
+<li>只有使用组合时,才能保证C拥有相同的内存布局,使用继承的内存布局是不受C++ standard 所保证的</li>
+</ul>
+</li>
+<li><font color="blue">C++ 支持三种形式的编译风格(programming paradigm)</font> : <ul>
+<li><font color="blue">面向过程的风格</font> : 就像C一样, 一条语句接一条语句的执行或者函数跳转;</li>
+<li><font color="blue"><strong>基于对象</strong>的风格(object-based)</font> (或称ADT) : <u>仅仅使用了class封装</u>,很多人都是在用基于对象的风格却误以为自己在使用面向对象的风格;</li>
+<li><font color="blue"><strong>面向对象</strong>的风格(object-oriented)</font> : <u>使用了class的封装和多态</u>的编程思维(多态才是真正的面向对象的特征)。</li>
+<li>纯粹以一种paradigm写程序,有助于整体行为的良好稳固。</li>
+</ul>
+</li>
+<li>C++ 支持多态的方法 : <ul>
+<li>经由一组隐式的转化操作,例如把derived class 指针转化为一个指向其public base type 的指针: <code> shape *ps = new circle() </code></li>
+<li>经由 virtual function 机制 : ps-&gt;test();</li>
+<li>经由 dynamic_cast 和 typeid 运算符 : if (circle <em>pc = dynamic_cast&lt;circle </em>&gt; (ps)) ….</li>
+</ul>
+</li>
+<li>一个reference通常是以一个指针实现的，所以point和reference并没有本质的区别。</li>
+<li><font color="blue">一个对象的内存布局大小(通常由3部分组成)</font>　:　<ul>
+<li>其nonstatic data member 的总和大小;</li>
+<li>任何由于位对齐所需要的填补上云的空间;</li>
+<li>加上为了支持virtual 机制而引起的额外负担。</li>
+<li>这也印证了前面的一个结论 : C++中的额外成本都是由于virtual 机制所引起的。</li>
+</ul>
+</li>
+<li>指针的类型 : <ul>
+<li>对于内存来说,不同类型的指针并没有什么不同。它们都是占用一个word的大小,包含一个数字,这个数字代表内存中的整体上地址;</li>
+<li>感觉上,指针的类型是编译器的概念,对于硬件来,并没有什么指针类型的概念;</li>
+<li>转型操作也只是一种编译器的指令,它改变的内是编译器对被内存的解释方式而已！</li>
+</ul>
+</li>
+<li><font color="blue"> 多态只能由”指针”或”引用”来实现,根本原因在于 </font> : <ul>
+<li><u>指针的引用(通常以指针来实现)的大小是固定的(一个word),而对象的大小却是可变的</u>。其类的指针和引用可以指向(或引用)子类,但是基类的对象也只能是基类，没有变化不可能引发多态。</li>
+<li>一个point或reference绝不会引发任何”与类型有关的内存委托操作”,<u>在指针类型转换时会受到的改变的只有它们所指向内存的解释方式而已</u>。(例如指针绝不会引发slice,因为它们大小相同)</li>
+</ul>
+</li>
+<li><u>在初始化、assignment等操作,编译器会保证对象的vptrs得到正确的设置。这是编译器的职责</u>。一般都是通过在各种操作中插入编译器的代码来实现的。</li>
+</ol>
+<h2 id="第二章-构造函数语意学"><a href="#第二章-构造函数语意学" class="headerlink" title=" 第二章 构造函数语意学 "></a><center> 第二章 构造函数语意学 </center></h2><p>详细的讨论了constructor如何工作,讨论构造一个对象的过程以及构造一个对象给程序带来的影响。</p>
+<ol>
+<li>C++中对于默认构造函数的解释为: <font color="red">默认的构造函数会在需要的时候被编译器产生出来</font>。<ul>
+<li><font color="fuchsia">这里非常重要的一点是: 谁需要? 是<strong>程序的需要</strong>还是<strong>编译器的需要</strong> </font>？<ul>
+<li><u>如果是程序的需要,那是程序员的责任;只有在是编译器的需要时,默认构造函数才会被编译器产生出来,而且被产生出来的默认构造函数只会执行编译器所需要的行动，而且这个产生操作只有在默认构造函数真正被调用时才会</u></li>
+<li>例如成员变量初始化为0操作，这个操作是程序和需要,而不是编译器的需要。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><font color="blue"> 区分trivial 和 notrivial </font> : <ul>
+<li>只有编译器需要的时候,合成操作才是notrivial的, 这样的函数才会被真正的合成出来;</li>
+<li><u>如果编译器不需要，而程序员又没有提供,这时的默认构造函数就是trivial的。虽然它在概念上存在，但是编译器实际上根本不会去合成出来</u>,因为他不做任何有意义的事情,所以当然可以忽略它不去合成。trivial的函数只存在于概念上，实际上不存在这个函数。</li>
+</ul>
+</li>
+<li><font color="red"> 总结变量的初始化 : 只有全局变量和静态变量才会保证初始化</font>,其中静态变量可以视为全局变量的一种,因它静态变量也是保存在优变量的存储空间上的。<ul>
+<li>Golbal objects 的内存保证会在程序激活的时候被清0;Local objects 配置于程序的堆栈中, Heap objects 配置于自由空间中,都不一定会被清0,它们的内容将是内存上次被使用后的痕迹</li>
+</ul>
+</li>
+<li>类声明头文件可以被许多源文件所包含,如何避免合成默认构造函数、拷贝构造函数、析构函数、赋值拷贝操作符(4大成员函数)时不引起函数的重定义?<ul>
+<li>解决方法是以inline的方式完成,如果函数太复杂不适合inline,就会合成一个excplicit non-inline static实体(static 函数独立于编译单元)</li>
+</ul>
+</li>
+<li>如果class A内含一个或以上的member objects，那么A的constructor必须调用每一个member class的默认构造函数。<ul>
+<li>具体方法是 : <u>编译器会扩张constructor,在其中安插代码使得在user code被调用之前先调用member objects 的默认构造函数(当然如果需要调用基类的默认构造函数,则放在基类的默认构造函数调用之后:基类构造函数-&gt;成员构造函数-&gt;user code)</u>。</li>
+<li>C++ 要求以”member objects 在 class 中的声明次序”来调用各个constructors。这就是<font color="fuchsia">声明的次序决定了初始化次序</font>(构造函数初始化列表一直要求以声明顺序来初始化)的根本原因!</li>
+</ul>
+</li>
+<li>带有virtual funcitons 的类的默认构造函数毫无疑问是nontrivial的,需要编译器安插额外的成员vptr并在构造函数中正确设置vptr,这是编译器的重要职责之一。<ul>
+<li>带有virtual base class 的类的默认构造函数同样也是毫无疑问的nonstatic的,编译器需要正确设置相关的信息以僵持这些virtual base class 的信息能够在执行时准妥当,这些设置取决于实现虚基类的手法。</li>
+</ul>
+</li>
+<li>编译器有4种情况会使得编译器真正为class生成nontrivial的默认构造函数,这个<u>nontrivial的默认构造函数只满足编译器的需要(调用member objects 或base class 的默认构造函数、初始化virtual funciton 或 virtual base class 机制)</u>。其它情况时,类在概念上拥有默认构造函数,但是实际根本不会被产生出来(前面的区分)</li>
+<li><font color="red">C++新手常见的两个误区</font><ul>
+<li><u>ERROR : 如果class 没有定义default constructor 就会合成一个</u>;<ul>
+<li>首先定义了其它constructor就不会合成默认构造函数,其次即使没有定义任何函数也不一定会合成default constructor,可能仅仅是概念上有, 但实际上不合成出来。</li>
+</ul>
+</li>
+<li><u>ERROR : 编译器合成出来的默认构造函数会明确设定一个data member 的默认值;</u><ul>
+<li>明显不会,区分了Golbal objects,stack objects,Heap objects 就非常明白了只有在Golbal 上的objects会被清0,其它的情况不会保证被清0。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Copy constructor 和默认构造函数来说,只有在必须的时候才会被产生出来,对于大部分的class 来说,拷贝构造函数仅仅需要按位拷贝就可以。<u>满足<font color="blue">bitwise copy semantics</font>的拷贝构造函数是trivial的，就不会真正被合成出来(与默认构造函数,只有nontrivial的拷贝构造函数才会被真正合成出来)</u>。<ul>
+<li>对于大多数类按位拷贝就够了,什么时候一个class 不展现bitwise copy semantics呢? 有以下四种情况<ul>
+<li>class内含一个member object而后者声明了(或者是由于nontrivial而被合成出来的)一个copy constructor时;</li>
+<li>当class 继承自一个base class 而后者存在一个copy constructor时(不论显示定义或是合成而得的)</li>
+<li>当class 声明了一个或多个virtual funcitons时; (vf 影响了位语意,进而影响了效率)</li>
+<li>当class 派生自一个继承串链,其中一个或多个virtual base classes时。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><font color="blue">NVR优化</font> : 编译器会把返回值作为一个参数传到函数内,比如:<ul>
+<li><code>X foo() &#123;…&#125;</code> 会被更改(也可以手动做这个优化)为 : <code>void foo(X &amp; result) &#123;…&#125;</code>;</li>
+<li>从使用者角度，用<code>return X(…)</code>代替 <code>X x;return x;</code>能够辅助这个优化操作。</li>
+</ul>
+</li>
+<li><font color="blue">不要随意提供copy constructor</font>,<u>对于满足bitwise copy constructor的类来说,编译器自动生成的拷贝构造函数自动地使用了位拷贝(这是效率最高的)</u>,如果你自己随意提供copy constructor就会压抑掉编译器的这个行为,这还会影响效率。</li>
+<li><font color="blue">成员初始化列表</font> : 在成员初始化列表背后发现的事情是什么?<ul>
+<li>编译器会一一操作初始化列表,把其中<font color="red">初始化操作以member声明的次序</font>在constructor内安插初始化,并且在任何excplicit user code 之前。</li>
+<li><u>“以member声明的次序来决定初始化次序”和”初始化列表中的排列次序”之间的<font color="red">外观错乱</font></u>,可能会导致一些不明显的Bug</li>
+<li>不过GCC已经强制要求使用声明次序来进行初始化以避免这个陷阱。</li>
+</ul>
+</li>
+<li>理解了初始化列表中的实际执行顺序中”以member声明的次序”来决定的,就可以理解一些很微妙的错误。比如:<ul>
+<li><code>A() : i(99),j(66),value(foo()) &#123;…&#125;</code></li>
+<li>int i, int j;</li>
+<li>这会不会产生错误取决于成员函数foo()是依赖i还是j;</li>
+<li>如果foo依赖于i,由于i声明在value之前,所以不会产生错误；</li>
+<li>如果foo依赖于j,由于j声明在value之后,就产生了使用未初始化成员的错误。</li>
+</ul>
+</li>
+</ol>
+<h2 id="第三章-Data语意学"><a href="#第三章-Data语意学" class="headerlink" title="第三章 Data语意学 "></a><center>第三章 Data语意学 </center></h2><p>C++ 对象模型的细节,讨论data member的处理。</p>
+<ol>
+<li><u>空类也有1Byte的大小,因为这样才能使得这个class 的2个objects在内存中有独一无二的地址</u>。</li>
+<li><font color="blue">一个对象内存布局大小(通常由3外部分组成)</font><ul>
+<li>其nonstatic data member的总和大小;</li>
+<li>任何由于位对齐所需要的填补上去的大小;</li>
+<li>加上为了支持virtual机制而引起的额外负担;</li>
+</ul>
+</li>
+<li>对member functions本身的分析会直到整个class 的声明都出现才开始。所以class的member funcitons可以引用声明在后面的成员,C语言就做不到。</li>
+<li>和第3条对比，需要十分注意的一点是 : <font color="fuchsia">class 中的typedef并不具备这个性质</font>。<ul>
+<li><u>因此，类中的typedef影响会受到函数与typedef的先后顺序的影响</u>。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef int length;</span><br><span class="line">class Point3d &#123;</span><br><span class="line">  public:</span><br><span class="line">    void f1(length l) &#123;cout &lt;&lt; l &lt;&lt; endl; &#125;</span><br><span class="line">    typedef string length;</span><br><span class="line">    void f2(length l) &#123; cout &lt;&lt; l &lt;&lt; endl; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>这样f1绑定的length类型是int;而f2绑定的length类型才是string。</li>
+<li><font color="fuchsia">所以，对于typedef需要防御性的风格: 始终把nested type声明(即typedef)放在class起始处！</font></li>
+</ul>
+</li>
+<li>传统上,vptr被安放在所有被明确声明的member的最后,不过也有些编译器把vptr放在最前面(MSVC++ 就是把vptr放在最前面，而GCC是把vptr放在最后面).</li>
+<li>在C++中，直观上来说,由一个对象存取一个member会比由一个指针存取一个member更快捷。但是对于经由一个对象来存取和一个指针来存取一个静态的member来说，是完全一样的，都会被编译器所扩展。</li>
+<li>经由一个函数调用的结果来存取静态成员，C++标准要求必须对这个函数进行求值，虽然这个求值的结果并无用处,例如:<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">foobar().static_data &#x3D; 10;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>foo()返回一个类型为X的对象，含有一个static_data，foobar()其实可以不用求值而直接访问这个静态成员，但是C++标准保证了foobar()会被求值，可能的代码扩展为:<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(void) foobar();</span><br><span class="line">X::static_data &#x3D; 10;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol>
+<li>对一个nonstatic data member 进行存取操作,编译器会进行如下扩展:<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">origin._y &#x3D; 0.0;</span><br><span class="line"></span><br><span class="line">那么地址&amp;origin._y将等于:</span><br><span class="line"></span><br><span class="line">＆origin + (&amp;X::_y - 1);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>注意其中的-1的操作，指向data member 的指针，其offset 值总是被加上1，这桩可以2使编译器系统区分”一个指针data member 的指针，用以指向class的第一个member”和”一个指向data member的指针,但是没有指向任何member”两种情况(<i>成员指针也需要有个表示NULL的方式，0相当于用来表示NULL了，其它的就都要加上1了</i>)。</li>
+</ul>
+<ol>
+<li>以下这两种写法有什么区别？<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">X x; x.x &#x3D; 0.0;</span><br><span class="line"></span><br><span class="line">*px &#x3D; &amp;x; px-&gt;x &#x3D; 0.0;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>答案是:<u>X是一个派生类，而其继承结构有一个虚基类，且x成员又是蜡烛基类中的成员，这两种写法在编译器眼中就有巨大区别了</u>因为我们不能明确的说pt必然指向哪一个class type,故我们也就不知道编译时期member 真正的offset位置，存取操作只能延时到执行期。对于x来说类型固定，所以member的offset位置也在编译时期就确定了。</li>
+</ul>
+<ol>
+<li>派生类的成员和基类的排序并未在C++ standard中强制指定；理论止编译器可以自由安排，<u>但是对于大部分编译器实现来说，都是把基类成员放在前面，但是virtual base class 除外。(一般而言，任何一条规则一旦碰到virtual base class 就没辙了)</u>。</li>
+<li><font color="red">C++ standard中保证： 出现在派生类中的base class subobject有其完整原样性！</font><ul>
+<li>子类会被放在父类的对齐空白字节之后，因为父类的完整性必须得以保证，父类的对齐空白字节也是父类的一部分，也是不可分割的。</li>
+</ul>
+</li>
+<li><font color="blue">支持多态所带来的4个负担</font>：<ul>
+<li>导入virtual table 用来存放每一个virtual funcitons的地址。这个Table 的元素数目一般而言是被声明的virtual funcitons数目再加上一个或两个slots(用心支持RTTI)；</li>
+<li>在每一个class object 中安插一个vptr指向相应vtable;</li>
+<li>在constructor 中安插代码以正确设置vptr，让它指定class 所对应的virtual table;</li>
+<li>在deconstructor 中安插代码以正确设置vptr，使它能够抹消”指向class 之相关virtual table”的vptr；</li>
+</ul>
+</li>
+<li><font color="blue"><strong>单一继承</strong>并<strong>含有虚拟函数</strong>时的内存布局</font>(考虑把vptr放在尾部的情况)<br><img src="https://i.postimg.cc/pTfDhf9f/blog1.png =100x100" alt="avatar"></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Reading Notes</category>
       </categories>
       <tags>
         <tag>theory</tag>
