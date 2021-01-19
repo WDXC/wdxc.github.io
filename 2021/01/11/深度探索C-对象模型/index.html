@@ -27,14 +27,17 @@
 <meta property="og:site_name" content="Rabbet">
 <meta property="og:description" content="深度探索C++对象模型读书笔记">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i.postimg.cc/8kbqdbDp/C-object-model.png =100x100">
-<meta property="og:image" content="https://i.postimg.cc/pTfDhf9f/blog1.png =100x100">
+<meta property="og:image" content="https://i.loli.net/2021/01/19/gfEsZuIHRxYBdhD.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/19/J9y5AXFnGpf1gTW.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/19/fH6MdhvlIUk2KoO.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/19/Zp1iUaex6qnI3XL.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/19/GPLfRBbtrNT36YW.png">
 <meta property="article:published_time" content="2021-01-11T11:04:00.000Z">
-<meta property="article:modified_time" content="2021-01-18T03:02:54.269Z">
+<meta property="article:modified_time" content="2021-01-19T12:32:23.551Z">
 <meta property="article:author" content="Rabbet">
 <meta property="article:tag" content="theory">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.postimg.cc/8kbqdbDp/C-object-model.png =100x100">
+<meta name="twitter:image" content="https://i.loli.net/2021/01/19/gfEsZuIHRxYBdhD.png">
 
 <link rel="canonical" href="http://yoursite.com/2021/01/11/%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2C-%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/">
 
@@ -233,7 +236,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-18 11:02:54" itemprop="dateModified" datetime="2021-01-18T11:02:54+08:00">2021-01-18</time>
+                <time title="修改时间：2021-01-19 20:32:23" itemprop="dateModified" datetime="2021-01-19T20:32:23+08:00">2021-01-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -251,14 +254,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>7.3k</span>
+              <span>8.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>7 分钟</span>
+              <span>8 分钟</span>
             </span>
             <div class="post-description">深度探索C++对象模型读书笔记</div>
 
@@ -283,7 +286,7 @@
 </ul>
 </li>
 <li><u>C++ 布局成本的主要来源就是virtual机制</u></li>
-<li><font color="red">C++对象模型(The C++ Object Model)</font><br><img src="https://i.postimg.cc/8kbqdbDp/C-object-model.png =100x100" alt="avatar"><ul>
+<li><font color="red">C++对象模型(The C++ Object Model)</font><br><img src="https://i.loli.net/2021/01/19/gfEsZuIHRxYBdhD.png" alt="C___object_model.png"><ul>
 <li>non-static data members被配置于每一个class object之内</li>
 <li>static data members则被存放在所有class object之外</li>
 <li>static/non-static funciton members也被放在所有class object之外</li>
@@ -441,24 +444,21 @@
 </li>
 <li>传统上,vptr被安放在所有被明确声明的member的最后,不过也有些编译器把vptr放在最前面(MSVC++ 就是把vptr放在最前面，而GCC是把vptr放在最后面).</li>
 <li>在C++中，直观上来说,由一个对象存取一个member会比由一个指针存取一个member更快捷。但是对于经由一个对象来存取和一个指针来存取一个静态的member来说，是完全一样的，都会被编译器所扩展。</li>
-<li>经由一个函数调用的结果来存取静态成员，C++标准要求必须对这个函数进行求值，虽然这个求值的结果并无用处,例如:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foobar().static_data &#x3D; 10;</span><br></pre></td></tr></table></figure></li>
-</ol>
+<li>经由一个函数调用的结果来存取静态成员，C++标准要求必须对这个函数进行求值，虽然这个求值的结果并无用处,例如:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foobar().static_data &#x3D; 10;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>foo()返回一个类型为X的对象，含有一个static_data，foobar()其实可以不用求值而直接访问这个静态成员，但是C++标准保证了foobar()会被求值，可能的代码扩展为:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(void) foobar();</span><br><span class="line">X::static_data &#x3D; 10;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<ol>
-<li>对一个nonstatic data member 进行存取操作,编译器会进行如下扩展:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">origin._y &#x3D; 0.0;</span><br><span class="line"></span><br><span class="line">那么地址&amp;origin._y将等于:</span><br><span class="line"></span><br><span class="line">＆origin + (&amp;X::_y - 1);</span><br></pre></td></tr></table></figure></li>
-</ol>
+</li>
+<li>对一个nonstatic data member 进行存取操作,编译器会进行如下扩展:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">origin._y &#x3D; 0.0;</span><br><span class="line"></span><br><span class="line">那么地址&amp;origin._y将等于:</span><br><span class="line"></span><br><span class="line">＆origin + (&amp;X::_y - 1);</span><br></pre></td></tr></table></figure>
 <ul>
 <li>注意其中的-1的操作，指向data member 的指针，其offset 值总是被加上1，这桩可以2使编译器系统区分”一个指针data member 的指针，用以指向class的第一个member”和”一个指向data member的指针,但是没有指向任何member”两种情况(<i>成员指针也需要有个表示NULL的方式，0相当于用来表示NULL了，其它的就都要加上1了</i>)。</li>
 </ul>
-<ol>
-<li>以下这两种写法有什么区别？<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X x; x.x &#x3D; 0.0;</span><br><span class="line"></span><br><span class="line">*px &#x3D; &amp;x; px-&gt;x &#x3D; 0.0;</span><br></pre></td></tr></table></figure></li>
-</ol>
+</li>
+<li>以下这两种写法有什么区别？<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X x; x.x &#x3D; 0.0;</span><br><span class="line"></span><br><span class="line">*px &#x3D; &amp;x; px-&gt;x &#x3D; 0.0;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>答案是:<u>X是一个派生类，而其继承结构有一个虚基类，且x成员又是蜡烛基类中的成员，这两种写法在编译器眼中就有巨大区别了</u>因为我们不能明确的说pt必然指向哪一个class type,故我们也就不知道编译时期member 真正的offset位置，存取操作只能延时到执行期。对于x来说类型固定，所以member的offset位置也在编译时期就确定了。</li>
 </ul>
-<ol>
+</li>
 <li>派生类的成员和基类的排序并未在C++ standard中强制指定；理论止编译器可以自由安排，<u>但是对于大部分编译器实现来说，都是把基类成员放在前面，但是virtual base class 除外。(一般而言，任何一条规则一旦碰到virtual base class 就没辙了)</u>。</li>
 <li><font color="red">C++ standard中保证： 出现在派生类中的base class subobject有其完整原样性！</font><ul>
 <li>子类会被放在父类的对齐空白字节之后，因为父类的完整性必须得以保证，父类的对齐空白字节也是父类的一部分，也是不可分割的。</li>
@@ -471,7 +471,35 @@
 <li>在deconstructor 中安插代码以正确设置vptr，使它能够抹消”指向class 之相关virtual table”的vptr；</li>
 </ul>
 </li>
-<li><font color="blue"><strong>单一继承</strong>并<strong>含有虚拟函数</strong>时的内存布局</font>(考虑把vptr放在尾部的情况)<br><img src="https://i.postimg.cc/pTfDhf9f/blog1.png =100x100" alt="avatar"></li>
+<li><font color="blue"><strong>单一继承</strong>并<strong>含有虚拟函数</strong>时的内存布局</font>(考虑把vptr放在尾部的情况)<br><img src="https://i.loli.net/2021/01/19/J9y5AXFnGpf1gTW.png" alt="blog1.png"><ul>
+<li><u>单一继承时vptr被放在第一个子类的末尾，产生这样的布局的原因在于”<strong>基类的完整性必须在子类中得以保存</strong>“</u>。</li>
+<li>对于第一个<strong>vptr</strong>Point2d的vptr可以这样理解，由Point2d而引发的vptr，在Point2d的对象中，这个<strong>vptr</strong>Point2d所指向的是与Point2d所指向的是与Point2d所对应的point2d_vtable,而在Point3d的对象中，这个<strong>vptr</strong>Point2d所指向的却是与Point3d所对应的point3d_vtable.</li>
+</ul>
+</li>
+<li><font color="blue">多重集成时的布局</font>(多重继承时的主要问题在于派生类与非第一基类之间的转换)：<br><img src="https://i.loli.net/2021/01/19/fH6MdhvlIUk2KoO.png" alt="Blog_2.png"><ul>
+<li>在多重继承的派生体系中，将派生类的地址转换为第一基类是成本与单继承是相同的，只需要修改地址的解释方式而已；而对于转换为第一基类的情况，则需要对地址进行一定的offset操作才可以。</li>
+<li><u>C++ standard 并未明确base classes 的特定排列次序，但是目前的编译器都是按照声明的次序来安放他们的。</u>(有一个优化:如果第一基类没有vtable而后继基类有，则可能把它们调换位置).</li>
+<li>多重继承中，可能会有多个vptr指针，视其继承体系而定:<font color="fuchsia">派生类中的ptr的数目等于所有基类的vptr数目的总和</font>。</li>
+</ul>
+</li>
+<li><font color="blue">虚拟继承:<u>虚拟继承就是把一个类切割成两个部分：一个不变局域和一个共享局部。</u></font><ul>
+<li>这个共享局部必须通过编译器安插的一些指针指向virtual base class object 来间接的存取，这样才能够实现共享。对于这个安插指针来实现共享的技术，有两种主流的做法：</li>
+<li>一种做法就是直接使用一个指针指向虚基类:<br><img src="https://i.loli.net/2021/01/19/Zp1iUaex6qnI3XL.png" alt="Blog_3.png"></li>
+<li>另一种做法就是在vtable 中放置virtual base class的offset:<br><img src="https://i.loli.net/2021/01/19/GPLfRBbtrNT36YW.png" alt="Blog_4.png"><ul>
+<li><u>这种使用偏移地址的方式好处在于:vptr是已经存在的成本，而vtable是class的所有objects所共享的成本。对于每一个class object没有引入任何的额外成本，仅仅在vtable多存储了一个slot布局，而前一种方式却对每一个object都引入了两个指针的巨大成本。</u></li>
+<li>这两种方式教师把虚基类放在内存模型中的最后面，然后借由一层间接性(指针或offset)来访问。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>一般而言：<u>virtual base class 最有效的一种运用形式就是：一个抽象virtual base class ，没有任何data members</u>。</li>
+<li>普通封装不会带来任何执行期的成本，编译器可以轻松优化掉普通封装带来的任何成本。<ul>
+<li>但是一旦涉及到虚拟继承，效率就会大幅降低，在有n层的虚拟继承体系中，普通的访问就要经过n次间接，普通访问的成本就变为了n倍。</li>
+<li>再次表示，C++中的额外成本基本都是由于virtual 机制引起的。</li>
+</ul>
+</li>
+<li>指向Data Members 的指针内部实际保存的是这个data member 相对于对象起始地址的偏移地址(offset)(但需要另外加1以区分空指针，前面有讲过了)</li>
+<li>使用指向Data Members的指针时也不会损失效率，成本与直接存取相同。就像第17条所说的，普通访问没有额外成本，但是遇到虚拟继承效率就大幅降低。</li>
 </ol>
 
     </div>
@@ -624,12 +652,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">40k</span>
+    <span title="站点总字数">42k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">37 分钟</span>
+    <span title="站点阅读时长">38 分钟</span>
 </div>
 
 

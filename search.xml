@@ -91,6 +91,39 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode-10</title>
+    <url>/2020/10/28/Leetcode-10/</url>
+    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p> &emsp;&emsp;Implement <code>strStr()</code>.Return the index of the first occurrence of needle in haystack, or <code>-1</code> if <code>needle</code> is not part of <code>haystack</code>.<br> <strong>Clarification:</strong><br> &emsp;&emsp;What should we return when needle is an empty string? This is a great question to ask during an interview.</p>
+<p> &emsp;&emsp;For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C’s strstr() and Java’s indexOf().</p>
+<p> <strong>Example1:</strong></p>
+<blockquote>
+<p><strong>Input:</strong> haystack = “hello”, needle = “ll”<br><strong>Output:</strong> 2</p>
+</blockquote>
+<p> <strong>Example2:</strong></p>
+<blockquote>
+<p><strong>Input:</strong> haystack = “aaaaa”, needle = “bba”<br><strong>Output:</strong> -1</p>
+</blockquote>
+<p> <strong>Example3:</strong></p>
+<blockquote>
+<p><strong>Input:</strong> haystack = “”, needle = “”<br><strong>Output:</strong> 0</p>
+</blockquote>
+<p> <strong>Constraints:</strong></p>
+<ul>
+<li><code> 0 &lt;= haystack.length, needle.length &lt;= 5 * 10<sup>4</sup> </code></li>
+<li><code>haystack</code>and <code>needle</code> consist of only lower-case English characters.</li>
+</ul>
+<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一:"></a>思路一:</h2><p>  &emsp;&emsp;两个字符长度相减+1得到的长度就是需要比较的长度，当needle长度为0时，返回0。当haystack与needle不匹配时，返回-1。当haystack与needle匹配时，返回i的值。时间复杂度为O($n^{2}$),空间复杂度为O(n),具体代码如下：<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        int m &#x3D; haystack.size();</span><br><span class="line">        int n &#x3D; needle.size();</span><br><span class="line">        int r &#x3D; m - n + 1;</span><br><span class="line">        </span><br><span class="line">        if (n &#x3D;&#x3D; 0) return 0;</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; r; i++) &#123;</span><br><span class="line">            int  j &#x3D; i,k &#x3D; 0;</span><br><span class="line">            while (k &lt; n &amp;&amp; haystack[j] &#x3D;&#x3D; needle[k]) </span><br><span class="line">                k++,j++;</span><br><span class="line">            if (k &#x3D;&#x3D; n) return i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二:"></a>思路二:</h2><p>&emsp;&emsp;KMP(字符串查找算法),lps是needle的索引。这里使用的kmp算法，把needle作为kmp前缀,来进行字符比对。如果字符相同，那么len增加。如果不相等，就要看len的值，如果len的值为0那么就将lps[i]的值设置为0。如果len不为零，那么就把lps[len-1]的值赋给len，这一步是为了防止对应字符中间出现了不相等的，将字符串右移。时间复杂度为O(n); </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        if (needle.empty()) return 0;</span><br><span class="line">        </span><br><span class="line">        string kmp &#x3D; needle + &quot;#&quot; + haystack;</span><br><span class="line">        int m &#x3D; kmp.size(),n &#x3D; needle.size();</span><br><span class="line">        vector&lt;int&gt; lps(m,0);</span><br><span class="line">        </span><br><span class="line">        for (int len &#x3D; 0,i &#x3D; 1; i &lt; m;) &#123;</span><br><span class="line">            if (kmp[len] &#x3D;&#x3D; kmp[i]) &#123;</span><br><span class="line">                lps[i] &#x3D; ++len;</span><br><span class="line">                if (len &#x3D;&#x3D; n) </span><br><span class="line">                    return i - 2 * n;</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (len &#x3D;&#x3D; 0) </span><br><span class="line">                 lps[i++] &#x3D; 0;</span><br><span class="line">            else </span><br><span class="line">                len &#x3D; lps[len - 1];</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-12</title>
     <url>/2020/11/04/Leetcode-12/</url>
     <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p>&emsp;&emsp;The <strong>count-and-say</strong> sequence is a sequence of digit strings defined by the recursive formula:</p>
@@ -150,82 +183,6 @@
 </blockquote>
 <p> <strong>Note :</strong><br>&emsp;&emsp;Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [$(-2)^{31}$, $2^{31}$-1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
 <h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="计算法"><a href="#计算法" class="headerlink" title="计算法"></a>计算法</h3><p> 这是一个比较投机的方案，因为使用了数字类型long后，就不会再有溢出的问题，最后再和INT_MAX比较一下就可以了。时间复杂度为O(nlogn)<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int reverse(int x) &#123;</span><br><span class="line">        long res &#x3D; 0;</span><br><span class="line">        for (;x !&#x3D; 0 ; x &#x2F;&#x3D; 10)  res &#x3D; res * 10 + x % 10;</span><br><span class="line">        return (res &gt; INT_MAX || res &lt; INT_MIN) ? 0 : res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-3</title>
-    <url>/2020/09/25/Leetcode-3/</url>
-    <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p> Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward. </p>
-<p> <strong>Example 1</strong> </p>
-<blockquote>
-<p><strong>Input : </strong> 121<br><strong>Output : </strong> true</p>
-</blockquote>
-<p> <strong>Example 2</strong></p>
-<blockquote>
-<p><strong>Input : </strong> -121<br><strong>Output : </strong> false<br><strong>Explanation : </strong> From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.  </p>
-</blockquote>
-<p> <strong>Example 3</strong></p>
-<blockquote>
-<p><strong>Input : </strong> 10<br><strong>Output : </strong> false<br><strong>Explanation : </strong> Reads 01 from right to left. Therefore it is not a palindrome.</p>
-</blockquote>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h3><p>  简单的把数字进行一个逆转，最后判断反转后的数字和原来的数字是否一样。时间复杂度O(n)<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(int x) &#123;</span><br><span class="line">        if (x &lt; 0) return false;</span><br><span class="line">        long res &#x3D; 0;</span><br><span class="line">        long s &#x3D; x;</span><br><span class="line">        for (;s !&#x3D; 0 ; s &#x2F;&#x3D;10)  res &#x3D; res * 10 + s %10;</span><br><span class="line">        return (res &#x3D;&#x3D; x) ? true : false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h3 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h3><p>我们可以不需要等数字全逆转结束，只需要逆转一半看是否符合条件就可以了</p>
-<ul>
-<li><p>如何一半停止</p>
-<ul>
-<li>如果 x&lt;=r 时就可以停止了</li>
-<li>如果是偶数长度，并且是回文，那么 x == r</li>
-<li>如果是奇数长度，并且是回文，那么 x &lt; r，这时候r比x多一位数</li>
-</ul>
-</li>
-<li><p>停止后判断是否是回文</p>
-<ul>
-<li>如果偶数长度，判断 r == x;</li>
-<li>如果奇数长度，判断 r/10 == x;</li>
-</ul>
-<p>时间复杂度为O(n)</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(int x) &#123;</span><br><span class="line">        if (x &lt; 0 || (x !&#x3D; 0 &amp;&amp; x %10 &#x3D;&#x3D; 0)) return false;</span><br><span class="line">        int res &#x3D; 0;</span><br><span class="line">        while (x &gt; res) &#123;</span><br><span class="line">            res &#x3D; res * 10 + x % 10;</span><br><span class="line">            x &#x2F;&#x3D; 10;</span><br><span class="line">        &#125;</span><br><span class="line">        return (res &#x3D;&#x3D; x) || (res&#x2F;10 &#x3D;&#x3D; x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-10</title>
-    <url>/2020/10/28/Leetcode-10/</url>
-    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p> &emsp;&emsp;Implement <code>strStr()</code>.Return the index of the first occurrence of needle in haystack, or <code>-1</code> if <code>needle</code> is not part of <code>haystack</code>.<br> <strong>Clarification:</strong><br> &emsp;&emsp;What should we return when needle is an empty string? This is a great question to ask during an interview.</p>
-<p> &emsp;&emsp;For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C’s strstr() and Java’s indexOf().</p>
-<p> <strong>Example1:</strong></p>
-<blockquote>
-<p><strong>Input:</strong> haystack = “hello”, needle = “ll”<br><strong>Output:</strong> 2</p>
-</blockquote>
-<p> <strong>Example2:</strong></p>
-<blockquote>
-<p><strong>Input:</strong> haystack = “aaaaa”, needle = “bba”<br><strong>Output:</strong> -1</p>
-</blockquote>
-<p> <strong>Example3:</strong></p>
-<blockquote>
-<p><strong>Input:</strong> haystack = “”, needle = “”<br><strong>Output:</strong> 0</p>
-</blockquote>
-<p> <strong>Constraints:</strong></p>
-<ul>
-<li><code> 0 &lt;= haystack.length, needle.length &lt;= 5 * 10<sup>4</sup> </code></li>
-<li><code>haystack</code>and <code>needle</code> consist of only lower-case English characters.</li>
-</ul>
-<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一:"></a>思路一:</h2><p>  &emsp;&emsp;两个字符长度相减+1得到的长度就是需要比较的长度，当needle长度为0时，返回0。当haystack与needle不匹配时，返回-1。当haystack与needle匹配时，返回i的值。时间复杂度为O($n^{2}$),空间复杂度为O(n),具体代码如下：<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        int m &#x3D; haystack.size();</span><br><span class="line">        int n &#x3D; needle.size();</span><br><span class="line">        int r &#x3D; m - n + 1;</span><br><span class="line">        </span><br><span class="line">        if (n &#x3D;&#x3D; 0) return 0;</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; r; i++) &#123;</span><br><span class="line">            int  j &#x3D; i,k &#x3D; 0;</span><br><span class="line">            while (k &lt; n &amp;&amp; haystack[j] &#x3D;&#x3D; needle[k]) </span><br><span class="line">                k++,j++;</span><br><span class="line">            if (k &#x3D;&#x3D; n) return i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二:"></a>思路二:</h2><p>&emsp;&emsp;KMP(字符串查找算法),lps是needle的索引。这里使用的kmp算法，把needle作为kmp前缀,来进行字符比对。如果字符相同，那么len增加。如果不相等，就要看len的值，如果len的值为0那么就将lps[i]的值设置为0。如果len不为零，那么就把lps[len-1]的值赋给len，这一步是为了防止对应字符中间出现了不相等的，将字符串右移。时间复杂度为O(n); </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        if (needle.empty()) return 0;</span><br><span class="line">        </span><br><span class="line">        string kmp &#x3D; needle + &quot;#&quot; + haystack;</span><br><span class="line">        int m &#x3D; kmp.size(),n &#x3D; needle.size();</span><br><span class="line">        vector&lt;int&gt; lps(m,0);</span><br><span class="line">        </span><br><span class="line">        for (int len &#x3D; 0,i &#x3D; 1; i &lt; m;) &#123;</span><br><span class="line">            if (kmp[len] &#x3D;&#x3D; kmp[i]) &#123;</span><br><span class="line">                lps[i] &#x3D; ++len;</span><br><span class="line">                if (len &#x3D;&#x3D; n) </span><br><span class="line">                    return i - 2 * n;</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (len &#x3D;&#x3D; 0) </span><br><span class="line">                 lps[i++] &#x3D; 0;</span><br><span class="line">            else </span><br><span class="line">                len &#x3D; lps[len - 1];</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>algorithm</category>
@@ -340,6 +297,49 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode-3</title>
+    <url>/2020/09/25/Leetcode-3/</url>
+    <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p> Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward. </p>
+<p> <strong>Example 1</strong> </p>
+<blockquote>
+<p><strong>Input : </strong> 121<br><strong>Output : </strong> true</p>
+</blockquote>
+<p> <strong>Example 2</strong></p>
+<blockquote>
+<p><strong>Input : </strong> -121<br><strong>Output : </strong> false<br><strong>Explanation : </strong> From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.  </p>
+</blockquote>
+<p> <strong>Example 3</strong></p>
+<blockquote>
+<p><strong>Input : </strong> 10<br><strong>Output : </strong> false<br><strong>Explanation : </strong> Reads 01 from right to left. Therefore it is not a palindrome.</p>
+</blockquote>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h3><p>  简单的把数字进行一个逆转，最后判断反转后的数字和原来的数字是否一样。时间复杂度O(n)<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(int x) &#123;</span><br><span class="line">        if (x &lt; 0) return false;</span><br><span class="line">        long res &#x3D; 0;</span><br><span class="line">        long s &#x3D; x;</span><br><span class="line">        for (;s !&#x3D; 0 ; s &#x2F;&#x3D;10)  res &#x3D; res * 10 + s %10;</span><br><span class="line">        return (res &#x3D;&#x3D; x) ? true : false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h3><p>我们可以不需要等数字全逆转结束，只需要逆转一半看是否符合条件就可以了</p>
+<ul>
+<li><p>如何一半停止</p>
+<ul>
+<li>如果 x&lt;=r 时就可以停止了</li>
+<li>如果是偶数长度，并且是回文，那么 x == r</li>
+<li>如果是奇数长度，并且是回文，那么 x &lt; r，这时候r比x多一位数</li>
+</ul>
+</li>
+<li><p>停止后判断是否是回文</p>
+<ul>
+<li>如果偶数长度，判断 r == x;</li>
+<li>如果奇数长度，判断 r/10 == x;</li>
+</ul>
+<p>时间复杂度为O(n)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(int x) &#123;</span><br><span class="line">        if (x &lt; 0 || (x !&#x3D; 0 &amp;&amp; x %10 &#x3D;&#x3D; 0)) return false;</span><br><span class="line">        int res &#x3D; 0;</span><br><span class="line">        while (x &gt; res) &#123;</span><br><span class="line">            res &#x3D; res * 10 + x % 10;</span><br><span class="line">            x &#x2F;&#x3D; 10;</span><br><span class="line">        &#125;</span><br><span class="line">        return (res &#x3D;&#x3D; x) || (res&#x2F;10 &#x3D;&#x3D; x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-6</title>
     <url>/2020/10/04/Leetcode-6/</url>
     <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given a string s containing just the characters <code>&#39;(&#39;</code>,<code>&#39;)&#39;</code>,<code>&#39;&#123;&#39;</code>,<code>&#39;&#125;&#39;</code>,<code>&#39;[&#39;</code> and<code>&#39;]&#39;</code>, determine if the input string is valid.<br>An input string is valid if:</p>
@@ -383,58 +383,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-8</title>
-    <url>/2020/10/11/Leetcode-8/</url>
-    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p>  Given a sorted array nums, remove the duplicates in-place such that each element appears only once and returns the new length.<br>  Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.</p>
-<p>  <strong>Example 1: </strong></p>
-<blockquote>
-<p>Given nums = [1,1,2],<br>Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.<br>It doesn’t matter what you leave beyond the returned length.</p>
-</blockquote>
-<p>  <strong>Example 2: </strong></p>
-<blockquote>
-<p>Given nums = [0,0,1,1,1,2,2,3,3,4],<br>Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.<br>It doesn’t matter what values are set beyond the returned length.</p>
-</blockquote>
-<p>  <strong>Clarification: </strong><br>  Confused why the returned value is an integer but your answer is an array?<br>  Note that the input array is passed in by reference, which means a modification to the input array will be known to the caller as well.<br>  Internally you can think of this:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; nums is passed in by reference. (i.e., without making a copy)</span><br><span class="line">int len &#x3D; removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; any modification to nums in your function would be known by the caller.</span><br><span class="line">&#x2F;&#x2F; using the length returned by your function, it prints the first len elements.</span><br><span class="line">for (int i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><p>  <strong>双指针法: </strong> 首先这是有序的数组，那么如果出现重复，就一定是重复数字的下一个(只会重复一次)。那么我就只需要比较当前位和下一位是否产生重复，如果产生了重复。那么我就用下一位来覆盖当前位，最后返回的数组长度。时间复杂度为O(n),空间复杂度为O(1),具体代码如下:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeDuplicates(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        if (nums.size() &#x3D;&#x3D; 0) return 0;</span><br><span class="line">        int i &#x3D;0 ,j &#x3D; 1;</span><br><span class="line">        while (j &lt; nums.size()) &#123;</span><br><span class="line">            if (nums[i] !&#x3D; nums[j])</span><br><span class="line">                nums[++i] &#x3D; nums[j];</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        return i+1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-9</title>
-    <url>/2020/10/11/Leetcode-9/</url>
-    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p> &emsp;&emsp;Given an array nums and a value val, remove all instances of that value in-place and return the new length.<br> &emsp;&emsp;Do not allocate extra space for another array, you must do this by <font color = red>modifying the input array in-place</font> with <code>O(1)</code> extra memory.</p>
-<p><strong>Clarification:</strong><br> &emsp;&emsp;Confused why the returned value is an integer but your answer is an array?<br> &emsp;&emsp;Note that the input array is passed in by <strong>reference</strong>, which means a modification to the input array will be known to the caller as well.  </p>
-<p>  <strong>Internally you can think of this:</strong><br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> &#x2F;&#x2F; nums is passed in by reference. (i.e., without making a copy)</span><br><span class="line">int len &#x3D; removeElement(nums, val);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; any modification to nums in your function would be known by the caller.</span><br><span class="line">&#x2F;&#x2F; using the length returned by your function, it prints the first len elements.</span><br><span class="line">for (int i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Example 1: </strong></p>
-<blockquote>
-<p><strong>Input:</strong> nums = [3,2,2,3], val = 3<br><strong>Output:</strong> 2, nums = [2,2]<br><strong>Explanation:</strong> Your function should return length = <strong>2</strong>, with the first two elements of nums being <strong>2</strong><br>It doesn’t matter what you leave beyond the returned length. For example if you return 2 with nums = [2,2,3,3] or nums = [2,3,0,0], your answer will be accepted.</p>
-</blockquote>
-<p><strong>Example 2: </strong></p>
-<blockquote>
-<p><strong>Input:</strong> nums = [0,1,2,2,3,0,4,2], val = 2<br><strong>Output:</strong>  5, nums = [0,1,4,0,3]<br><strong>Explanation:</strong> Your function should return length = <strong>5</strong> ,with the first five elements of nums containing <strong>0, 1, 3, 0</strong> and <strong>4</strong>.Note that the order of those five elements can be arbitrary. It doesn’t matter what values are set beyond the returned length.</p>
-</blockquote>
-<p><strong>Constrains:</strong></p>
-<ul>
-<li><code>0 &lt;= nums.length() &lt;= 100</code></li>
-<li><code>0 &lt;= nums[i] &lt;= 50</code></li>
-<li><code>0 &lt;= val &lt;= 100</code></li>
-</ul>
-<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><p>&emsp;&emsp;<strong>堆栈法:</strong> 首先将nums中不等于val的值全部入栈，再将nums清空。再将没有val值的res的值重新的一一赋给nums，同时将res中的值一一弹出，最后直接返回nums数组的size即可。时间复杂度为O(n),空间复杂度为O(1).具体代码如下:<br>     <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">     class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeElement(vector&lt;int&gt;&amp; nums, int val) &#123;</span><br><span class="line">        int n &#x3D; nums.size();</span><br><span class="line">        stack&lt;int&gt; res;</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; n ;i++) &#123;</span><br><span class="line">            if (nums[i] !&#x3D; val) </span><br><span class="line">                res.push(nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        nums.clear();</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; n ; i++) &#123;</span><br><span class="line">            if (!res.empty())</span><br><span class="line">                nums.push_back(res.top()),res.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        return nums.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h2><p>&emsp;&emsp;<strong>双指针法:</strong> 首先快慢指针置0，进入循环。如果nums数组对应的值不等于val,那么就把当前nums[fast]的值赋给nums[slow++]。如果相等那么fast就自增，最后结果返回slow的值。时间复杂度位O(n),空间复杂度O(1),具体代码如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeElement(vector&lt;int&gt;&amp; nums, int val) &#123;</span><br><span class="line">        int slow &#x3D; 0,size &#x3D; nums.size(),fast &#x3D; 0;</span><br><span class="line">        </span><br><span class="line">        while (fast &lt; size) &#123;</span><br><span class="line">            if (nums[fast] !&#x3D; val) &#123;</span><br><span class="line">                nums[slow++] &#x3D; nums[fast];</span><br><span class="line">            &#125;</span><br><span class="line">            fast++;</span><br><span class="line">        &#125;</span><br><span class="line">        return slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode-7</title>
     <url>/2020/10/04/Leetcode-7/</url>
     <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Merge two sorted linked lists and return it as a new sorted list. The new list should be made by splicing together the nodes of the first two lists.</p>
@@ -458,6 +406,28 @@
 </ul>
 <h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h3><p>  <strong>递归法 : </strong> 首先判断两个链表中的一个是否为空，如果有一个为空，那么就以这个链表为输出结果。为了保存其他两个链表，我就需要新建一个链表。因为要顺序保存，所有通过值大小的比较存入t，作t的头节点。之后t-&gt;next用递归的方式依次存入。时间复杂度为O(n),具体代码如下:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) &#123;</span><br><span class="line">        if (!l1) return l2;</span><br><span class="line">        if (!l2) return l1;</span><br><span class="line">        </span><br><span class="line">        ListNode* t;</span><br><span class="line">        if (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">            t &#x3D; l1;</span><br><span class="line">            l1 &#x3D; l1-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        else &#123;</span><br><span class="line">            t &#x3D; l2;</span><br><span class="line">            l2 &#x3D; l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        t-&gt;next &#x3D; mergeTwoLists(l1,l2);</span><br><span class="line">        return t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <h3 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h3><p>  <strong>迭代法 : </strong> 首先设置一个前哨节点，为了之后输出方便。程序主体:通过值的比较，把每个链表的值都挨个存入cur链表中。while判断的问题，一定还有最有一个没有存入到链表中，所以我们还需要单独的把最后一位加入到链表中来。最后输出前哨节点的下一个也就是dummy-&gt;next。时间复杂度为O(n),具体代码如下 :<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) &#123;</span><br><span class="line">        ListNode* dummy &#x3D; new ListNode(-1);</span><br><span class="line">        ListNode* cur &#x3D; dummy;</span><br><span class="line">        </span><br><span class="line">        while (l1 &amp;&amp; l2) &#123;</span><br><span class="line">            if (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                cur-&gt;next &#x3D; l1;</span><br><span class="line">                l1 &#x3D; l1-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                cur-&gt;next &#x3D; l2;</span><br><span class="line">                l2 &#x3D; l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            cur &#x3D; cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        cur-&gt;next &#x3D; l1 &#x3D;&#x3D; NULL ? l2 : l1;</span><br><span class="line">        return dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-8</title>
+    <url>/2020/10/11/Leetcode-8/</url>
+    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p>  Given a sorted array nums, remove the duplicates in-place such that each element appears only once and returns the new length.<br>  Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.</p>
+<p>  <strong>Example 1: </strong></p>
+<blockquote>
+<p>Given nums = [1,1,2],<br>Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.<br>It doesn’t matter what you leave beyond the returned length.</p>
+</blockquote>
+<p>  <strong>Example 2: </strong></p>
+<blockquote>
+<p>Given nums = [0,0,1,1,1,2,2,3,3,4],<br>Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.<br>It doesn’t matter what values are set beyond the returned length.</p>
+</blockquote>
+<p>  <strong>Clarification: </strong><br>  Confused why the returned value is an integer but your answer is an array?<br>  Note that the input array is passed in by reference, which means a modification to the input array will be known to the caller as well.<br>  Internally you can think of this:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; nums is passed in by reference. (i.e., without making a copy)</span><br><span class="line">int len &#x3D; removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; any modification to nums in your function would be known by the caller.</span><br><span class="line">&#x2F;&#x2F; using the length returned by your function, it prints the first len elements.</span><br><span class="line">for (int i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><p>  <strong>双指针法: </strong> 首先这是有序的数组，那么如果出现重复，就一定是重复数字的下一个(只会重复一次)。那么我就只需要比较当前位和下一位是否产生重复，如果产生了重复。那么我就用下一位来覆盖当前位，最后返回的数组长度。时间复杂度为O(n),空间复杂度为O(1),具体代码如下:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeDuplicates(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        if (nums.size() &#x3D;&#x3D; 0) return 0;</span><br><span class="line">        int i &#x3D;0 ,j &#x3D; 1;</span><br><span class="line">        while (j &lt; nums.size()) &#123;</span><br><span class="line">            if (nums[i] !&#x3D; nums[j])</span><br><span class="line">                nums[++i] &#x3D; nums[j];</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        return i+1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>algorithm</category>
@@ -762,6 +732,60 @@ int main()
       </tags>
   </entry>
   <entry>
+    <title>Leetcode-9</title>
+    <url>/2020/10/11/Leetcode-9/</url>
+    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p> &emsp;&emsp;Given an array nums and a value val, remove all instances of that value in-place and return the new length.<br> &emsp;&emsp;Do not allocate extra space for another array, you must do this by <font color = red>modifying the input array in-place</font> with <code>O(1)</code> extra memory.</p>
+<p><strong>Clarification:</strong><br> &emsp;&emsp;Confused why the returned value is an integer but your answer is an array?<br> &emsp;&emsp;Note that the input array is passed in by <strong>reference</strong>, which means a modification to the input array will be known to the caller as well.  </p>
+<p>  <strong>Internally you can think of this:</strong><br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> &#x2F;&#x2F; nums is passed in by reference. (i.e., without making a copy)</span><br><span class="line">int len &#x3D; removeElement(nums, val);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; any modification to nums in your function would be known by the caller.</span><br><span class="line">&#x2F;&#x2F; using the length returned by your function, it prints the first len elements.</span><br><span class="line">for (int i &#x3D; 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 1: </strong></p>
+<blockquote>
+<p><strong>Input:</strong> nums = [3,2,2,3], val = 3<br><strong>Output:</strong> 2, nums = [2,2]<br><strong>Explanation:</strong> Your function should return length = <strong>2</strong>, with the first two elements of nums being <strong>2</strong><br>It doesn’t matter what you leave beyond the returned length. For example if you return 2 with nums = [2,2,3,3] or nums = [2,3,0,0], your answer will be accepted.</p>
+</blockquote>
+<p><strong>Example 2: </strong></p>
+<blockquote>
+<p><strong>Input:</strong> nums = [0,1,2,2,3,0,4,2], val = 2<br><strong>Output:</strong>  5, nums = [0,1,4,0,3]<br><strong>Explanation:</strong> Your function should return length = <strong>5</strong> ,with the first five elements of nums containing <strong>0, 1, 3, 0</strong> and <strong>4</strong>.Note that the order of those five elements can be arbitrary. It doesn’t matter what values are set beyond the returned length.</p>
+</blockquote>
+<p><strong>Constrains:</strong></p>
+<ul>
+<li><code>0 &lt;= nums.length() &lt;= 100</code></li>
+<li><code>0 &lt;= nums[i] &lt;= 50</code></li>
+<li><code>0 &lt;= val &lt;= 100</code></li>
+</ul>
+<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><p>&emsp;&emsp;<strong>堆栈法:</strong> 首先将nums中不等于val的值全部入栈，再将nums清空。再将没有val值的res的值重新的一一赋给nums，同时将res中的值一一弹出，最后直接返回nums数组的size即可。时间复杂度为O(n),空间复杂度为O(1).具体代码如下:<br>     <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">     class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeElement(vector&lt;int&gt;&amp; nums, int val) &#123;</span><br><span class="line">        int n &#x3D; nums.size();</span><br><span class="line">        stack&lt;int&gt; res;</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; n ;i++) &#123;</span><br><span class="line">            if (nums[i] !&#x3D; val) </span><br><span class="line">                res.push(nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        nums.clear();</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; n ; i++) &#123;</span><br><span class="line">            if (!res.empty())</span><br><span class="line">                nums.push_back(res.top()),res.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        return nums.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h2><p>&emsp;&emsp;<strong>双指针法:</strong> 首先快慢指针置0，进入循环。如果nums数组对应的值不等于val,那么就把当前nums[fast]的值赋给nums[slow++]。如果相等那么fast就自增，最后结果返回slow的值。时间复杂度位O(n),空间复杂度O(1),具体代码如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeElement(vector&lt;int&gt;&amp; nums, int val) &#123;</span><br><span class="line">        int slow &#x3D; 0,size &#x3D; nums.size(),fast &#x3D; 0;</span><br><span class="line">        </span><br><span class="line">        while (fast &lt; size) &#123;</span><br><span class="line">            if (nums[fast] !&#x3D; val) &#123;</span><br><span class="line">                nums[slow++] &#x3D; nums[fast];</span><br><span class="line">            &#125;</span><br><span class="line">            fast++;</span><br><span class="line">        &#125;</span><br><span class="line">        return slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Two Pointers Technique</title>
+    <url>/2020/01/14/Two-Pointers/</url>
+    <content><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>  &emsp;&emsp;双指针，顾名思义就是利用两个指针去遍历数组。一般来说遍历数组都是使用单指针(index)去遍历的，<br>  两个指针一般是在有序数组中使用，一个放首，一个放尾，同时向中间遍历，直到两个指针相交，完成遍历，时间复杂度<br>  也是O(n).</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>  一般会有两个指针 <code>font</code>,<code>tail</code>。分别指向开始和结束的位置。</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">front &#x3D; 0;</span><br><span class="line">tail &#x3D; A.length()-1</span><br></pre></td></tr></table></figure>
+<p>  一般循环结束条件采用的是判断两个指针是否相遇</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">while (front &lt; tail)</span><br><span class="line">  &#123;</span><br><span class="line">    ....</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>  对于in place 交换问题，循环结束条件一般是其中一个指针遍历完成的</p>
+<h2 id="使用范围"><a href="#使用范围" class="headerlink" title="使用范围"></a>使用范围</h2><p>  一般双指针在有序数组中使用的特别多。(部分情况下，未排序数组也有应用)一般用来解决下列问题</p>
+<ul>
+<li><p>两数求和<br>一般这种问题都是问，寻找两个数的和为一个特定值，这时候，如果数组有序，我们采用两个指针，分别从<br>前和后往中间遍历,front移动和增大，tail移动和减小，通过特定的判断，可以求出特定的和<br>时间复杂度为O(n)，如果要使用双重循环则时间复杂度为O($n^{2}$)</p>
+</li>
+<li><p>in place 交换<br>数组的in place原地交换一般都得用双指针，不然数组中添加或这删除一个元素，需要移动大量的元素。这时候一般是一个指针遍历，一个指针用来找可以交换的元素。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>theory</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Operation_System_experiment_2</title>
     <url>/2020/10/07/Operation-System-experiment-2/</url>
     <content><![CDATA[<h2 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h2><h3 id="实验目标"><a href="#实验目标" class="headerlink" title="实验目标"></a>实验目标</h3><p> &emsp;&emsp;进程在执行过程中提出资源请求，使用银行家算法决定是否进行分配</p>
@@ -810,30 +834,6 @@ int main()
       </tags>
   </entry>
   <entry>
-    <title>Two Pointers Technique</title>
-    <url>/2020/01/14/Two-Pointers/</url>
-    <content><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>  &emsp;&emsp;双指针，顾名思义就是利用两个指针去遍历数组。一般来说遍历数组都是使用单指针(index)去遍历的，<br>  两个指针一般是在有序数组中使用，一个放首，一个放尾，同时向中间遍历，直到两个指针相交，完成遍历，时间复杂度<br>  也是O(n).</p>
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>  一般会有两个指针 <code>font</code>,<code>tail</code>。分别指向开始和结束的位置。</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">front &#x3D; 0;</span><br><span class="line">tail &#x3D; A.length()-1</span><br></pre></td></tr></table></figure>
-<p>  一般循环结束条件采用的是判断两个指针是否相遇</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">while (front &lt; tail)</span><br><span class="line">  &#123;</span><br><span class="line">    ....</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>  对于in place 交换问题，循环结束条件一般是其中一个指针遍历完成的</p>
-<h2 id="使用范围"><a href="#使用范围" class="headerlink" title="使用范围"></a>使用范围</h2><p>  一般双指针在有序数组中使用的特别多。(部分情况下，未排序数组也有应用)一般用来解决下列问题</p>
-<ul>
-<li><p>两数求和<br>一般这种问题都是问，寻找两个数的和为一个特定值，这时候，如果数组有序，我们采用两个指针，分别从<br>前和后往中间遍历,front移动和增大，tail移动和减小，通过特定的判断，可以求出特定的和<br>时间复杂度为O(n)，如果要使用双重循环则时间复杂度为O($n^{2}$)</p>
-</li>
-<li><p>in place 交换<br>数组的in place原地交换一般都得用双指针，不然数组中添加或这删除一个元素，需要移动大量的元素。这时候一般是一个指针遍历，一个指针用来找可以交换的元素。</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>theory</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Inside the C++ Object Model reading note</title>
     <url>/2021/01/11/%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2C-%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/</url>
     <content><![CDATA[<h2 id="第一章-关于对象"><a href="#第一章-关于对象" class="headerlink" title="第一章 关于对象"></a><center>第一章 关于对象</center></h2><p>介绍了C++ 如何在背后实现一个对象，内存中的布局以及空间上的关系</p>
@@ -848,7 +848,7 @@ int main()
 </ul>
 </li>
 <li><u>C++ 布局成本的主要来源就是virtual机制</u></li>
-<li><font color="red">C++对象模型(The C++ Object Model)</font><br><img src="https://i.postimg.cc/8kbqdbDp/C-object-model.png =100x100" alt="avatar"><ul>
+<li><font color="red">C++对象模型(The C++ Object Model)</font><br><img src="https://i.loli.net/2021/01/19/gfEsZuIHRxYBdhD.png" alt="C___object_model.png"><ul>
 <li>non-static data members被配置于每一个class object之内</li>
 <li>static data members则被存放在所有class object之外</li>
 <li>static/non-static funciton members也被放在所有class object之外</li>
@@ -1006,24 +1006,21 @@ int main()
 </li>
 <li>传统上,vptr被安放在所有被明确声明的member的最后,不过也有些编译器把vptr放在最前面(MSVC++ 就是把vptr放在最前面，而GCC是把vptr放在最后面).</li>
 <li>在C++中，直观上来说,由一个对象存取一个member会比由一个指针存取一个member更快捷。但是对于经由一个对象来存取和一个指针来存取一个静态的member来说，是完全一样的，都会被编译器所扩展。</li>
-<li>经由一个函数调用的结果来存取静态成员，C++标准要求必须对这个函数进行求值，虽然这个求值的结果并无用处,例如:<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">foobar().static_data &#x3D; 10;</span><br></pre></td></tr></table></figure></li>
-</ol>
+<li>经由一个函数调用的结果来存取静态成员，C++标准要求必须对这个函数进行求值，虽然这个求值的结果并无用处,例如:<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">foobar().static_data &#x3D; 10;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>foo()返回一个类型为X的对象，含有一个static_data，foobar()其实可以不用求值而直接访问这个静态成员，但是C++标准保证了foobar()会被求值，可能的代码扩展为:<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(void) foobar();</span><br><span class="line">X::static_data &#x3D; 10;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<ol>
-<li>对一个nonstatic data member 进行存取操作,编译器会进行如下扩展:<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">origin._y &#x3D; 0.0;</span><br><span class="line"></span><br><span class="line">那么地址&amp;origin._y将等于:</span><br><span class="line"></span><br><span class="line">＆origin + (&amp;X::_y - 1);</span><br></pre></td></tr></table></figure></li>
-</ol>
+</li>
+<li>对一个nonstatic data member 进行存取操作,编译器会进行如下扩展:<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">origin._y &#x3D; 0.0;</span><br><span class="line"></span><br><span class="line">那么地址&amp;origin._y将等于:</span><br><span class="line"></span><br><span class="line">＆origin + (&amp;X::_y - 1);</span><br></pre></td></tr></table></figure>
 <ul>
 <li>注意其中的-1的操作，指向data member 的指针，其offset 值总是被加上1，这桩可以2使编译器系统区分”一个指针data member 的指针，用以指向class的第一个member”和”一个指向data member的指针,但是没有指向任何member”两种情况(<i>成员指针也需要有个表示NULL的方式，0相当于用来表示NULL了，其它的就都要加上1了</i>)。</li>
 </ul>
-<ol>
-<li>以下这两种写法有什么区别？<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">X x; x.x &#x3D; 0.0;</span><br><span class="line"></span><br><span class="line">*px &#x3D; &amp;x; px-&gt;x &#x3D; 0.0;</span><br></pre></td></tr></table></figure></li>
-</ol>
+</li>
+<li>以下这两种写法有什么区别？<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">X x; x.x &#x3D; 0.0;</span><br><span class="line"></span><br><span class="line">*px &#x3D; &amp;x; px-&gt;x &#x3D; 0.0;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>答案是:<u>X是一个派生类，而其继承结构有一个虚基类，且x成员又是蜡烛基类中的成员，这两种写法在编译器眼中就有巨大区别了</u>因为我们不能明确的说pt必然指向哪一个class type,故我们也就不知道编译时期member 真正的offset位置，存取操作只能延时到执行期。对于x来说类型固定，所以member的offset位置也在编译时期就确定了。</li>
 </ul>
-<ol>
+</li>
 <li>派生类的成员和基类的排序并未在C++ standard中强制指定；理论止编译器可以自由安排，<u>但是对于大部分编译器实现来说，都是把基类成员放在前面，但是virtual base class 除外。(一般而言，任何一条规则一旦碰到virtual base class 就没辙了)</u>。</li>
 <li><font color="red">C++ standard中保证： 出现在派生类中的base class subobject有其完整原样性！</font><ul>
 <li>子类会被放在父类的对齐空白字节之后，因为父类的完整性必须得以保证，父类的对齐空白字节也是父类的一部分，也是不可分割的。</li>
@@ -1036,7 +1033,35 @@ int main()
 <li>在deconstructor 中安插代码以正确设置vptr，使它能够抹消”指向class 之相关virtual table”的vptr；</li>
 </ul>
 </li>
-<li><font color="blue"><strong>单一继承</strong>并<strong>含有虚拟函数</strong>时的内存布局</font>(考虑把vptr放在尾部的情况)<br><img src="https://i.postimg.cc/pTfDhf9f/blog1.png =100x100" alt="avatar"></li>
+<li><font color="blue"><strong>单一继承</strong>并<strong>含有虚拟函数</strong>时的内存布局</font>(考虑把vptr放在尾部的情况)<br><img src="https://i.loli.net/2021/01/19/J9y5AXFnGpf1gTW.png" alt="blog1.png"><ul>
+<li><u>单一继承时vptr被放在第一个子类的末尾，产生这样的布局的原因在于”<strong>基类的完整性必须在子类中得以保存</strong>“</u>。</li>
+<li>对于第一个<strong>vptr</strong>Point2d的vptr可以这样理解，由Point2d而引发的vptr，在Point2d的对象中，这个<strong>vptr</strong>Point2d所指向的是与Point2d所指向的是与Point2d所对应的point2d_vtable,而在Point3d的对象中，这个<strong>vptr</strong>Point2d所指向的却是与Point3d所对应的point3d_vtable.</li>
+</ul>
+</li>
+<li><font color="blue">多重集成时的布局</font>(多重继承时的主要问题在于派生类与非第一基类之间的转换)：<br><img src="https://i.loli.net/2021/01/19/fH6MdhvlIUk2KoO.png" alt="Blog_2.png"><ul>
+<li>在多重继承的派生体系中，将派生类的地址转换为第一基类是成本与单继承是相同的，只需要修改地址的解释方式而已；而对于转换为第一基类的情况，则需要对地址进行一定的offset操作才可以。</li>
+<li><u>C++ standard 并未明确base classes 的特定排列次序，但是目前的编译器都是按照声明的次序来安放他们的。</u>(有一个优化:如果第一基类没有vtable而后继基类有，则可能把它们调换位置).</li>
+<li>多重继承中，可能会有多个vptr指针，视其继承体系而定:<font color="fuchsia">派生类中的ptr的数目等于所有基类的vptr数目的总和</font>。</li>
+</ul>
+</li>
+<li><font color="blue">虚拟继承:<u>虚拟继承就是把一个类切割成两个部分：一个不变局域和一个共享局部。</u></font><ul>
+<li>这个共享局部必须通过编译器安插的一些指针指向virtual base class object 来间接的存取，这样才能够实现共享。对于这个安插指针来实现共享的技术，有两种主流的做法：</li>
+<li>一种做法就是直接使用一个指针指向虚基类:<br><img src="https://i.loli.net/2021/01/19/Zp1iUaex6qnI3XL.png" alt="Blog_3.png"></li>
+<li>另一种做法就是在vtable 中放置virtual base class的offset:<br><img src="https://i.loli.net/2021/01/19/GPLfRBbtrNT36YW.png" alt="Blog_4.png"><ul>
+<li><u>这种使用偏移地址的方式好处在于:vptr是已经存在的成本，而vtable是class的所有objects所共享的成本。对于每一个class object没有引入任何的额外成本，仅仅在vtable多存储了一个slot布局，而前一种方式却对每一个object都引入了两个指针的巨大成本。</u></li>
+<li>这两种方式教师把虚基类放在内存模型中的最后面，然后借由一层间接性(指针或offset)来访问。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>一般而言：<u>virtual base class 最有效的一种运用形式就是：一个抽象virtual base class ，没有任何data members</u>。</li>
+<li>普通封装不会带来任何执行期的成本，编译器可以轻松优化掉普通封装带来的任何成本。<ul>
+<li>但是一旦涉及到虚拟继承，效率就会大幅降低，在有n层的虚拟继承体系中，普通的访问就要经过n次间接，普通访问的成本就变为了n倍。</li>
+<li>再次表示，C++中的额外成本基本都是由于virtual 机制引起的。</li>
+</ul>
+</li>
+<li>指向Data Members 的指针内部实际保存的是这个data member 相对于对象起始地址的偏移地址(offset)(但需要另外加1以区分空指针，前面有讲过了)</li>
+<li>使用指向Data Members的指针时也不会损失效率，成本与直接存取相同。就像第17条所说的，普通访问没有额外成本，但是遇到虚拟继承效率就大幅降低。</li>
 </ol>
 ]]></content>
       <categories>
