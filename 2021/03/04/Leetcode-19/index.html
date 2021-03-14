@@ -20,17 +20,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="个人Blog网站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Rabbet">
-<meta property="og:url" content="http://yoursite.com/categories/Reading-Notes/index.html">
+  <meta name="description" content="Minimum Number of Arrows to Burst Ballons(贪心算法－区间问题 ＃452)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode-19">
+<meta property="og:url" content="http://yoursite.com/2021/03/04/Leetcode-19/index.html">
 <meta property="og:site_name" content="Rabbet">
-<meta property="og:description" content="个人Blog网站">
+<meta property="og:description" content="Minimum Number of Arrows to Burst Ballons(贪心算法－区间问题 ＃452)">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-03T23:24:00.000Z">
+<meta property="article:modified_time" content="2021-03-10T01:35:20.920Z">
 <meta property="article:author" content="Rabbet">
+<meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/categories/Reading-Notes/">
+<link rel="canonical" href="http://yoursite.com/2021/03/04/Leetcode-19/">
 
 
 <script id="page-configurations">
@@ -38,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>分类: Reading Notes | Rabbet</title>
+  <title>Leetcode-19 | Rabbet</title>
   
 
 
@@ -190,51 +193,119 @@
         <div class="content-wrap">
           
 
-          <div class="content category">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">Reading Notes
-          <small>分类</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/04/Leetcode-19/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.postimg.cc/Zqsj0dJx/header.jpg">
+      <meta itemprop="name" content="Rabbet">
+      <meta itemprop="description" content="个人Blog网站">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbet">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Leetcode-19
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-04 07:24:00" itemprop="dateCreated datePublished" datetime="2021-03-04T07:24:00+08:00">2021-03-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-10 09:35:20" itemprop="dateModified" datetime="2021-03-10T09:35:20+08:00">2021-03-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+            <div class="post-description">Minimum Number of Arrows to Burst Ballons(贪心算法－区间问题 ＃452)</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emps;在二维空间中散布着一些气球。对于每个气球，它们都是在同一水平直径上。所以对于纵坐标就没有那么重要了，x轴(横坐标)是气球的起点和终点，且起点始终小于终点。<br>&emsp;&emsp;沿x轴不同的点会垂直向上射出一个箭头，如果Xstart&lt;= x &lt;= Xend，那么气球将会被箭射爆。根据输入的气球坐标，得到最少使用的箭数。</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p>&emsp;&emsp;输入是一个数组，数组由多个气球的起始和终止坐标所组成。输出一个整数，表示所需最少的箭头数。</p>
+<p><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> points = [[10,16],[2,8],[1,6],[7,12]]<br>
+  <strong>Output:</strong> 2 
+</p><br>&emsp;&emsp;在这个样例中，[1,6]与[2,8]重叠，[7,12]与[10,16]重叠，所以我们只需要两只箭就可以了</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;想要用最少的箭来射击最多的气球。那么就是说对于有重叠区间的气球，我们只需要安排一只箭射击就可以了。所以我们采取的贪心策略为，优先射击无重叠区域的气球<br>&emsp;&emsp;具体实现方法为，先把这个数组进行<code>std::sort</code>排序(默认升序)，排序后的数组为[[1,6],[2,8],[7,12],[10,16]]。按照我们的贪心策略，在循环内初始化为[1,6]。查看与其重叠的区间，即第一个区间的终止位置可以覆盖接下来的起始位置。如果存在更小区间的气球，则更新prev并且对i进行自增。倘若条件不满足total 进行自增。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findMinArrowShots(vector&lt;vector&lt;int&gt;&gt;&amp; points) &#123;</span><br><span class="line">        sort(points.begin(),points.end());</span><br><span class="line">        int n &#x3D; points.size();</span><br><span class="line">        int total &#x3D; 0,i &#x3D; 0;</span><br><span class="line">        while (i &lt; n) &#123;</span><br><span class="line">            int prev &#x3D; points[i][1];</span><br><span class="line">            while (i &lt; n &amp;&amp; prev &gt;&#x3D; points[i][0]) &#123;</span><br><span class="line">                prev &#x3D; min(points[i][1],prev);</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            ++total;</span><br><span class="line">        &#125;</span><br><span class="line">        return total;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-11T19:04:00+08:00"
-              content="2021-01-11">
-          01-11
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/11/%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2C-%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/" itemprop="url">
-            <span itemprop="name">Inside the C++ Object Model reading note</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/15/C-templates-2nd/" rel="prev" title="C++ templates 2nd">
+      <i class="fa fa-chevron-left"></i> C++ templates 2nd
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/10/Leetcode-20/" rel="next" title="Leetcode-20">
+      Leetcode-20 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
@@ -287,6 +358,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="nav-text">输入输出样例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-text">题解</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -302,7 +374,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -357,12 +429,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">64k</span>
+    <span title="站点总字数">67k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">58 分钟</span>
+    <span title="站点阅读时长">1:01</span>
 </div>
 
 

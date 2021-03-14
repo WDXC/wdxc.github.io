@@ -1,39 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Leetcode-1</title>
-    <url>/2020/01/12/Leetcode-1/</url>
-    <content><![CDATA[<h2 id="Qestion"><a href="#Qestion" class="headerlink" title="Qestion"></a>Qestion</h2><p>Give an array of intergets <code>nums</code> and an integer <code>target</code>,return indices of the two numbers such that they add up to <code>target</code>.<br>You may assume that each input would have exctly one solution,and you may use the same element twice.<br>You can return the answer in any order.  </p>
-<p> <strong>Example 1</strong></p>
-<blockquote>
-<p><strong>Input</strong> : nums [2,7,11,15] , target = 9<br><strong>Output</strong> : [0,1]<br><strong>Output</strong> :Because nums[0] + nums[1] == 9, we return [0,1].</p>
-</blockquote>
-<p> <strong>Examp 2</strong></p>
-<blockquote>
-<p><strong>Input</strong> : nums[3,2,4],target = 6<br><strong>Output</strong> : [1,2]</p>
-</blockquote>
-<p> <strong>Example 3</strong></p>
-<blockquote>
-<p><strong>Input</strong> : nums = [3,3],target = 6<br><strong>Output</strong> : [0,1]</p>
-</blockquote>
-<p> <strong>ConStraints</strong></p>
-<blockquote>
-<ul>
-<li>2 &lt;= nums.length &lt;= $ 2^{10} $</li>
-<li>$-10^{9}$&lt;= nums[i] &lt;= $ 10^{9} $</li>
-<li>$-10^{9}$ &lt;= target &lt;= $ 10^{9} $</li>
-<li><strong>Only one valid anser exits.</strong></li>
+    <title>C++ templates 2nd</title>
+    <url>/2021/02/15/C-templates-2nd/</url>
+    <content><![CDATA[<h1 id="第一章-Function-Templates"><a href="#第一章-Function-Templates" class="headerlink" title="第一章 Function Templates "></a><center>第一章 Function Templates </center></h1><ol>
+<li>C++ 中equality 和 equivalent 的区别<ul>
+<li>Equivalent 要求类满足”LessThanCompare”,即这两个实例可以使用”&lt;”进行比较</li>
+<li>Equality 要求满足EqualityCompareable,即可以使用”==”比较</li>
 </ul>
-</blockquote>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="hash法"><a href="#hash法" class="headerlink" title="hash法"></a>hash法</h3><p>  利用unordered_map数组构造映射,遍历nums[i]时，看target-nums[i]是否存在于hash表中<br>  时间复杂度 O(n),空间复杂度O(n)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        unordered_map&lt;int, int&gt; indices;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; nums.size(); i++) &#123;</span><br><span class="line">            if (indices.find(target - nums[i]) !&#x3D; indices.end()) &#123;</span><br><span class="line">                return &#123;indices[target - nums[i]], i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            indices[nums[i]] &#x3D; i;</span><br><span class="line">        &#125;</span><br><span class="line">        return &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h3 id="暴力破解法"><a href="#暴力破解法" class="headerlink" title="暴力破解法"></a>暴力破解法</h3><p>  暴力破解时间复杂度O($n^{2}$),空间复杂度O(1)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        vector&lt;int&gt; ans;</span><br><span class="line">        for(int i&#x3D;0;i&lt;nums.size();i++)&#123;</span><br><span class="line">              for(int j&#x3D;i+1;j&lt;nums.size();j++)&#123;</span><br><span class="line">                  if(nums[i]+nums[j]&#x3D;&#x3D;target)&#123;</span><br><span class="line">                      ans.push_back(i);</span><br><span class="line">                      ans.push_back(j);</span><br><span class="line">                      return ans;</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h3 id="排序-双指针法"><a href="#排序-双指针法" class="headerlink" title="排序+双指针法"></a>排序+双指针法</h3><p>  先将数组的顺序排好O(nlogn),再利用双指针法遍历一遍O(n)得到结果<br>  为保存下标信息另开一个数组<br>  时间复杂度O(nlogn),空间复杂度O(n)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        vector&lt;int&gt; ans;</span><br><span class="line">        vector&lt;int&gt; temp;</span><br><span class="line">        temp&#x3D;nums;</span><br><span class="line">        int n&#x3D;temp.size();</span><br><span class="line">       sort(temp.begin(),temp.end());</span><br><span class="line">       int i&#x3D;0,j&#x3D;n-1;</span><br><span class="line">       while(i&lt;j)&#123;</span><br><span class="line">           if(temp[i]+temp[j]&gt;target)j--;</span><br><span class="line">          else if(temp[i]+temp[j]&lt;target)i++;</span><br><span class="line">          else break;</span><br><span class="line">       &#125;</span><br><span class="line">       if(i&lt;j)&#123;</span><br><span class="line">      for(int k&#x3D;0;k&lt;n;k++)&#123;</span><br><span class="line">          if(i&lt;n&amp;&amp;nums[k]&#x3D;&#x3D;temp[i])&#123;</span><br><span class="line">              ans.push_back(k);</span><br><span class="line">              i&#x3D;n;</span><br><span class="line">          &#125;</span><br><span class="line">         else if(j&lt;n&amp;&amp;nums[k]&#x3D;&#x3D;temp[j])&#123;</span><br><span class="line">              ans.push_back(k);</span><br><span class="line">              j&#x3D;n;</span><br><span class="line">          &#125;</span><br><span class="line">          if(i&#x3D;&#x3D;n&amp;&amp;j&#x3D;&#x3D;n)return ans;</span><br><span class="line">      &#125;</span><br><span class="line">      &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+</li>
+<li>从语意上来说，<code>class</code>和<code>typename</code>它们是Equivalent。由于class存在一定的误导性，所以推荐使用typename来声明模板参数T<ul>
+<li>typename 主要用于依赖于另一个模板参数的嵌套类型时进行声明,如下例：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">template &lt;typename param_t&gt;</span><br><span class="line">class Foo</span><br><span class="line">&#123;</span><br><span class="line">  typedef typename param_t::baz sub_t;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>在显式实例化模板时，必须使用class关键字<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">template class Foo&lt;int&gt;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>对于不同类型的实例的实现，都会根据传入的参数来对应实现</li>
+<li>模板的二阶段检查(Two-Phase Translation)<ul>
+<li>第一阶段检查： 在未生成实例的定义期，检查未使用模板参数的代码正确性<ul>
+<li>语法是否有误</li>
+<li>是否使用了不发现的变量、函数名</li>
+<li>static assertions 检查</li>
+</ul>
+</li>
+<li>第二阶段检查： 在对应生成实例期间，检查依赖于模板参数的代码是否都有效。基本上，所有代码都需要经过第二阶段检查</li>
+</ul>
+</li>
+<li>当且仅当有一个template type时，传入的值的类型必须与第一个值的类型保持一致。如果需要类型不一致，可通过以下几种方法来处理<ul>
+<li>使用staic_cast 来解决<ul>
+<li>Eg: max(static_cast<double>(4),7.2); // ok</li>
+</ul>
+</li>
+<li>使用显式声明来避免自动类型推导<ul>
+<li>Eg: max<double>(4,7.2); //ok</li>
+</ul>
+</li>
+<li>可以声明多个模板参数</li>
+</ul>
+</li>
+<li>在C++中，Return Type 是不能从调用者使用该调用的上下文中推断出来的，可以使用如下方法来处理return type<ul>
+<li>在实例化时，通过显式指定return type <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">template &lt;typename T&gt;</span><br><span class="line">T max( T a, T b);</span><br><span class="line">...</span><br><span class="line">::max&lt;double&gt;(4,7.2);</span><br></pre></td></tr></table></figure></li>
+<li>当定义多个template parameter时，可以通过指定第一个为return type，实例化时仅需显式指定return type就可以了<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">template &lt;typename RT,typename T1,typename T2&gt;</span><br><span class="line">RT max(T1 a,T2 b);</span><br><span class="line">...</span><br><span class="line">::max&lt;double&gt;(4,8.3);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>在不自定义return type情况下，可以使用如下方法来决定return type:</p>
+<ol>
+<li>使用auto进行类型的自动推导</li>
+<li>使用自动推导函数<ul>
+<li>C++ 11 版本可以使用decltype()函数，其写法如下<br><code> auto add(T x,U y) -&gt; decltype(x+y);</code></li>
+<li>C++ 14版本可以直接使用auto类型推导，原因：C++14版本使得普通函数具备返回值推导的能力</li>
+</ul>
+</li>
+<li>可以使用std::common_type函数(std::common_type 推导出一个可以覆盖所有所定义类型的通用类型)<ul>
+<li>C++ 11版本使用std::common_type()</li>
+<li>C++ 14版本使用std::common_type_t()</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>在实例化重载template Function 过程中，会根据参数优先匹配非模板函数，不匹配才会寻找对应的模板函数相应实现</p>
+</li>
+<li>为何使用值传递而不使用引用传递的原因<ol>
+<li>值传递语法更简单</li>
+<li>编译器对应优化更好</li>
+<li>move语意使得拷贝更方便</li>
+<li>有时根本没有move和copy</li>
+</ol>
+</li>
+</ol>
+<h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a><center>第二章</center></h1><ol>
+<li>在class template中，使用类名但不加模板参数代表类和模板参数作为它的实际参数,如下例所示<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">template &lt;typename T&gt;</span><br><span class="line">class Stack &#123;</span><br><span class="line">  ...</span><br><span class="line">  Stack (Stack const&amp;);</span><br><span class="line">  Stack&amp; operator&#x3D; (Stack const&amp;);</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;&#x2F;等价于下面的代码</span><br><span class="line">template &lt;typename T&gt;</span><br><span class="line">class Stack&lt;T&gt; &#123;</span><br><span class="line">  ...</span><br><span class="line">  Stack&lt;T&gt; (Stack&lt;T&gt; const&amp;);</span><br><span class="line">  Stack&lt;T&gt;&amp; operator&#x3D; (Stack&lt;T&gt; const&amp;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>C++ template 定义变量时需要注意”&gt;”的使用<ul>
+<li>C++ 11版本之前，两个相邻的”&gt;”中间需要安插一个空格<ul>
+<li>Eg: Stack<Stack<int> &gt;</li>
+</ul>
+</li>
+<li>C++ 11版本及之后的版本，都可以直接写入两个”&gt;”而不需要空格<ul>
+<li>Eg: Stack<Stack<int>&gt;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>如果想要特化一个class template，那么需要提前声明template&lt;&gt;和一个具有规范类型的类<ul>
+<li>类将作为模板参数</li>
+<li>类型将被直接指定声明在类名中</li>
+</ul>
+</li>
+<li>在一些特殊情况下采用偏特化会更好<ul>
+<li>与全特化基本类似，但是偏特化可以定义单个/多个参数</li>
+<li>模板参数也需要被直接指定在类名的定义中</li>
+</ul>
+</li>
+<li>默认class template parameters可以定义为一个容器用来管理数据<ul>
+<li>也可以在main()，对于想要使用的容器进行显式指定</li>
+</ul>
+</li>
+<li>通用的类型别名<ul>
+<li>使用关键字 typedef,用法如下<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef Stack&lt;int&gt; IntStack; &#x2F;&#x2F; typedef 关键字</span><br><span class="line">void foo (IntStack const&amp; s); &#x2F;&#x2F; s is stack of ints</span><br><span class="line">IntStack istack[10]; &#x2F;&#x2F; istack is array of 10 stacks of ints</span><br></pre></td></tr></table></figure></li>
+<li>自C++ 11版本之后，可以使用关键字<code>using</code><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">using IntStack &#x3D; Stack&lt;int&gt;;  &#x2F;&#x2F;alias declaration</span><br><span class="line">void foo (IntStack const&amp; s); &#x2F;&#x2F;s is stack of ints</span><br><span class="line">IntStack istack[10];  &#x2F;&#x2F;istack is array of 10 stacks of ints</span><br></pre></td></tr></table></figure></li>
+<li>IntStack 和 Stack<int> 是两个可互换符号的相同类型</li>
+<li>对于已经存在的类型，如果需要定义一个别名。推荐使用typedef,这样会使得代码可读性更好。</li>
+<li>C++11之后，我们可以alias templates,用法如下<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">template &lt;typename T&gt;</span><br><span class="line">using DequeStack &#x3D; Stack&lt;T, std::deque&lt;T&gt;&gt;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>class template 参数推导会根据字符串字面来进行推导，如下例<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  Stack (T const&amp; elem) : elems(&#123;elem&#125;) &#123;&#125; &#x2F;&#x2F; initialize stack with one elemet</span><br><span class="line">  Stack stringStack &#x3D; &quot;bottom&quot;;  &#x2F;&#x2F;Stack&lt;char const[7]&gt; C++17版本推导结果</span><br><span class="line">&#x2F;&#x2F;这种写法会导致在T确定为char const[7]，将无法修改，所以应改写成</span><br><span class="line">  Stack (T elem) : elems(&#123;elem&#125;) &#123;&#125;;</span><br><span class="line">  Stack stringStack &#x3D; &quot;bottom&quot; &#x2F;&#x2F; Stack&lt;char const*&gt; C++ 17自动推导</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 ]]></content>
       <categories>
-        <category>algorithm</category>
+        <category>Read Notes</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
+        <tag>theory</tag>
       </tags>
   </entry>
   <entry>
@@ -165,6 +242,75 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode-1</title>
+    <url>/2020/01/12/Leetcode-1/</url>
+    <content><![CDATA[<h2 id="Qestion"><a href="#Qestion" class="headerlink" title="Qestion"></a>Qestion</h2><p>Give an array of intergets <code>nums</code> and an integer <code>target</code>,return indices of the two numbers such that they add up to <code>target</code>.<br>You may assume that each input would have exctly one solution,and you may use the same element twice.<br>You can return the answer in any order.  </p>
+<p> <strong>Example 1</strong></p>
+<blockquote>
+<p><strong>Input</strong> : nums [2,7,11,15] , target = 9<br><strong>Output</strong> : [0,1]<br><strong>Output</strong> :Because nums[0] + nums[1] == 9, we return [0,1].</p>
+</blockquote>
+<p> <strong>Examp 2</strong></p>
+<blockquote>
+<p><strong>Input</strong> : nums[3,2,4],target = 6<br><strong>Output</strong> : [1,2]</p>
+</blockquote>
+<p> <strong>Example 3</strong></p>
+<blockquote>
+<p><strong>Input</strong> : nums = [3,3],target = 6<br><strong>Output</strong> : [0,1]</p>
+</blockquote>
+<p> <strong>ConStraints</strong></p>
+<blockquote>
+<ul>
+<li>2 &lt;= nums.length &lt;= $ 2^{10} $</li>
+<li>$-10^{9}$&lt;= nums[i] &lt;= $ 10^{9} $</li>
+<li>$-10^{9}$ &lt;= target &lt;= $ 10^{9} $</li>
+<li><strong>Only one valid anser exits.</strong></li>
+</ul>
+</blockquote>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="hash法"><a href="#hash法" class="headerlink" title="hash法"></a>hash法</h3><p>  利用unordered_map数组构造映射,遍历nums[i]时，看target-nums[i]是否存在于hash表中<br>  时间复杂度 O(n),空间复杂度O(n)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        unordered_map&lt;int, int&gt; indices;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; nums.size(); i++) &#123;</span><br><span class="line">            if (indices.find(target - nums[i]) !&#x3D; indices.end()) &#123;</span><br><span class="line">                return &#123;indices[target - nums[i]], i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            indices[nums[i]] &#x3D; i;</span><br><span class="line">        &#125;</span><br><span class="line">        return &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="暴力破解法"><a href="#暴力破解法" class="headerlink" title="暴力破解法"></a>暴力破解法</h3><p>  暴力破解时间复杂度O($n^{2}$),空间复杂度O(1)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        vector&lt;int&gt; ans;</span><br><span class="line">        for(int i&#x3D;0;i&lt;nums.size();i++)&#123;</span><br><span class="line">              for(int j&#x3D;i+1;j&lt;nums.size();j++)&#123;</span><br><span class="line">                  if(nums[i]+nums[j]&#x3D;&#x3D;target)&#123;</span><br><span class="line">                      ans.push_back(i);</span><br><span class="line">                      ans.push_back(j);</span><br><span class="line">                      return ans;</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="排序-双指针法"><a href="#排序-双指针法" class="headerlink" title="排序+双指针法"></a>排序+双指针法</h3><p>  先将数组的顺序排好O(nlogn),再利用双指针法遍历一遍O(n)得到结果<br>  为保存下标信息另开一个数组<br>  时间复杂度O(nlogn),空间复杂度O(n)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        vector&lt;int&gt; ans;</span><br><span class="line">        vector&lt;int&gt; temp;</span><br><span class="line">        temp&#x3D;nums;</span><br><span class="line">        int n&#x3D;temp.size();</span><br><span class="line">       sort(temp.begin(),temp.end());</span><br><span class="line">       int i&#x3D;0,j&#x3D;n-1;</span><br><span class="line">       while(i&lt;j)&#123;</span><br><span class="line">           if(temp[i]+temp[j]&gt;target)j--;</span><br><span class="line">          else if(temp[i]+temp[j]&lt;target)i++;</span><br><span class="line">          else break;</span><br><span class="line">       &#125;</span><br><span class="line">       if(i&lt;j)&#123;</span><br><span class="line">      for(int k&#x3D;0;k&lt;n;k++)&#123;</span><br><span class="line">          if(i&lt;n&amp;&amp;nums[k]&#x3D;&#x3D;temp[i])&#123;</span><br><span class="line">              ans.push_back(k);</span><br><span class="line">              i&#x3D;n;</span><br><span class="line">          &#125;</span><br><span class="line">         else if(j&lt;n&amp;&amp;nums[k]&#x3D;&#x3D;temp[j])&#123;</span><br><span class="line">              ans.push_back(k);</span><br><span class="line">              j&#x3D;n;</span><br><span class="line">          &#125;</span><br><span class="line">          if(i&#x3D;&#x3D;n&amp;&amp;j&#x3D;&#x3D;n)return ans;</span><br><span class="line">      &#125;</span><br><span class="line">      &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-10</title>
+    <url>/2020/10/28/Leetcode-10/</url>
+    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p> &emsp;&emsp;Implement <code>strStr()</code>.Return the index of the first occurrence of needle in haystack, or <code>-1</code> if <code>needle</code> is not part of <code>haystack</code>.<br> <strong>Clarification:</strong><br> &emsp;&emsp;What should we return when needle is an empty string? This is a great question to ask during an interview.</p>
+<p> &emsp;&emsp;For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C’s strstr() and Java’s indexOf().</p>
+<p> <strong>Example1:</strong></p>
+<blockquote>
+<p><strong>Input:</strong> haystack = “hello”, needle = “ll”<br><strong>Output:</strong> 2</p>
+</blockquote>
+<p> <strong>Example2:</strong></p>
+<blockquote>
+<p><strong>Input:</strong> haystack = “aaaaa”, needle = “bba”<br><strong>Output:</strong> -1</p>
+</blockquote>
+<p> <strong>Example3:</strong></p>
+<blockquote>
+<p><strong>Input:</strong> haystack = “”, needle = “”<br><strong>Output:</strong> 0</p>
+</blockquote>
+<p> <strong>Constraints:</strong></p>
+<ul>
+<li><code> 0 &lt;= haystack.length, needle.length &lt;= 5 * 10<sup>4</sup> </code></li>
+<li><code>haystack</code>and <code>needle</code> consist of only lower-case English characters.</li>
+</ul>
+<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一:"></a>思路一:</h2><p>  &emsp;&emsp;两个字符长度相减+1得到的长度就是需要比较的长度，当needle长度为0时，返回0。当haystack与needle不匹配时，返回-1。当haystack与needle匹配时，返回i的值。时间复杂度为O($n^{2}$),空间复杂度为O(n),具体代码如下：<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        int m &#x3D; haystack.size();</span><br><span class="line">        int n &#x3D; needle.size();</span><br><span class="line">        int r &#x3D; m - n + 1;</span><br><span class="line">        </span><br><span class="line">        if (n &#x3D;&#x3D; 0) return 0;</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; r; i++) &#123;</span><br><span class="line">            int  j &#x3D; i,k &#x3D; 0;</span><br><span class="line">            while (k &lt; n &amp;&amp; haystack[j] &#x3D;&#x3D; needle[k]) </span><br><span class="line">                k++,j++;</span><br><span class="line">            if (k &#x3D;&#x3D; n) return i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二:"></a>思路二:</h2><p>&emsp;&emsp;KMP(字符串查找算法),lps是needle的索引。这里使用的kmp算法，把needle作为kmp前缀,来进行字符比对。如果字符相同，那么len增加。如果不相等，就要看len的值，如果len的值为0那么就将lps[i]的值设置为0。如果len不为零，那么就把lps[len-1]的值赋给len，这一步是为了防止对应字符中间出现了不相等的，将字符串右移。时间复杂度为O(n); </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        if (needle.empty()) return 0;</span><br><span class="line">        </span><br><span class="line">        string kmp &#x3D; needle + &quot;#&quot; + haystack;</span><br><span class="line">        int m &#x3D; kmp.size(),n &#x3D; needle.size();</span><br><span class="line">        vector&lt;int&gt; lps(m,0);</span><br><span class="line">        </span><br><span class="line">        for (int len &#x3D; 0,i &#x3D; 1; i &lt; m;) &#123;</span><br><span class="line">            if (kmp[len] &#x3D;&#x3D; kmp[i]) &#123;</span><br><span class="line">                lps[i] &#x3D; ++len;</span><br><span class="line">                if (len &#x3D;&#x3D; n) </span><br><span class="line">                    return i - 2 * n;</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (len &#x3D;&#x3D; 0) </span><br><span class="line">                 lps[i++] &#x3D; 0;</span><br><span class="line">            else </span><br><span class="line">                len &#x3D; lps[len - 1];</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-11</title>
     <url>/2020/11/02/Leetcode-11/</url>
     <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p> &emsp;&emsp; Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
@@ -210,39 +356,6 @@
 </ul>
 <h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><p>&emsp;&emsp;<strong>二分法查找(binary Search):</strong> 首先先确定最高位和最低位的值,因为随着low和high的位置不断变化,<br>所以middle的值是不断再改变的。这里用移位(&gt;&gt;1)代替了除法,这样不会增加运算的复杂性。<br>&emsp;&emsp;如果目标值大于中间值,那么low就要变化;相反，如果目标值小于中间值，high就需要变化;如果目标值正好等于中间值就可以直接输出了。<br>时间复杂度为O(logn),具体代码如下:<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int searchInsert(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        int low &#x3D; 0,high &#x3D; nums.size() - 1,n &#x3D; nums.size();</span><br><span class="line">        </span><br><span class="line">        while (low &lt;&#x3D; high) &#123;</span><br><span class="line">            int middle &#x3D; low + ((high - low) &gt;&gt; 1);</span><br><span class="line">            if (target &gt; nums[middle]) low &#x3D; middle + 1;</span><br><span class="line">            else if (target &lt; nums[middle]) high &#x3D; middle - 1;</span><br><span class="line">            else return middle;</span><br><span class="line">        &#125;</span><br><span class="line">        return low;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h2><p>  &emsp;&emsp;<strong>线性查找(linear search):</strong> 将nums的值挨个赋给i,如果i小于目标值,result就自增。相反如果大于等于目标值，就可以直接跳出循环，输出结果了。时间复杂度为O(n),具体代码如下:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int searchInsert(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        int result &#x3D; 0;</span><br><span class="line">        for (auto&amp; i : nums) &#123;</span><br><span class="line">            if (i &lt; target)&#123;</span><br><span class="line">                result++;</span><br><span class="line">            &#125; </span><br><span class="line">            else break;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-10</title>
-    <url>/2020/10/28/Leetcode-10/</url>
-    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p> &emsp;&emsp;Implement <code>strStr()</code>.Return the index of the first occurrence of needle in haystack, or <code>-1</code> if <code>needle</code> is not part of <code>haystack</code>.<br> <strong>Clarification:</strong><br> &emsp;&emsp;What should we return when needle is an empty string? This is a great question to ask during an interview.</p>
-<p> &emsp;&emsp;For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C’s strstr() and Java’s indexOf().</p>
-<p> <strong>Example1:</strong></p>
-<blockquote>
-<p><strong>Input:</strong> haystack = “hello”, needle = “ll”<br><strong>Output:</strong> 2</p>
-</blockquote>
-<p> <strong>Example2:</strong></p>
-<blockquote>
-<p><strong>Input:</strong> haystack = “aaaaa”, needle = “bba”<br><strong>Output:</strong> -1</p>
-</blockquote>
-<p> <strong>Example3:</strong></p>
-<blockquote>
-<p><strong>Input:</strong> haystack = “”, needle = “”<br><strong>Output:</strong> 0</p>
-</blockquote>
-<p> <strong>Constraints:</strong></p>
-<ul>
-<li><code> 0 &lt;= haystack.length, needle.length &lt;= 5 * 10<sup>4</sup> </code></li>
-<li><code>haystack</code>and <code>needle</code> consist of only lower-case English characters.</li>
-</ul>
-<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一:"></a>思路一:</h2><p>  &emsp;&emsp;两个字符长度相减+1得到的长度就是需要比较的长度，当needle长度为0时，返回0。当haystack与needle不匹配时，返回-1。当haystack与needle匹配时，返回i的值。时间复杂度为O($n^{2}$),空间复杂度为O(n),具体代码如下：<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        int m &#x3D; haystack.size();</span><br><span class="line">        int n &#x3D; needle.size();</span><br><span class="line">        int r &#x3D; m - n + 1;</span><br><span class="line">        </span><br><span class="line">        if (n &#x3D;&#x3D; 0) return 0;</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; r; i++) &#123;</span><br><span class="line">            int  j &#x3D; i,k &#x3D; 0;</span><br><span class="line">            while (k &lt; n &amp;&amp; haystack[j] &#x3D;&#x3D; needle[k]) </span><br><span class="line">                k++,j++;</span><br><span class="line">            if (k &#x3D;&#x3D; n) return i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二:"></a>思路二:</h2><p>&emsp;&emsp;KMP(字符串查找算法),lps是needle的索引。这里使用的kmp算法，把needle作为kmp前缀,来进行字符比对。如果字符相同，那么len增加。如果不相等，就要看len的值，如果len的值为0那么就将lps[i]的值设置为0。如果len不为零，那么就把lps[len-1]的值赋给len，这一步是为了防止对应字符中间出现了不相等的，将字符串右移。时间复杂度为O(n); </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        if (needle.empty()) return 0;</span><br><span class="line">        </span><br><span class="line">        string kmp &#x3D; needle + &quot;#&quot; + haystack;</span><br><span class="line">        int m &#x3D; kmp.size(),n &#x3D; needle.size();</span><br><span class="line">        vector&lt;int&gt; lps(m,0);</span><br><span class="line">        </span><br><span class="line">        for (int len &#x3D; 0,i &#x3D; 1; i &lt; m;) &#123;</span><br><span class="line">            if (kmp[len] &#x3D;&#x3D; kmp[i]) &#123;</span><br><span class="line">                lps[i] &#x3D; ++len;</span><br><span class="line">                if (len &#x3D;&#x3D; n) </span><br><span class="line">                    return i - 2 * n;</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (len &#x3D;&#x3D; 0) </span><br><span class="line">                 lps[i++] &#x3D; 0;</span><br><span class="line">            else </span><br><span class="line">                len &#x3D; lps[len - 1];</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>algorithm</category>
@@ -411,6 +524,24 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode-19</title>
+    <url>/2021/03/04/Leetcode-19/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emps;在二维空间中散布着一些气球。对于每个气球，它们都是在同一水平直径上。所以对于纵坐标就没有那么重要了，x轴(横坐标)是气球的起点和终点，且起点始终小于终点。<br>&emsp;&emsp;沿x轴不同的点会垂直向上射出一个箭头，如果Xstart&lt;= x &lt;= Xend，那么气球将会被箭射爆。根据输入的气球坐标，得到最少使用的箭数。</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p>&emsp;&emsp;输入是一个数组，数组由多个气球的起始和终止坐标所组成。输出一个整数，表示所需最少的箭头数。</p>
+<p><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> points = [[10,16],[2,8],[1,6],[7,12]]<br>
+  <strong>Output:</strong> 2 
+</p><br>&emsp;&emsp;在这个样例中，[1,6]与[2,8]重叠，[7,12]与[10,16]重叠，所以我们只需要两只箭就可以了</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;想要用最少的箭来射击最多的气球。那么就是说对于有重叠区间的气球，我们只需要安排一只箭射击就可以了。所以我们采取的贪心策略为，优先射击无重叠区域的气球<br>&emsp;&emsp;具体实现方法为，先把这个数组进行<code>std::sort</code>排序(默认升序)，排序后的数组为[[1,6],[2,8],[7,12],[10,16]]。按照我们的贪心策略，在循环内初始化为[1,6]。查看与其重叠的区间，即第一个区间的终止位置可以覆盖接下来的起始位置。如果存在更小区间的气球，则更新prev并且对i进行自增。倘若条件不满足total 进行自增。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findMinArrowShots(vector&lt;vector&lt;int&gt;&gt;&amp; points) &#123;</span><br><span class="line">        sort(points.begin(),points.end());</span><br><span class="line">        int n &#x3D; points.size();</span><br><span class="line">        int total &#x3D; 0,i &#x3D; 0;</span><br><span class="line">        while (i &lt; n) &#123;</span><br><span class="line">            int prev &#x3D; points[i][1];</span><br><span class="line">            while (i &lt; n &amp;&amp; prev &gt;&#x3D; points[i][0]) &#123;</span><br><span class="line">                prev &#x3D; min(points[i][1],prev);</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            ++total;</span><br><span class="line">        &#125;</span><br><span class="line">        return total;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-2</title>
     <url>/2020/09/23/Leetcode-2/</url>
     <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p> Given a 32-bit signed integer, reverse digits of an integer.</p>
@@ -428,6 +559,19 @@
 </blockquote>
 <p> <strong>Note :</strong><br>&emsp;&emsp;Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [$(-2)^{31}$, $2^{31}$-1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
 <h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="计算法"><a href="#计算法" class="headerlink" title="计算法"></a>计算法</h3><p> 这是一个比较投机的方案，因为使用了数字类型long后，就不会再有溢出的问题，最后再和INT_MAX比较一下就可以了。时间复杂度为O(nlogn)<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int reverse(int x) &#123;</span><br><span class="line">        long res &#x3D; 0;</span><br><span class="line">        for (;x !&#x3D; 0 ; x &#x2F;&#x3D; 10)  res &#x3D; res * 10 + x % 10;</span><br><span class="line">        return (res &gt; INT_MAX || res &lt; INT_MIN) ? 0 : res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-20</title>
+    <url>/2021/03/10/Leetcode-20/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;翻转一棵二叉树，左子树与右子树内容互换</p>
+<p>#</p>
 ]]></content>
       <categories>
         <category>algorithm</category>
@@ -1641,7 +1785,7 @@ int main()
 </ol>
 ]]></content>
       <categories>
-        <category>Reading Notes</category>
+        <category>Read Notes</category>
       </categories>
       <tags>
         <tag>theory</tag>
