@@ -570,8 +570,10 @@
   <entry>
     <title>Leetcode-20</title>
     <url>/2021/03/10/Leetcode-20/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;翻转一棵二叉树，左子树与右子树内容互换</p>
-<p>#</p>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;翻转一棵二叉树， 即左右节点互换</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input:</span><br><span class="line">     4</span><br><span class="line">   &#x2F;   \</span><br><span class="line">  2     7</span><br><span class="line"> &#x2F; \   &#x2F; \</span><br><span class="line">1   3 6   9  </span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Output:</span><br><span class="line">     4</span><br><span class="line">   &#x2F;   \</span><br><span class="line">  7     2</span><br><span class="line"> &#x2F; \   &#x2F; \</span><br><span class="line">9   6 3   1</span><br></pre></td></tr></table></figure>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;这是一道与树相关的算法，简单来说，我们应该先搞清楚当前root节点该做什么，然后根据函数定义递归调用子节点<br>&emsp;&emsp;对于这道题目来说，我们仅需要将二叉树上的每一个节点左右子节点进行交换，最后的结果就是完全翻转之后的二叉树<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span><br><span class="line"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    TreeNode* invertTree(TreeNode* root) &#123;</span><br><span class="line">        if (root &#x3D;&#x3D; nullptr) return nullptr;</span><br><span class="line"></span><br><span class="line">        invertTree(root-&gt;left);</span><br><span class="line">        TreeNode* node &#x3D; root-&gt;left;</span><br><span class="line">        root-&gt;left &#x3D; root-&gt;right;</span><br><span class="line">        root-&gt;right &#x3D; node;</span><br><span class="line">        invertTree(root-&gt;right);</span><br><span class="line"></span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>algorithm</category>
@@ -1789,6 +1791,58 @@ int main()
       </categories>
       <tags>
         <tag>theory</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-21</title>
+    <url>/2021/03/14/Leetcode-21/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给定一个二叉树的根节点<code>root</code>,需要将其展开为一个链表。</p>
+<ul>
+<li>展开后的单链表应该同样使用<code>TreeNode</code>，其中right子指针指向链表中下一个结点，而左子指针始终为<code>null</code></li>
+<li>展开后的单链表应该与二叉树<code>先序遍历</code>顺序相同。</li>
+</ul>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p>&emsp;&emsp;输入是一个二叉树，输出是由二叉树节点所组成的一个链表</p>
+<p><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> root = [1,2,5,3,4,null,6] <br>
+  <strong>Output:</strong> [1,null,2,null,3,null,4,null,5,null,6] 
+</p><br>&emsp;&emsp;就是将左节点置空，以右节点的形式表示整个链表</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;通过递归,左右子树都拉成一条链表。将左节点赋给右节点并将其置空，处理完左子树后。对于右子树，将原右子树接在新右子树之后。这样对于整个二叉树就处理结束了<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span><br><span class="line"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void flatten(TreeNode* root) &#123;</span><br><span class="line">        if (root &#x3D;&#x3D; nullptr) return;</span><br><span class="line">        TreeNode* left &#x3D; root-&gt;left;</span><br><span class="line">        TreeNode* right &#x3D; root-&gt;right;</span><br><span class="line"></span><br><span class="line">        root-&gt;left &#x3D; nullptr;</span><br><span class="line">        root-&gt;right &#x3D; left;</span><br><span class="line"></span><br><span class="line">        TreeNode* temp &#x3D; root;</span><br><span class="line">        while (temp-&gt;right !&#x3D; nullptr) temp &#x3D; temp-&gt;right;</span><br><span class="line">        temp-&gt;right &#x3D; right;</span><br><span class="line"></span><br><span class="line">        flatten(root-&gt;left);</span><br><span class="line">        flatten(root-&gt;right);        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-22</title>
+    <url>/2021/03/15/Leetcode-22/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给定一个<strong>完美二叉树</strong>，其所有叶子节点都在同一层，每个父节点都有两个子节点。二叉树定义如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">struct Node &#123;</span><br><span class="line">  int val;</span><br><span class="line">  Node *left;</span><br><span class="line">  Node *right;</span><br><span class="line">  Node *next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>&emsp;&emsp;填充它的每个next指针，让这个指针指向其下一个左侧节点。如果找不到下一个右侧节点，则将next指针设置为<code>NULL</code>。初始状态下，所有next指针都被设置为<code>NULL</code></p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p><img src="https://assets.leetcode.com/uploads/2019/02/14/116_sample.png" alt="avatar"><br>&emsp;&emsp;给定一个二叉树如图A所示，函数应该填充它的每个next指针,以指向其下一个右侧节点，如图B所示。序列化输出按层序遍历排列，同一层节点由next指针连接，’#’标志着每一层的结束。</p>
+<p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> root = [1,2,3,4,5,6,7] <br>
+  <strong>Output:</strong> [1,#,2,3,#,4,5,6,7,#]
+</p>
+
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;首先这题主要问题在于使用指向右子树节点的next。简单的只存在左右子树,即这是一个具有两层的树。我们可以直接使用递归来进行处理，大致代码如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    Node* connect(Node* root) &#123;</span><br><span class="line">        if (root &#x3D;&#x3D; nullptr || root-&gt;left &#x3D;&#x3D; nullptr) </span><br><span class="line">            return root;</span><br><span class="line">        root-&gt;left-&gt;next &#x3D; root-&gt;right;</span><br><span class="line"></span><br><span class="line">        connect(root-&gt;left);</span><br><span class="line">        connect(root-&gt;right);</span><br><span class="line"></span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><br>&emsp;&emsp;但是对于多层的树来说，这样的解法就存在一定的缺陷。对于超过两层的树，会分叉多个子节点。继续使用上面的解法就会导致左子树处理完成，而右子树却没有处理的状况。<br>&emsp;&emsp;我们可以使用函数来处理对于多个节点的问题，代码如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    Node* connect(Node* root) &#123;</span><br><span class="line">        if (root &#x3D;&#x3D; nullptr) return root;</span><br><span class="line">        connectTwoTree(root-&gt;left,root-&gt;right);</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">    void connectTwoTree(Node* node,Node* node1) &#123;</span><br><span class="line">        if (node &#x3D;&#x3D; nullptr || node1 &#x3D;&#x3D; nullptr) return;</span><br><span class="line"></span><br><span class="line">        node-&gt;next &#x3D; node1;</span><br><span class="line"></span><br><span class="line">        connectTwoTree(node-&gt;left,node-&gt;right);</span><br><span class="line">        connectTwoTree(node1-&gt;left,node1-&gt;right);</span><br><span class="line"></span><br><span class="line">        connectTwoTree(node-&gt;right,node1-&gt;left);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-23</title>
+    <url>/2021/03/15/Leetcode-23/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
       </tags>
   </entry>
 </search>
