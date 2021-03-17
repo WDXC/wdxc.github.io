@@ -466,23 +466,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-16</title>
-    <url>/2021/02/06/Leetcode-16/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;你有一个长花坛，其中有一些种植了花朵，有一些没有。花坛里的种的花必须要有间隔(即不能相邻而种)</p>
-<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p><p style = "background-color:rgba(240,248,255)">
-  <strong>Input:</strong> flowerbed = [1,0,0,0,1], n = 1<br>
-  <strong>Output:</strong> true
-</p><br>&emsp;&emsp;在这个样例中，flowerbed[2]左右没有花朵，可以种植一朵花，符合题目种一朵花的要求，即输出true</p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;对于这题我们先考虑第一朵花怎么种，首先头和尾需要优先进行处理。我们可以对这个数组首尾都添加一个0，从而确定首尾。那我们就可以从原数组的第一个开始进行判断(i=1)，到原数组的最后一个(i=len-1)。根据题目要求，种花的条件是左右都没有花且即将要种的地是空闲的。所以就要求{i-1,i,i+1}都为0时，计数的才会自增1。循环结束，因为首尾添加的0可能会导致花会被多种，因此,(计数&gt;=要求的花)就可以了。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool canPlaceFlowers(vector&lt;int&gt;&amp; flowerbed, int n) &#123;</span><br><span class="line">        flowerbed.push_back(0);</span><br><span class="line">        flowerbed.insert(flowerbed.begin(),0);</span><br><span class="line">        </span><br><span class="line">        int i &#x3D; 1,sum &#x3D; 0,len &#x3D; flowerbed.size();</span><br><span class="line">        while (i &lt; len-1) &#123;</span><br><span class="line">            if (flowerbed[i]+flowerbed[i+1]+flowerbed[i-1] &#x3D;&#x3D; 0)</span><br><span class="line">                ++sum,++i;</span><br><span class="line">            ++i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return sum &gt;&#x3D; n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode-17</title>
     <url>/2021/02/08/Leetcode-17/</url>
     <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;在一个培育的整数数组里找到两个数，使它们的和为给定值。书籍有且有一对解。</p>
@@ -497,6 +480,23 @@
 <li>同理，如果我们假设在右指针在r右边的时候，左指针已经移动到了l；此时两个指针指向值的和大于给定值，因此右指针会一直左移直到到达r。<br>&emsp;&emsp;所以双指针在任何时候都不可能牌(l,r)之间，又因为不满足条件时指针必须移动一个，所以最终一定会收敛于l和r之间。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        int l &#x3D; 0,r &#x3D; nums.size()-1,n &#x3D; nums.size();</span><br><span class="line">        while (l &lt;&#x3D; r) &#123;</span><br><span class="line">            if (nums[l] + nums[r] &#x3D;&#x3D; target) break;</span><br><span class="line">            if (nums[l] + nums[r] &gt; target) --r;</span><br><span class="line">            else ++l;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return vector&lt;int&gt;&#123;l+1,r+1&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-16</title>
+    <url>/2021/02/06/Leetcode-16/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;你有一个长花坛，其中有一些种植了花朵，有一些没有。花坛里的种的花必须要有间隔(即不能相邻而种)</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> flowerbed = [1,0,0,0,1], n = 1<br>
+  <strong>Output:</strong> true
+</p><br>&emsp;&emsp;在这个样例中，flowerbed[2]左右没有花朵，可以种植一朵花，符合题目种一朵花的要求，即输出true</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;对于这题我们先考虑第一朵花怎么种，首先头和尾需要优先进行处理。我们可以对这个数组首尾都添加一个0，从而确定首尾。那我们就可以从原数组的第一个开始进行判断(i=1)，到原数组的最后一个(i=len-1)。根据题目要求，种花的条件是左右都没有花且即将要种的地是空闲的。所以就要求{i-1,i,i+1}都为0时，计数的才会自增1。循环结束，因为首尾添加的0可能会导致花会被多种，因此,(计数&gt;=要求的花)就可以了。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool canPlaceFlowers(vector&lt;int&gt;&amp; flowerbed, int n) &#123;</span><br><span class="line">        flowerbed.push_back(0);</span><br><span class="line">        flowerbed.insert(flowerbed.begin(),0);</span><br><span class="line">        </span><br><span class="line">        int i &#x3D; 1,sum &#x3D; 0,len &#x3D; flowerbed.size();</span><br><span class="line">        while (i &lt; len-1) &#123;</span><br><span class="line">            if (flowerbed[i]+flowerbed[i+1]+flowerbed[i-1] &#x3D;&#x3D; 0)</span><br><span class="line">                ++sum,++i;</span><br><span class="line">            ++i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return sum &gt;&#x3D; n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>algorithm</category>
@@ -575,6 +575,58 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Output:</span><br><span class="line">     4</span><br><span class="line">   &#x2F;   \</span><br><span class="line">  7     2</span><br><span class="line"> &#x2F; \   &#x2F; \</span><br><span class="line">9   6 3   1</span><br></pre></td></tr></table></figure>
 <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;这是一道与树相关的算法，简单来说，我们应该先搞清楚当前root节点该做什么，然后根据函数定义递归调用子节点<br>&emsp;&emsp;对于这道题目来说，我们仅需要将二叉树上的每一个节点左右子节点进行交换，最后的结果就是完全翻转之后的二叉树<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span><br><span class="line"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    TreeNode* invertTree(TreeNode* root) &#123;</span><br><span class="line">        if (root &#x3D;&#x3D; nullptr) return nullptr;</span><br><span class="line"></span><br><span class="line">        invertTree(root-&gt;left);</span><br><span class="line">        TreeNode* node &#x3D; root-&gt;left;</span><br><span class="line">        root-&gt;left &#x3D; root-&gt;right;</span><br><span class="line">        root-&gt;right &#x3D; node;</span><br><span class="line">        invertTree(root-&gt;right);</span><br><span class="line"></span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-21</title>
+    <url>/2021/03/14/Leetcode-21/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给定一个二叉树的根节点<code>root</code>,需要将其展开为一个链表。</p>
+<ul>
+<li>展开后的单链表应该同样使用<code>TreeNode</code>，其中right子指针指向链表中下一个结点，而左子指针始终为<code>null</code></li>
+<li>展开后的单链表应该与二叉树<code>先序遍历</code>顺序相同。</li>
+</ul>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p>&emsp;&emsp;输入是一个二叉树，输出是由二叉树节点所组成的一个链表</p>
+<p><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> root = [1,2,5,3,4,null,6] <br>
+  <strong>Output:</strong> [1,null,2,null,3,null,4,null,5,null,6] 
+</p><br>&emsp;&emsp;就是将左节点置空，以右节点的形式表示整个链表</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;通过递归,左右子树都拉成一条链表。将左节点赋给右节点并将其置空，处理完左子树后。对于右子树，将原右子树接在新右子树之后。这样对于整个二叉树就处理结束了<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span><br><span class="line"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void flatten(TreeNode* root) &#123;</span><br><span class="line">        if (root &#x3D;&#x3D; nullptr) return;</span><br><span class="line">        TreeNode* left &#x3D; root-&gt;left;</span><br><span class="line">        TreeNode* right &#x3D; root-&gt;right;</span><br><span class="line"></span><br><span class="line">        root-&gt;left &#x3D; nullptr;</span><br><span class="line">        root-&gt;right &#x3D; left;</span><br><span class="line"></span><br><span class="line">        TreeNode* temp &#x3D; root;</span><br><span class="line">        while (temp-&gt;right !&#x3D; nullptr) temp &#x3D; temp-&gt;right;</span><br><span class="line">        temp-&gt;right &#x3D; right;</span><br><span class="line"></span><br><span class="line">        flatten(root-&gt;left);</span><br><span class="line">        flatten(root-&gt;right);        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-22</title>
+    <url>/2021/03/15/Leetcode-22/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给定一个<strong>完美二叉树</strong>，其所有叶子节点都在同一层，每个父节点都有两个子节点。二叉树定义如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">struct Node &#123;</span><br><span class="line">  int val;</span><br><span class="line">  Node *left;</span><br><span class="line">  Node *right;</span><br><span class="line">  Node *next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>&emsp;&emsp;填充它的每个next指针，让这个指针指向其下一个左侧节点。如果找不到下一个右侧节点，则将next指针设置为<code>NULL</code>。初始状态下，所有next指针都被设置为<code>NULL</code></p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p><img src="https://assets.leetcode.com/uploads/2019/02/14/116_sample.png" alt="avatar"><br>&emsp;&emsp;给定一个二叉树如图A所示，函数应该填充它的每个next指针,以指向其下一个右侧节点，如图B所示。序列化输出按层序遍历排列，同一层节点由next指针连接，’#’标志着每一层的结束。</p>
+<p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> root = [1,2,3,4,5,6,7] <br>
+  <strong>Output:</strong> [1,#,2,3,#,4,5,6,7,#]
+</p>
+
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;首先这题主要问题在于使用指向右子树节点的next。简单的只存在左右子树,即这是一个具有两层的树。我们可以直接使用递归来进行处理，大致代码如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    Node* connect(Node* root) &#123;</span><br><span class="line">        if (root &#x3D;&#x3D; nullptr || root-&gt;left &#x3D;&#x3D; nullptr) </span><br><span class="line">            return root;</span><br><span class="line">        root-&gt;left-&gt;next &#x3D; root-&gt;right;</span><br><span class="line"></span><br><span class="line">        connect(root-&gt;left);</span><br><span class="line">        connect(root-&gt;right);</span><br><span class="line"></span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><br>&emsp;&emsp;但是对于多层的树来说，这样的解法就存在一定的缺陷。对于超过两层的树，会分叉多个子节点。继续使用上面的解法就会导致左子树处理完成，而右子树却没有处理的状况。<br>&emsp;&emsp;我们可以使用函数来处理对于多个节点的问题，代码如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    Node* connect(Node* root) &#123;</span><br><span class="line">        if (root &#x3D;&#x3D; nullptr) return root;</span><br><span class="line">        connectTwoTree(root-&gt;left,root-&gt;right);</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">    void connectTwoTree(Node* node,Node* node1) &#123;</span><br><span class="line">        if (node &#x3D;&#x3D; nullptr || node1 &#x3D;&#x3D; nullptr) return;</span><br><span class="line"></span><br><span class="line">        node-&gt;next &#x3D; node1;</span><br><span class="line"></span><br><span class="line">        connectTwoTree(node-&gt;left,node-&gt;right);</span><br><span class="line">        connectTwoTree(node1-&gt;left,node1-&gt;right);</span><br><span class="line"></span><br><span class="line">        connectTwoTree(node-&gt;right,node1-&gt;left);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-23</title>
+    <url>/2021/03/15/Leetcode-23/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>algorithm</category>
       </categories>
@@ -707,30 +759,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-5</title>
-    <url>/2020/10/03/Leetcode-5/</url>
-    <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Write a function to find the longest common prefix string amongst an array of strings.  </p>
-<p>If there is no common prefix, return an empty string “”.</p>
-<p> <strong>Example 1:</strong></p>
-<blockquote>
-<p><strong>Input : </strong> [“flower”,”flow”,”flight”]<br><strong>Output : </strong> “fl”</p>
-</blockquote>
-<p> <strong>Example 2: </strong></p>
-<blockquote>
-<p><strong>Input : </strong> [“dog”,”racecar”,”car”]<br><strong>Output : </strong> “”<br><strong>Explanation : </strong> There is no common prefix among the input strings.</p>
-</blockquote>
-<p>  <strong>Note : </strong><br>  All given inputs are in lowercase letters a-z.</p>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h3><p>  <strong>暴力破解法:</strong> 首先通过循环把这个字符串中最长的一个字符设置为第一个字符串，再使用循环将这第一个字符串去和所有的字符比较，不对就输出””，对了就有ans存储并输出.时间复杂度为O($n^{2})$,空间复杂度为O(n).整体代码如下<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string longestCommonPrefix(vector&lt;string&gt;&amp; strs) &#123;</span><br><span class="line">        string ans &#x3D; &quot;&quot;;</span><br><span class="line">        int n &#x3D; strs.size();</span><br><span class="line">        if (n &#x3D;&#x3D; 0) return &quot;&quot;;</span><br><span class="line">        </span><br><span class="line">        int l &#x3D; strs[0].size();</span><br><span class="line">        for (string a : strs) &#123;</span><br><span class="line">            if (l &lt; strs.size()) &#123;</span><br><span class="line">                l &#x3D; strs.size();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        int index &#x3D; 0;</span><br><span class="line">        </span><br><span class="line">        for (char s : strs[0]) &#123;</span><br><span class="line">            for (int i &#x3D; 0 ;i &lt; n ;i++) &#123;</span><br><span class="line">                if (strs[i][index] !&#x3D; s || index &gt; l)</span><br><span class="line">                    return ans;</span><br><span class="line">               &#125;</span><br><span class="line">            ans +&#x3D; s;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h3 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h3><p> <strong>排序法 : </strong> 首先把这个字符串用sort函数从小到达排序一遍，然后选择第一个和最后一个,比较他们是否存在公共字符就可以了(选择第一个和最后一个，是因为他们的区别是最大的，可以更加快速的得到结果),最后我们只需要比较有多少公共字符就行了. 时间复杂度为O(n)，空间复杂度为O(n).具体代码如下:<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string longestCommonPrefix(vector&lt;string&gt;&amp; strs) &#123;</span><br><span class="line">        string ans &#x3D; &quot;&quot;;</span><br><span class="line">        int n &#x3D; strs.size();</span><br><span class="line">        if (n &#x3D;&#x3D; 0) return ans;</span><br><span class="line">        </span><br><span class="line">        sort(strs.begin(),strs.end());</span><br><span class="line">        string a &#x3D; strs[0];</span><br><span class="line">        string b &#x3D; strs[n-1];</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; a.size() ; i++) &#123;</span><br><span class="line">            if (a[i] &#x3D;&#x3D; b[i]) &#123;</span><br><span class="line">                ans +&#x3D; a[i];</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode-6</title>
     <url>/2020/10/04/Leetcode-6/</url>
     <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given a string s containing just the characters <code>&#39;(&#39;</code>,<code>&#39;)&#39;</code>,<code>&#39;&#123;&#39;</code>,<code>&#39;&#125;&#39;</code>,<code>&#39;[&#39;</code> and<code>&#39;]&#39;</code>, determine if the input string is valid.<br>An input string is valid if:</p>
@@ -765,6 +793,30 @@
 </ul>
 <h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h3><p>  <strong>堆栈法 : </strong> 首先把有效括号的左半边先入栈，再来看右半边括号，首先需要判断我们堆栈是否为空，或者是否是匹配的括号。如果是，那就直接输出false。如果不是就出栈，在最后判断一下这个数组是否为空，因为如果全部出栈那么这个stack就是空的。如果不是，那么就不是空，就要输出false。时间复杂度为O(n),具体代码如下：<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool Pair(char begin,char end) &#123;</span><br><span class="line">        if (begin &#x3D;&#x3D; &#39;(&#39; &amp;&amp; end &#x3D;&#x3D; &#39;)&#39;)</span><br><span class="line">            return true;</span><br><span class="line">        if (begin &#x3D;&#x3D; &#39;[&#39; &amp;&amp; end &#x3D;&#x3D; &#39;]&#39;) </span><br><span class="line">            return true;</span><br><span class="line">        if (begin &#x3D;&#x3D; &#39;&#123;&#39; &amp;&amp; end &#x3D;&#x3D; &#39;&#125;&#39;) </span><br><span class="line">            return true;</span><br><span class="line">        </span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    bool isValid(string s) &#123;</span><br><span class="line">        stack&lt;char&gt; res;</span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; s.size() ; i++) &#123;</span><br><span class="line">            if (s[i] &#x3D;&#x3D; &#39;(&#39; || s[i] &#x3D;&#x3D; &#39;[&#39; || s[i] &#x3D;&#x3D; &#39;&#123;&#39;)</span><br><span class="line">                res.push(s[i]);</span><br><span class="line">            if (s[i] &#x3D;&#x3D; &#39;)&#39; || s[i] &#x3D;&#x3D; &#39;]&#39; || s[i] &#x3D;&#x3D; &#39;&#125;&#39;) &#123;</span><br><span class="line">                if (res.empty() || !Pair(res.top(),s[i]))</span><br><span class="line">                    return false;</span><br><span class="line">                else </span><br><span class="line">                    res.pop();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return res.empty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><br>  <strong>简化版堆栈法 : </strong> 不需要用函数来判断括号是否匹配，直接在switch语句中判断好，时间复杂度为O(n),不过switch相对于if-else所需的空间更多，具体代码如下：<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isValid(string s) &#123;</span><br><span class="line">       stack&lt;char&gt; res;</span><br><span class="line">        for (char&amp; c : s) &#123;</span><br><span class="line">            switch (c) &#123;</span><br><span class="line">                case &#39;(&#39;: </span><br><span class="line">                case &#39;[&#39;: </span><br><span class="line">                case &#39;&#123;&#39;: res.push(c);break;</span><br><span class="line">                case &#39;)&#39;: if (res.empty() || res.top() !&#x3D; &#39;(&#39;) return false; else res.pop();break;</span><br><span class="line">                case &#39;]&#39;: if (res.empty() || res.top() !&#x3D; &#39;[&#39;) return false; else res.pop();break;</span><br><span class="line">                case &#39;&#125;&#39;: if (res.empty() || res.top() !&#x3D; &#39;&#123;&#39;) return false; else res.pop();break;</span><br><span class="line">                default: ;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return res.empty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <h3 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h3><p>  <strong>AscII值相减 : </strong> 时间复杂度为O(n),空间复杂度为O(1),具体代码如下:<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isValid(string s) &#123;</span><br><span class="line">        int n&#x3D; 0;</span><br><span class="line">        for (char a : s) &#123;</span><br><span class="line">             if (n &amp;&amp; ((a - s[n-1]+1)&#x2F;2 &#x3D;&#x3D; 1))</span><br><span class="line">                n--;</span><br><span class="line">            else </span><br><span class="line">                s[n++] &#x3D; a;</span><br><span class="line">        &#125;</span><br><span class="line">        return !n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-5</title>
+    <url>/2020/10/03/Leetcode-5/</url>
+    <content><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Write a function to find the longest common prefix string amongst an array of strings.  </p>
+<p>If there is no common prefix, return an empty string “”.</p>
+<p> <strong>Example 1:</strong></p>
+<blockquote>
+<p><strong>Input : </strong> [“flower”,”flow”,”flight”]<br><strong>Output : </strong> “fl”</p>
+</blockquote>
+<p> <strong>Example 2: </strong></p>
+<blockquote>
+<p><strong>Input : </strong> [“dog”,”racecar”,”car”]<br><strong>Output : </strong> “”<br><strong>Explanation : </strong> There is no common prefix among the input strings.</p>
+</blockquote>
+<p>  <strong>Note : </strong><br>  All given inputs are in lowercase letters a-z.</p>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h3><p>  <strong>暴力破解法:</strong> 首先通过循环把这个字符串中最长的一个字符设置为第一个字符串，再使用循环将这第一个字符串去和所有的字符比较，不对就输出””，对了就有ans存储并输出.时间复杂度为O($n^{2})$,空间复杂度为O(n).整体代码如下<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string longestCommonPrefix(vector&lt;string&gt;&amp; strs) &#123;</span><br><span class="line">        string ans &#x3D; &quot;&quot;;</span><br><span class="line">        int n &#x3D; strs.size();</span><br><span class="line">        if (n &#x3D;&#x3D; 0) return &quot;&quot;;</span><br><span class="line">        </span><br><span class="line">        int l &#x3D; strs[0].size();</span><br><span class="line">        for (string a : strs) &#123;</span><br><span class="line">            if (l &lt; strs.size()) &#123;</span><br><span class="line">                l &#x3D; strs.size();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        int index &#x3D; 0;</span><br><span class="line">        </span><br><span class="line">        for (char s : strs[0]) &#123;</span><br><span class="line">            for (int i &#x3D; 0 ;i &lt; n ;i++) &#123;</span><br><span class="line">                if (strs[i][index] !&#x3D; s || index &gt; l)</span><br><span class="line">                    return ans;</span><br><span class="line">               &#125;</span><br><span class="line">            ans +&#x3D; s;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h3><p> <strong>排序法 : </strong> 首先把这个字符串用sort函数从小到达排序一遍，然后选择第一个和最后一个,比较他们是否存在公共字符就可以了(选择第一个和最后一个，是因为他们的区别是最大的，可以更加快速的得到结果),最后我们只需要比较有多少公共字符就行了. 时间复杂度为O(n)，空间复杂度为O(n).具体代码如下:<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string longestCommonPrefix(vector&lt;string&gt;&amp; strs) &#123;</span><br><span class="line">        string ans &#x3D; &quot;&quot;;</span><br><span class="line">        int n &#x3D; strs.size();</span><br><span class="line">        if (n &#x3D;&#x3D; 0) return ans;</span><br><span class="line">        </span><br><span class="line">        sort(strs.begin(),strs.end());</span><br><span class="line">        string a &#x3D; strs[0];</span><br><span class="line">        string b &#x3D; strs[n-1];</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; a.size() ; i++) &#123;</span><br><span class="line">            if (a[i] &#x3D;&#x3D; b[i]) &#123;</span><br><span class="line">                ans +&#x3D; a[i];</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>algorithm</category>
@@ -1222,6 +1274,125 @@ int main()
       </categories>
       <tags>
         <tag>theory</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>腾讯光子一面</title>
+    <url>/2021/03/17/interview_first/</url>
+    <content><![CDATA[<h1 id="面试问题"><a href="#面试问题" class="headerlink" title="面试问题"></a>面试问题</h1><ol>
+<li>排序<ul>
+<li>时间复杂度与空间复杂</li>
+<li>不同的排序的最好与最坏的时间复杂度</li>
+<li>快排<ol>
+<li>如何实现的</li>
+<li>何时会导致快排的最坏时间复杂度</li>
+<li>快排是否稳定，为什么不稳定</li>
+</ol>
+</li>
+<li>了解堆排序吗</li>
+</ul>
+</li>
+<li>算法<ul>
+<li>反转链表(Leetcode ＃206)</li>
+</ul>
+</li>
+<li>C++ 基础<ul>
+<li>C++ 关键字static，它的作用</li>
+<li>C++ 关键字sizeof作用<ul>
+<li>strlen与它的区别</li>
+<li>sizeof(“hello”)与strlen(“hello”)区别</li>
+<li>double<em> (</em>a) [3][6]; sizeof(*a)与sizeof(a)的大小</li>
+</ul>
+</li>
+<li>C++ 多态<ul>
+<li>如何实现</li>
+<li>什么是虚函数，什么是虚表和虚拟指针</li>
+<li>内存中的布局是什么样子的</li>
+</ul>
+</li>
+<li>C++ 重载与重写<ul>
+<li>什么是重载，什么是重写</li>
+<li>它们的区别</li>
+<li>重载是否与类有关，重载是如何实现的</li>
+</ul>
+</li>
+<li>C++ new/delete &amp;&amp; malloc/free<ul>
+<li>它们的区别</li>
+</ul>
+</li>
+<li>C++ STL<ul>
+<li>你有用过哪些容器，可以讲讲</li>
+<li>vector容器的底层实现</li>
+<li>map底层实现红黑树</li>
+<li>有使用过迭代器吗</li>
+</ul>
+</li>
+<li>C++ 的内存布局<ul>
+<li>说一下每个区的作用</li>
+</ul>
+</li>
+<li>C++ 堆栈的区别</li>
+<li>C++ 编译执行的过程</li>
+<li>C++ 深拷贝与浅拷贝的区别</li>
+<li>C++ 动态转换有了解过？<ul>
+<li>常见的几种动态转换说一下</li>
+<li>它们的作用</li>
+</ul>
+</li>
+<li>C++ define 与 typedef<ul>
+<li>define的功能与作用</li>
+<li>define 与 typedef 区别</li>
+</ul>
+</li>
+<li>C++ 内存泄漏的原因</li>
+<li>C++ move <ul>
+<li>move的使用与功能</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>操作系统<ul>
+<li>进程间的通信方式</li>
+<li>进程与线程的区别</li>
+</ul>
+</li>
+<li>计算机网络<ul>
+<li>讲一下TCP/IP的三次握手与四次挥手<ul>
+<li>三次握手<ul>
+<li>TCP/IP 是否可以为两次，为什么</li>
+<li>TCP/IP 最后一个确认包server端一直接收不到，client应如何操作</li>
+</ul>
+</li>
+<li>四次挥手<ul>
+<li>什么时候会进入Time_wait 等待状态，时间为多久</li>
+<li>server 是否也会进入Time_wait 等待状态，什么状况会导致server进行这个状态</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>结束反问<ul>
+<li>面试官评价<ul>
+<li>指针这一块还存在问题</li>
+<li>对于一些底层原理应深入了解</li>
+<li>操作系统还需要深入</li>
+</ul>
+</li>
+<li>面试官荐书<ul>
+<li>书箱大致属于一些经典书目</li>
+<li>可以多阅读一些优秀的Blog，参考这些优秀博主的如何思考以及他们对于底层原理的解析</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>面试经历</category>
+      </categories>
+      <tags>
+        <tag>一面</tag>
       </tags>
   </entry>
   <entry>
@@ -1791,58 +1962,6 @@ int main()
       </categories>
       <tags>
         <tag>theory</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-21</title>
-    <url>/2021/03/14/Leetcode-21/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给定一个二叉树的根节点<code>root</code>,需要将其展开为一个链表。</p>
-<ul>
-<li>展开后的单链表应该同样使用<code>TreeNode</code>，其中right子指针指向链表中下一个结点，而左子指针始终为<code>null</code></li>
-<li>展开后的单链表应该与二叉树<code>先序遍历</code>顺序相同。</li>
-</ul>
-<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p>&emsp;&emsp;输入是一个二叉树，输出是由二叉树节点所组成的一个链表</p>
-<p><p style = "background-color:rgba(240,248,255)">
-  <strong>Input:</strong> root = [1,2,5,3,4,null,6] <br>
-  <strong>Output:</strong> [1,null,2,null,3,null,4,null,5,null,6] 
-</p><br>&emsp;&emsp;就是将左节点置空，以右节点的形式表示整个链表</p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;通过递归,左右子树都拉成一条链表。将左节点赋给右节点并将其置空，处理完左子树后。对于右子树，将原右子树接在新右子树之后。这样对于整个二叉树就处理结束了<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span><br><span class="line"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void flatten(TreeNode* root) &#123;</span><br><span class="line">        if (root &#x3D;&#x3D; nullptr) return;</span><br><span class="line">        TreeNode* left &#x3D; root-&gt;left;</span><br><span class="line">        TreeNode* right &#x3D; root-&gt;right;</span><br><span class="line"></span><br><span class="line">        root-&gt;left &#x3D; nullptr;</span><br><span class="line">        root-&gt;right &#x3D; left;</span><br><span class="line"></span><br><span class="line">        TreeNode* temp &#x3D; root;</span><br><span class="line">        while (temp-&gt;right !&#x3D; nullptr) temp &#x3D; temp-&gt;right;</span><br><span class="line">        temp-&gt;right &#x3D; right;</span><br><span class="line"></span><br><span class="line">        flatten(root-&gt;left);</span><br><span class="line">        flatten(root-&gt;right);        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-22</title>
-    <url>/2021/03/15/Leetcode-22/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给定一个<strong>完美二叉树</strong>，其所有叶子节点都在同一层，每个父节点都有两个子节点。二叉树定义如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">struct Node &#123;</span><br><span class="line">  int val;</span><br><span class="line">  Node *left;</span><br><span class="line">  Node *right;</span><br><span class="line">  Node *next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>&emsp;&emsp;填充它的每个next指针，让这个指针指向其下一个左侧节点。如果找不到下一个右侧节点，则将next指针设置为<code>NULL</code>。初始状态下，所有next指针都被设置为<code>NULL</code></p>
-<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p><img src="https://assets.leetcode.com/uploads/2019/02/14/116_sample.png" alt="avatar"><br>&emsp;&emsp;给定一个二叉树如图A所示，函数应该填充它的每个next指针,以指向其下一个右侧节点，如图B所示。序列化输出按层序遍历排列，同一层节点由next指针连接，’#’标志着每一层的结束。</p>
-<p style = "background-color:rgba(240,248,255)">
-  <strong>Input:</strong> root = [1,2,3,4,5,6,7] <br>
-  <strong>Output:</strong> [1,#,2,3,#,4,5,6,7,#]
-</p>
-
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;首先这题主要问题在于使用指向右子树节点的next。简单的只存在左右子树,即这是一个具有两层的树。我们可以直接使用递归来进行处理，大致代码如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    Node* connect(Node* root) &#123;</span><br><span class="line">        if (root &#x3D;&#x3D; nullptr || root-&gt;left &#x3D;&#x3D; nullptr) </span><br><span class="line">            return root;</span><br><span class="line">        root-&gt;left-&gt;next &#x3D; root-&gt;right;</span><br><span class="line"></span><br><span class="line">        connect(root-&gt;left);</span><br><span class="line">        connect(root-&gt;right);</span><br><span class="line"></span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><br>&emsp;&emsp;但是对于多层的树来说，这样的解法就存在一定的缺陷。对于超过两层的树，会分叉多个子节点。继续使用上面的解法就会导致左子树处理完成，而右子树却没有处理的状况。<br>&emsp;&emsp;我们可以使用函数来处理对于多个节点的问题，代码如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    Node* connect(Node* root) &#123;</span><br><span class="line">        if (root &#x3D;&#x3D; nullptr) return root;</span><br><span class="line">        connectTwoTree(root-&gt;left,root-&gt;right);</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">    void connectTwoTree(Node* node,Node* node1) &#123;</span><br><span class="line">        if (node &#x3D;&#x3D; nullptr || node1 &#x3D;&#x3D; nullptr) return;</span><br><span class="line"></span><br><span class="line">        node-&gt;next &#x3D; node1;</span><br><span class="line"></span><br><span class="line">        connectTwoTree(node-&gt;left,node-&gt;right);</span><br><span class="line">        connectTwoTree(node1-&gt;left,node1-&gt;right);</span><br><span class="line"></span><br><span class="line">        connectTwoTree(node-&gt;right,node1-&gt;left);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-23</title>
-    <url>/2021/03/15/Leetcode-23/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
       </tags>
   </entry>
 </search>
