@@ -28,7 +28,7 @@
 <meta property="og:description" content="C++后端开发">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-17T02:31:00.000Z">
-<meta property="article:modified_time" content="2021-03-17T03:41:28.459Z">
+<meta property="article:modified_time" content="2021-03-22T07:54:04.633Z">
 <meta property="article:author" content="Rabbet">
 <meta property="article:tag" content="一面">
 <meta name="twitter:card" content="summary">
@@ -222,10 +222,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-03-17 10:31:00 / 修改时间：11:41:28" itemprop="dateCreated datePublished" datetime="2021-03-17T10:31:00+08:00">2021-03-17</time>
+              <time title="创建时间：2021-03-17 10:31:00" itemprop="dateCreated datePublished" datetime="2021-03-17T10:31:00+08:00">2021-03-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-22 15:54:04" itemprop="dateModified" datetime="2021-03-22T15:54:04+08:00">2021-03-22</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -242,14 +248,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>807</span>
+              <span>3.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
             <div class="post-description">C++后端开发</div>
 
@@ -284,7 +290,7 @@
 <li>C++ 关键字sizeof作用<ul>
 <li>strlen与它的区别</li>
 <li>sizeof(“hello”)与strlen(“hello”)区别</li>
-<li>double<em> (</em>a) [3][6]; sizeof(*a)与sizeof(a)的大小</li>
+<li>double<code>*</code> (<code>*</code>a) [3][6]; sizeof(*a)与sizeof(a)的大小</li>
 </ul>
 </li>
 <li>C++ 多态<ul>
@@ -357,7 +363,7 @@
 </li>
 <li>结束反问<ul>
 <li>面试官评价<ul>
-<li>指针这一块还存在问题</li>
+<li>指针使用仍有欠缺</li>
 <li>对于一些底层原理应深入了解</li>
 <li>操作系统还需要深入</li>
 </ul>
@@ -370,6 +376,181 @@
 </ul>
 </li>
 </ol>
+<h1 id="面试问题答案总结"><a href="#面试问题答案总结" class="headerlink" title="面试问题答案总结"></a>面试问题答案总结</h1><ul>
+<li>排序算法的时间复杂度与空间复杂度</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">排序算法</th>
+<th style="text-align:center">平均时间复杂度</th>
+<th style="text-align:center">最坏时间复杂度</th>
+<th style="text-align:center">最好时间复杂度</th>
+<th style="text-align:center">空间复杂度</th>
+<th>稳定性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">冒泡排序</td>
+<td style="text-align:center">$O(n^{2})$</td>
+<td style="text-align:center">$O(n^{2})$</td>
+<td style="text-align:center">$O(n)$</td>
+<td style="text-align:center">$O(1)$</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=red>直接选择排序</font></td>
+<td style="text-align:center">$O(n^{2})$</td>
+<td style="text-align:center">$O(n^{2})$</td>
+<td style="text-align:center">$O(n)$</td>
+<td style="text-align:center">$O(1)$</td>
+<td><font color=red>不稳定</font></td>
+</tr>
+<tr>
+<td style="text-align:center">直接插入排序</td>
+<td style="text-align:center">$O(n^{2})$</td>
+<td style="text-align:center">$O(n^{2})$</td>
+<td style="text-align:center">$O(n)$</td>
+<td style="text-align:center">$O(1)$</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=red>快速排序</font></td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">$O(n^{2})$</td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td><font color=red>不稳定</font></td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=red>堆排序</font></td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">$O(1)$</td>
+<td><font color=red>不稳定</font></td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=red>希尔排序</font></td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">$O(ns)$</td>
+<td style="text-align:center">$O(n)$</td>
+<td style="text-align:center">$O(1)$</td>
+<td><font color=red>不稳定</font></td>
+</tr>
+<tr>
+<td style="text-align:center">归并排序</td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">$O(n)$</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">计数排序</td>
+<td style="text-align:center">$O(n+k)$</td>
+<td style="text-align:center">$O(n+k)$</td>
+<td style="text-align:center">$O(n+k)$</td>
+<td style="text-align:center">$O(n+k)$</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">基数排序</td>
+<td style="text-align:center">$O(N * M)$</td>
+<td style="text-align:center">$O(N * M)$</td>
+<td style="text-align:center">$O(N * M)$</td>
+<td style="text-align:center">$O(M)$</td>
+<td>稳定</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>快速排序<ul>
+<li>基本思想<ul>
+<li>通过一趟排序将待排记录分割成独立的两个部分，其中一部分关键字均比另一部分记录关键字小，接着对这两部分记录继续进行排序，以达到整个序列有序的目的。</li>
+</ul>
+</li>
+<li>最优与最坏情况分析<ul>
+<li>最优的情况：Parition每次都划分得很均匀。在获得枢轴后将数组一分为二，各自仅需$(n/2)$的时间，这是最好的情况，时间复杂度为$O(nlogn)$</li>
+<li>最坏的情况：待排序的数组是正序或逆序，每次划分只得到一个比上一次少一个记录的子序列，这里另一个记录是为空的。如果用二叉树表示就是一个斜树,这里就需要n-1次递归调用，所以其最终时间复杂度为$O(n^{2})$</li>
+</ul>
+</li>
+<li>快排的不稳定的原因<ul>
+<li>关键字的比较是跳跃进行的，因此快排是不稳定的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>堆排序<ul>
+<li>基本思想：将待排序的序列构造成一个大顶堆。此时，整个序列的最大值就是堆顶的根节点。将其移走(实际就是将其与堆数组末尾元素交换，此时末尾元素为最大值),然后将剩余的n-1个序列重新构造成一个椎，这样就会得到n个元素中的次小值。之后重复之前的操作，就可以得到一个有序序列了</li>
+<li>稳定性：由于记录的比较与交换是跳跃的，所以堆排序是一种不稳定的排序方式</li>
+<li>适用场景：不适合待排序</li>
+</ul>
+</li>
+<li>反转链表<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* reverseList(ListNode* head) &#123;</span><br><span class="line">        ListNode* prev &#x3D; nullptr;</span><br><span class="line">        ListNode* cur &#x3D; head;</span><br><span class="line">        </span><br><span class="line">        while (cur !&#x3D; nullptr) &#123;</span><br><span class="line">            ListNode* next &#x3D; cur-&gt;next;</span><br><span class="line">            cur-&gt;next &#x3D; prev;</span><br><span class="line">            prev &#x3D; cur;</span><br><span class="line">            cur &#x3D; next;</span><br><span class="line">        &#125;</span><br><span class="line">        return prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>C++ 用法与作用<ul>
+<li>隐藏: 在编译多个文件时，所有未加static前缀的全局变量与函数都具有全局可见性</li>
+<li>保持变量内容的持久</li>
+<li>static变量默认初始化为0</li>
+<li>类成员声明为static<ul>
+<li>static 变量只会被分配一次内存，因此它具有对值的记忆性</li>
+<li>static 全局变量可以被模块内所有函数访问，不可以被模块外的其它函数访问</li>
+<li>类中static成员变量属于整个类，对类的对象仅有一份拷贝</li>
+<li>类的static成员函数为这个类所拥有，这个函数不接收this指针，所以只可以访问类的static成员变量</li>
+<li>static类对象必须在类外进行初始化</li>
+<li>static成员函数不可以被virtul修饰</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>C++ sizeof用法与作用<ul>
+<li>定义： sizeof是一个操作符，作用是返回一个对象或类型所占的内存字节数</li>
+<li>数组： sizeof(数组)的值等于数组所占用内存字节数</li>
+<li>联合类型：操作数为联合类型时，sizeof的结果为其最大字节成员的字节数</li>
+<li>内存对齐问题：由于结构体会自动对齐，所以sizeof的结果就是最大类型的所占用的字节数</li>
+<li>类：空类大小为1，一个空类作为基类，它的大小为0。如果类的成员函数中有虚函数，就是固定占用4字节</li>
+<li>strlen与它的区别<ul>
+<li>sizeof 是运算符，strlen是库函数</li>
+<li>sizeof的参数可以为任何数据类型或者数据，strlen参数只能是字符指针且结尾为’\0’的字符串</li>
+<li>sizeof值在编译时确定，所以不能得到动态分配存储空间的大小</li>
+</ul>
+</li>
+<li>sizeof(“hello”) 与 strlen(“hello”) <ul>
+<li>sizeof(“hello”) 结果为6</li>
+<li>strlen(“hello”) 结果为5，因为不包含’\0’</li>
+</ul>
+</li>
+<li>sizeof( * a)指向的是整个数组空间，所以大小为144。sizeof(a)指的是单个变量所占用的字节数，又因为指向double类型，所以为8字节</li>
+</ul>
+</li>
+<li>C++ 多态<ul>
+<li>如何实现多态<ul>
+<li>在基类的函数前加上<code>virtual</code>关键字，在派生类中重写该函数，运行时将会根据所指对象的实际类型来调用相应的函数。</li>
+</ul>
+</li>
+<li>多态实现过程<ul>
+<li>编译器发现类中在虚函数，会自动为其生成一份虚表，该表是一个一维数组，虚表里存储了虚函数入口地址</li>
+<li>编译器会在对象的前四个字节中保存一个虚表指针，即vptr</li>
+<li>调用构造函数，在构造函数中创建虚表并对其进行初始化</li>
+<li>派生类对基类的虚函数没有重写，则派生类的vptr指向基类的虚表。有重写的话，派生类的vptr会指向自身的虚表。当派生类中有自己的虚表时，会将其添加在后面。</li>
+</ul>
+</li>
+<li>内存布局<ul>
+<li>单一继承的内存布局<ul>
+<li>每个类最多只会有一个vptr指针，并放在第一个拥有virtual function 的类之后(<font color=red>父类必须保证对象的完整性</font>)<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
     </div>
 
@@ -391,7 +572,10 @@
     <a href="/2021/03/15/Leetcode-23/" rel="prev" title="Leetcode-23">
       <i class="fa fa-chevron-left"></i> Leetcode-23
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/19/NRV%E4%BC%98%E5%8C%96/" rel="next" title="NRV优化">
+      NRV优化 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -450,7 +634,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98"><span class="nav-text">面试问题</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98"><span class="nav-text">面试问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98%E7%AD%94%E6%A1%88%E6%80%BB%E7%BB%93"><span class="nav-text">面试问题答案总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -466,7 +650,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -521,12 +705,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">71k</span>
+    <span title="站点总字数">78k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:05</span>
+    <span title="站点阅读时长">1:11</span>
 </div>
 
 
@@ -613,6 +797,59 @@ show_date_time();
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

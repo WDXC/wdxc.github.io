@@ -626,7 +626,13 @@
   <entry>
     <title>Leetcode-23</title>
     <url>/2021/03/15/Leetcode-23/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给定一个字符串，请你找出其中不含有重复字符的<strong>最长子串</strong>的长度</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> s = "abcabcbb" <br>
+  <strong>Output:</strong> 3
+</p><br>&emsp;&emsp;因为无重复，所以最后的b需要被舍去。因此最长子串是”abc”，所以其长度为3</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;这道题目我们可以使用滑动窗口的做法，从而避免使用暴力解法所导致的$O(n^{2})$的空间复杂度。滑动窗口其实主要就是使用双指针中的左右指针的技法。<br>&emsp;&emsp;初始化<code>left = right = 0 </code>，把索引左闭右开的区间<code>[left,right)</code>称为一个「窗口」。我们先不断增加right指针扩大窗口<code>[left,right]</code>,对应的键值也会增加，直到键值大于1时。此时，我们停止增加<code>right</code>,转而不断增加<code>left</code>指针缩小窗口,从而找到真正的不重复的子串。具体代码如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int lengthOfLongestSubstring(string s) &#123;</span><br><span class="line">        unordered_map&lt;char,int&gt; windows;</span><br><span class="line"></span><br><span class="line">        int left &#x3D; 0,right &#x3D; 0;</span><br><span class="line">        int res &#x3D; 0; &#x2F;&#x2F; 用于记录结果</span><br><span class="line"></span><br><span class="line">        while (right &lt; s.size()) &#123;</span><br><span class="line">            &#x2F;&#x2F;C是将要移入窗口的字符</span><br><span class="line">            char c &#x3D; s[right];</span><br><span class="line">            right++;</span><br><span class="line">            &#x2F;&#x2F; 更新数据</span><br><span class="line">            windows[c]++;</span><br><span class="line">            &#x2F;&#x2F; 判断窗口是否需要收缩</span><br><span class="line">            while (windows[c] &gt; 1) &#123;</span><br><span class="line">                char d  &#x3D; s[left];</span><br><span class="line">                left++;</span><br><span class="line">                windows[d]--;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            res &#x3D; max(res,right-left);</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
       <categories>
         <category>algorithm</category>
       </categories>
@@ -1301,7 +1307,7 @@ int main()
 <li>C++ 关键字sizeof作用<ul>
 <li>strlen与它的区别</li>
 <li>sizeof(“hello”)与strlen(“hello”)区别</li>
-<li>double<em> (</em>a) [3][6]; sizeof(*a)与sizeof(a)的大小</li>
+<li>double<code>*</code> (<code>*</code>a) [3][6]; sizeof(*a)与sizeof(a)的大小</li>
 </ul>
 </li>
 <li>C++ 多态<ul>
@@ -1374,7 +1380,7 @@ int main()
 </li>
 <li>结束反问<ul>
 <li>面试官评价<ul>
-<li>指针这一块还存在问题</li>
+<li>指针使用仍有欠缺</li>
 <li>对于一些底层原理应深入了解</li>
 <li>操作系统还需要深入</li>
 </ul>
@@ -1387,6 +1393,181 @@ int main()
 </ul>
 </li>
 </ol>
+<h1 id="面试问题答案总结"><a href="#面试问题答案总结" class="headerlink" title="面试问题答案总结"></a>面试问题答案总结</h1><ul>
+<li>排序算法的时间复杂度与空间复杂度</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">排序算法</th>
+<th style="text-align:center">平均时间复杂度</th>
+<th style="text-align:center">最坏时间复杂度</th>
+<th style="text-align:center">最好时间复杂度</th>
+<th style="text-align:center">空间复杂度</th>
+<th>稳定性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">冒泡排序</td>
+<td style="text-align:center">$O(n^{2})$</td>
+<td style="text-align:center">$O(n^{2})$</td>
+<td style="text-align:center">$O(n)$</td>
+<td style="text-align:center">$O(1)$</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=red>直接选择排序</font></td>
+<td style="text-align:center">$O(n^{2})$</td>
+<td style="text-align:center">$O(n^{2})$</td>
+<td style="text-align:center">$O(n)$</td>
+<td style="text-align:center">$O(1)$</td>
+<td><font color=red>不稳定</font></td>
+</tr>
+<tr>
+<td style="text-align:center">直接插入排序</td>
+<td style="text-align:center">$O(n^{2})$</td>
+<td style="text-align:center">$O(n^{2})$</td>
+<td style="text-align:center">$O(n)$</td>
+<td style="text-align:center">$O(1)$</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=red>快速排序</font></td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">$O(n^{2})$</td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td><font color=red>不稳定</font></td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=red>堆排序</font></td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">$O(1)$</td>
+<td><font color=red>不稳定</font></td>
+</tr>
+<tr>
+<td style="text-align:center"><font color=red>希尔排序</font></td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">$O(ns)$</td>
+<td style="text-align:center">$O(n)$</td>
+<td style="text-align:center">$O(1)$</td>
+<td><font color=red>不稳定</font></td>
+</tr>
+<tr>
+<td style="text-align:center">归并排序</td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">$O(n)$</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">计数排序</td>
+<td style="text-align:center">$O(n+k)$</td>
+<td style="text-align:center">$O(n+k)$</td>
+<td style="text-align:center">$O(n+k)$</td>
+<td style="text-align:center">$O(n+k)$</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">基数排序</td>
+<td style="text-align:center">$O(N * M)$</td>
+<td style="text-align:center">$O(N * M)$</td>
+<td style="text-align:center">$O(N * M)$</td>
+<td style="text-align:center">$O(M)$</td>
+<td>稳定</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>快速排序<ul>
+<li>基本思想<ul>
+<li>通过一趟排序将待排记录分割成独立的两个部分，其中一部分关键字均比另一部分记录关键字小，接着对这两部分记录继续进行排序，以达到整个序列有序的目的。</li>
+</ul>
+</li>
+<li>最优与最坏情况分析<ul>
+<li>最优的情况：Parition每次都划分得很均匀。在获得枢轴后将数组一分为二，各自仅需$(n/2)$的时间，这是最好的情况，时间复杂度为$O(nlogn)$</li>
+<li>最坏的情况：待排序的数组是正序或逆序，每次划分只得到一个比上一次少一个记录的子序列，这里另一个记录是为空的。如果用二叉树表示就是一个斜树,这里就需要n-1次递归调用，所以其最终时间复杂度为$O(n^{2})$</li>
+</ul>
+</li>
+<li>快排的不稳定的原因<ul>
+<li>关键字的比较是跳跃进行的，因此快排是不稳定的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>堆排序<ul>
+<li>基本思想：将待排序的序列构造成一个大顶堆。此时，整个序列的最大值就是堆顶的根节点。将其移走(实际就是将其与堆数组末尾元素交换，此时末尾元素为最大值),然后将剩余的n-1个序列重新构造成一个椎，这样就会得到n个元素中的次小值。之后重复之前的操作，就可以得到一个有序序列了</li>
+<li>稳定性：由于记录的比较与交换是跳跃的，所以堆排序是一种不稳定的排序方式</li>
+<li>适用场景：不适合待排序</li>
+</ul>
+</li>
+<li>反转链表<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* reverseList(ListNode* head) &#123;</span><br><span class="line">        ListNode* prev &#x3D; nullptr;</span><br><span class="line">        ListNode* cur &#x3D; head;</span><br><span class="line">        </span><br><span class="line">        while (cur !&#x3D; nullptr) &#123;</span><br><span class="line">            ListNode* next &#x3D; cur-&gt;next;</span><br><span class="line">            cur-&gt;next &#x3D; prev;</span><br><span class="line">            prev &#x3D; cur;</span><br><span class="line">            cur &#x3D; next;</span><br><span class="line">        &#125;</span><br><span class="line">        return prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>C++ 用法与作用<ul>
+<li>隐藏: 在编译多个文件时，所有未加static前缀的全局变量与函数都具有全局可见性</li>
+<li>保持变量内容的持久</li>
+<li>static变量默认初始化为0</li>
+<li>类成员声明为static<ul>
+<li>static 变量只会被分配一次内存，因此它具有对值的记忆性</li>
+<li>static 全局变量可以被模块内所有函数访问，不可以被模块外的其它函数访问</li>
+<li>类中static成员变量属于整个类，对类的对象仅有一份拷贝</li>
+<li>类的static成员函数为这个类所拥有，这个函数不接收this指针，所以只可以访问类的static成员变量</li>
+<li>static类对象必须在类外进行初始化</li>
+<li>static成员函数不可以被virtul修饰</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>C++ sizeof用法与作用<ul>
+<li>定义： sizeof是一个操作符，作用是返回一个对象或类型所占的内存字节数</li>
+<li>数组： sizeof(数组)的值等于数组所占用内存字节数</li>
+<li>联合类型：操作数为联合类型时，sizeof的结果为其最大字节成员的字节数</li>
+<li>内存对齐问题：由于结构体会自动对齐，所以sizeof的结果就是最大类型的所占用的字节数</li>
+<li>类：空类大小为1，一个空类作为基类，它的大小为0。如果类的成员函数中有虚函数，就是固定占用4字节</li>
+<li>strlen与它的区别<ul>
+<li>sizeof 是运算符，strlen是库函数</li>
+<li>sizeof的参数可以为任何数据类型或者数据，strlen参数只能是字符指针且结尾为’\0’的字符串</li>
+<li>sizeof值在编译时确定，所以不能得到动态分配存储空间的大小</li>
+</ul>
+</li>
+<li>sizeof(“hello”) 与 strlen(“hello”) <ul>
+<li>sizeof(“hello”) 结果为6</li>
+<li>strlen(“hello”) 结果为5，因为不包含’\0’</li>
+</ul>
+</li>
+<li>sizeof( * a)指向的是整个数组空间，所以大小为144。sizeof(a)指的是单个变量所占用的字节数，又因为指向double类型，所以为8字节</li>
+</ul>
+</li>
+<li>C++ 多态<ul>
+<li>如何实现多态<ul>
+<li>在基类的函数前加上<code>virtual</code>关键字，在派生类中重写该函数，运行时将会根据所指对象的实际类型来调用相应的函数。</li>
+</ul>
+</li>
+<li>多态实现过程<ul>
+<li>编译器发现类中在虚函数，会自动为其生成一份虚表，该表是一个一维数组，虚表里存储了虚函数入口地址</li>
+<li>编译器会在对象的前四个字节中保存一个虚表指针，即vptr</li>
+<li>调用构造函数，在构造函数中创建虚表并对其进行初始化</li>
+<li>派生类对基类的虚函数没有重写，则派生类的vptr指向基类的虚表。有重写的话，派生类的vptr会指向自身的虚表。当派生类中有自己的虚表时，会将其添加在后面。</li>
+</ul>
+</li>
+<li>内存布局<ul>
+<li>单一继承的内存布局<ul>
+<li>每个类最多只会有一个vptr指针，并放在第一个拥有virtual function 的类之后(<font color=red>父类必须保证对象的完整性</font>)<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>面试经历</category>
@@ -1962,6 +2143,64 @@ int main()
       </categories>
       <tags>
         <tag>theory</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NRV优化</title>
+    <url>/2021/03/19/NRV%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<h1 id="导言"><a href="#导言" class="headerlink" title="导言"></a>导言</h1><p>&emsp;&emsp;之前在阅读候捷老师的《深入探索C++对象模型》一书时，对于NRV优化操作这个编译器优化并还是特别的清楚。所以今天准备通过实际测试来深入了解一下这个NRV的编译器优化。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">class Edge&#123;</span><br><span class="line"> public:</span><br><span class="line">  Edge() &#123;</span><br><span class="line">    std::cout &lt;&lt; &quot;Edge construct!&quot; &lt;&lt; std::endl;</span><br><span class="line">    Point &#x3D; 0;</span><br><span class="line">  &#125;</span><br><span class="line">  ~Edge() &#123; std::cout &lt;&lt; &quot;Edge destruct！&quot; &lt;&lt; std::endl; &#125;</span><br><span class="line">  Edge(const Edge&amp;_result) &#123;</span><br><span class="line">    std::cout &lt;&lt; &quot;Copy Construct!&quot; &lt;&lt; std::endl;</span><br><span class="line">    Point &#x3D; _result.Point;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"> private:</span><br><span class="line">  int Point;</span><br><span class="line">&#125;;</span><br><span class="line">Edge get() &#123;</span><br><span class="line">  Edge point;</span><br><span class="line">  return point;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123; Edge point &#x3D; get(); &#125;</span><br></pre></td></tr></table></figure><br>&emsp;&emsp;接下来我们将通过这个例子来深入了解NRV优化</p>
+<h1 id="不用NVR优化"><a href="#不用NVR优化" class="headerlink" title="不用NVR优化"></a>不用NVR优化</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; g++ -o demo test.cpp -fno-elide-constructors</span><br><span class="line">&#x2F;&#x2F; -fno-elide-constructors 表示输出未优化的结果</span><br><span class="line">Edge construct!</span><br><span class="line">Copy Construct!</span><br><span class="line">Edge destruct！</span><br><span class="line">Copy Construct!</span><br><span class="line">Edge destruct！</span><br><span class="line">Edge destruct！</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;在上述代码中，在成员函数get()函数中定义了一个Edge对象，然后将其作为返回值返回。如果按照调用copy construct,编译器会对代码进行一个扩张操作</p>
+<ul>
+<li>首先加上一个额外参数，类型是类对象的一个引用，这个参数用来放置由copy construct 而得到的返回值。</li>
+<li>在return命令之前安插一个copy construct调用操作，以便将欲传回的对象的内容当作上述新增参数的初值。</li>
+</ul>
+<p>具体过程可以通过下面的伪代码来了解<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Edge get(Edge &amp;_result) &#123;</span><br><span class="line">  &#x2F;&#x2F; 增加一个额外参数作为引用传入函数</span><br><span class="line">  Edge point;</span><br><span class="line">  &#x2F;&#x2F;这里会调用Edge的空构造函数</span><br><span class="line">  point.Edge::Edge();</span><br><span class="line">  &#x2F;&#x2F;调用拷贝构造函数将Edge将point的值赋给返回值</span><br><span class="line">  _result.Edge(point);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;在上述代码中，编译器的扩张操作，构造出了point。但是这个没用空构造的point根本就没有起到什么作用。对于编译器来说，这就会导致资源的浪费，拖慢运行速度。所以NRV优化操作就显的很有必要了。</p>
+<h1 id="使用NRV优化"><a href="#使用NRV优化" class="headerlink" title="使用NRV优化"></a>使用NRV优化</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; g++ -o demo test.cpp</span><br><span class="line">&#x2F;&#x2F; g++ -o 会对程序做部分优化 </span><br><span class="line">Edge construct!</span><br><span class="line">Edge destruct！</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;编译器为了避免这个无意义的临时变量，编译器选择使用传入的参数(_ result)。对其直接进行构造，这样就避免了无意义的临时变量。具体操作参考如下伪代码<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Edge get(Edge &amp;_result) &#123; &#x2F;&#x2F;额外参数作为引用参数介入函数</span><br><span class="line">  &#x2F;&#x2F;使用NRV优化后，不再生成point临时变量，而是对_result直接进行构造</span><br><span class="line">  _result.Edge::edge();</span><br><span class="line">  return; &#x2F;&#x2F; 返回已有的返回值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h1><p>&emsp;&emsp;只有在显式定义copy construct 的时候，编译器才会激活NRV优化操作。对于普通的程序，是看不出NRV优化的好处，只有在庞大数据量时，NRV优化操作的优点才会显现出来。</p>
+]]></content>
+      <categories>
+        <category>Read Notes</category>
+      </categories>
+      <tags>
+        <tag>theory</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-24</title>
+    <url>/2021/03/19/Leetcode-24/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给定两个大小分别为<code>m</code>和<code>n</code>的正序(从小到大)数组<code>nums1</code>和<code>nums2</code>。要求找出这两个正序数组的<strong>中位数</strong>。</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p>&emsp;&emsp;输入是两个数组，合并后的数组顺序是由小到大。</p>
+<p><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> nums1 = [1,3], nums2 = [2]<br>
+  <strong>Output:</strong> 2.00000 
+</p><br>&emsp;&emsp;对于偶数个数字的数组，中位数是(n/2)。对于奇数个数字的数组，中位数为(n+(n+1))/2的值。</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;简单解法,就是将num2的值使用<code>emplace_back()</code>函数将nums2的接在nums1后面，之后再使用sort()。进行一个从小到大的排序，最后根据奇数偶数，返回不同的中位数。但是这个做法的缺点就是，使用sort后的时间复杂度就变为了$n * log^{2}(n)$,具体代码如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    double findMedianSortedArrays(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) &#123;</span><br><span class="line">       int n &#x3D; nums1.size(),m &#x3D; nums2.size();</span><br><span class="line"></span><br><span class="line">       for (int i &#x3D; 0; i &lt; m ; i++) &#123;</span><br><span class="line">           nums1.emplace_back(nums2[i]);</span><br><span class="line">       &#125; </span><br><span class="line"></span><br><span class="line">       sort(nums1.begin(),nums1.end());</span><br><span class="line"></span><br><span class="line">       int a &#x3D; nums1.size();</span><br><span class="line">       int k &#x3D; a &#x2F; 2;</span><br><span class="line"></span><br><span class="line">       if (a % 2 &#x3D;&#x3D; 1) &#123;</span><br><span class="line">           return nums1[k];</span><br><span class="line">       &#125;</span><br><span class="line">       else</span><br><span class="line">           return (double)(nums1[k-1]+nums1[k])&#x2F;2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-25</title>
+    <url>/2021/03/20/Leetcode-25/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给定一个字符串<code>s</code>,找到<code>s</code>中最长的回文子串。</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> s = "babad" <br>
+  <strong>Output:</strong> "bab" 
+</p><br>&emsp;&emsp;对于这样一个字符串，不止存在一个最长回文子串。可以是bab或aba。</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;对于这个题目，如果使用翻转的话。对于<code>aacxycaa</code>,反转之后是<code>aacyxcaa</code>,这时最长公共子串为<code>aac</code>,但是正确的回文子串为<code>aa</code>，所以这种方法不可以使用。<br>&emsp;&emsp;这个题目，应该思考如何使用双指针。对于寻找回文串的问题的关键之处在于：从中间开始向两边扩散来判断。首先我们需要先找到这个最长字符串，但是对于字符串来说，它们的个数可能是奇数或是偶数。对于偶数来说，寻找s[i]为中心的回文串；对于奇数，寻找s[i]和s[i+1]为中心的回文串。在寻找的过程中，应该注意边界限制。具体代码如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string longestPalindrome(string s) &#123;</span><br><span class="line">        string res;</span><br><span class="line">        for (int i &#x3D; 0; i &lt;s.size(); i++) &#123;</span><br><span class="line">            &#x2F;&#x2F;以s[i]为中心的最长回文子串</span><br><span class="line">            string s1 &#x3D; Palindrome(s,i,i);</span><br><span class="line">            &#x2F;&#x2F;以s[i+1]为中心的最长回文子串</span><br><span class="line">            string s2 &#x3D; Palindrome(s,i,i+1);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; res &#x3D; longest(res,s1,s2);</span><br><span class="line">            res &#x3D; res.size() &gt; s1.size() ? res : s1;</span><br><span class="line">            res &#x3D; res.size() &gt; s2.size() ? res : s2;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    string Palindrome(string&amp; s,int l, int r) &#123;</span><br><span class="line">        &#x2F;&#x2F; 防止索引越界</span><br><span class="line">        while (l &gt;&#x3D; 0 &amp;&amp; r &lt; s.size() &amp;&amp; s[l] &#x3D;&#x3D; s[r]) &#123;</span><br><span class="line">            &#x2F;&#x2F; 向两边展开</span><br><span class="line">            l--,r++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 返回以 s[l] 和 s[r]为中心的最长字符串</span><br><span class="line">        return s.substr(l+1, r-l-1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
       </tags>
   </entry>
 </search>
