@@ -1330,7 +1330,7 @@ int main()
 <li>C++ 堆栈的区别</li>
 <li>C++ 编译执行的过程</li>
 <li>C++ 深拷贝与浅拷贝的区别</li>
-<li>C++ 11新特性</li>
+<li>C++ 11新特性有了解过哪些?</li>
 <li>C++ 动态转换有了解过？<ul>
 <li>常见的几种动态转换说一下</li>
 <li>它们的作用</li>
@@ -1628,6 +1628,31 @@ int main()
 <li>自由存储区：全局变量与静态变量被分配到一块内存中，它们会被自动初始化</li>
 <li>常量存储区：仅存放常量，不允许修改</li>
 <li>代码区：存放函数体的二进制代码</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>C++ 堆栈的区别<ul>
+<li>申请方式不同<ul>
+<li>栈是由系统自动分配的</li>
+<li>堆是由自己申请与释放的</li>
+</ul>
+</li>
+<li>申请的大小限制<ul>
+<li>栈顶与栈底是预设好的，栈是向栈底扩展，大小固定</li>
+<li>堆向高地址扩展，是不连续的内存区域</li>
+</ul>
+</li>
+<li>申请效率不同<ul>
+<li>栈由系统分配，速度快，不会在碎片</li>
+<li>堆是由程序员分配，速度会比较慢，且会有内存碎片</li>
+</ul>
+</li>
+<li>各自大小<ul>
+<li>栈默认4M</li>
+<li>堆区一般为1G-4G</li>
 </ul>
 </li>
 </ul>
@@ -2277,6 +2302,23 @@ int main()
   <strong>Output:</strong> "bab" 
 </p><br>&emsp;&emsp;对于这样一个字符串，不止存在一个最长回文子串。可以是bab或aba。</p>
 <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;对于这个题目，如果使用翻转的话。对于<code>aacxycaa</code>,反转之后是<code>aacyxcaa</code>,这时最长公共子串为<code>aac</code>,但是正确的回文子串为<code>aa</code>，所以这种方法不可以使用。<br>&emsp;&emsp;这个题目，应该思考如何使用双指针。对于寻找回文串的问题的关键之处在于：从中间开始向两边扩散来判断。首先我们需要先找到这个最长字符串，但是对于字符串来说，它们的个数可能是奇数或是偶数。对于偶数来说，寻找s[i]为中心的回文串；对于奇数，寻找s[i]和s[i+1]为中心的回文串。在寻找的过程中，应该注意边界限制。具体代码如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string longestPalindrome(string s) &#123;</span><br><span class="line">        string res;</span><br><span class="line">        for (int i &#x3D; 0; i &lt;s.size(); i++) &#123;</span><br><span class="line">            &#x2F;&#x2F;以s[i]为中心的最长回文子串</span><br><span class="line">            string s1 &#x3D; Palindrome(s,i,i);</span><br><span class="line">            &#x2F;&#x2F;以s[i+1]为中心的最长回文子串</span><br><span class="line">            string s2 &#x3D; Palindrome(s,i,i+1);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; res &#x3D; longest(res,s1,s2);</span><br><span class="line">            res &#x3D; res.size() &gt; s1.size() ? res : s1;</span><br><span class="line">            res &#x3D; res.size() &gt; s2.size() ? res : s2;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    string Palindrome(string&amp; s,int l, int r) &#123;</span><br><span class="line">        &#x2F;&#x2F; 防止索引越界</span><br><span class="line">        while (l &gt;&#x3D; 0 &amp;&amp; r &lt; s.size() &amp;&amp; s[l] &#x3D;&#x3D; s[r]) &#123;</span><br><span class="line">            &#x2F;&#x2F; 向两边展开</span><br><span class="line">            l--,r++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 返回以 s[l] 和 s[r]为中心的最长字符串</span><br><span class="line">        return s.substr(l+1, r-l-1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-26</title>
+    <url>/2021/03/22/Leetcode-26/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给你<code>n</code>个非负整数<code>a<sub>1</sub>,a<sub>2</sub>,…,a<sub>n</sub></code>。每个数代表坐标中的一个点<code>(i,a<sub>i</sub>)</code>。在坐标内画<code>n</code>条垂直线，垂直线<code>i</code>的两个端点分别为<code>(i,a<sub>i</sub>)</code>和<code>(i,0)</code>。找出其中两条线，使得它们与<code>x</code>轴共同构成的容器可以容纳最多的水。(容器不可倾斜)</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> [1,8,6,2,5,4,8,3,7] <br>
+  <strong>Output:</strong> 49
+</p><br>&emsp;&emsp;容器容纳水的多少取决于高低与两个柱子之间的间距。容器高低是由这其中最低的柱子而决定的，所以这个容器最大值为$7 * 7 = 49$</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;这种可以通过移到柱子来求取容器最大值，最好的方法莫过于使用双指针。通过左右指针来进行操作，进行柱子的移动。首先，先从最外围进行处理。由于最低的柱子决定了容器的高低，所以$[长度 * 最低柱子高度]$。通过max对比，用res来保存结果，最后就可以输出最大值了。具体代码：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxArea(vector&lt;int&gt;&amp; height) &#123;</span><br><span class="line">        int res &#x3D; 0;</span><br><span class="line">        int left &#x3D; 0;</span><br><span class="line">        int right &#x3D; height.size() - 1;</span><br><span class="line">        while (left &lt; right) &#123;</span><br><span class="line">            int area &#x3D; (right - left) * min(height[left],height[right]);</span><br><span class="line">            res &#x3D; max(area,res);</span><br><span class="line">            if (height[left] &lt; height[right])</span><br><span class="line">                left++;</span><br><span class="line">            else right--;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>algorithm</category>

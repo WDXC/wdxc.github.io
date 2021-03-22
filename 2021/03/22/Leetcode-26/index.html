@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Roman to Integer (＃14)">
+  <meta name="description" content="盛最多水的容器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode-4">
-<meta property="og:url" content="http://yoursite.com/2020/09/28/Leetcode-4/index.html">
+<meta property="og:title" content="Leetcode-26">
+<meta property="og:url" content="http://yoursite.com/2021/03/22/Leetcode-26/index.html">
 <meta property="og:site_name" content="Rabbet">
-<meta property="og:description" content="Roman to Integer (＃14)">
+<meta property="og:description" content="盛最多水的容器">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-09-28T07:10:00.000Z">
-<meta property="article:modified_time" content="2021-03-10T00:43:59.814Z">
+<meta property="article:published_time" content="2021-03-22T14:04:00.000Z">
+<meta property="article:modified_time" content="2021-03-22T15:29:05.754Z">
 <meta property="article:author" content="Rabbet">
 <meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/09/28/Leetcode-4/">
+<link rel="canonical" href="http://yoursite.com/2021/03/22/Leetcode-26/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>Leetcode-4 | Rabbet</title>
+  <title>Leetcode-26 | Rabbet</title>
   
 
 
@@ -200,7 +200,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/Leetcode-4/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/22/Leetcode-26/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://i.postimg.cc/Zqsj0dJx/header.jpg">
@@ -213,7 +213,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Leetcode-4
+          Leetcode-26
         </h1>
 
         <div class="post-meta">
@@ -222,16 +222,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-09-28 15:10:00" itemprop="dateCreated datePublished" datetime="2020-09-28T15:10:00+08:00">2020-09-28</time>
+              <time title="创建时间：2021-03-22 22:04:00 / 修改时间：23:29:05" itemprop="dateCreated datePublished" datetime="2021-03-22T22:04:00+08:00">2021-03-22</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-10 08:43:59" itemprop="dateModified" datetime="2021-03-10T08:43:59+08:00">2021-03-10</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -248,7 +242,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.6k</span>
+              <span>731</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -257,7 +251,7 @@
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               <span>1 分钟</span>
             </span>
-            <div class="post-description">Roman to Integer (＃14)</div>
+            <div class="post-description">盛最多水的容器</div>
 
         </div>
       </header>
@@ -268,76 +262,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Roman numerals are represented by seven different symbols: <code>I</code>, <code>V</code> ,<code>X</code>,<code>L</code>, <code>C</code>, <code>D</code> and <code>M</code>.</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center"><strong>Symbol</strong></th>
-<th style="text-align:center"><strong>Value</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">I</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">V</td>
-<td style="text-align:center">5</td>
-</tr>
-<tr>
-<td style="text-align:center">X</td>
-<td style="text-align:center">10</td>
-</tr>
-<tr>
-<td style="text-align:center">L</td>
-<td style="text-align:center">50</td>
-</tr>
-<tr>
-<td style="text-align:center">C</td>
-<td style="text-align:center">100</td>
-</tr>
-<tr>
-<td style="text-align:center">D</td>
-<td style="text-align:center">500</td>
-</tr>
-<tr>
-<td style="text-align:center">M</td>
-<td style="text-align:center">1000</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>For example, two is written as <code>II</code> in Roman numeral, just two one’s added together. Twelve is written as, <code>XII</code>, which is simply <code>X</code>+ <code>II</code>. The number twenty seven is written as <code>XXVII</code>, which is <code>XX</code> + <code>V</code> + <code>II</code>.</p>
-<p>Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not <code>IIII</code>. Instead, the number four is written as <code>IV</code>. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as <code>IX</code>. There are six instances where subtraction is used:</p>
-<ul>
-<li><code>I</code> can be placed before <code>V</code>(5) and <code>X</code>(10) to make 4 and 9.</li>
-<li><code>X</code> can be placed before <code>L</code>(50) and <code>C</code>(100) to make 40 to 90.</li>
-<li><code>C</code> can be placed before <code>D</code>(500) and <code>M</code>(1000) to make 400 to 900.</li>
-</ul>
-<p>Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999.</p>
-<p><strong>Example 1 : </strong></p>
-<blockquote>
-<p><strong>Input : </strong> “III”<br><strong>Output : </strong> 3</p>
-</blockquote>
-<p><strong>Example 2 : </strong></p>
-<blockquote>
-<p><strong>Input : </strong> “IV”<br><strong>Output : </strong> 4</p>
-</blockquote>
-<p><strong>Example 3 : </strong> </p>
-<blockquote>
-<p><strong>Input : </strong> “IX”<br><strong>Output : </strong> 9</p>
-</blockquote>
-<p><strong>Example 4 : </strong></p>
-<blockquote>
-<p><strong>Input : </strong> “LVIII”<br><strong>Output : </strong> 58<br><strong>Examplanation : </strong> L = 50, V = 5, III = 3</p>
-</blockquote>
-<p><strong>Example 5 : </strong></p>
-<blockquote>
-<p><strong>Input : </strong> “MCMXCIV”<br><strong>Output : </strong> 1994<br><strong>Examplanation : </strong> M = 1000, CM = 900, XC = 90, IV = 4.</p>
-</blockquote>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="暴力破解法"><a href="#暴力破解法" class="headerlink" title="暴力破解法"></a>暴力破解法</h3><p> 这个思路就是把每个罗马数字所对应的整数一一对应，最后再根据罗马数字的书写方式用循环套出结果。时间复杂度为O(n),空间复杂度为O(1)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int fun(char s) &#123;</span><br><span class="line">        if (s &#x3D;&#x3D; &#39;I&#39;) return 1;</span><br><span class="line">        if (s &#x3D;&#x3D; &#39;V&#39;) return 5;</span><br><span class="line">        if (s &#x3D;&#x3D; &#39;X&#39;) return 10;</span><br><span class="line">        if (s &#x3D;&#x3D; &#39;L&#39;) return 50;</span><br><span class="line">        if (s &#x3D;&#x3D; &#39;C&#39;) return 100;</span><br><span class="line">        if (s &#x3D;&#x3D; &#39;D&#39;) return 500;</span><br><span class="line">        if (s &#x3D;&#x3D; &#39;M&#39;) return 1000;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    int romanToInt(string s) &#123;</span><br><span class="line">        int res &#x3D; 0;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; s.size();i++) &#123;</span><br><span class="line">            </span><br><span class="line">            if ((i+1 &lt; s.size()) &amp;&amp; (fun(s[i]) &lt; fun(s[i+1])))</span><br><span class="line">                res -&#x3D; fun(s[i]);</span><br><span class="line">            else </span><br><span class="line">                res +&#x3D; fun(s[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;      </span><br></pre></td></tr></table></figure></p>
+        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给你<code>n</code>个非负整数<code>a<sub>1</sub>,a<sub>2</sub>,…,a<sub>n</sub></code>。每个数代表坐标中的一个点<code>(i,a<sub>i</sub>)</code>。在坐标内画<code>n</code>条垂直线，垂直线<code>i</code>的两个端点分别为<code>(i,a<sub>i</sub>)</code>和<code>(i,0)</code>。找出其中两条线，使得它们与<code>x</code>轴共同构成的容器可以容纳最多的水。(容器不可倾斜)</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> [1,8,6,2,5,4,8,3,7] <br>
+  <strong>Output:</strong> 49
+</p><br>&emsp;&emsp;容器容纳水的多少取决于高低与两个柱子之间的间距。容器高低是由这其中最低的柱子而决定的，所以这个容器最大值为$7 * 7 = 49$</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;这种可以通过移到柱子来求取容器最大值，最好的方法莫过于使用双指针。通过左右指针来进行操作，进行柱子的移动。首先，先从最外围进行处理。由于最低的柱子决定了容器的高低，所以$[长度 * 最低柱子高度]$。通过max对比，用res来保存结果，最后就可以输出最大值了。具体代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxArea(vector&lt;int&gt;&amp; height) &#123;</span><br><span class="line">        int res &#x3D; 0;</span><br><span class="line">        int left &#x3D; 0;</span><br><span class="line">        int right &#x3D; height.size() - 1;</span><br><span class="line">        while (left &lt; right) &#123;</span><br><span class="line">            int area &#x3D; (right - left) * min(height[left],height[right]);</span><br><span class="line">            res &#x3D; max(area,res);</span><br><span class="line">            if (height[left] &lt; height[right])</span><br><span class="line">                left++;</span><br><span class="line">            else right--;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 
     </div>
 
@@ -356,13 +286,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/09/25/Leetcode-3/" rel="prev" title="Leetcode-3">
-      <i class="fa fa-chevron-left"></i> Leetcode-3
+    <a href="/2021/03/20/Leetcode-25/" rel="prev" title="Leetcode-25">
+      <i class="fa fa-chevron-left"></i> Leetcode-25
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/10/03/Leetcode-5/" rel="next" title="Leetcode-5">
-      Leetcode-5 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -421,7 +348,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Question"><span class="nav-text">Question</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Answer"><span class="nav-text">Answer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E6%B3%95"><span class="nav-text">暴力破解法</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="nav-text">输入输出样例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-text">题解</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -584,6 +511,59 @@ show_date_time();
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
