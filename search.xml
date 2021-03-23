@@ -1677,10 +1677,10 @@ int main()
 </ul>
 ]]></content>
       <categories>
-        <category>面试经历</category>
+        <category>experience</category>
       </categories>
       <tags>
-        <tag>一面</tag>
+        <tag>interview</tag>
       </tags>
   </entry>
   <entry>
@@ -2325,6 +2325,17 @@ int main()
       </categories>
       <tags>
         <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Effective-C++ Reading Notes</title>
+    <url>/2021/03/23/Effective-C-Read-Note/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Read Notes</category>
+      </categories>
+      <tags>
+        <tag>theory</tag>
       </tags>
   </entry>
 </search>
