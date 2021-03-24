@@ -20,17 +20,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="个人Blog网站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Rabbet">
-<meta property="og:url" content="http://yoursite.com/archives/2021/index.html">
+  <meta name="description" content="三数之和(双指针 ＃15)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode-27">
+<meta property="og:url" content="http://yoursite.com/2021/03/24/Leetcode-27/index.html">
 <meta property="og:site_name" content="Rabbet">
-<meta property="og:description" content="个人Blog网站">
+<meta property="og:description" content="三数之和(双指针 ＃15)">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-24T02:45:00.000Z">
+<meta property="article:modified_time" content="2021-03-24T03:33:01.667Z">
 <meta property="article:author" content="Rabbet">
+<meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/archives/2021/">
+<link rel="canonical" href="http://yoursite.com/2021/03/24/Leetcode-27/">
 
 
 <script id="page-configurations">
@@ -38,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | Rabbet</title>
+  <title>Leetcode-27 | Rabbet</title>
   
 
 
@@ -190,235 +193,113 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        
-        <span class="collection-header">还行! 目前共计 36 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/24/Leetcode-27/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.postimg.cc/Zqsj0dJx/header.jpg">
+      <meta itemprop="name" content="Rabbet">
+      <meta itemprop="description" content="个人Blog网站">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rabbet">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Leetcode-27
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-03-24 10:45:00 / 修改时间：11:33:01" itemprop="dateCreated datePublished" datetime="2021-03-24T10:45:00+08:00">2021-03-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+            <div class="post-description">三数之和(双指针 ＃15)</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
+        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给定一个包含n个整数的数组<code>nums</code>,判断<code>nums</code>中是否存在三个元素a,b,c,使得a+b+c=0?请你找出所有和为0且不重复的三元组。<font color=red>要求不可以有重复的三元组</font></p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> [-1,0,1,2,-1,-4] <br>
+  <strong>Output:</strong> [[-1,-1,2],[-1,0,1]]
+</p>
+&emsp;&emsp;在这个样例中，可以组成零的三元组有[[-1,-1,2],[-1,0,1],[-1,0,1]],但是题目要求去重，所以最后只可以保留[[-1,-1,2],[-1,0,1]];
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-03-24T10:45:00+08:00"
-              content="2021-03-24">
-          03-24
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/24/Leetcode-27/" itemprop="url">
-            <span itemprop="name">Leetcode-27</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-03-23T08:27:00+08:00"
-              content="2021-03-23">
-          03-23
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/23/Effective-C-Read-Note/" itemprop="url">
-            <span itemprop="name">Effective-C++ Reading Notes</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-03-22T22:04:00+08:00"
-              content="2021-03-22">
-          03-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/22/Leetcode-26/" itemprop="url">
-            <span itemprop="name">Leetcode-26</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-03-20T22:16:00+08:00"
-              content="2021-03-20">
-          03-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/20/Leetcode-25/" itemprop="url">
-            <span itemprop="name">Leetcode-25</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-03-19T20:45:00+08:00"
-              content="2021-03-19">
-          03-19
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/19/Leetcode-24/" itemprop="url">
-            <span itemprop="name">Leetcode-24</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-03-19T09:01:00+08:00"
-              content="2021-03-19">
-          03-19
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/19/NRV%E4%BC%98%E5%8C%96/" itemprop="url">
-            <span itemprop="name">NRV优化</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-03-17T10:31:00+08:00"
-              content="2021-03-17">
-          03-17
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/17/interview_first/" itemprop="url">
-            <span itemprop="name">腾讯光子一面</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-03-15T19:24:00+08:00"
-              content="2021-03-15">
-          03-15
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/15/Leetcode-23/" itemprop="url">
-            <span itemprop="name">Leetcode-23</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-03-15T18:28:00+08:00"
-              content="2021-03-15">
-          03-15
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/15/Leetcode-22/" itemprop="url">
-            <span itemprop="name">Leetcode-22</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-03-14T19:45:00+08:00"
-              content="2021-03-14">
-          03-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/14/Leetcode-21/" itemprop="url">
-            <span itemprop="name">Leetcode-21</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;三个值的计算可能会比较麻烦，但是固定一个值，仅去计算两数之和就会简单很多。我们可以先对数组进行一个排序，方便待会儿处理左右指针的移动。至于固定一个值，我们可以使用for循环,使用完一个推向下一个。<br>&emsp;&emsp;由于存在数字重复,所以需要对数字进行去重。在固定好第一个值后，我们就要开始操作双指针了。i是值固定，因此我们的left必须为(i+1),right不受影响也就是数组的最后一个值(len-1)。因为$a+b+c=0$,所以$a+b=-c$，接下来就是通过值的比较来寻找有效三元组。<br><br>&emsp;&emsp;当找到一个有效三元组时，left与right需同时变化。这里仍需考虑去重问题如:<code>[-1,-1,-1,3,3,3];left = 1,right =4;</code>，为了避免这种情况,我们需要对数字进行去重。最后重复前面操作就可以得出结果了，具体代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; threeSum(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        &#x2F;&#x2F; base case</span><br><span class="line">        int len &#x3D; nums.size();</span><br><span class="line">        if (len &lt; 3) return&#123;&#125;;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; save result</span><br><span class="line">        vector&lt;vector&lt;int&gt; &gt; res;</span><br><span class="line">        std::sort(nums.begin(),nums.end());</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;固定一个值</span><br><span class="line">        for (int i &#x3D; 0;i &lt; len; i++) &#123;</span><br><span class="line">            &#x2F;&#x2F;第一个值大于零，则直接返回</span><br><span class="line">            if (nums[i] &gt; 0) return res;</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 去重</span><br><span class="line">            if (i &gt; 0 &amp;&amp; nums[i] &#x3D;&#x3D; nums[i-1]) continue;</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F;双指针操作</span><br><span class="line">            &#x2F;&#x2F; left起始点在i之后，right 不受影响</span><br><span class="line">            int left &#x3D; i + 1, right &#x3D; len -1;</span><br><span class="line">            while (left &lt; right) &#123;  </span><br><span class="line">                int sum &#x3D; nums[left] + nums[right];</span><br><span class="line">                if (sum &gt; -nums[i]) right--;</span><br><span class="line">                else if (sum &lt; -nums[i]) left++;</span><br><span class="line">                else &#123;</span><br><span class="line">                    &#x2F;&#x2F;找到一个有效三元组</span><br><span class="line">                    res.push_back(&#123;nums[i],nums[left],nums[right]&#125;);</span><br><span class="line">                    left++;</span><br><span class="line">                    right--;</span><br><span class="line">                    </span><br><span class="line">                    &#x2F;&#x2F;去重</span><br><span class="line">                    while (left &lt; right &amp;&amp; nums[left] &#x3D;&#x3D; nums[left-1]) left++;</span><br><span class="line">                    while (right &lt; right &amp;&amp; nums[right] &#x3D;&#x3D; nums[right+1]) right--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/23/Effective-C-Read-Note/" rel="prev" title="Effective-C++ Reading Notes">
+      <i class="fa fa-chevron-left"></i> Effective-C++ Reading Notes
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2021/page/2/">2</a><a class="page-number" href="/archives/2021/page/3/">3</a><a class="extend next" rel="next" href="/archives/2021/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+  
+  
 
 
 
@@ -470,6 +351,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="nav-text">输入输出样例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-text">题解</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -632,6 +514,59 @@ show_date_time();
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

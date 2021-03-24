@@ -1304,7 +1304,7 @@ int main()
 <li>C++ 关键字sizeof作用<ul>
 <li>strlen与它的区别</li>
 <li>sizeof(“hello”)与strlen(“hello”)区别</li>
-<li>double<code>*</code> (<code>*</code>a) [3][6]; sizeof(*a)与sizeof(a)的大小</li>
+<li>double<code><em></code> (<code></em></code>a) [3][6]; sizeof(*a)与sizeof(a)的大小</li>
 </ul>
 </li>
 <li>C++ 多态<ul>
@@ -1388,102 +1388,13 @@ int main()
 </li>
 </ul>
 <h1 id="面试问题答案总结"><a href="#面试问题答案总结" class="headerlink" title="面试问题答案总结"></a>面试问题答案总结</h1><h2 id="排序-1"><a href="#排序-1" class="headerlink" title="排序"></a>排序</h2><ul>
-<li>排序算法的时间复杂度与空间复杂度</li>
+<li><strong>排序算法的时间复杂度与空间复杂度</strong></li>
 </ul>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">排序算法</th>
-<th style="text-align:center">平均时间复杂度</th>
-<th style="text-align:center">最坏时间复杂度</th>
-<th style="text-align:center">最好时间复杂度</th>
-<th style="text-align:center">空间复杂度</th>
-<th>稳定性</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">冒泡排序</td>
-<td style="text-align:center">$O(n^{2})$</td>
-<td style="text-align:center">$O(n^{2})$</td>
-<td style="text-align:center">$O(n)$</td>
-<td style="text-align:center">$O(1)$</td>
-<td>稳定</td>
-</tr>
-<tr>
-<td style="text-align:center"><font color=red>直接选择排序</font></td>
-<td style="text-align:center">$O(n^{2})$</td>
-<td style="text-align:center">$O(n^{2})$</td>
-<td style="text-align:center">$O(n)$</td>
-<td style="text-align:center">$O(1)$</td>
-<td><font color=red>不稳定</font></td>
-</tr>
-<tr>
-<td style="text-align:center">直接插入排序</td>
-<td style="text-align:center">$O(n^{2})$</td>
-<td style="text-align:center">$O(n^{2})$</td>
-<td style="text-align:center">$O(n)$</td>
-<td style="text-align:center">$O(1)$</td>
-<td>稳定</td>
-</tr>
-<tr>
-<td style="text-align:center"><font color=red>快速排序</font></td>
-<td style="text-align:center">$O(nlogn)$</td>
-<td style="text-align:center">$O(n^{2})$</td>
-<td style="text-align:center">$O(nlogn)$</td>
-<td style="text-align:center">$O(nlogn)$</td>
-<td><font color=red>不稳定</font></td>
-</tr>
-<tr>
-<td style="text-align:center"><font color=red>堆排序</font></td>
-<td style="text-align:center">$O(nlogn)$</td>
-<td style="text-align:center">$O(nlogn)$</td>
-<td style="text-align:center">$O(nlogn)$</td>
-<td style="text-align:center">$O(1)$</td>
-<td><font color=red>不稳定</font></td>
-</tr>
-<tr>
-<td style="text-align:center"><font color=red>希尔排序</font></td>
-<td style="text-align:center">$O(nlogn)$</td>
-<td style="text-align:center">$O(ns)$</td>
-<td style="text-align:center">$O(n)$</td>
-<td style="text-align:center">$O(1)$</td>
-<td><font color=red>不稳定</font></td>
-</tr>
-<tr>
-<td style="text-align:center">归并排序</td>
-<td style="text-align:center">$O(nlogn)$</td>
-<td style="text-align:center">$O(nlogn)$</td>
-<td style="text-align:center">$O(nlogn)$</td>
-<td style="text-align:center">$O(n)$</td>
-<td>稳定</td>
-</tr>
-<tr>
-<td style="text-align:center">计数排序</td>
-<td style="text-align:center">$O(n+k)$</td>
-<td style="text-align:center">$O(n+k)$</td>
-<td style="text-align:center">$O(n+k)$</td>
-<td style="text-align:center">$O(n+k)$</td>
-<td>稳定</td>
-</tr>
-<tr>
-<td style="text-align:center">基数排序</td>
-<td style="text-align:center">$O(N * M)$</td>
-<td style="text-align:center">$O(N * M)$</td>
-<td style="text-align:center">$O(N * M)$</td>
-<td style="text-align:center">$O(M)$</td>
-<td>稳定</td>
-</tr>
-</tbody>
-</table>
-</div>
+<p>|排序算法|平均时间复杂度|最坏时间复杂度|最好时间复杂度|空间复杂度|稳定性|<br>|:-:|:-:|:-:|:-:|:-:|<br>|冒泡排序|$O(n^{2})$|$O(n^{2})$|$O(n)$|$O(1)$|稳定|<br>|<font color=red>直接选择排序</font>|$O(n^{2})$|$O(n^{2})$|$O(n)$|$O(1)$|<font color=red>不稳定</font>|<br>|直接插入排序|$O(n^{2})$|$O(n^{2})$|$O(n)$|$O(1)$|稳定|<br>|<font color=red>快速排序</font>|$O(nlogn)$|$O(n^{2})$|$O(nlogn)$|$O(nlogn)$|<font color=red>不稳定</font>|<br>|<font color=red>堆排序</font>|$O(nlogn)$|$O(nlogn)$|$O(nlogn)$|$O(1)$|<font color=red>不稳定</font>|<br>|<font color=red>希尔排序</font>|$O(nlogn)$|$O(ns)$|$O(n)$|$O(1)$|<font color=red>不稳定</font>|<br>|归并排序|$O(nlogn)$|$O(nlogn)$|$O(nlogn)$|$O(n)$|稳定|<br>|计数排序|$O(n+k)$|$O(n+k)$|$O(n+k)$|$O(n+k)$|稳定|<br>|基数排序|$O(N * M)$|$O(N * M)$|$O(N * M)$|$O(M)$|稳定|</p>
 <ul>
-<li>快速排序<ul>
-<li>基本思想<ul>
-<li>通过一趟排序将待排记录分割成独立的两个部分，其中一部分关键字均比另一部分记录关键字小，接着对这两部分记录继续进行排序，以达到整个序列有序的目的。</li>
-</ul>
-</li>
+<li><strong>快速排序</strong><ul>
+<li> 基本思想</li>
+<li> 通过一趟排序将待排记录分割成独立的两个部分，其中一部分关键字均比另一部分记录关键字小，接着对这两部分记录继续进行排序，以达到整个序列有序的目的。</li>
 <li>最优与最坏情况分析<ul>
 <li>最优的情况：Parition每次都划分得很均匀。在获得枢轴后将数组一分为二，各自仅需$(n/2)$的时间，这是最好的情况，时间复杂度为$O(nlogn)$</li>
 <li>最坏的情况：待排序的数组是正序或逆序，每次划分只得到一个比上一次少一个记录的子序列，这里另一个记录是为空的。如果用二叉树表示就是一个斜树,这里就需要n-1次递归调用，所以其最终时间复杂度为$O(n^{2})$</li>
@@ -1495,7 +1406,7 @@ int main()
 </li>
 </ul>
 </li>
-<li>堆排序<ul>
+<li><strong>堆排序</strong><ul>
 <li>基本思想：将待排序的序列构造成一个大顶堆。此时，整个序列的最大值就是堆顶的根节点。将其移走(实际就是将其与堆数组末尾元素交换，此时末尾元素为最大值),然后将剩余的n-1个序列重新构造成一个椎，这样就会得到n个元素中的次小值。之后重复之前的操作，就可以得到一个有序序列了</li>
 <li>稳定性：由于记录的比较与交换是跳跃的，所以堆排序是一种不稳定的排序方式</li>
 <li>适用场景：不适合待排序</li>
@@ -1503,11 +1414,10 @@ int main()
 </li>
 </ul>
 <h2 id="算法-1"><a href="#算法-1" class="headerlink" title="算法"></a>算法</h2><ul>
-<li>反转链表<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* reverseList(ListNode* head) &#123;</span><br><span class="line">        ListNode* prev &#x3D; nullptr;</span><br><span class="line">        ListNode* cur &#x3D; head;</span><br><span class="line">        </span><br><span class="line">        while (cur !&#x3D; nullptr) &#123;</span><br><span class="line">            ListNode* next &#x3D; cur-&gt;next;</span><br><span class="line">            cur-&gt;next &#x3D; prev;</span><br><span class="line">            prev &#x3D; cur;</span><br><span class="line">            cur &#x3D; next;</span><br><span class="line">        &#125;</span><br><span class="line">        return prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
+<li><strong>反转链表</strong><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* reverseList(ListNode* head) &#123;</span><br><span class="line">        ListNode* prev &#x3D; nullptr;</span><br><span class="line">        ListNode* cur &#x3D; head;</span><br><span class="line">        </span><br><span class="line">        while (cur !&#x3D; nullptr) &#123;</span><br><span class="line">            ListNode* next &#x3D; cur-&gt;next;</span><br><span class="line">            cur-&gt;next &#x3D; prev;</span><br><span class="line">            prev &#x3D; cur;</span><br><span class="line">            cur &#x3D; next;</span><br><span class="line">        &#125;</span><br><span class="line">        return prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="C-基础-1"><a href="#C-基础-1" class="headerlink" title="C++ 基础"></a>C++ 基础</h2><ul>
-<li>C++ 用法与作用<ul>
+<li><strong>C++ 用法与作用</strong><ul>
 <li>隐藏: 在编译多个文件时，所有未加static前缀的全局变量与函数都具有全局可见性</li>
 <li>保持变量内容的持久</li>
 <li>static变量默认初始化为0</li>
@@ -1524,7 +1434,7 @@ int main()
 </li>
 </ul>
 <ul>
-<li>C++ sizeof用法与作用<ul>
+<li><strong>C++ sizeof用法与作用</strong><ul>
 <li>定义： sizeof是一个操作符，作用是返回一个对象或类型所占的内存字节数</li>
 <li>数组： sizeof(数组)的值等于数组所占用内存字节数</li>
 <li>联合类型：操作数为联合类型时，sizeof的结果为其最大字节成员的字节数</li>
@@ -1546,7 +1456,7 @@ int main()
 </li>
 </ul>
 <ul>
-<li>C++ 多态<ul>
+<li><strong>C++ 多态</strong><ul>
 <li>如何实现多态<ul>
 <li>在基类的函数前加上<code>virtual</code>关键字，在派生类中重写该函数，运行时将会根据所指对象的实际类型来调用相应的函数。</li>
 </ul>
@@ -1583,7 +1493,7 @@ int main()
 </li>
 </ul>
 <ul>
-<li><p>C++ 重载与重写</p>
+<li><p><strong>C++ 重载与重写</strong></p>
 <ul>
 <li>重载是指在同一范围定义中的同名成员函数才存在重载关系,其特点为：<ul>
 <li>参数名相同</li>
@@ -1609,7 +1519,7 @@ int main()
 </li>
 </ul>
 </li>
-<li><p>C++ new/delete 与 malloc/free 区别</p>
+<li><p><strong>C++ new/delete 与 malloc/free 区别</strong></p>
 <ul>
 <li>new/delete是C++ 关键字需要编译器支持；malloc/free 是库函数，需要头文件支持。</li>
 <li>使用new申请的内存，编译器会自动计算分配大小；malloc申请的内存，需要手动计算大小</li>
@@ -1620,7 +1530,7 @@ int main()
 </li>
 </ul>
 <ul>
-<li>C++ 内存分区<ul>
+<li><strong>C++ 内存分区</strong><ul>
 <li>一共分为六个区域，分别是：栈、自由存储区、堆、全局/静态存储区、常量存储区与代码区</li>
 <li>简单说明各个分区的作用<ul>
 <li>栈：在函数中，函数内部局部变量的存储单元都可以在栈上创建，结束后自动释放。由于栈内置于处理器中，效率高，但是分配的内存有限</li>
@@ -1634,7 +1544,7 @@ int main()
 </li>
 </ul>
 <ul>
-<li>C++ 堆栈的区别<ul>
+<li><strong>C++ 堆栈的区别</strong><ul>
 <li>申请方式不同<ul>
 <li>栈是由系统自动分配的</li>
 <li>堆是由自己申请与释放的</li>
@@ -1659,7 +1569,7 @@ int main()
 </li>
 </ul>
 <ul>
-<li>C++ 程序编译过程<ul>
+<li><strong>C++ 程序编译过程</strong><ul>
 <li>具体为两步：编译、链接</li>
 <li>编译可以细分为三个阶段<ul>
 <li>预编译处理</li>
@@ -2336,6 +2246,26 @@ int main()
       </categories>
       <tags>
         <tag>theory</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-27</title>
+    <url>/2021/03/24/Leetcode-27/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给定一个包含n个整数的数组<code>nums</code>,判断<code>nums</code>中是否存在三个元素a,b,c,使得a+b+c=0?请你找出所有和为0且不重复的三元组。<font color=red>要求不可以有重复的三元组</font></p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> [-1,0,1,2,-1,-4] <br>
+  <strong>Output:</strong> [[-1,-1,2],[-1,0,1]]
+</p>
+&emsp;&emsp;在这个样例中，可以组成零的三元组有[[-1,-1,2],[-1,0,1],[-1,0,1]],但是题目要求去重，所以最后只可以保留[[-1,-1,2],[-1,0,1]];
+
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;三个值的计算可能会比较麻烦，但是固定一个值，仅去计算两数之和就会简单很多。我们可以先对数组进行一个排序，方便待会儿处理左右指针的移动。至于固定一个值，我们可以使用for循环,使用完一个推向下一个。<br>&emsp;&emsp;由于存在数字重复,所以需要对数字进行去重。在固定好第一个值后，我们就要开始操作双指针了。i是值固定，因此我们的left必须为(i+1),right不受影响也就是数组的最后一个值(len-1)。因为$a+b+c=0$,所以$a+b=-c$，接下来就是通过值的比较来寻找有效三元组。<br><br>&emsp;&emsp;当找到一个有效三元组时，left与right需同时变化。这里仍需考虑去重问题如:<code>[-1,-1,-1,3,3,3];left = 1,right =4;</code>，为了避免这种情况,我们需要对数字进行去重。最后重复前面操作就可以得出结果了，具体代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; threeSum(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        &#x2F;&#x2F; base case</span><br><span class="line">        int len &#x3D; nums.size();</span><br><span class="line">        if (len &lt; 3) return&#123;&#125;;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; save result</span><br><span class="line">        vector&lt;vector&lt;int&gt; &gt; res;</span><br><span class="line">        std::sort(nums.begin(),nums.end());</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;固定一个值</span><br><span class="line">        for (int i &#x3D; 0;i &lt; len; i++) &#123;</span><br><span class="line">            &#x2F;&#x2F;第一个值大于零，则直接返回</span><br><span class="line">            if (nums[i] &gt; 0) return res;</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 去重</span><br><span class="line">            if (i &gt; 0 &amp;&amp; nums[i] &#x3D;&#x3D; nums[i-1]) continue;</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F;双指针操作</span><br><span class="line">            &#x2F;&#x2F; left起始点在i之后，right 不受影响</span><br><span class="line">            int left &#x3D; i + 1, right &#x3D; len -1;</span><br><span class="line">            while (left &lt; right) &#123;  </span><br><span class="line">                int sum &#x3D; nums[left] + nums[right];</span><br><span class="line">                if (sum &gt; -nums[i]) right--;</span><br><span class="line">                else if (sum &lt; -nums[i]) left++;</span><br><span class="line">                else &#123;</span><br><span class="line">                    &#x2F;&#x2F;找到一个有效三元组</span><br><span class="line">                    res.push_back(&#123;nums[i],nums[left],nums[right]&#125;);</span><br><span class="line">                    left++;</span><br><span class="line">                    right--;</span><br><span class="line">                    </span><br><span class="line">                    &#x2F;&#x2F;去重</span><br><span class="line">                    while (left &lt; right &amp;&amp; nums[left] &#x3D;&#x3D; nums[left-1]) left++;</span><br><span class="line">                    while (right &lt; right &amp;&amp; nums[right] &#x3D;&#x3D; nums[right+1]) right--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
       </tags>
   </entry>
 </search>
