@@ -4,18 +4,24 @@
     <title>C++ templates 2nd</title>
     <url>/2021/02/15/C-templates-2nd/</url>
     <content><![CDATA[<h1 id="第一章-Function-Templates"><a href="#第一章-Function-Templates" class="headerlink" title="第一章 Function Templates "></a><center>第一章 Function Templates </center></h1><ol>
-<li>C++ 中equality 和 equivalent 的区别<ul>
+<li>C++ 中equality 和 equivalent 的区别</li>
+</ol>
+<ul>
 <li>Equivalent 要求类满足”LessThanCompare”,即这两个实例可以使用”&lt;”进行比较</li>
 <li>Equality 要求满足EqualityCompareable,即可以使用”==”比较</li>
 </ul>
-</li>
-<li>从语意上来说，<code>class</code>和<code>typename</code>它们是Equivalent。由于class存在一定的误导性，所以推荐使用typename来声明模板参数T<ul>
+<ol start="2">
+<li>从语意上来说，<code>class</code>和<code>typename</code>它们是Equivalent。由于class存在一定的误导性，所以推荐使用typename来声明模板参数T</li>
+</ol>
+<ul>
 <li>typename 主要用于依赖于另一个模板参数的嵌套类型时进行声明,如下例：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">template &lt;typename param_t&gt;</span><br><span class="line">class Foo</span><br><span class="line">&#123;</span><br><span class="line">  typedef typename param_t::baz sub_t;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
 <li>在显式实例化模板时，必须使用class关键字<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">template class Foo&lt;int&gt;;</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
+<ol start="3">
 <li>对于不同类型的实例的实现，都会根据传入的参数来对应实现</li>
-<li>模板的二阶段检查(Two-Phase Translation)<ul>
+<li>模板的二阶段检查(Two-Phase Translation)</li>
+</ol>
+<ul>
 <li>第一阶段检查： 在未生成实例的定义期，检查未使用模板参数的代码正确性<ul>
 <li>语法是否有误</li>
 <li>是否使用了不发现的变量、函数名</li>
@@ -24,8 +30,10 @@
 </li>
 <li>第二阶段检查： 在对应生成实例期间，检查依赖于模板参数的代码是否都有效。基本上，所有代码都需要经过第二阶段检查</li>
 </ul>
-</li>
-<li>当且仅当有一个template type时，传入的值的类型必须与第一个值的类型保持一致。如果需要类型不一致，可通过以下几种方法来处理<ul>
+<ol start="5">
+<li>当且仅当有一个template type时，传入的值的类型必须与第一个值的类型保持一致。如果需要类型不一致，可通过以下几种方法来处理</li>
+</ol>
+<ul>
 <li>使用staic_cast 来解决<ul>
 <li>Eg: max(static_cast<double>(4),7.2); // ok</li>
 </ul>
@@ -36,74 +44,81 @@
 </li>
 <li>可以声明多个模板参数</li>
 </ul>
-</li>
-<li>在C++中，Return Type 是不能从调用者使用该调用的上下文中推断出来的，可以使用如下方法来处理return type<ul>
+<ol start="6">
+<li>在C++中，Return Type 是不能从调用者使用该调用的上下文中推断出来的，可以使用如下方法来处理return type</li>
+</ol>
+<ul>
 <li>在实例化时，通过显式指定return type <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">template &lt;typename T&gt;</span><br><span class="line">T max( T a, T b);</span><br><span class="line">...</span><br><span class="line">::max&lt;double&gt;(4,7.2);</span><br></pre></td></tr></table></figure></li>
 <li>当定义多个template parameter时，可以通过指定第一个为return type，实例化时仅需显式指定return type就可以了<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">template &lt;typename RT,typename T1,typename T2&gt;</span><br><span class="line">RT max(T1 a,T2 b);</span><br><span class="line">...</span><br><span class="line">::max&lt;double&gt;(4,8.3);</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
+<ol start="7">
 <li><p>在不自定义return type情况下，可以使用如下方法来决定return type:</p>
-<ol>
-<li>使用auto进行类型的自动推导</li>
-<li>使用自动推导函数<ul>
-<li>C++ 11 版本可以使用decltype()函数，其写法如下<br><code> auto add(T x,U y) -&gt; decltype(x+y);</code></li>
-<li>C++ 14版本可以直接使用auto类型推导，原因：C++14版本使得普通函数具备返回值推导的能力</li>
-</ul>
 </li>
-<li>可以使用std::common_type函数(std::common_type 推导出一个可以覆盖所有所定义类型的通用类型)<ul>
-<li>C++ 11版本使用std::common_type()</li>
-<li>C++ 14版本使用std::common_type_t()</li>
-</ul>
+<li><p>使用auto进行类型的自动推导</p>
 </li>
-</ol>
+<li><p>使用自动推导函数    * C++ 11 版本可以使用decltype()函数，其写法如下<br><code> auto add(T x,U y) -> decltype(x+y);</code>    * C++ 14版本可以直接使用auto类型推导，原因：C++14版本使得普通函数具备返回值推导的能力</p>
+</li>
+<li><p>可以使用std::common_type函数(std::common_type 推导出一个可以覆盖所有所定义类型的通用类型)    * C++ 11版本使用std::common_type()    * C++ 14版本使用std::common_type_t()</p>
 </li>
 <li><p>在实例化重载template Function 过程中，会根据参数优先匹配非模板函数，不匹配才会寻找对应的模板函数相应实现</p>
 </li>
-<li>为何使用值传递而不使用引用传递的原因<ol>
-<li>值传递语法更简单</li>
-<li>编译器对应优化更好</li>
-<li>move语意使得拷贝更方便</li>
-<li>有时根本没有move和copy</li>
-</ol>
+<li><p>为何使用值传递而不使用引用传递的原因</p>
+</li>
+<li><p>值传递语法更简单</p>
+</li>
+<li><p>编译器对应优化更好</p>
+</li>
+<li><p>move语意使得拷贝更方便</p>
+</li>
+<li><p>有时根本没有move和copy</p>
 </li>
 </ol>
 <h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a><center>第二章</center></h1><ol>
 <li>在class template中，使用类名但不加模板参数代表类和模板参数作为它的实际参数,如下例所示<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">template &lt;typename T&gt;</span><br><span class="line">class Stack &#123;</span><br><span class="line">  ...</span><br><span class="line">  Stack (Stack const&amp;);</span><br><span class="line">  Stack&amp; operator&#x3D; (Stack const&amp;);</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;&#x2F;等价于下面的代码</span><br><span class="line">template &lt;typename T&gt;</span><br><span class="line">class Stack&lt;T&gt; &#123;</span><br><span class="line">  ...</span><br><span class="line">  Stack&lt;T&gt; (Stack&lt;T&gt; const&amp;);</span><br><span class="line">  Stack&lt;T&gt;&amp; operator&#x3D; (Stack&lt;T&gt; const&amp;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
-<li>C++ template 定义变量时需要注意”&gt;”的使用<ul>
+<li>C++ template 定义变量时需要注意”&gt;”的使用</li>
+</ol>
+<ul>
 <li>C++ 11版本之前，两个相邻的”&gt;”中间需要安插一个空格<ul>
-<li>Eg: Stack<Stack<int> &gt;</li>
+<li>Eg: Stack&lt;Stack<int> &gt;</li>
 </ul>
 </li>
 <li>C++ 11版本及之后的版本，都可以直接写入两个”&gt;”而不需要空格<ul>
-<li>Eg: Stack<Stack<int>&gt;</li>
+<li>Eg: Stack&lt;Stack<int>&gt;</li>
 </ul>
 </li>
 </ul>
-</li>
-<li>如果想要特化一个class template，那么需要提前声明template&lt;&gt;和一个具有规范类型的类<ul>
+<ol start="3">
+<li>如果想要特化一个class template，那么需要提前声明template&lt;&gt;和一个具有规范类型的类</li>
+</ol>
+<ul>
 <li>类将作为模板参数</li>
 <li>类型将被直接指定声明在类名中</li>
 </ul>
-</li>
-<li>在一些特殊情况下采用偏特化会更好<ul>
+<ol start="4">
+<li>在一些特殊情况下采用偏特化会更好</li>
+</ol>
+<ul>
 <li>与全特化基本类似，但是偏特化可以定义单个/多个参数</li>
 <li>模板参数也需要被直接指定在类名的定义中</li>
 </ul>
-</li>
-<li>默认class template parameters可以定义为一个容器用来管理数据<ul>
+<ol start="5">
+<li>默认class template parameters可以定义为一个容器用来管理数据</li>
+</ol>
+<ul>
 <li>也可以在main()，对于想要使用的容器进行显式指定</li>
 </ul>
-</li>
-<li>通用的类型别名<ul>
+<ol start="6">
+<li>通用的类型别名</li>
+</ol>
+<ul>
 <li>使用关键字 typedef,用法如下<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef Stack&lt;int&gt; IntStack; &#x2F;&#x2F; typedef 关键字</span><br><span class="line">void foo (IntStack const&amp; s); &#x2F;&#x2F; s is stack of ints</span><br><span class="line">IntStack istack[10]; &#x2F;&#x2F; istack is array of 10 stacks of ints</span><br></pre></td></tr></table></figure></li>
 <li>自C++ 11版本之后，可以使用关键字<code>using</code><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">using IntStack &#x3D; Stack&lt;int&gt;;  &#x2F;&#x2F;alias declaration</span><br><span class="line">void foo (IntStack const&amp; s); &#x2F;&#x2F;s is stack of ints</span><br><span class="line">IntStack istack[10];  &#x2F;&#x2F;istack is array of 10 stacks of ints</span><br></pre></td></tr></table></figure></li>
 <li>IntStack 和 Stack<int> 是两个可互换符号的相同类型</li>
 <li>对于已经存在的类型，如果需要定义一个别名。推荐使用typedef,这样会使得代码可读性更好。</li>
 <li>C++11之后，我们可以alias templates,用法如下<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">template &lt;typename T&gt;</span><br><span class="line">using DequeStack &#x3D; Stack&lt;T, std::deque&lt;T&gt;&gt;;</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li>class template 参数推导会根据字符串字面来进行推导，如下例<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  Stack (T const&amp; elem) : elems(&#123;elem&#125;) &#123;&#125; &#x2F;&#x2F; initialize stack with one elemet</span><br><span class="line">  Stack stringStack &#x3D; &quot;bottom&quot;;  &#x2F;&#x2F;Stack&lt;char const[7]&gt; C++17版本推导结果</span><br><span class="line">&#x2F;&#x2F;这种写法会导致在T确定为char const[7]，将无法修改，所以应改写成</span><br><span class="line">  Stack (T elem) : elems(&#123;elem&#125;) &#123;&#125;;</span><br><span class="line">  Stack stringStack &#x3D; &quot;bottom&quot; &#x2F;&#x2F; Stack&lt;char const*&gt; C++ 17自动推导</span><br></pre></td></tr></table></figure>
-</li>
+<ol start="7">
+<li>class template 参数推导会根据字符串字面来进行推导，如下例<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  Stack (T const&amp; elem) : elems(&#123;elem&#125;) &#123;&#125; &#x2F;&#x2F; initialize stack with one elemet</span><br><span class="line">  Stack stringStack &#x3D; &quot;bottom&quot;;  &#x2F;&#x2F;Stack&lt;char const[7]&gt; C++17版本推导结果</span><br><span class="line">&#x2F;&#x2F;这种写法会导致在T确定为char const[7]，将无法修改，所以应改写成</span><br><span class="line">  Stack (T elem) : elems(&#123;elem&#125;) &#123;&#125;;</span><br><span class="line">  Stack stringStack &#x3D; &quot;bottom&quot; &#x2F;&#x2F; Stack&lt;char const*&gt; C++ 17自动推导</span><br></pre></td></tr></table></figure></li>
 </ol>
 ]]></content>
       <categories>
@@ -2241,7 +2256,8 @@ int main()
     <title>Effective-C++ Reading Notes</title>
     <url>/2021/03/23/Effective-C-Read-Note/</url>
     <content><![CDATA[<h1 id="第一章-让自己习惯C"><a href="#第一章-让自己习惯C" class="headerlink" title="第一章 让自己习惯C++"></a><center>第一章 让自己习惯C++</center></h1><ol>
-<li><p>视C++为一个语言联邦</p>
+<li>视C++为一个语言联邦</li>
+</ol>
 <ul>
 <li>C++ 语言的四个层次<ul>
 <li>C：没有C++的面向对象、没有模板、没有异常、没有重载等。</li>
@@ -2251,17 +2267,19 @@ int main()
 </ul>
 </li>
 </ul>
-</li>
-<li><p>尽量以const、enum、inline替换define</p>
-<ol>
-<li>多用编译器，少用预处理器(Preder the compiler to the preprocessor)<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#define A 1.653</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>尽量以const、enum、inline替换define<ol>
+<li>多用编译器，少用预处理器(Preder the compiler to the preprocessor)<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#define A 1.653</span><br></pre></td></tr></table></figure></li>
+</ol>
 <ul>
 <li>字符串’A’将不会被编译器看到，而编译器看到的是’1.653’。这会调试过程中，编译器错误信息只显示’1.653’而非’A’</li>
 <li>解决方法：定义全局变量<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const double A &#x3D; 1.653</span><br></pre></td></tr></table></figure></li>
 <li>使用全局变量的好处是，不会像define一样只是将宏名称进行替换,这会导致内存中有多份备份。</li>
 </ul>
-</li>
-<li>对于定义或声明全局变量时，常数指针与类的常数需要特别考虑<ul>
+<ol start="2">
+<li>对于定义或声明全局变量时，常数指针与类的常数需要特别考虑</li>
+</ol>
+<ul>
 <li>对于指针<ul>
 <li>对于指针要把指针与它指向的数据都定义为const，例如：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cosnt char* const myWorld &#x3D; &quot;Hello&quot;;</span><br></pre></td></tr></table></figure></li>
 <li>在C++中可以更方便地使用std::string这样基于char*类型的推广，例如：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const std::string myWorld(&quot;Hello&quot;);</span><br></pre></td></tr></table></figure></li>
@@ -2272,23 +2290,25 @@ int main()
 </ul>
 </li>
 </ul>
-</li>
-<li>枚举技巧<ul>
+<ol start="3">
+<li>枚举技巧</li>
+</ol>
+<ul>
 <li>当我们想在类中声明某个变量，但编译器不允许声明时赋值初始化，例如:<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int noPlayer;</span><br><span class="line">int socres[noPlayer];</span><br></pre></td></tr></table></figure></li>
 <li>这种情况下，编译器会报错，我们可以使用enum<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">enum &#123;noPlayer &#x3D; 5&#125;;</span><br><span class="line">int scores[noPlayer];</span><br></pre></td></tr></table></figure></li>
 <li>这样就可以编译通过，因为这里的enum可以被当成int类型使用</li>
 <li>enum类型在内存中是没有实体的，无法取得enum类型的地址，因此这个方法更相当于取一个本地的#define数值</li>
 </ul>
-</li>
-<li>对于#define的宏函数，尽量使用inline修饰的函数来代替#define<ul>
+<ol start="4">
+<li>对于#define的宏函数，尽量使用inline修饰的函数来代替#define</li>
+</ol>
+<ul>
 <li>inline 关键字用来建议编译器把某频繁调用的函数当做内联函数<ul>
 <li>优点：在每次调用函数时，直接把函数代码放在函数调用语句的地址，减少堆栈浪费。</li>
 </ul>
 </li>
-<li>若将其定义为宏也可以，就是这种做法不太好<br>```<h1 id="define-call-a-b-f-a-gt-b-a-b"><a href="#define-call-a-b-f-a-gt-b-a-b" class="headerlink" title="define call(a,b) f((a) &gt; (b) ? (a) : (b))"></a>define call(a,b) f((a) &gt; (b) ? (a) : (b))</h1>…<br>int a = 5, b = 0;<br>call(++a, b)    //a 增加了一次<br>call(++a, b+10) //a 增加了两次</li>
+<li>若将其定义为宏也可以，就是这种做法不太好<br>```<br>#define call(a,b) f((a) &gt; (b) ? (a) : (b))<br>…<br>int a = 5, b = 0;<br>call(++a, b)    //a 增加了一次<br>call(++a, b+10) //a 增加了两次</li>
 </ul>
-</li>
-</ol>
 </li>
 </ol>
 ]]></content>
@@ -2368,6 +2388,42 @@ int main()
       </categories>
       <tags>
         <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>The Annotated STL Sources</title>
+    <url>/2021/03/25/The_Annotated_STL_Sources/</url>
+    <content><![CDATA[<h1 id="1、阅读准备"><a href="#1、阅读准备" class="headerlink" title="1、阅读准备"></a>1、阅读准备</h1><ul>
+<li>gcc –version : 9.3.0</li>
+<li>SGI-STL源码</li>
+<li>C++ 基础</li>
+<li>具有STL使用经验</li>
+<li>少量算法与数据基础</li>
+</ul>
+<h1 id="2、STL简介"><a href="#2、STL简介" class="headerlink" title="2、STL简介"></a>2、STL简介</h1><h2 id="STL版本"><a href="#STL版本" class="headerlink" title="STL版本"></a>STL版本</h2><p>&emsp;&emsp;STL仅仅是一个标准，只规定了STL接口，内部实现没有要求。STL有许多版本，PJ STL(被Visual C++采用),RW STL等。<br>&emsp;&emsp;我们使用的是SGI STL版本，这个版本的注释最丰富、结构清晰、可读性最强，且被GCC采用，所以是目前最流行的版本。但是SGI STL并不是原封不动的被用于GCC，所以GCC中的STL与SGI STL仍存在一些微小的区别。</p>
+<h2 id="STL组件"><a href="#STL组件" class="headerlink" title="STL组件"></a>STL组件</h2><ul>
+<li><p>STL分为六大组件</p>
+<ul>
+<li>容器(container): 常用数据结构，大致可以分为两类：序列容器如{vector、list、deque};关联容器如{set, map}。在实现上，是类模板(class template)</li>
+<li>迭代器(iterator): 一套访问容器的接口，行为类似于指针。它为不同的算法提供的相对统一的容器访问方式，使得设计算法时无需过多关注数据</li>
+<li>算法(algorithm): 提供一套常用的算法，如sort、search、copy、erase…在实现上，可以认为是一种函数模板(function template)</li>
+<li>配置器(allocator): 为容器提供空间配置与释放，对象构造与析构的服务，也是一个class template</li>
+<li>仿函数(functor): 作为函数使用的对象，用于泛化算法中的操作。</li>
+<li>配接器(adapter): 将一种容器修饰为功能不同的另一种容器，例如STL提供的queue和stack，虽然看似容器，其实只能算是一种容器配接器，因为它们的底部完全借助deque，所有操作都由底层deque供应。</li>
+</ul>
+</li>
+<li><p>六大组件的交互关系</p>
+<ul>
+<li>Container 通过 Allocator取得数据储存空间，Algotithm通过 Iterator存取Container内容，Functor可以协助Algorithm完成不同的策略变化，Adapter可以修饰或套接Functor。可以参考下图:<br><img src="https://i.loli.net/2021/03/25/l81tQeYIvqFKkRm.png" alt="avatar"></li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Read Notes</category>
+      </categories>
+      <tags>
+        <tag>theory</tag>
       </tags>
   </entry>
 </search>
