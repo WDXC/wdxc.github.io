@@ -2426,4 +2426,46 @@ int main()
         <tag>theory</tag>
       </tags>
   </entry>
+  <entry>
+    <title>The Annotated STL Sources</title>
+    <url>/2021/03/25/The-Annotated-STL-Sources/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Read Notes</category>
+      </categories>
+      <tags>
+        <tag>theory</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-29</title>
+    <url>/2021/03/25/Leetcode-29/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给定一个链表，删除链表的倒数第<code>n</code>个结点，并且返回链表的头结果。进阶:<font color=red>尝试使用一趟扫描实现</font></p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> head = [1,2,3,4,5], n = 2 <br>
+  <strong>Output:</strong> [1,2,3,5]
+</p>
+
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>对于这道题目我们需要解决的问题两个:</p>
+<ul>
+<li>如何获取倒数第n个结点的信息</li>
+<li>如何删除节点</li>
+</ul>
+<ol>
+<li>首先是获取倒数第n个结点的的信息,这个我们可以通过快慢指针来进行一个实现。<ul>
+<li>快慢节点都开始于前哨节点处</li>
+<li>快节点先移动n个距离，之后fast与slow保持n个间距向后移动。</li>
+<li>当fast移到tail-&gt;next时，即fast为空时，停止移动。</li>
+</ul>
+</li>
+<li>删除节点是通过找到n的上一个节点，并改变其next指向，从而实现删除的目的。<br>具体代码如下所示：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* removeNthFromEnd(ListNode* head, int n) &#123;</span><br><span class="line">        &#x2F;&#x2F; 设置前哨节点</span><br><span class="line">        ListNode* dummy &#x3D; new ListNode(-1);</span><br><span class="line">        dummy-&gt;next &#x3D; head;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 设置快慢指针</span><br><span class="line">        ListNode* slow &#x3D; dummy;</span><br><span class="line">        ListNode* fast &#x3D; dummy;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; fast 移到到距离slow size&#x3D;n的地方</span><br><span class="line">        for (int i &#x3D; 0; i &lt; n+1; ++i) &#123;</span><br><span class="line">            fast &#x3D; fast-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 当fast不为空时，进行左右指针的移动</span><br><span class="line">        while (fast) &#123;</span><br><span class="line">            slow &#x3D; slow-&gt;next;</span><br><span class="line">            fast &#x3D; fast-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 删除倒数第n个节点</span><br><span class="line">        ListNode* delNode &#x3D; slow-&gt;next;</span><br><span class="line">        slow-&gt;next &#x3D; delNode-&gt;next;</span><br><span class="line">        delete(delNode);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;返回头节点</span><br><span class="line">        return dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
 </search>
