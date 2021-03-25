@@ -2268,4 +2268,55 @@ int main()
         <tag>leetcode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Leetcode-28</title>
+    <url>/2021/03/25/Leetcode-28/</url>
+    <content><![CDATA[<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>&emsp;&emsp;给定一个仅包含数字<code>2-9</code>的字符串，返回所有它能表示的字母组合。答案可以<strong>任何顺序</strong>返回。给定数字到字母的映射如下(与电话按键相同),<font color=red>1不对应任何字母</font>。<br><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/original_images/17_telephone_keypad.png" alt="avatar"></p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> digits = "23" <br>
+  <strong>Output:</strong> ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+</p>
+&emsp;&emsp;"2"对应的字符串是abc,"3"对应的字符串是def。a对应def，b对应def，c对应def。从而产生最后结果["ad","ae","af","bd","be","bf","cd","ce","cf"]。
+
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><ol>
+<li>首先对于这道题目，我们需要解决的问题有三：</li>
+</ol>
+<ul>
+<li>数字与字母的映射如何处理</li>
+<li>无法直接使用暴力破解，需要使用其它方法代替</li>
+<li>除了2-9的异常按键如何处理</li>
+</ul>
+<ol start="2">
+<li>首先处理字母与数字的映射问题，我们可以使用map或者使用数组进行映射。这里我使用的是一维数组进行了映射。</li>
+<li>由于使用暴力的多个for无法解决，因此转而采用回溯方法来进行处理。使用回溯三部曲。<ol>
+<li>确定回溯函数</li>
+</ol>
+<ul>
+<li>字符串s收集叶子节点，字符串数组保存结果。还需要一个记录遍历digits的index。</li>
+</ul>
+<ol start="2">
+<li>确定终止条件</li>
+</ol>
+<ul>
+<li>当(index == digits.size())时，即遍历结束后，结束回溯。</li>
+</ul>
+<ol start="3">
+<li>确定单层遍历逻辑</li>
+</ol>
+<ul>
+<li>将digit对应的字符转换成int类型，根据数字找到它在phone中的映射</li>
+<li>用for来处理横向遍历，用递归进行纵向遍历，用pop_back()进行回溯。</li>
+</ul>
+</li>
+</ol>
+<p>具体代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">private:</span><br><span class="line">    const string phone[10] &#123;</span><br><span class="line">        &quot;&quot;,</span><br><span class="line">        &quot;&quot;,</span><br><span class="line">        &quot;abc&quot;,</span><br><span class="line">        &quot;def&quot;,</span><br><span class="line">        &quot;ghi&quot;,</span><br><span class="line">        &quot;jkl&quot;,</span><br><span class="line">        &quot;mno&quot;,</span><br><span class="line">        &quot;pqrs&quot;,</span><br><span class="line">        &quot;tuv&quot;,</span><br><span class="line">        &quot;wxyz&quot;</span><br><span class="line">    &#125;;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;string&gt; res;</span><br><span class="line">    string s;</span><br><span class="line"></span><br><span class="line">    void backtracking(string&amp; digits,int index) &#123;</span><br><span class="line">        &#x2F;&#x2F; 终止条件</span><br><span class="line">        if (digits.size() &#x3D;&#x3D; index) &#123;</span><br><span class="line">            res.push_back(s);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;字符转换为数字</span><br><span class="line">        int digit &#x3D; digits[index] - &#39;0&#39;;</span><br><span class="line">        &#x2F;&#x2F; 通过对应的数字找到映射的字母</span><br><span class="line">        string Letters &#x3D; phone[digit];</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 横向遍历</span><br><span class="line">        for (int i &#x3D; 0;i &lt; Letters.size(); i++) &#123;</span><br><span class="line">            &#x2F;&#x2F; 存入字母</span><br><span class="line">            s.push_back(Letters[i]);</span><br><span class="line">            &#x2F;&#x2F; 递归，纵向遍历，index+1指向下一层数字</span><br><span class="line">            backtracking(digits,index+1);</span><br><span class="line">            &#x2F;&#x2F; 返回上一层，即回溯</span><br><span class="line">            s.pop_back();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;string&gt; letterCombinations(string digits) &#123;</span><br><span class="line">        s.clear();</span><br><span class="line">        res.clear();</span><br><span class="line"></span><br><span class="line">        if (digits.size() &#x3D;&#x3D; 0) return res;</span><br><span class="line"></span><br><span class="line">        backtracking(digits,0);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
 </search>
