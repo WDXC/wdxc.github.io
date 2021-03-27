@@ -2849,4 +2849,25 @@ int main()
         <tag>leetcode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Leetcode-31</title>
+    <url>/2021/03/27/Leetcode-31/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给你一个链表数组，每个链表都已经按升序排列。请你将所有链表合并到一个升序链表中去，并返回合并后的链表。</p>
+<p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> list = [[1,4,5],[1,3,4],[2,6]]  <br>
+  <strong>Output:</strong> [1,1,2,3,4,4,5,6]
+</p>
+&emsp;&emsp;链表数组如下: <code>[1->4->5,1->3->4,2->6]</code>。最终合成的有序链表为：1->1->2->3->4->4->5->6。
+
+
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;对于这道题目我们可以使用两个有序链表合并的方式，套用在这个K序列合并的身上。如果在主函数中使用这个方法，我们就需要对每个链表的值进行获取。这样的会导致主函数过于复杂，所以将两个链表合并作为辅助函数。<br>&emsp;&emsp;那么我们就仅需作用for获取每一个链表，而不需对链表的值深入。同时在主函数中使用两个链表合并的方法，使用lists[0]作为主链表用于存储最后的升序序列。具体代码如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) &#123;</span><br><span class="line">        ListNode* dummy &#x3D; new ListNode(-1);</span><br><span class="line">        ListNode* cur &#x3D; dummy;</span><br><span class="line"></span><br><span class="line">        while (l1 &amp;&amp; l2) &#123;</span><br><span class="line">            if (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                cur-&gt;next &#x3D; l1;</span><br><span class="line">                l1 &#x3D; l1-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            else &#123;</span><br><span class="line">                cur-&gt;next &#x3D; l2;</span><br><span class="line">                l2 &#x3D; l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            cur &#x3D; cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        cur-&gt;next &#x3D; l1 &#x3D;&#x3D; nullptr ? l2: l1;</span><br><span class="line">        return dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    ListNode* mergeKLists(vector&lt;ListNode*&gt;&amp; lists) &#123;</span><br><span class="line">        if (lists.empty()) return nullptr;</span><br><span class="line">        int len &#x3D; lists.size();</span><br><span class="line"></span><br><span class="line">        ListNode* cur &#x3D; lists[0];</span><br><span class="line"></span><br><span class="line">        for (int i &#x3D;1;i &lt; len ;i++) &#123;</span><br><span class="line">            cur &#x3D; mergeTwoLists(cur,lists[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return cur;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
 </search>
