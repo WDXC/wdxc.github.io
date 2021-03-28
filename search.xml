@@ -2870,4 +2870,24 @@ int main()
         <tag>leetcode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Leetcode-32</title>
+    <url>/2021/03/28/Leetcode-32/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给定一个整数nums,找到一个具有最大和的连续子数组(子数组最少包含一个元素),返回其最大和。</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> [-2,1,-3,4,-1,2,1,-5,4] <br>
+  <strong>Output:</strong> 6
+</p>
+&emsp;&emsp;连续子数组[4,-1,2,1]的和最大，为6
+
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;sum大于0就继续累加，小于0则重新计算子段的和</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxSubArray(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int maxSub &#x3D; nums[0], curSum &#x3D; 0;</span><br><span class="line">        </span><br><span class="line">        for (int n : nums) &#123;</span><br><span class="line">            if (curSum &lt; 0)</span><br><span class="line">                curSum &#x3D; 0;</span><br><span class="line">            curSum +&#x3D; n;</span><br><span class="line">            maxSub &#x3D; max(maxSub,curSum);</span><br><span class="line">        &#125;</span><br><span class="line">        return maxSub;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
 </search>
