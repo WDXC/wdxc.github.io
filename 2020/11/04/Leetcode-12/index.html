@@ -255,7 +255,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.4k</span>
+              <span>894</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -277,11 +277,11 @@
       
         <h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p>&emsp;&emsp;The <strong>count-and-say</strong> sequence is a sequence of digit strings defined by the recursive formula:</p>
 <ul>
-<li><code>countAndSay(1) = “1” </code></li>
+<li><code>countAndSay(1) = "1" </code></li>
 <li><code>countAndSay(n)</code> is the way you would “say” digit string from <code>countAndSay(n-1)</code>,which is then converted into a different digit string.</li>
 </ul>
 <p>&emsp;&emsp;To determine how you “say” a digit string, split it into the <strong>minimal</strong> number of groups so that each group is a contiguous section all of the <strong>same character</strong>.<br>&emsp;&emsp;Then for each group, say the number of characters,then say the character. To convert the saying into a digit string, replace the counts with a number and concatenate every saying.  </p>
-<p>For example, the saying and conversion for digit string <code>“3322251”</code>:<br><img src="https://assets.leetcode.com/uploads/2020/10/23/countandsay.jpg" alt="avatar"></p>
+<p>For example, the saying and conversion for digit string <code>"3322251"</code>:<br><img src="https://assets.leetcode.com/uploads/2020/10/23/countandsay.jpg" alt="avatar"></p>
 <p>Given a positive integer <code>n</code>, return the <code>n<sup>th</sup></code> term of the <strong>count-and-say</strong> sequence.</p>
 <p><strong>Example 1:</strong></p>
 <p style = "background-color:rgba(240,248,255)">
@@ -303,7 +303,7 @@
 
 <p><strong>Constraints:</strong></p>
 <ul>
-<li><code> 1 &lt;= n &lt;= 30 </code></li>
+<li><code> 1 <= n <= 30 </code></li>
 </ul>
 <h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><p>  &emsp;&emsp;<strong>暴力破解法:</strong> 首先确定基础case “1”, ans用于存储输出的字符。count用于计数,如果想要知道4所对应的值，那么知道了3所对应的数值就行了。如果出现了重复就通过while语句来增加对应的值。时间复杂度为O(n),具体代码如下:<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">  class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string countAndSay(int n) &#123;</span><br><span class="line">        string res &#x3D; &quot;1&quot;;</span><br><span class="line">        </span><br><span class="line">        while (--n) &#123;</span><br><span class="line">            string ans &#x3D; &quot;&quot;;</span><br><span class="line">            for (int i &#x3D; 0 ;i &lt; res.size() ;i++) &#123;</span><br><span class="line">                int count &#x3D; 1;</span><br><span class="line">                while ( (i+1 &lt; res.size()) &amp;&amp; (res[i] &#x3D;&#x3D; res[i+1]))</span><br><span class="line">                    i++,count++;</span><br><span class="line">                ans +&#x3D; to_string(count) + res[i];</span><br><span class="line">            &#125;</span><br><span class="line">            res &#x3D; ans;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 
@@ -465,7 +465,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:28</span>
+    <span title="站点阅读时长">1:27</span>
 </div>
 
 

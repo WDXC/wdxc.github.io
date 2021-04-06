@@ -269,11 +269,15 @@
       
         <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给定两个大小分别为<code>m</code>和<code>n</code>的正序(从小到大)数组<code>nums1</code>和<code>nums2</code>。要求找出这两个正序数组的<strong>中位数</strong>。</p>
 <h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p>&emsp;&emsp;输入是两个数组，合并后的数组顺序是由小到大。</p>
-<p><p style = "background-color:rgba(240,248,255)">
+<p style = "background-color:rgba(240,248,255)">
   <strong>Input:</strong> nums1 = [1,3], nums2 = [2]<br>
   <strong>Output:</strong> 2.00000 
-</p><br>&emsp;&emsp;对于偶数个数字的数组，中位数是(n/2)。对于奇数个数字的数组，中位数为(n+(n+1))/2的值。</p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;简单解法,就是将num2的值使用<code>emplace_back()</code>函数将nums2的接在nums1后面，之后再使用sort()。进行一个从小到大的排序，最后根据奇数偶数，返回不同的中位数。但是这个做法的缺点就是，使用sort后的时间复杂度就变为了$n * log^{2}(n)$,具体代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    double findMedianSortedArrays(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) &#123;</span><br><span class="line">       int n &#x3D; nums1.size(),m &#x3D; nums2.size();</span><br><span class="line"></span><br><span class="line">       for (int i &#x3D; 0; i &lt; m ; i++) &#123;</span><br><span class="line">           nums1.emplace_back(nums2[i]);</span><br><span class="line">       &#125; </span><br><span class="line"></span><br><span class="line">       sort(nums1.begin(),nums1.end());</span><br><span class="line"></span><br><span class="line">       int a &#x3D; nums1.size();</span><br><span class="line">       int k &#x3D; a &#x2F; 2;</span><br><span class="line"></span><br><span class="line">       if (a % 2 &#x3D;&#x3D; 1) &#123;</span><br><span class="line">           return nums1[k];</span><br><span class="line">       &#125;</span><br><span class="line">       else</span><br><span class="line">           return (double)(nums1[k-1]+nums1[k])&#x2F;2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+</p>
+&emsp;&emsp;对于偶数个数字的数组，中位数是(n/2)。对于奇数个数字的数组，中位数为(n+(n+1))/2的值。
+
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;简单解法,就是将num2的值使用<code>emplace_back()</code>函数将nums2的接在nums1后面，之后再使用sort()。进行一个从小到大的排序，最后根据奇数偶数，返回不同的中位数。但是这个做法的缺点就是，使用sort后的时间复杂度就变为了$n * log^{2}(n)$,具体代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    double findMedianSortedArrays(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) &#123;</span><br><span class="line">       int n &#x3D; nums1.size(),m &#x3D; nums2.size();</span><br><span class="line"></span><br><span class="line">       for (int i &#x3D; 0; i &lt; m ; i++) &#123;</span><br><span class="line">           nums1.emplace_back(nums2[i]);</span><br><span class="line">       &#125; </span><br><span class="line"></span><br><span class="line">       sort(nums1.begin(),nums1.end());</span><br><span class="line"></span><br><span class="line">       int a &#x3D; nums1.size();</span><br><span class="line">       int k &#x3D; a &#x2F; 2;</span><br><span class="line"></span><br><span class="line">       if (a % 2 &#x3D;&#x3D; 1) &#123;</span><br><span class="line">           return nums1[k];</span><br><span class="line">       &#125;</span><br><span class="line">       else</span><br><span class="line">           return (double)(nums1[k-1]+nums1[k])&#x2F;2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -433,7 +437,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:28</span>
+    <span title="站点阅读时长">1:27</span>
 </div>
 
 

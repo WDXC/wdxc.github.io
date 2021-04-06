@@ -276,15 +276,15 @@
         <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p> Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward. </p>
 <p> <strong>Example 1</strong> </p>
 <blockquote>
-<p><strong>Input : </strong> 121<br><strong>Output : </strong> true</p>
+<p>**Input : ** 121<br>**Output : ** true</p>
 </blockquote>
 <p> <strong>Example 2</strong></p>
 <blockquote>
-<p><strong>Input : </strong> -121<br><strong>Output : </strong> false<br><strong>Explanation : </strong> From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.  </p>
+<p>**Input : ** -121<br>**Output : ** false<br>**Explanation : ** From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.  </p>
 </blockquote>
 <p> <strong>Example 3</strong></p>
 <blockquote>
-<p><strong>Input : </strong> 10<br><strong>Output : </strong> false<br><strong>Explanation : </strong> Reads 01 from right to left. Therefore it is not a palindrome.</p>
+<p>**Input : ** 10<br>**Output : ** false<br>**Explanation : ** Reads 01 from right to left. Therefore it is not a palindrome.</p>
 </blockquote>
 <h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h2><h3 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h3><p>  简单的把数字进行一个逆转，最后判断反转后的数字和原来的数字是否一样。时间复杂度O(n)<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(int x) &#123;</span><br><span class="line">        if (x &lt; 0) return false;</span><br><span class="line">        long res &#x3D; 0;</span><br><span class="line">        long s &#x3D; x;</span><br><span class="line">        for (;s !&#x3D; 0 ; s &#x2F;&#x3D;10)  res &#x3D; res * 10 + s %10;</span><br><span class="line">        return (res &#x3D;&#x3D; x) ? true : false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <h3 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h3><p>我们可以不需要等数字全逆转结束，只需要逆转一半看是否符合条件就可以了</p>
@@ -301,10 +301,9 @@
 <li>如果偶数长度，判断 r == x;</li>
 <li>如果奇数长度，判断 r/10 == x;</li>
 </ul>
-<p>时间复杂度为O(n)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(int x) &#123;</span><br><span class="line">        if (x &lt; 0 || (x !&#x3D; 0 &amp;&amp; x %10 &#x3D;&#x3D; 0)) return false;</span><br><span class="line">        int res &#x3D; 0;</span><br><span class="line">        while (x &gt; res) &#123;</span><br><span class="line">            res &#x3D; res * 10 + x % 10;</span><br><span class="line">            x &#x2F;&#x3D; 10;</span><br><span class="line">        &#125;</span><br><span class="line">        return (res &#x3D;&#x3D; x) || (res&#x2F;10 &#x3D;&#x3D; x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<p>  时间复杂度为O(n)<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(int x) &#123;</span><br><span class="line">        if (x &lt; 0 || (x !&#x3D; 0 &amp;&amp; x %10 &#x3D;&#x3D; 0)) return false;</span><br><span class="line">        int res &#x3D; 0;</span><br><span class="line">        while (x &gt; res) &#123;</span><br><span class="line">            res &#x3D; res * 10 + x % 10;</span><br><span class="line">            x &#x2F;&#x3D; 10;</span><br><span class="line">        &#125;</span><br><span class="line">        return (res &#x3D;&#x3D; x) || (res&#x2F;10 &#x3D;&#x3D; x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 
     </div>
 
@@ -464,7 +463,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:28</span>
+    <span title="站点阅读时长">1:27</span>
 </div>
 
 

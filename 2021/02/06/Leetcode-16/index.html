@@ -253,7 +253,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>755</span>
+              <span>753</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -274,11 +274,14 @@
 
       
         <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;你有一个长花坛，其中有一些种植了花朵，有一些没有。花坛里的种的花必须要有间隔(即不能相邻而种)</p>
-<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p><p style = "background-color:rgba(240,248,255)">
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p style = "background-color:rgba(240,248,255)">
   <strong>Input:</strong> flowerbed = [1,0,0,0,1], n = 1<br>
   <strong>Output:</strong> true
-</p><br>&emsp;&emsp;在这个样例中，flowerbed[2]左右没有花朵，可以种植一朵花，符合题目种一朵花的要求，即输出true</p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;对于这题我们先考虑第一朵花怎么种，首先头和尾需要优先进行处理。我们可以对这个数组首尾都添加一个0，从而确定首尾。那我们就可以从原数组的第一个开始进行判断(i=1)，到原数组的最后一个(i=len-1)。根据题目要求，种花的条件是左右都没有花且即将要种的地是空闲的。所以就要求{i-1,i,i+1}都为0时，计数的才会自增1。循环结束，因为首尾添加的0可能会导致花会被多种，因此,(计数&gt;=要求的花)就可以了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool canPlaceFlowers(vector&lt;int&gt;&amp; flowerbed, int n) &#123;</span><br><span class="line">        flowerbed.push_back(0);</span><br><span class="line">        flowerbed.insert(flowerbed.begin(),0);</span><br><span class="line">        </span><br><span class="line">        int i &#x3D; 1,sum &#x3D; 0,len &#x3D; flowerbed.size();</span><br><span class="line">        while (i &lt; len-1) &#123;</span><br><span class="line">            if (flowerbed[i]+flowerbed[i+1]+flowerbed[i-1] &#x3D;&#x3D; 0)</span><br><span class="line">                ++sum,++i;</span><br><span class="line">            ++i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return sum &gt;&#x3D; n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+</p>
+&emsp;&emsp;在这个样例中，flowerbed[2]左右没有花朵，可以种植一朵花，符合题目种一朵花的要求，即输出true
+# 题解
+&emsp;&emsp;对于这题我们先考虑第一朵花怎么种，首先头和尾需要优先进行处理。我们可以对这个数组首尾都添加一个0，从而确定首尾。那我们就可以从原数组的第一个开始进行判断(i=1)，到原数组的最后一个(i=len-1)。根据题目要求，种花的条件是左右都没有花且即将要种的地是空闲的。所以就要求{i-1,i,i+1}都为0时，计数的才会自增1。循环结束，因为首尾添加的0可能会导致花会被多种，因此,(计数>=要求的花)就可以了。
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool canPlaceFlowers(vector&lt;int&gt;&amp; flowerbed, int n) &#123;</span><br><span class="line">        flowerbed.push_back(0);</span><br><span class="line">        flowerbed.insert(flowerbed.begin(),0);</span><br><span class="line">        </span><br><span class="line">        int i &#x3D; 1,sum &#x3D; 0,len &#x3D; flowerbed.size();</span><br><span class="line">        while (i &lt; len-1) &#123;</span><br><span class="line">            if (flowerbed[i]+flowerbed[i+1]+flowerbed[i-1] &#x3D;&#x3D; 0)</span><br><span class="line">                ++sum,++i;</span><br><span class="line">            ++i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return sum &gt;&#x3D; n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -362,7 +365,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="nav-text">输入输出样例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-text">题解</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="nav-text">输入输出样例</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -438,7 +441,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:28</span>
+    <span title="站点阅读时长">1:27</span>
 </div>
 
 

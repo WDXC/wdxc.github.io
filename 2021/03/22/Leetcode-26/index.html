@@ -247,7 +247,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>731</span>
+              <span>733</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -267,12 +267,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给你<code>n</code>个非负整数<code>a<sub>1</sub>,a<sub>2</sub>,…,a<sub>n</sub></code>。每个数代表坐标中的一个点<code>(i,a<sub>i</sub>)</code>。在坐标内画<code>n</code>条垂直线，垂直线<code>i</code>的两个端点分别为<code>(i,a<sub>i</sub>)</code>和<code>(i,0)</code>。找出其中两条线，使得它们与<code>x</code>轴共同构成的容器可以容纳最多的水。(容器不可倾斜)</p>
-<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p><p style = "background-color:rgba(240,248,255)">
+        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给你<code>n</code>个非负整数<code>a<sub>1</sub>,a<sub>2</sub>,...,a<sub>n</sub></code>。每个数代表坐标中的一个点<code>(i,a<sub>i</sub>)</code>。在坐标内画<code>n</code>条垂直线，垂直线<code>i</code>的两个端点分别为<code>(i,a<sub>i</sub>)</code>和<code>(i,0)</code>。找出其中两条线，使得它们与<code>x</code>轴共同构成的容器可以容纳最多的水。(容器不可倾斜)</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p style = "background-color:rgba(240,248,255)">
   <strong>Input:</strong> [1,8,6,2,5,4,8,3,7] <br>
   <strong>Output:</strong> 49
-</p><br>&emsp;&emsp;容器容纳水的多少取决于高低与两个柱子之间的间距。容器高低是由这其中最低的柱子而决定的，所以这个容器最大值为$7 * 7 = 49$</p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;这种可以通过移到柱子来求取容器最大值，最好的方法莫过于使用双指针。通过左右指针来进行操作，进行柱子的移动。首先，先从最外围进行处理。由于最低的柱子决定了容器的高低，所以$[长度 * 最低柱子高度]$。通过max对比，用res来保存结果，最后就可以输出最大值了。具体代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxArea(vector&lt;int&gt;&amp; height) &#123;</span><br><span class="line">        int res &#x3D; 0;</span><br><span class="line">        int left &#x3D; 0;</span><br><span class="line">        int right &#x3D; height.size() - 1;</span><br><span class="line">        while (left &lt; right) &#123;</span><br><span class="line">            int area &#x3D; (right - left) * min(height[left],height[right]);</span><br><span class="line">            res &#x3D; max(area,res);</span><br><span class="line">            if (height[left] &lt; height[right])</span><br><span class="line">                left++;</span><br><span class="line">            else right--;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+</p>
+&emsp;&emsp;容器容纳水的多少取决于高低与两个柱子之间的间距。容器高低是由这其中最低的柱子而决定的，所以这个容器最大值为$7 * 7 = 49$
+
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;这种可以通过移到柱子来求取容器最大值，最好的方法莫过于使用双指针。通过左右指针来进行操作，进行柱子的移动。首先，先从最外围进行处理。由于最低的柱子决定了容器的高低，所以$[长度 * 最低柱子高度]$。通过max对比，用res来保存结果，最后就可以输出最大值了。具体代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxArea(vector&lt;int&gt;&amp; height) &#123;</span><br><span class="line">        int res &#x3D; 0;</span><br><span class="line">        int left &#x3D; 0;</span><br><span class="line">        int right &#x3D; height.size() - 1;</span><br><span class="line">        while (left &lt; right) &#123;</span><br><span class="line">            int area &#x3D; (right - left) * min(height[left],height[right]);</span><br><span class="line">            res &#x3D; max(area,res);</span><br><span class="line">            if (height[left] &lt; height[right])</span><br><span class="line">                left++;</span><br><span class="line">            else right--;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -432,7 +435,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:28</span>
+    <span title="站点阅读时长">1:27</span>
 </div>
 
 

@@ -275,11 +275,14 @@
       
         <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emps;在二维空间中散布着一些气球。对于每个气球，它们都是在同一水平直径上。所以对于纵坐标就没有那么重要了，x轴(横坐标)是气球的起点和终点，且起点始终小于终点。<br>&emsp;&emsp;沿x轴不同的点会垂直向上射出一个箭头，如果Xstart&lt;= x &lt;= Xend，那么气球将会被箭射爆。根据输入的气球坐标，得到最少使用的箭数。</p>
 <h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p>&emsp;&emsp;输入是一个数组，数组由多个气球的起始和终止坐标所组成。输出一个整数，表示所需最少的箭头数。</p>
-<p><p style = "background-color:rgba(240,248,255)">
+<p style = "background-color:rgba(240,248,255)">
   <strong>Input:</strong> points = [[10,16],[2,8],[1,6],[7,12]]<br>
   <strong>Output:</strong> 2 
-</p><br>&emsp;&emsp;在这个样例中，[1,6]与[2,8]重叠，[7,12]与[10,16]重叠，所以我们只需要两只箭就可以了</p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;想要用最少的箭来射击最多的气球。那么就是说对于有重叠区间的气球，我们只需要安排一只箭射击就可以了。所以我们采取的贪心策略为，优先射击无重叠区域的气球<br>&emsp;&emsp;具体实现方法为，先把这个数组进行<code>std::sort</code>排序(默认升序)，排序后的数组为[[1,6],[2,8],[7,12],[10,16]]。按照我们的贪心策略，在循环内初始化为[1,6]。查看与其重叠的区间，即第一个区间的终止位置可以覆盖接下来的起始位置。如果存在更小区间的气球，则更新prev并且对i进行自增。倘若条件不满足total 进行自增。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findMinArrowShots(vector&lt;vector&lt;int&gt;&gt;&amp; points) &#123;</span><br><span class="line">        sort(points.begin(),points.end());</span><br><span class="line">        int n &#x3D; points.size();</span><br><span class="line">        int total &#x3D; 0,i &#x3D; 0;</span><br><span class="line">        while (i &lt; n) &#123;</span><br><span class="line">            int prev &#x3D; points[i][1];</span><br><span class="line">            while (i &lt; n &amp;&amp; prev &gt;&#x3D; points[i][0]) &#123;</span><br><span class="line">                prev &#x3D; min(points[i][1],prev);</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            ++total;</span><br><span class="line">        &#125;</span><br><span class="line">        return total;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+</p>
+&emsp;&emsp;在这个样例中，[1,6]与[2,8]重叠，[7,12]与[10,16]重叠，所以我们只需要两只箭就可以了
+
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;想要用最少的箭来射击最多的气球。那么就是说对于有重叠区间的气球，我们只需要安排一只箭射击就可以了。所以我们采取的贪心策略为，优先射击无重叠区域的气球<br>&emsp;&emsp;具体实现方法为，先把这个数组进行<code>std::sort</code>排序(默认升序)，排序后的数组为[[1,6],[2,8],[7,12],[10,16]]。按照我们的贪心策略，在循环内初始化为[1,6]。查看与其重叠的区间，即第一个区间的终止位置可以覆盖接下来的起始位置。如果存在更小区间的气球，则更新prev并且对i进行自增。倘若条件不满足total 进行自增。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findMinArrowShots(vector&lt;vector&lt;int&gt;&gt;&amp; points) &#123;</span><br><span class="line">        sort(points.begin(),points.end());</span><br><span class="line">        int n &#x3D; points.size();</span><br><span class="line">        int total &#x3D; 0,i &#x3D; 0;</span><br><span class="line">        while (i &lt; n) &#123;</span><br><span class="line">            int prev &#x3D; points[i][1];</span><br><span class="line">            while (i &lt; n &amp;&amp; prev &gt;&#x3D; points[i][0]) &#123;</span><br><span class="line">                prev &#x3D; min(points[i][1],prev);</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            ++total;</span><br><span class="line">        &#125;</span><br><span class="line">        return total;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -439,7 +442,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:28</span>
+    <span title="站点阅读时长">1:27</span>
 </div>
 
 

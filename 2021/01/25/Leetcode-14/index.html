@@ -275,16 +275,18 @@
       
         <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;一群孩子站成一排，每一个孩子有自己的评分。现在需要给这些孩子必糖果，规则是如果一个孩子的评分比自己身旁的一个孩子要高，那么这个孩子就必须得到比身旁孩子更多的糖果；所有孩子至少要有一个糖果，求解最少需要多少个糖果。</p>
 <h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p>&emsp;&emsp;输入是一个数组，表示孩子的评分。输出是最少糖果的数量。</p>
-<p><p style = "background-color:rgba(240,248,255)">
+<p style = "background-color:rgba(240,248,255)">
   <strong>Input:</strong> nums = [1,0,2] <br>
   <strong>Output:</strong> 5
-</p><br>&emsp;&emsp;在这个样例中，最少的糖果分法是[2,1,2].</p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;做完分饼干的题目，你会不会认为存在比较关系的信心策略一定需要智育或是选择？虽然这道题也是运用信心策略，但是我们只需要简单的两次遍历即可首先把所有孩子的糖果初始化为1；</p>
-<ul>
-<li>先从左往右遍历一遍，如果右边孩子的评分比左边的高，则右边孩子的糖果数更新为左边孩子的糖果数加1；</li>
-<li>再从左往左遍历一遍，如果左边孩子的评分比右边的高，且左边孩子当前的糖果数不大于右边孩子的糖果数不大于右边孩子的糖果数，则左边孩子的糖果数更新为右边孩子的糖果数加1</li>
-</ul>
-<p>&emsp;&emsp;通过这两次遍历，分配的糖果就可以满足题目要求了。这里的信心策略即为，在每次遍历中，只考虑并更新相邻一侧的大小关系。在样例中，我们初始化糖果分配为[1,1,1],第一次遍历更新后的结果为[1,1,2],第二次遍历更新后的结果为[2,1,2].<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int candy(vector&lt;int&gt;&amp; ratings) &#123;</span><br><span class="line">        int size &#x3D; ratings.size();</span><br><span class="line">        if (size &lt; 2) return size;</span><br><span class="line">        </span><br><span class="line">        vector&lt;int&gt; nums(size,1);</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0; i &lt; size-1; i++) &#123;</span><br><span class="line">            if (ratings[i+1] &gt; ratings[i]) </span><br><span class="line">                nums[i+1] &#x3D; nums[i] + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; size -1 ; i &gt; 0 ; --i) &#123;</span><br><span class="line">            if (ratings[i-1] &gt; ratings[i])</span><br><span class="line">                nums[i-1] &#x3D; max(nums[i-1],nums[i]+1);</span><br><span class="line">        &#125;</span><br><span class="line">        return accumulate(nums.begin(),nums.end(),0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+</p>
+&emsp;&emsp;在这个样例中，最少的糖果分法是[2,1,2].
+# 题解
+&emsp;&emsp;做完分饼干的题目，你会不会认为存在比较关系的信心策略一定需要智育或是选择？虽然这道题也是运用信心策略，但是我们只需要简单的两次遍历即可首先把所有孩子的糖果初始化为1；
+  * 先从左往右遍历一遍，如果右边孩子的评分比左边的高，则右边孩子的糖果数更新为左边孩子的糖果数加1；
+  * 再从左往左遍历一遍，如果左边孩子的评分比右边的高，且左边孩子当前的糖果数不大于右边孩子的糖果数不大于右边孩子的糖果数，则左边孩子的糖果数更新为右边孩子的糖果数加1
+
+<p>&emsp;&emsp;通过这两次遍历，分配的糖果就可以满足题目要求了。这里的信心策略即为，在每次遍历中，只考虑并更新相邻一侧的大小关系。在样例中，我们初始化糖果分配为[1,1,1],第一次遍历更新后的结果为[1,1,2],第二次遍历更新后的结果为[2,1,2].</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int candy(vector&lt;int&gt;&amp; ratings) &#123;</span><br><span class="line">        int size &#x3D; ratings.size();</span><br><span class="line">        if (size &lt; 2) return size;</span><br><span class="line">        </span><br><span class="line">        vector&lt;int&gt; nums(size,1);</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0; i &lt; size-1; i++) &#123;</span><br><span class="line">            if (ratings[i+1] &gt; ratings[i]) </span><br><span class="line">                nums[i+1] &#x3D; nums[i] + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; size -1 ; i &gt; 0 ; --i) &#123;</span><br><span class="line">            if (ratings[i-1] &gt; ratings[i])</span><br><span class="line">                nums[i-1] &#x3D; max(nums[i-1],nums[i]+1);</span><br><span class="line">        &#125;</span><br><span class="line">        return accumulate(nums.begin(),nums.end(),0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -368,7 +370,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="nav-text">输入输出样例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-text">题解</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="nav-text">输入输出样例</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -444,7 +446,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:28</span>
+    <span title="站点阅读时长">1:27</span>
 </div>
 
 

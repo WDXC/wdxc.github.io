@@ -253,14 +253,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.8k</span>
+              <span>524</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>1 分钟</span>
             </span>
             <div class="post-description">Implement strStr() (＃28)</div>
 
@@ -273,7 +273,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p> &emsp;&emsp;Implement <code>strStr()</code>.Return the index of the first occurrence of needle in haystack, or <code>-1</code> if <code>needle</code> is not part of <code>haystack</code>.<br> <strong>Clarification:</strong><br> &emsp;&emsp;What should we return when needle is an empty string? This is a great question to ask during an interview.</p>
+        <p>#Question<br> &emsp;&emsp;Implement <code>strStr()</code>.Return the index of the first occurrence of needle in haystack, or <code>-1</code> if <code>needle</code> is not part of <code>haystack</code>.<br> <strong>Clarification:</strong><br> &emsp;&emsp;What should we return when needle is an empty string? This is a great question to ask during an interview.</p>
 <p> &emsp;&emsp;For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C’s strstr() and Java’s indexOf().</p>
 <p> <strong>Example1:</strong></p>
 <blockquote>
@@ -289,11 +289,11 @@
 </blockquote>
 <p> <strong>Constraints:</strong></p>
 <ul>
-<li><code> 0 &lt;= haystack.length, needle.length &lt;= 5 * 10<sup>4</sup> </code></li>
+<li><code> 0 <= haystack.length, needle.length <= 5 * 10<sup>4</sup> </code></li>
 <li><code>haystack</code>and <code>needle</code> consist of only lower-case English characters.</li>
 </ul>
-<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一:"></a>思路一:</h2><p>  &emsp;&emsp;两个字符长度相减+1得到的长度就是需要比较的长度，当needle长度为0时，返回0。当haystack与needle不匹配时，返回-1。当haystack与needle匹配时，返回i的值。时间复杂度为O($n^{2}$),空间复杂度为O(n),具体代码如下：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        int m &#x3D; haystack.size();</span><br><span class="line">        int n &#x3D; needle.size();</span><br><span class="line">        int r &#x3D; m - n + 1;</span><br><span class="line">        </span><br><span class="line">        if (n &#x3D;&#x3D; 0) return 0;</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; r; i++) &#123;</span><br><span class="line">            int  j &#x3D; i,k &#x3D; 0;</span><br><span class="line">            while (k &lt; n &amp;&amp; haystack[j] &#x3D;&#x3D; needle[k]) </span><br><span class="line">                k++,j++;</span><br><span class="line">            if (k &#x3D;&#x3D; n) return i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二:"></a>思路二:</h2><p>&emsp;&emsp;KMP(字符串查找算法),lps是needle的索引。这里使用的kmp算法，把needle作为kmp前缀,来进行字符比对。如果字符相同，那么len增加。如果不相等，就要看len的值，如果len的值为0那么就将lps[i]的值设置为0。如果len不为零，那么就把lps[len-1]的值赋给len，这一步是为了防止对应字符中间出现了不相等的，将字符串右移。时间复杂度为O(n); </p>
+<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><p>##思路一:<br>  &emsp;&emsp;两个字符长度相减+1得到的长度就是需要比较的长度，当needle长度为0时，返回0。当haystack与needle不匹配时，返回-1。当haystack与needle匹配时，返回i的值。时间复杂度为O($n^{2}$),空间复杂度为O(n),具体代码如下：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        int m &#x3D; haystack.size();</span><br><span class="line">        int n &#x3D; needle.size();</span><br><span class="line">        int r &#x3D; m - n + 1;</span><br><span class="line">        </span><br><span class="line">        if (n &#x3D;&#x3D; 0) return 0;</span><br><span class="line">        </span><br><span class="line">        for (int i &#x3D; 0 ; i &lt; r; i++) &#123;</span><br><span class="line">            int  j &#x3D; i,k &#x3D; 0;</span><br><span class="line">            while (k &lt; n &amp;&amp; haystack[j] &#x3D;&#x3D; needle[k]) </span><br><span class="line">                k++,j++;</span><br><span class="line">            if (k &#x3D;&#x3D; n) return i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>##思路二:<br>&emsp;&emsp;KMP(字符串查找算法),lps是needle的索引。这里使用的kmp算法，把needle作为kmp前缀,来进行字符比对。如果字符相同，那么len增加。如果不相等，就要看len的值，如果len的值为0那么就将lps[i]的值设置为0。如果len不为零，那么就把lps[len-1]的值赋给len，这一步是为了防止对应字符中间出现了不相等的，将字符串右移。时间复杂度为O(n); </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        if (needle.empty()) return 0;</span><br><span class="line">        </span><br><span class="line">        string kmp &#x3D; needle + &quot;#&quot; + haystack;</span><br><span class="line">        int m &#x3D; kmp.size(),n &#x3D; needle.size();</span><br><span class="line">        vector&lt;int&gt; lps(m,0);</span><br><span class="line">        </span><br><span class="line">        for (int len &#x3D; 0,i &#x3D; 1; i &lt; m;) &#123;</span><br><span class="line">            if (kmp[len] &#x3D;&#x3D; kmp[i]) &#123;</span><br><span class="line">                lps[i] &#x3D; ++len;</span><br><span class="line">                if (len &#x3D;&#x3D; n) </span><br><span class="line">                    return i - 2 * n;</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (len &#x3D;&#x3D; 0) </span><br><span class="line">                 lps[i++] &#x3D; 0;</span><br><span class="line">            else </span><br><span class="line">                len &#x3D; lps[len - 1];</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
     </div>
@@ -378,7 +378,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Question"><span class="nav-text">Question</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Answer"><span class="nav-text">Answer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF%E4%B8%80"><span class="nav-text">思路一:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF%E4%BA%8C"><span class="nav-text">思路二:</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Answer"><span class="nav-text">Answer</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -454,7 +454,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:28</span>
+    <span title="站点阅读时长">1:27</span>
 </div>
 
 

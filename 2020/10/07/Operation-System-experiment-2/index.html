@@ -287,7 +287,8 @@
 3. 分配矩阵 allocation ,它记录每个进程对各类资源当前的占有量。
 4. 需求矩阵   need , 它记录每个进程对各类资源需要的数目(即等于最大需求矩阵与分配矩阵的差)。
 5. 请求向量 request ,它记录某个进程当前对各类资源的申请量，是银行家算法的入口参数。
-</code></pre><h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>  &emsp;&emsp;设进程P<sub>i</sub> 向系统提出request<sub>i</sub>资源请求 :</p>
+</code></pre>
+<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>  &emsp;&emsp;设进程P<sub>i</sub> 向系统提出request<sub>i</sub>资源请求 :</p>
 <ol>
 <li>若 request<sub>i</sub> &gt; need<sub>i</sub>,则进程P<sub>i</sub>出错</li>
 <li>若 request<sub>i</sub> &lt; available,则进程P<sub>i</sub>阻塞</li>
@@ -299,7 +300,7 @@
 <h3 id="算法的组成"><a href="#算法的组成" class="headerlink" title="算法的组成"></a>算法的组成</h3><p>  银行家算法主要是由 <code>Safety algorithm</code> 和 <code>Resource request algorithm</code> 组成</p>
 <h4 id="Safety-algorithm"><a href="#Safety-algorithm" class="headerlink" title="Safety algorithm"></a>Safety algorithm</h4><p>  判断系统是否处于安全状态的算法可以描述如下 : </p>
 <ol>
-<li>Let Work And Finish be vectors of lengh ‘m’ and ‘n’ respectively<br>Initialize: Work = Avaliable<br>Finish[i] = false;for = 1,2,3,4…n</li>
+<li>Let Work And Finish be vectors of lengh ‘m’ and ‘n’ respectively<br> Initialize: Work = Avaliable<br> Finish[i] = false;for = 1,2,3,4…n</li>
 <li>Find an i such that both<br>a. Finish[i] = false<br>b. Need<sub>i</sub> &lt;= Work<br>if no such i exists goto step(4)</li>
 <li>Work = Work + Allocation[i]<br>Finish[i] = true<br>goto step(2)</li>
 <li>if Finish[i] = true for all i<br> then the system is in a safe state</li>
@@ -469,7 +470,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:28</span>
+    <span title="站点阅读时长">1:27</span>
 </div>
 
 

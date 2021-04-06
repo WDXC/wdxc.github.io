@@ -253,7 +253,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.5k</span>
+              <span>399</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -309,13 +309,14 @@
 
 <p><strong>Constraints:</strong></p>
 <ul>
-<li><code> 1 &lt;= nums.length &lt;= 10<sup>4</sup> </code> </li>
-<li><code> -10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4<sup> </code></li>
+<li><code> 1 <= nums.length <= 10<sup>4</sup> </code> </li>
+<li><code> -10<sup>4</sup> <= nums[i] <= 10<sup>4<sup> </code></li>
 <li><code>nums</code> contains <strong>distinct</strong> values sorted in <strong>ascending</strong> order</li>
-<li><code> -10<sup>4</sup> &lt;= target &lt;= 10<sup>4<sup> </code></li>
+<li><code> -10<sup>4</sup> <= target <= 10<sup>4<sup> </code></li>
 </ul>
 <h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><p>&emsp;&emsp;<strong>二分法查找(binary Search):</strong> 首先先确定最高位和最低位的值,因为随着low和high的位置不断变化,<br>所以middle的值是不断再改变的。这里用移位(&gt;&gt;1)代替了除法,这样不会增加运算的复杂性。<br>&emsp;&emsp;如果目标值大于中间值,那么low就要变化;相反，如果目标值小于中间值，high就需要变化;如果目标值正好等于中间值就可以直接输出了。<br>时间复杂度为O(logn),具体代码如下:<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int searchInsert(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        int low &#x3D; 0,high &#x3D; nums.size() - 1,n &#x3D; nums.size();</span><br><span class="line">        </span><br><span class="line">        while (low &lt;&#x3D; high) &#123;</span><br><span class="line">            int middle &#x3D; low + ((high - low) &gt;&gt; 1);</span><br><span class="line">            if (target &gt; nums[middle]) low &#x3D; middle + 1;</span><br><span class="line">            else if (target &lt; nums[middle]) high &#x3D; middle - 1;</span><br><span class="line">            else return middle;</span><br><span class="line">        &#125;</span><br><span class="line">        return low;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h2><p>  &emsp;&emsp;<strong>线性查找(linear search):</strong> 将nums的值挨个赋给i,如果i小于目标值,result就自增。相反如果大于等于目标值，就可以直接跳出循环，输出结果了。时间复杂度为O(n),具体代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int searchInsert(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        int result &#x3D; 0;</span><br><span class="line">        for (auto&amp; i : nums) &#123;</span><br><span class="line">            if (i &lt; target)&#123;</span><br><span class="line">                result++;</span><br><span class="line">            &#125; </span><br><span class="line">            else break;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h2><p>  &emsp;&emsp;<strong>线性查找(linear search):</strong> 将nums的值挨个赋给i,如果i小于目标值,result就自增。相反如果大于等于目标值，就可以直接跳出循环，输出结果了。时间复杂度为O(n),具体代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int searchInsert(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        int result &#x3D; 0;</span><br><span class="line">        for (auto&amp; i : nums) &#123;</span><br><span class="line">            if (i &lt; target)&#123;</span><br><span class="line">                result++;</span><br><span class="line">            &#125; </span><br><span class="line">            else break;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -475,7 +476,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:28</span>
+    <span title="站点阅读时长">1:27</span>
 </div>
 
 
