@@ -2834,4 +2834,28 @@
         <tag>theory</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Leetcode-33</title>
+    <url>/2021/04/06/Leetcode-33/</url>
+    <content><![CDATA[<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>&emsp;&emsp;给你一个链表,每k个节点一组进行翻转，请你返回翻转之后的链表。k是一个正整数，它的值小于或等于链表的长度。如果节点总数不是k的整倍数，那么请将最后剩余的节点保持原有的顺序。</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> [1,2,3,4,5], k = 2 <br>
+  <strong>Output:</strong> [2,1,4,3,5]
+</p>
+
+<p><img src="https://assets.leetcode.com/uploads/2020/10/03/reverse_ex1.jpg" alt="avatar"></p>
+<p>&emsp;&emsp;由于长度为2，所以我们仅需对前4个节点进行操作。对于最后一个节点保持原样。</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;对于这道题目，我们对其进行逐步分析。首先对于链表这个数据结构来说，它本身就是一个兼具递归与迭代性质的数据结构。认真分析一下，就可以发现这个问题也是具有递归性质的。</p>
+<p>&emsp;&emsp;那么什么是递归性质呢？ 举个例子，我们对于链表调用<code>reverseKGroup(head, 2)</code>。即以两个节点为一组的反转链表。那么对于这两个处理好后，我们就需要对这个链表的后续结点接着操作，这些也就是子问题。</p>
+<p>&emsp;&emsp;利用递归性质，我们可以推导出如下算法：1、先翻转head为头的k个元素；2、将第k+1个元素作为head递归调用reverseGroup函数。3、最后将它们拼接起来，就可以形成最终的代码了。</p>
+<p><font color=red>具体代码实现如下所示</font></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* reverseN(ListNode* a,ListNode* b) &#123;</span><br><span class="line">        ListNode* prev &#x3D; nullptr;</span><br><span class="line">        ListNode* cur &#x3D; a;</span><br><span class="line"></span><br><span class="line">        while (cur !&#x3D; b) &#123;</span><br><span class="line">            ListNode* nxt &#x3D; cur-&gt;next;</span><br><span class="line">            cur-&gt;next &#x3D; prev;</span><br><span class="line">            prev &#x3D; cur;</span><br><span class="line">            cur &#x3D; nxt;</span><br><span class="line">        &#125;</span><br><span class="line">        return prev;</span><br><span class="line">    &#125;</span><br><span class="line">ListNode* reverseKGroup(ListNode* head, int k) &#123;</span><br><span class="line">        if (head &#x3D;&#x3D; nullptr) return nullptr;</span><br><span class="line">        ListNode* a &#x3D; head;</span><br><span class="line">        ListNode* b &#x3D; head;</span><br><span class="line"></span><br><span class="line">        for (int i &#x3D; 0;i &lt; k; i++) &#123;</span><br><span class="line">            if (b &#x3D;&#x3D; nullptr) return head;</span><br><span class="line">            b &#x3D; b-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode* res &#x3D; reverseN(a,b);</span><br><span class="line">        a-&gt;next &#x3D; reverseKGroup(b,k);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
 </search>

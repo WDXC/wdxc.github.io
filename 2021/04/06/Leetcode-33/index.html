@@ -20,20 +20,22 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Merge Sorted Array(双指针 ＃88)">
+  <meta name="description" content="k个一组翻转链表(链表问题 ＃25)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode-18">
-<meta property="og:url" content="http://yoursite.com/2021/02/09/Leetcode-18/index.html">
+<meta property="og:title" content="Leetcode-33">
+<meta property="og:url" content="http://yoursite.com/2021/04/06/Leetcode-33/index.html">
 <meta property="og:site_name" content="Rabbet">
-<meta property="og:description" content="Merge Sorted Array(双指针 ＃88)">
+<meta property="og:description" content="k个一组翻转链表(链表问题 ＃25)">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-02-09T07:32:00.000Z">
-<meta property="article:modified_time" content="2021-03-10T00:55:03.121Z">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2020/10/03/reverse_ex1.jpg">
+<meta property="article:published_time" content="2021-04-06T14:01:00.000Z">
+<meta property="article:modified_time" content="2021-04-06T14:28:35.458Z">
 <meta property="article:author" content="Rabbet">
 <meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2020/10/03/reverse_ex1.jpg">
 
-<link rel="canonical" href="http://yoursite.com/2021/02/09/Leetcode-18/">
+<link rel="canonical" href="http://yoursite.com/2021/04/06/Leetcode-33/">
 
 
 <script id="page-configurations">
@@ -46,7 +48,7 @@
   };
 </script>
 
-  <title>Leetcode-18 | Rabbet</title>
+  <title>Leetcode-33 | Rabbet</title>
   
 
 
@@ -205,7 +207,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/09/Leetcode-18/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/06/Leetcode-33/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://i.postimg.cc/Zqsj0dJx/header.jpg">
@@ -218,7 +220,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Leetcode-18
+          Leetcode-33
         </h1>
 
         <div class="post-meta">
@@ -227,16 +229,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-02-09 15:32:00" itemprop="dateCreated datePublished" datetime="2021-02-09T15:32:00+08:00">2021-02-09</time>
+              <time title="创建时间：2021-04-06 22:01:00 / 修改时间：22:28:35" itemprop="dateCreated datePublished" datetime="2021-04-06T22:01:00+08:00">2021-04-06</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-10 08:55:03" itemprop="dateModified" datetime="2021-03-10T08:55:03+08:00">2021-03-10</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -253,7 +249,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>880</span>
+              <span>1.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -262,7 +258,7 @@
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               <span>1 分钟</span>
             </span>
-            <div class="post-description">Merge Sorted Array(双指针 ＃88)</div>
+            <div class="post-description">k个一组翻转链表(链表问题 ＃25)</div>
 
         </div>
       </header>
@@ -273,16 +269,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给定两个有序数组，把两个数组合并为一个</p>
-<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p>&emsp;&emsp;输入是两个数组和它们分别的长度m和m。其中第一个数组的长度被延长至m+n，多出的n位被0填补。题目要求把第二个数组归并到第一个数组上，不需要开辟额外空间。</p>
-<p style = "background-color:rgba(240,248,255)">
-  <strong>Input:</strong> nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3<br>
-  <strong>Output:</strong> nums1 = [1,2,2,3,5,6] 
+        <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>&emsp;&emsp;给你一个链表,每k个节点一组进行翻转，请你返回翻转之后的链表。k是一个正整数，它的值小于或等于链表的长度。如果节点总数不是k的整倍数，那么请将最后剩余的节点保持原有的顺序。</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> [1,2,3,4,5], k = 2 <br>
+  <strong>Output:</strong> [2,1,4,3,5]
 </p>
-# 题解
-&emsp;&emsp;因为这两个已经排好序，我们可以把两个指针分别放在两个数组的末尾，即nums1的m-1位和nums2的n-1位，每次将较大的那个数字复制到nums1的后边，然后向前移动一位。因为我们也要定位nums1的末尾，所以我们还需要第三个指针，以便复制。
-&emsp;&emsp;在以下的代码里，我们直接利用m和n当作两个数组的指针，再额外创立一个pos指针，起始位置为m+n-1。每次向前移动m或n的时候，也要向前移动pos。这里需要注意，如果nums1的数字已经复制完，不要忘记把nums2的数字继续复制；如果nums2的数字已经复制完，剩余nums1的数字不需要改变，因为它们已经被排好序。
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void merge(vector&lt;int&gt;&amp; nums1, int m, vector&lt;int&gt;&amp; nums2, int n) &#123;</span><br><span class="line">        int i &#x3D; m - 1, j &#x3D; n - 1, pos &#x3D; m + n - 1;</span><br><span class="line">        </span><br><span class="line">        while (i &gt;&#x3D; 0 &amp;&amp; j &gt;&#x3D; 0) &#123;</span><br><span class="line">            if (nums1[i] &gt; nums2[j])</span><br><span class="line">                nums1[pos--] &#x3D; nums1[i--];</span><br><span class="line">            else </span><br><span class="line">                nums1[pos--] &#x3D; nums2[j--];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        while (j &gt;&#x3D; 0)</span><br><span class="line">            nums1[pos--] &#x3D; nums2[j--];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://assets.leetcode.com/uploads/2020/10/03/reverse_ex1.jpg" alt="avatar"></p>
+<p>&emsp;&emsp;由于长度为2，所以我们仅需对前4个节点进行操作。对于最后一个节点保持原样。</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;对于这道题目，我们对其进行逐步分析。首先对于链表这个数据结构来说，它本身就是一个兼具递归与迭代性质的数据结构。认真分析一下，就可以发现这个问题也是具有递归性质的。</p>
+<p>&emsp;&emsp;那么什么是递归性质呢？ 举个例子，我们对于链表调用<code>reverseKGroup(head, 2)</code>。即以两个节点为一组的反转链表。那么对于这两个处理好后，我们就需要对这个链表的后续结点接着操作，这些也就是子问题。</p>
+<p>&emsp;&emsp;利用递归性质，我们可以推导出如下算法：1、先翻转head为头的k个元素；2、将第k+1个元素作为head递归调用reverseGroup函数。3、最后将它们拼接起来，就可以形成最终的代码了。</p>
+<p><font color=red>具体代码实现如下所示</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span><br><span class="line"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* reverseN(ListNode* a,ListNode* b) &#123;</span><br><span class="line">        ListNode* prev &#x3D; nullptr;</span><br><span class="line">        ListNode* cur &#x3D; a;</span><br><span class="line"></span><br><span class="line">        while (cur !&#x3D; b) &#123;</span><br><span class="line">            ListNode* nxt &#x3D; cur-&gt;next;</span><br><span class="line">            cur-&gt;next &#x3D; prev;</span><br><span class="line">            prev &#x3D; cur;</span><br><span class="line">            cur &#x3D; nxt;</span><br><span class="line">        &#125;</span><br><span class="line">        return prev;</span><br><span class="line">    &#125;</span><br><span class="line">ListNode* reverseKGroup(ListNode* head, int k) &#123;</span><br><span class="line">        if (head &#x3D;&#x3D; nullptr) return nullptr;</span><br><span class="line">        ListNode* a &#x3D; head;</span><br><span class="line">        ListNode* b &#x3D; head;</span><br><span class="line"></span><br><span class="line">        for (int i &#x3D; 0;i &lt; k; i++) &#123;</span><br><span class="line">            if (b &#x3D;&#x3D; nullptr) return head;</span><br><span class="line">            b &#x3D; b-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode* res &#x3D; reverseN(a,b);</span><br><span class="line">        a-&gt;next &#x3D; reverseKGroup(b,k);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -301,13 +300,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/02/08/Leetcode-17/" rel="prev" title="Leetcode-17">
-      <i class="fa fa-chevron-left"></i> Leetcode-17
+    <a href="/2021/03/28/Leetcode-32/" rel="prev" title="Leetcode-32">
+      <i class="fa fa-chevron-left"></i> Leetcode-32
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/02/15/C-templates-2nd/" rel="next" title="C++ templates 2nd">
-      C++ templates 2nd <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -366,7 +362,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="nav-text">输入输出样例</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="nav-text">输入输出样例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-text">题解</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
