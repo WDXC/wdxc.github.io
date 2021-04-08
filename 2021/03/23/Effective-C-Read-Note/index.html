@@ -27,11 +27,13 @@
 <meta property="og:site_name" content="Rabbet">
 <meta property="og:description" content="Effective C++ 读书笔记-I">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/04/03/OZ4sXR9YhWMqEvC.png">
 <meta property="article:published_time" content="2021-03-23T00:27:00.000Z">
-<meta property="article:modified_time" content="2021-03-25T07:22:10.361Z">
+<meta property="article:modified_time" content="2021-04-08T12:50:53.002Z">
 <meta property="article:author" content="Rabbet">
 <meta property="article:tag" content="theory">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/04/03/OZ4sXR9YhWMqEvC.png">
 
 <link rel="canonical" href="http://yoursite.com/2021/03/23/Effective-C-Read-Note/">
 
@@ -236,7 +238,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-25 15:22:10" itemprop="dateModified" datetime="2021-03-25T15:22:10+08:00">2021-03-25</time>
+                <time title="修改时间：2021-04-08 20:50:53" itemprop="dateModified" datetime="2021-04-08T20:50:53+08:00">2021-04-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -254,14 +256,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
+              <span>2.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
             <div class="post-description">Effective C++ 读书笔记-I</div>
 
@@ -274,62 +276,84 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="第一章-让自己习惯C"><a href="#第一章-让自己习惯C" class="headerlink" title="第一章 让自己习惯C++"></a><center>第一章 让自己习惯C++</center></h1><ol>
-<li>视C++为一个语言联邦</li>
-</ol>
+        <h1 id="第一章-让自己习惯C"><a href="#第一章-让自己习惯C" class="headerlink" title="第一章 让自己习惯C++"></a><center>第一章 让自己习惯C++</center></h1><h2 id="条款一：视C-为一个语言联邦"><a href="#条款一：视C-为一个语言联邦" class="headerlink" title="条款一：视C++为一个语言联邦"></a>条款一：视C++为一个语言联邦</h2><p>&emsp;&emsp;最初，C++仅是C加上了一些面象对象的特性。经历多年的发展，随着大量特性与功能的加入，使得C++成为了一个无可匹敌的工具。但也是这些特性与功能，会让我们困惑于，我们应如何使用它们，该如何理解这样一个复杂的语言呢？<br>&emsp;&emsp;最简单的方法就是将C++视为一个相关语言的组成的一个联邦，对于C++来说，它大致由四个部分组成：</p>
 <ul>
-<li>C++ 语言的四个层次<ul>
-<li>C：没有C++的面向对象、没有模板、没有异常、没有重载等。</li>
-<li>Object-Oriented C++：这部分也就是C with Classes。classes、封装、继承、多态、虚函数。这都属于面向对象的特性。</li>
-<li>Template C++: 这部分是C++的泛型部分。这部分带来的是template metaprogramming,也就是所谓的模板元编程。</li>
-<li>STL：STL是template程序库。它对容器、迭代器、算法及函数对象的规约，并且是以template及程序库的方式构建出来。</li>
+<li>C语言<ul>
+<li>作为C++的基础。C++中的区块、语句、预处理器、内置数据类型、数组、指针等皆是来自于C。部分特性展示:<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> k 45</span></span><br><span class="line"><span class="keyword">double</span> blance[<span class="number">5</span>] = &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> *p;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
+<li>Object-Oriented C++<ul>
+<li>在初始C with Classes,缺乏真正的面向对象思想。因此加入了:class(包括构造与析构)、封装(encapulation)、继承(inheritance)、多态(polymorphism)…等,从而符合面向对象设计的古典守则。部分特性展示:<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span> &#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">test</span>();</span><br><span class="line">    ~<span class="built_in">test</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 继承</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">demo</span> :</span> <span class="keyword">public</span> test &#123;</span><br><span class="line">  <span class="comment">// 封装</span></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> k</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>Template C++<ul>
+<li>这是C++ 泛型编程部分，它们威力强大。它们也带来了新的编程范型，也就是template metaprogramming(模板元编程)。部分特性展示：<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">T <span class="title">add</span> <span class="params">(T a,T b)</span> </span>&#123;<span class="keyword">return</span> a + b;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span>&lt;</span>T&gt; &#123;&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>STL<ul>
+<li>这是Template 程序库，它由六大组件构成。它们有着严格的要求，与它们工作时，我们也必须遵守它们的条约。六大组件图：<br><img src="https://i.loli.net/2021/04/03/OZ4sXR9YhWMqEvC.png" alt="test_1_.png"><br><font color=red><strong>C++语言的高效编程需要根据使用它的不同部分不断变化的。</strong></font></li>
+</ul>
+</li>
+</ul>
+<h2 id="条款二：尽量以const、enum、inline替换-define"><a href="#条款二：尽量以const、enum、inline替换-define" class="headerlink" title="条款二：尽量以const、enum、inline替换#define"></a>条款二：尽量以const、enum、inline替换#define</h2><p>&emsp;&emsp;#define属于一个从C继承而来的特性，那么说明我们对它还是存在一定的需求的。但是对于现代版本的C++来说，它存在了一些我们不得不去替换它的原因。</p>
+<ol>
+<li>#define会盲目替换目标码</li>
+</ol>
+<ul>
+<li>可以使用一个常量来替换宏定义，这样就会避免出现多个目标码的情况。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ASPECT_RATIO 2</span></span><br><span class="line">替换为</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> AspectRatio = <span class="number">2</span>;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <ol start="2">
-<li>尽量以const、enum、inline替换define<ol>
-<li>多用编译器，少用预处理器(Preder the compiler to the preprocessor)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define A 1.653</span><br></pre></td></tr></table></figure></li>
+<li>常量字符串最好使用std::string 替换 char *</li>
 </ol>
 <ul>
-<li>字符串’A’将不会被编译器看到，而编译器看到的是’1.653’。这会调试过程中，编译器错误信息只显示’1.653’而非’A’</li>
-<li>解决方法：定义全局变量<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const double A &#x3D; 1.653</span><br></pre></td></tr></table></figure></li>
-<li>使用全局变量的好处是，不会像define一样只是将宏名称进行替换,这会导致内存中有多份备份。</li>
-</ul>
-<ol start="2">
-<li>对于定义或声明全局变量时，常数指针与类的常数需要特别考虑</li>
-</ol>
-<ul>
-<li>对于指针<ul>
-<li>对于指针要把指针与它指向的数据都定义为const，例如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cosnt char* const myWorld &#x3D; &quot;Hello&quot;;</span><br></pre></td></tr></table></figure></li>
-<li>在C++中可以更方便地使用std::string这样基于char*类型的推广，例如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const std::string myWorld(&quot;Hello&quot;);</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>对于类的常数<ul>
-<li>声明为类的私有静态成员，这样既保证变量只能被这个类的对象接触到，且不会生成多个拷贝<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Plyaer &#123;</span><br><span class="line">  private: </span><br><span class="line">    static const int numPlayer &#x3D; 5;</span><br><span class="line">......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
+<li>char * 仅是声明了一个char指针指向字符串，C++中提供了专门处理字符串的类型即std::string。非必要则默认使用std::string。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">char</span>* <span class="keyword">const</span> a = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line"><span class="comment">//最好替换为</span></span><br><span class="line"><span class="function"><span class="keyword">const</span> std::string <span class="title">test</span><span class="params">(<span class="string">&quot;abc&quot;</span>)</span></span>;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <ol start="3">
-<li>枚举技巧</li>
+<li>#define 不提供任何的封装性</li>
 </ol>
 <ul>
-<li>当我们想在类中声明某个变量，但编译器不允许声明时赋值初始化，例如:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int noPlayer;</span><br><span class="line">int socres[noPlayer];</span><br></pre></td></tr></table></figure></li>
-<li>这种情况下，编译器会报错，我们可以使用enum<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">enum &#123;noPlayer &#x3D; 5&#125;;</span><br><span class="line">int scores[noPlayer];</span><br></pre></td></tr></table></figure></li>
-<li>这样就可以编译通过，因为这里的enum可以被当成int类型使用</li>
-<li>enum类型在内存中是没有实体的，无法取得enum类型的地址，因此这个方法更相当于取一个本地的#define数值</li>
+<li>由于#define不重视作用域，可以被随意调用，因此它不具备封装性。我们可以使用static const为class创建专属变量，限制作用域实现封装。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span> &#123;</span></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// static 限制作用域</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> demo = <span class="number">5</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <ol start="4">
-<li>对于#define的宏函数，尽量使用inline修饰的函数来代替#define</li>
+<li>#define无法阻止reference或pointer指向某个常量</li>
 </ol>
 <ul>
-<li>inline 关键字用来建议编译器把某频繁调用的函数当做内联函数<ul>
-<li>优点：在每次调用函数时，直接把函数代码放在函数调用语句的地址，减少堆栈浪费。</li>
+<li>可以通过enum来实现这个约束。</li>
 </ul>
-</li>
-<li>若将其定义为宏也可以，就是这种做法不太好<br>```<br>#define call(a,b) f((a) &gt; (b) ? (a) : (b))<br>…<br>int a = 5, b = 0;<br>call(++a, b)    //a 增加了一次<br>call(++a, b+10) //a 增加了两次</li>
-</ul>
-</li>
+<ol start="5">
+<li>形似函数的宏会带来意想不到的错误</li>
 </ol>
+<ul>
+<li>使用inline替换，它遵守作用域与访问规则。</li>
+</ul>
+<h2 id="条款三：尽可能使用const"><a href="#条款三：尽可能使用const" class="headerlink" title="条款三：尽可能使用const"></a>条款三：尽可能使用const</h2><p>&emsp;&emsp;const是一件奇妙的关键字，它给所有被修饰对象添加了一个约束，即不可被改动。编译器会严格的帮你执行这个约束直至程序结束。<br>&emsp;&emsp;使用const修饰变量，我们常用的两种方法:Top-level const 与 Low-level const;</p>
+<ul>
+<li>顶层const (Top-level const)<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="comment">// 顶层const</span></span><br><span class="line"><span class="keyword">int</span>* <span class="keyword">const</span> b = &amp;a;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>const所修饰的变量<strong>本身</strong>是一个常量无法修改,指的是指针。</li>
+</ul>
+</li>
+<li>底层const(Low-level const) <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="comment">// 底层const,它存在两种写法(根据习惯)</span></span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> *b = &amp;a;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> *b = &amp;a;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>const所修饰的变量<strong>所指向的对象</strong>是一个常量，指的是变量。 </li>
+</ul>
+</li>
+</ul>
+<p>&emsp;&emsp;根据const的性质，合理的使用const。有利于我们侦测代码中的错误，避免一些类似于”==”打成”=”的低级错误。<br>&emsp;&emsp;使用好const也是编写高效代码的关键其原因有二：第一，<font color=red>它使得class接口比较容易理解</font>，清晰的知道什么可以改动，什么不可以；第二，<font color=red>使得操作const对象成为可能</font>。</p>
+<p>&emsp;&emsp;在const与non-const有着同等的实现时，<font color=red>我们最好使用non-const版本去调用const版本</font>。倘若我们使用const版本调用non-const版本，我们岂不是违背了const的性质。当然有人说，可以使用转型不就可以了。但是转型之中又存在了安全性与破坏类型系统的风险，因此，使用non-const版本去调用const版本就成了优选。这样还成功避免了代码重复。</p>
+<h2 id="条款四：-确定对象被使用前已被初始化"><a href="#条款四：-确定对象被使用前已被初始化" class="headerlink" title="条款四： 确定对象被使用前已被初始化"></a>条款四： 确定对象被使用前已被初始化</h2><p>&emsp;&emsp;读取未初始化值将会导致某些意想不到的行为，以及之后一些痛苦的调试过程。对于内置类型我们只能进行手工的初始化，对此之外的初始化操作全都落到了构造函数的身上。<br>&emsp;&emsp;对于构造函数初始化，我们常用的两种方式：赋值初始化、初始化列表。</p>
+<ul>
+<li>赋值初始化<ul>
+<li>一个伪初始化，可能创建临时对象,并调用operator=();<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class test &#123;</span><br><span class="line">  public:</span><br><span class="line">    test(int num);</span><br><span class="line">  private:</span><br><span class="line">    int len;</span><br><span class="line">&#125;;</span><br><span class="line">test::test(int num) &#123;</span><br><span class="line">  len &#x3D; num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>成员列表初始化<ul>
+<li>单纯的初始化，编译器会一一操作初始化列表,在任何显式用户代码之前。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class test &#123;</span><br><span class="line">  public:</span><br><span class="line">    test(int num);</span><br><span class="line">  private:</span><br><span class="line">    int len;</span><br><span class="line">&#125;;</span><br><span class="line">test::test():len(2) &#123;&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<p>&emsp;&emsp;对于成员列表初始化操作，对于成员排列顺序应和它们在class中的声明次序相同。当然，如果忘记了排序，编译器也会对列表进行一个重新排序。</p>
+<p>&emsp;&emsp;为了免除”跨编译单元的初始化次序”问题，我们需要使用local static对象替换non-local static对象。其原因是：C++保证函数中local static对象会在”该函数被调用期间”首次遇上该对象的定义式时被初始化。</p>
 
     </div>
 
@@ -413,7 +437,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%AE%A9%E8%87%AA%E5%B7%B1%E4%B9%A0%E6%83%AFC"><span class="nav-text">第一章 让自己习惯C++</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%AE%A9%E8%87%AA%E5%B7%B1%E4%B9%A0%E6%83%AFC"><span class="nav-text">第一章 让自己习惯C++</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E6%AC%BE%E4%B8%80%EF%BC%9A%E8%A7%86C-%E4%B8%BA%E4%B8%80%E4%B8%AA%E8%AF%AD%E8%A8%80%E8%81%94%E9%82%A6"><span class="nav-text">条款一：视C++为一个语言联邦</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E6%AC%BE%E4%BA%8C%EF%BC%9A%E5%B0%BD%E9%87%8F%E4%BB%A5const%E3%80%81enum%E3%80%81inline%E6%9B%BF%E6%8D%A2-define"><span class="nav-text">条款二：尽量以const、enum、inline替换#define</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E6%AC%BE%E4%B8%89%EF%BC%9A%E5%B0%BD%E5%8F%AF%E8%83%BD%E4%BD%BF%E7%94%A8const"><span class="nav-text">条款三：尽可能使用const</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E6%AC%BE%E5%9B%9B%EF%BC%9A-%E7%A1%AE%E5%AE%9A%E5%AF%B9%E8%B1%A1%E8%A2%AB%E4%BD%BF%E7%94%A8%E5%89%8D%E5%B7%B2%E8%A2%AB%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-text">条款四： 确定对象被使用前已被初始化</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -484,12 +508,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">97k</span>
+    <span title="站点总字数">100k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:29</span>
+    <span title="站点阅读时长">1:31</span>
 </div>
 
 

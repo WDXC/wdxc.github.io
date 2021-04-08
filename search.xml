@@ -1,197 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Data lab</title>
-    <url>/2021/01/28/Data-lab/</url>
-    <content><![CDATA[<h1 id="实验目标"><a href="#实验目标" class="headerlink" title="实验目标"></a>实验目标</h1><p>通过本次实验来熟悉整型和浮点型的位表达形式</p>
-<p>作业内容：</p>
-<table>
-<thead>
-<tr>
-<th align="center">函数名</th>
-<th align="center">内容</th>
-<th align="center">难度</th>
-<th align="center">限制指令数</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">bitXor(int x,int y)</td>
-<td align="center">使用逻辑或和逻辑与代替异或</td>
-<td align="center">1</td>
-<td align="center">14</td>
-</tr>
-<tr>
-<td align="center">tmin(void)</td>
-<td align="center">返回最小的补码</td>
-<td align="center">1</td>
-<td align="center">4</td>
-</tr>
-<tr>
-<td align="center">isTmax(int x)</td>
-<td align="center">x是最大的32位补码</td>
-<td align="center">1</td>
-<td align="center">10</td>
-</tr>
-<tr>
-<td align="center">allOddBits(int x)</td>
-<td align="center">所有的奇数位都为1吗</td>
-<td align="center">2</td>
-<td align="center">12</td>
-</tr>
-<tr>
-<td align="center">negate(int x)</td>
-<td align="center">不使用负号</td>
-<td align="center">2</td>
-<td align="center">5</td>
-</tr>
-<tr>
-<td align="center">isAsciiDigit(int x)</td>
-<td align="center">x是ASCII码吗</td>
-<td align="center">3</td>
-<td align="center">15</td>
-</tr>
-<tr>
-<td align="center">conditional(int x,int y,int z)</td>
-<td align="center">就像 <code>x ? y:x</code></td>
-<td align="center">3</td>
-<td align="center">16</td>
-</tr>
-<tr>
-<td align="center">isLessOrEqual(int x,int y)</td>
-<td align="center"><code>x<=y? 1:0</code></td>
-<td align="center">3</td>
-<td align="center">24</td>
-</tr>
-<tr>
-<td align="center">logicalNeg(int x)</td>
-<td align="center">实现<code>!</code>操作</td>
-<td align="center">4</td>
-<td align="center">12</td>
-</tr>
-<tr>
-<td align="center">howManyBits(int x)</td>
-<td align="center">计算表达式所需的最少位数</td>
-<td align="center">4</td>
-<td align="center">90</td>
-</tr>
-<tr>
-<td align="center">floatScale2(unsigned uf)</td>
-<td align="center">计算<code>2 * uf</code></td>
-<td align="center">4</td>
-<td align="center">30</td>
-</tr>
-<tr>
-<td align="center">floatFloat2Int(unsigned uf)</td>
-<td align="center">计算<code>(int)uf</code></td>
-<td align="center">4</td>
-<td align="center">30</td>
-</tr>
-<tr>
-<td align="center">floatPower2(int x)</td>
-<td align="center">计算<code>(float)x</code></td>
-<td align="center">4</td>
-<td align="center">30</td>
-</tr>
-</tbody></table>
-<h1 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h1><p>一共需要补齐13个函数，所有的修改都保存在<code>bits.c</code>中</p>
-<h2 id="提示与要求："><a href="#提示与要求：" class="headerlink" title="提示与要求："></a>提示与要求：</h2><ol>
-<li>要符合题目编码格式要求</li>
-<li>整型的范围是0到255(0xFF),不可以超过限制</li>
-<li>只能包含参数和局部变量</li>
-<li>一元操作符有<code>!、~</code></li>
-<li>二元操作符有<code>＆、|、＋、<<、>></code></li>
-</ol>
-<h2 id="禁止的操作有"><a href="#禁止的操作有" class="headerlink" title="禁止的操作有:"></a>禁止的操作有:</h2><ol>
-<li>使用任何条件控制语句</li>
-<li>定义或使用任何宏</li>
-<li>在文件中添加额外的函数</li>
-<li>调用任何函数</li>
-<li>使用其它操作符，如<code>&&, ||, -, or ?:</code></li>
-<li>使用任何形式的类型转换</li>
-<li>使用除int外的任意类型(针对整型)</li>
-<li>使用除int，unsigned之外的类型(针对浮点型)</li>
-</ol>
-<h2 id="默认机器的配置："><a href="#默认机器的配置：" class="headerlink" title="默认机器的配置："></a>默认机器的配置：</h2><ol>
-<li>使用2’s complent,32位的机器</li>
-<li>执行算术右移</li>
-<li>移位范围$[0,31]$,如果过大或过小可能会发生不可预测的情况</li>
-</ol>
-<h1 id="题目及解法"><a href="#题目及解法" class="headerlink" title="题目及解法"></a>题目及解法</h1>]]></content>
-      <categories>
-        <category>lab</category>
-      </categories>
-      <tags>
-        <tag>OS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Effective-C++ Reading Notes</title>
-    <url>/2021/03/23/Effective-C-Read-Note/</url>
-    <content><![CDATA[<h1 id="第一章-让自己习惯C"><a href="#第一章-让自己习惯C" class="headerlink" title="第一章 让自己习惯C++"></a><center>第一章 让自己习惯C++</center></h1><ol>
-<li>视C++为一个语言联邦</li>
-</ol>
-<ul>
-<li>C++ 语言的四个层次<ul>
-<li>C：没有C++的面向对象、没有模板、没有异常、没有重载等。</li>
-<li>Object-Oriented C++：这部分也就是C with Classes。classes、封装、继承、多态、虚函数。这都属于面向对象的特性。</li>
-<li>Template C++: 这部分是C++的泛型部分。这部分带来的是template metaprogramming,也就是所谓的模板元编程。</li>
-<li>STL：STL是template程序库。它对容器、迭代器、算法及函数对象的规约，并且是以template及程序库的方式构建出来。</li>
-</ul>
-</li>
-</ul>
-<ol start="2">
-<li>尽量以const、enum、inline替换define<ol>
-<li>多用编译器，少用预处理器(Preder the compiler to the preprocessor)<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#define A 1.653</span><br></pre></td></tr></table></figure></li>
-</ol>
-<ul>
-<li>字符串’A’将不会被编译器看到，而编译器看到的是’1.653’。这会调试过程中，编译器错误信息只显示’1.653’而非’A’</li>
-<li>解决方法：定义全局变量<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const double A &#x3D; 1.653</span><br></pre></td></tr></table></figure></li>
-<li>使用全局变量的好处是，不会像define一样只是将宏名称进行替换,这会导致内存中有多份备份。</li>
-</ul>
-<ol start="2">
-<li>对于定义或声明全局变量时，常数指针与类的常数需要特别考虑</li>
-</ol>
-<ul>
-<li>对于指针<ul>
-<li>对于指针要把指针与它指向的数据都定义为const，例如：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cosnt char* const myWorld &#x3D; &quot;Hello&quot;;</span><br></pre></td></tr></table></figure></li>
-<li>在C++中可以更方便地使用std::string这样基于char*类型的推广，例如：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const std::string myWorld(&quot;Hello&quot;);</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>对于类的常数<ul>
-<li>声明为类的私有静态成员，这样既保证变量只能被这个类的对象接触到，且不会生成多个拷贝<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Plyaer &#123;</span><br><span class="line">  private: </span><br><span class="line">    static const int numPlayer &#x3D; 5;</span><br><span class="line">......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<ol start="3">
-<li>枚举技巧</li>
-</ol>
-<ul>
-<li>当我们想在类中声明某个变量，但编译器不允许声明时赋值初始化，例如:<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int noPlayer;</span><br><span class="line">int socres[noPlayer];</span><br></pre></td></tr></table></figure></li>
-<li>这种情况下，编译器会报错，我们可以使用enum<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">enum &#123;noPlayer &#x3D; 5&#125;;</span><br><span class="line">int scores[noPlayer];</span><br></pre></td></tr></table></figure></li>
-<li>这样就可以编译通过，因为这里的enum可以被当成int类型使用</li>
-<li>enum类型在内存中是没有实体的，无法取得enum类型的地址，因此这个方法更相当于取一个本地的#define数值</li>
-</ul>
-<ol start="4">
-<li>对于#define的宏函数，尽量使用inline修饰的函数来代替#define</li>
-</ol>
-<ul>
-<li>inline 关键字用来建议编译器把某频繁调用的函数当做内联函数<ul>
-<li>优点：在每次调用函数时，直接把函数代码放在函数调用语句的地址，减少堆栈浪费。</li>
-</ul>
-</li>
-<li>若将其定义为宏也可以，就是这种做法不太好<br>```<br>#define call(a,b) f((a) &gt; (b) ? (a) : (b))<br>…<br>int a = 5, b = 0;<br>call(++a, b)    //a 增加了一次<br>call(++a, b+10) //a 增加了两次</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Read Notes</category>
-      </categories>
-      <tags>
-        <tag>theory</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C++ templates 2nd</title>
     <url>/2021/02/15/C-templates-2nd/</url>
     <content><![CDATA[<h1 id="第一章-Function-Templates"><a href="#第一章-Function-Templates" class="headerlink" title="第一章 Function Templates "></a><center>第一章 Function Templates </center></h1><ol>
@@ -320,6 +129,219 @@
       </tags>
   </entry>
   <entry>
+    <title>Data lab</title>
+    <url>/2021/01/28/Data-lab/</url>
+    <content><![CDATA[<h1 id="实验目标"><a href="#实验目标" class="headerlink" title="实验目标"></a>实验目标</h1><p>通过本次实验来熟悉整型和浮点型的位表达形式</p>
+<p>作业内容：</p>
+<table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">内容</th>
+<th align="center">难度</th>
+<th align="center">限制指令数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">bitXor(int x,int y)</td>
+<td align="center">使用逻辑或和逻辑与代替异或</td>
+<td align="center">1</td>
+<td align="center">14</td>
+</tr>
+<tr>
+<td align="center">tmin(void)</td>
+<td align="center">返回最小的补码</td>
+<td align="center">1</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">isTmax(int x)</td>
+<td align="center">x是最大的32位补码</td>
+<td align="center">1</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">allOddBits(int x)</td>
+<td align="center">所有的奇数位都为1吗</td>
+<td align="center">2</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="center">negate(int x)</td>
+<td align="center">不使用负号</td>
+<td align="center">2</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">isAsciiDigit(int x)</td>
+<td align="center">x是ASCII码吗</td>
+<td align="center">3</td>
+<td align="center">15</td>
+</tr>
+<tr>
+<td align="center">conditional(int x,int y,int z)</td>
+<td align="center">就像 <code>x ? y:x</code></td>
+<td align="center">3</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="center">isLessOrEqual(int x,int y)</td>
+<td align="center"><code>x<=y? 1:0</code></td>
+<td align="center">3</td>
+<td align="center">24</td>
+</tr>
+<tr>
+<td align="center">logicalNeg(int x)</td>
+<td align="center">实现<code>!</code>操作</td>
+<td align="center">4</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="center">howManyBits(int x)</td>
+<td align="center">计算表达式所需的最少位数</td>
+<td align="center">4</td>
+<td align="center">90</td>
+</tr>
+<tr>
+<td align="center">floatScale2(unsigned uf)</td>
+<td align="center">计算<code>2 * uf</code></td>
+<td align="center">4</td>
+<td align="center">30</td>
+</tr>
+<tr>
+<td align="center">floatFloat2Int(unsigned uf)</td>
+<td align="center">计算<code>(int)uf</code></td>
+<td align="center">4</td>
+<td align="center">30</td>
+</tr>
+<tr>
+<td align="center">floatPower2(int x)</td>
+<td align="center">计算<code>(float)x</code></td>
+<td align="center">4</td>
+<td align="center">30</td>
+</tr>
+</tbody></table>
+<h1 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h1><p>一共需要补齐13个函数，所有的修改都保存在<code>bits.c</code>中</p>
+<h2 id="提示与要求："><a href="#提示与要求：" class="headerlink" title="提示与要求："></a>提示与要求：</h2><ol>
+<li>要符合题目编码格式要求</li>
+<li>整型的范围是0到255(0xFF),不可以超过限制</li>
+<li>只能包含参数和局部变量</li>
+<li>一元操作符有<code>!、~</code></li>
+<li>二元操作符有<code>＆、|、＋、<<、>></code></li>
+</ol>
+<h2 id="禁止的操作有"><a href="#禁止的操作有" class="headerlink" title="禁止的操作有:"></a>禁止的操作有:</h2><ol>
+<li>使用任何条件控制语句</li>
+<li>定义或使用任何宏</li>
+<li>在文件中添加额外的函数</li>
+<li>调用任何函数</li>
+<li>使用其它操作符，如<code>&&, ||, -, or ?:</code></li>
+<li>使用任何形式的类型转换</li>
+<li>使用除int外的任意类型(针对整型)</li>
+<li>使用除int，unsigned之外的类型(针对浮点型)</li>
+</ol>
+<h2 id="默认机器的配置："><a href="#默认机器的配置：" class="headerlink" title="默认机器的配置："></a>默认机器的配置：</h2><ol>
+<li>使用2’s complent,32位的机器</li>
+<li>执行算术右移</li>
+<li>移位范围$[0,31]$,如果过大或过小可能会发生不可预测的情况</li>
+</ol>
+<h1 id="题目及解法"><a href="#题目及解法" class="headerlink" title="题目及解法"></a>题目及解法</h1>]]></content>
+      <categories>
+        <category>lab</category>
+      </categories>
+      <tags>
+        <tag>OS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Effective-C++ Reading Notes</title>
+    <url>/2021/03/23/Effective-C-Read-Note/</url>
+    <content><![CDATA[<h1 id="第一章-让自己习惯C"><a href="#第一章-让自己习惯C" class="headerlink" title="第一章 让自己习惯C++"></a><center>第一章 让自己习惯C++</center></h1><h2 id="条款一：视C-为一个语言联邦"><a href="#条款一：视C-为一个语言联邦" class="headerlink" title="条款一：视C++为一个语言联邦"></a>条款一：视C++为一个语言联邦</h2><p>&emsp;&emsp;最初，C++仅是C加上了一些面象对象的特性。经历多年的发展，随着大量特性与功能的加入，使得C++成为了一个无可匹敌的工具。但也是这些特性与功能，会让我们困惑于，我们应如何使用它们，该如何理解这样一个复杂的语言呢？<br>&emsp;&emsp;最简单的方法就是将C++视为一个相关语言的组成的一个联邦，对于C++来说，它大致由四个部分组成：</p>
+<ul>
+<li>C语言<ul>
+<li>作为C++的基础。C++中的区块、语句、预处理器、内置数据类型、数组、指针等皆是来自于C。部分特性展示:<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> k 45</span></span><br><span class="line"><span class="keyword">double</span> blance[<span class="number">5</span>] = &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> *p;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>Object-Oriented C++<ul>
+<li>在初始C with Classes,缺乏真正的面向对象思想。因此加入了:class(包括构造与析构)、封装(encapulation)、继承(inheritance)、多态(polymorphism)…等,从而符合面向对象设计的古典守则。部分特性展示:<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span> &#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">test</span>();</span><br><span class="line">    ~<span class="built_in">test</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 继承</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">demo</span> :</span> <span class="keyword">public</span> test &#123;</span><br><span class="line">  <span class="comment">// 封装</span></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> k</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>Template C++<ul>
+<li>这是C++ 泛型编程部分，它们威力强大。它们也带来了新的编程范型，也就是template metaprogramming(模板元编程)。部分特性展示：<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">T <span class="title">add</span> <span class="params">(T a,T b)</span> </span>&#123;<span class="keyword">return</span> a + b;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span>&lt;</span>T&gt; &#123;&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>STL<ul>
+<li>这是Template 程序库，它由六大组件构成。它们有着严格的要求，与它们工作时，我们也必须遵守它们的条约。六大组件图：<br><img src="https://i.loli.net/2021/04/03/OZ4sXR9YhWMqEvC.png" alt="test_1_.png"><br><font color=red><strong>C++语言的高效编程需要根据使用它的不同部分不断变化的。</strong></font></li>
+</ul>
+</li>
+</ul>
+<h2 id="条款二：尽量以const、enum、inline替换-define"><a href="#条款二：尽量以const、enum、inline替换-define" class="headerlink" title="条款二：尽量以const、enum、inline替换#define"></a>条款二：尽量以const、enum、inline替换#define</h2><p>&emsp;&emsp;#define属于一个从C继承而来的特性，那么说明我们对它还是存在一定的需求的。但是对于现代版本的C++来说，它存在了一些我们不得不去替换它的原因。</p>
+<ol>
+<li>#define会盲目替换目标码</li>
+</ol>
+<ul>
+<li>可以使用一个常量来替换宏定义，这样就会避免出现多个目标码的情况。<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ASPECT_RATIO 2</span></span><br><span class="line">替换为</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> AspectRatio = <span class="number">2</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="2">
+<li>常量字符串最好使用std::string 替换 char *</li>
+</ol>
+<ul>
+<li>char * 仅是声明了一个char指针指向字符串，C++中提供了专门处理字符串的类型即std::string。非必要则默认使用std::string。<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">char</span>* <span class="keyword">const</span> a = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line"><span class="comment">//最好替换为</span></span><br><span class="line"><span class="function"><span class="keyword">const</span> std::string <span class="title">test</span><span class="params">(<span class="string">&quot;abc&quot;</span>)</span></span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="3">
+<li>#define 不提供任何的封装性</li>
+</ol>
+<ul>
+<li>由于#define不重视作用域，可以被随意调用，因此它不具备封装性。我们可以使用static const为class创建专属变量，限制作用域实现封装。<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span> &#123;</span></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// static 限制作用域</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> demo = <span class="number">5</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="4">
+<li>#define无法阻止reference或pointer指向某个常量</li>
+</ol>
+<ul>
+<li>可以通过enum来实现这个约束。</li>
+</ul>
+<ol start="5">
+<li>形似函数的宏会带来意想不到的错误</li>
+</ol>
+<ul>
+<li>使用inline替换，它遵守作用域与访问规则。</li>
+</ul>
+<h2 id="条款三：尽可能使用const"><a href="#条款三：尽可能使用const" class="headerlink" title="条款三：尽可能使用const"></a>条款三：尽可能使用const</h2><p>&emsp;&emsp;const是一件奇妙的关键字，它给所有被修饰对象添加了一个约束，即不可被改动。编译器会严格的帮你执行这个约束直至程序结束。<br>&emsp;&emsp;使用const修饰变量，我们常用的两种方法:Top-level const 与 Low-level const;</p>
+<ul>
+<li>顶层const (Top-level const)<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="comment">// 顶层const</span></span><br><span class="line"><span class="keyword">int</span>* <span class="keyword">const</span> b = &amp;a;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>const所修饰的变量<strong>本身</strong>是一个常量无法修改,指的是指针。</li>
+</ul>
+</li>
+<li>底层const(Low-level const) <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="comment">// 底层const,它存在两种写法(根据习惯)</span></span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> *b = &amp;a;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> *b = &amp;a;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>const所修饰的变量<strong>所指向的对象</strong>是一个常量，指的是变量。 </li>
+</ul>
+</li>
+</ul>
+<p>&emsp;&emsp;根据const的性质，合理的使用const。有利于我们侦测代码中的错误，避免一些类似于”==”打成”=”的低级错误。<br>&emsp;&emsp;使用好const也是编写高效代码的关键其原因有二：第一，<font color=red>它使得class接口比较容易理解</font>，清晰的知道什么可以改动，什么不可以；第二，<font color=red>使得操作const对象成为可能</font>。</p>
+<p>&emsp;&emsp;在const与non-const有着同等的实现时，<font color=red>我们最好使用non-const版本去调用const版本</font>。倘若我们使用const版本调用non-const版本，我们岂不是违背了const的性质。当然有人说，可以使用转型不就可以了。但是转型之中又存在了安全性与破坏类型系统的风险，因此，使用non-const版本去调用const版本就成了优选。这样还成功避免了代码重复。</p>
+<h2 id="条款四：-确定对象被使用前已被初始化"><a href="#条款四：-确定对象被使用前已被初始化" class="headerlink" title="条款四： 确定对象被使用前已被初始化"></a>条款四： 确定对象被使用前已被初始化</h2><p>&emsp;&emsp;读取未初始化值将会导致某些意想不到的行为，以及之后一些痛苦的调试过程。对于内置类型我们只能进行手工的初始化，对此之外的初始化操作全都落到了构造函数的身上。<br>&emsp;&emsp;对于构造函数初始化，我们常用的两种方式：赋值初始化、初始化列表。</p>
+<ul>
+<li>赋值初始化<ul>
+<li>一个伪初始化，可能创建临时对象,并调用operator=();<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class test &#123;</span><br><span class="line">  public:</span><br><span class="line">    test(int num);</span><br><span class="line">  private:</span><br><span class="line">    int len;</span><br><span class="line">&#125;;</span><br><span class="line">test::test(int num) &#123;</span><br><span class="line">  len &#x3D; num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>成员列表初始化<ul>
+<li>单纯的初始化，编译器会一一操作初始化列表,在任何显式用户代码之前。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class test &#123;</span><br><span class="line">  public:</span><br><span class="line">    test(int num);</span><br><span class="line">  private:</span><br><span class="line">    int len;</span><br><span class="line">&#125;;</span><br><span class="line">test::test():len(2) &#123;&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<p>&emsp;&emsp;对于成员列表初始化操作，对于成员排列顺序应和它们在class中的声明次序相同。当然，如果忘记了排序，编译器也会对列表进行一个重新排序。</p>
+<p>&emsp;&emsp;为了免除”跨编译单元的初始化次序”问题，我们需要使用local static对象替换non-local static对象。其原因是：C++保证函数中local static对象会在”该函数被调用期间”首次遇上该对象的定义式时被初始化。</p>
+]]></content>
+      <categories>
+        <category>Read Notes</category>
+      </categories>
+      <tags>
+        <tag>theory</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-1</title>
     <url>/2020/01/12/Leetcode-1/</url>
     <content><![CDATA[<h2 id="Qestion"><a href="#Qestion" class="headerlink" title="Qestion"></a>Qestion</h2><p>Give an array of intergets <code>nums</code> and an integer <code>target</code>,return indices of the two numbers such that they add up to <code>target</code>.<br>You may assume that each input would have exctly one solution,and you may use the same element twice.<br>You can return the answer in any order.  </p>
@@ -393,6 +415,48 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode-12</title>
+    <url>/2020/11/04/Leetcode-12/</url>
+    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p>&emsp;&emsp;The <strong>count-and-say</strong> sequence is a sequence of digit strings defined by the recursive formula:</p>
+<ul>
+<li><code>countAndSay(1) = "1" </code></li>
+<li><code>countAndSay(n)</code> is the way you would “say” digit string from <code>countAndSay(n-1)</code>,which is then converted into a different digit string.</li>
+</ul>
+<p>&emsp;&emsp;To determine how you “say” a digit string, split it into the <strong>minimal</strong> number of groups so that each group is a contiguous section all of the <strong>same character</strong>.<br>&emsp;&emsp;Then for each group, say the number of characters,then say the character. To convert the saying into a digit string, replace the counts with a number and concatenate every saying.  </p>
+<p>For example, the saying and conversion for digit string <code>"3322251"</code>:<br><img src="https://assets.leetcode.com/uploads/2020/10/23/countandsay.jpg" alt="avatar"></p>
+<p>Given a positive integer <code>n</code>, return the <code>n<sup>th</sup></code> term of the <strong>count-and-say</strong> sequence.</p>
+<p><strong>Example 1:</strong></p>
+<p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> n = 1 <br>
+  <strong>Output:</strong> "1" <br>
+  <strong>Explanation:</strong> This is base case
+</p>
+
+<p><strong>Example 2:</strong></p>
+<p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> n = 4
+  <strong>Output:</strong> "1211"
+  <strong>Explanation:</strong> <br>
+  countAndSay(1) = "1" <br>
+  countAndSay(2) = say "1" = one 1 = "11" <br>
+  countAndSay(3) = say "11" two 1's = "21" <br>
+  countAndSay(4) = say "21" = one 2 + one 1 = "12" + "11" = "1211" <br>
+</p>
+
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code> 1 <= n <= 30 </code></li>
+</ul>
+<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><p>  &emsp;&emsp;<strong>暴力破解法:</strong> 首先确定基础case “1”, ans用于存储输出的字符。count用于计数,如果想要知道4所对应的值，那么知道了3所对应的数值就行了。如果出现了重复就通过while语句来增加对应的值。时间复杂度为O(n),具体代码如下:<br>  <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">countAndSay</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        string res = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (--n) &#123;</span><br><span class="line">            string ans = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ;i &lt; res.<span class="built_in">size</span>() ;i++) &#123;</span><br><span class="line">                <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span> ( (i+<span class="number">1</span> &lt; res.<span class="built_in">size</span>()) &amp;&amp; (res[i] == res[i+<span class="number">1</span>]))</span><br><span class="line">                    i++,count++;</span><br><span class="line">                ans += <span class="built_in">to_string</span>(count) + res[i];</span><br><span class="line">            &#125;</span><br><span class="line">            res = ans;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-11</title>
     <url>/2020/11/02/Leetcode-11/</url>
     <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p> &emsp;&emsp; Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
@@ -448,70 +512,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-12</title>
-    <url>/2020/11/04/Leetcode-12/</url>
-    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p>&emsp;&emsp;The <strong>count-and-say</strong> sequence is a sequence of digit strings defined by the recursive formula:</p>
-<ul>
-<li><code>countAndSay(1) = "1" </code></li>
-<li><code>countAndSay(n)</code> is the way you would “say” digit string from <code>countAndSay(n-1)</code>,which is then converted into a different digit string.</li>
-</ul>
-<p>&emsp;&emsp;To determine how you “say” a digit string, split it into the <strong>minimal</strong> number of groups so that each group is a contiguous section all of the <strong>same character</strong>.<br>&emsp;&emsp;Then for each group, say the number of characters,then say the character. To convert the saying into a digit string, replace the counts with a number and concatenate every saying.  </p>
-<p>For example, the saying and conversion for digit string <code>"3322251"</code>:<br><img src="https://assets.leetcode.com/uploads/2020/10/23/countandsay.jpg" alt="avatar"></p>
-<p>Given a positive integer <code>n</code>, return the <code>n<sup>th</sup></code> term of the <strong>count-and-say</strong> sequence.</p>
-<p><strong>Example 1:</strong></p>
-<p style = "background-color:rgba(240,248,255)">
-  <strong>Input:</strong> n = 1 <br>
-  <strong>Output:</strong> "1" <br>
-  <strong>Explanation:</strong> This is base case
-</p>
-
-<p><strong>Example 2:</strong></p>
-<p style = "background-color:rgba(240,248,255)">
-  <strong>Input:</strong> n = 4
-  <strong>Output:</strong> "1211"
-  <strong>Explanation:</strong> <br>
-  countAndSay(1) = "1" <br>
-  countAndSay(2) = say "1" = one 1 = "11" <br>
-  countAndSay(3) = say "11" two 1's = "21" <br>
-  countAndSay(4) = say "21" = one 2 + one 1 = "12" + "11" = "1211" <br>
-</p>
-
-<p><strong>Constraints:</strong></p>
-<ul>
-<li><code> 1 <= n <= 30 </code></li>
-</ul>
-<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><p>  &emsp;&emsp;<strong>暴力破解法:</strong> 首先确定基础case “1”, ans用于存储输出的字符。count用于计数,如果想要知道4所对应的值，那么知道了3所对应的数值就行了。如果出现了重复就通过while语句来增加对应的值。时间复杂度为O(n),具体代码如下:<br>  <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">countAndSay</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        string res = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (--n) &#123;</span><br><span class="line">            string ans = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ;i &lt; res.<span class="built_in">size</span>() ;i++) &#123;</span><br><span class="line">                <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span> ( (i+<span class="number">1</span> &lt; res.<span class="built_in">size</span>()) &amp;&amp; (res[i] == res[i+<span class="number">1</span>]))</span><br><span class="line">                    i++,count++;</span><br><span class="line">                ans += <span class="built_in">to_string</span>(count) + res[i];</span><br><span class="line">            &#125;</span><br><span class="line">            res = ans;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-13</title>
-    <url>/2021/01/25/Leetcode-13/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;有一群孩子和一堆饼干，每个孩子有一个饥饿度，每个饼干都有一个大小。每个孩子只能吃一个饼干，且只有饼干的大小不小于孩子的饥饿度时，这个孩子可以吃饱。求解最多有多少孩子可以吃饱。</p>
-<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p>&emsp;&emsp;输入两个数组，分别代表孩子的饥饿度和饼干的大小。输出最多有多少孩子可以吃饱的数量。</p>
-<p style = "background-color:rgba(240,248,255)">
-  <strong>Input:</strong> nums = [1,2],[1,2,3] <br>
-  <strong>Output:</strong> 5
-</p>
-&emsp;&emsp;在这个样例中，我们可以给两个孩子喂[1,2],[1,3],[2,3]这三种组合的任意一种。
-# 题解
-&emsp;&emsp;因为饥饿度最小的孩子最容易吃饱，所以我们先考虑这个孩子。为了尽量便利剩下的饼干可以满足饥饿度更大的孩子，所以我们应该把大于等于这个孩子饥饿度的，且大小最小的饼干给这个孩子。满足了这个孩子之后，我们采取同样的策略，考虑剩下孩子里饥饿度最小的孩子，直到没有满足条件的饼干存在。
-&emsp;&emsp;简而言之，这里的贪心策略是，给剩余孩子里最小饥饿度的孩子分配最小的能饮腹的饼干。至于具体实现，因为我们需要获得大小关系，一个便捷的方法就是把孩子和饼干分别排序。这样我们就可以从饥饿度最小的孩子和大小最小的饼干出发，计算有多少组合可以满足条件。
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findContentChildren</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; children, vector&lt;<span class="keyword">int</span>&gt;&amp; cookies)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">sort</span>(children.<span class="built_in">begin</span>(),children.<span class="built_in">end</span>());</span><br><span class="line">        <span class="built_in">sort</span>(cookies.<span class="built_in">begin</span>(),cookies.<span class="built_in">end</span>());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> child = <span class="number">0</span>,cookie = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (child &lt; children.<span class="built_in">size</span>() &amp;&amp; cookie &lt; cookies.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (children[child] &lt;= cookies[cookie]) ++child;</span><br><span class="line">            ++cookie;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> child;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode-14</title>
     <url>/2021/01/25/Leetcode-14/</url>
     <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;一群孩子站成一排，每一个孩子有自己的评分。现在需要给这些孩子必糖果，规则是如果一个孩子的评分比自己身旁的一个孩子要高，那么这个孩子就必须得到比身旁孩子更多的糖果；所有孩子至少要有一个糖果，求解最少需要多少个糖果。</p>
@@ -551,6 +551,28 @@
 &emsp;&emsp;具体实现方法为，先把区间按照结尾的大小进行增序排序，每次选择结尾最小且和前一个选择的区间不重叠的区间。我们这里使用C++的Lambda,结合std::sort()函数进行自定义排序。
 &emsp;&emsp;在样例中，排序后的数组为[[1,2],[1,3],[2,4]].按照我们的贪心策略，首先初始化为区间[1,2];由于[1,3]与[1,2]相交，我们跳过该区间；由于[2,4]与[1,2]不相交，我们将其保留。因此最终保留的区间为[[1,2],[2,4]]。
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">eraseOverlapIntervals</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; intervals)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (intervals.<span class="built_in">empty</span>()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n = intervals.<span class="built_in">size</span>();</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">sort</span>(intervals.<span class="built_in">begin</span>(),intervals.<span class="built_in">end</span>(),[&amp;](vector&lt;<span class="keyword">int</span>&gt; A,vector&lt;<span class="keyword">int</span>&gt; B)&#123;<span class="keyword">return</span> A[<span class="number">1</span>] &lt; B[<span class="number">1</span>];&#125;);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> total = <span class="number">0</span>,prev = intervals[<span class="number">0</span>][<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (intervals[i][<span class="number">0</span>] &lt; prev) </span><br><span class="line">                ++total;</span><br><span class="line">            <span class="keyword">else</span> </span><br><span class="line">                prev = intervals[i][<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> total;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-13</title>
+    <url>/2021/01/25/Leetcode-13/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;有一群孩子和一堆饼干，每个孩子有一个饥饿度，每个饼干都有一个大小。每个孩子只能吃一个饼干，且只有饼干的大小不小于孩子的饥饿度时，这个孩子可以吃饱。求解最多有多少孩子可以吃饱。</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p>&emsp;&emsp;输入两个数组，分别代表孩子的饥饿度和饼干的大小。输出最多有多少孩子可以吃饱的数量。</p>
+<p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> nums = [1,2],[1,2,3] <br>
+  <strong>Output:</strong> 5
+</p>
+&emsp;&emsp;在这个样例中，我们可以给两个孩子喂[1,2],[1,3],[2,3]这三种组合的任意一种。
+# 题解
+&emsp;&emsp;因为饥饿度最小的孩子最容易吃饱，所以我们先考虑这个孩子。为了尽量便利剩下的饼干可以满足饥饿度更大的孩子，所以我们应该把大于等于这个孩子饥饿度的，且大小最小的饼干给这个孩子。满足了这个孩子之后，我们采取同样的策略，考虑剩下孩子里饥饿度最小的孩子，直到没有满足条件的饼干存在。
+&emsp;&emsp;简而言之，这里的贪心策略是，给剩余孩子里最小饥饿度的孩子分配最小的能饮腹的饼干。至于具体实现，因为我们需要获得大小关系，一个便捷的方法就是把孩子和饼干分别排序。这样我们就可以从饥饿度最小的孩子和大小最小的饼干出发，计算有多少组合可以满足条件。
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findContentChildren</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; children, vector&lt;<span class="keyword">int</span>&gt;&amp; cookies)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">sort</span>(children.<span class="built_in">begin</span>(),children.<span class="built_in">end</span>());</span><br><span class="line">        <span class="built_in">sort</span>(cookies.<span class="built_in">begin</span>(),cookies.<span class="built_in">end</span>());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> child = <span class="number">0</span>,cookie = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (child &lt; children.<span class="built_in">size</span>() &amp;&amp; cookie &lt; cookies.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (children[child] &lt;= cookies[cookie]) ++child;</span><br><span class="line">            ++cookie;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> child;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>algorithm</category>
@@ -825,26 +847,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-27</title>
-    <url>/2021/03/24/Leetcode-27/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给定一个包含n个整数的数组<code>nums</code>,判断<code>nums</code>中是否存在三个元素a,b,c,使得a+b+c=0?请你找出所有和为0且不重复的三元组。<font color=red>要求不可以有重复的三元组</font></p>
-<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p style = "background-color:rgba(240,248,255)">
-  <strong>Input:</strong> [-1,0,1,2,-1,-4] <br>
-  <strong>Output:</strong> [[-1,-1,2],[-1,0,1]]
-</p>
-&emsp;&emsp;在这个样例中，可以组成零的三元组有[[-1,-1,2],[-1,0,1],[-1,0,1]],但是题目要求去重，所以最后只可以保留[[-1,-1,2],[-1,0,1]];
-
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;三个值的计算可能会比较麻烦，但是固定一个值，仅去计算两数之和就会简单很多。我们可以先对数组进行一个排序，方便待会儿处理左右指针的移动。至于固定一个值，我们可以使用for循环,使用完一个推向下一个。<br>&emsp;&emsp;由于存在数字重复,所以需要对数字进行去重。在固定好第一个值后，我们就要开始操作双指针了。i是值固定，因此我们的left必须为(i+1),right不受影响也就是数组的最后一个值(len-1)。因为$a+b+c=0$,所以$a+b=-c$，接下来就是通过值的比较来寻找有效三元组。<br><br>&emsp;&emsp;当找到一个有效三元组时，left与right需同时变化。这里仍需考虑去重问题如:<code>[-1,-1,-1,3,3,3];left = 1,right =4;</code>，为了避免这种情况,我们需要对数字进行去重。最后重复前面操作就可以得出结果了，具体代码如下：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">threeSum</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="comment">// base case</span></span><br><span class="line">        <span class="keyword">int</span> len = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span> (len &lt; <span class="number">3</span>) <span class="keyword">return</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// save result</span></span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt; &gt; res;</span><br><span class="line">        std::<span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(),nums.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">        <span class="comment">//固定一个值</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; len; i++) &#123;</span><br><span class="line">            <span class="comment">//第一个值大于零，则直接返回</span></span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt; <span class="number">0</span>) <span class="keyword">return</span> res;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 去重</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i<span class="number">-1</span>]) <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//双指针操作</span></span><br><span class="line">            <span class="comment">// left起始点在i之后，right 不受影响</span></span><br><span class="line">            <span class="keyword">int</span> left = i + <span class="number">1</span>, right = len <span class="number">-1</span>;</span><br><span class="line">            <span class="keyword">while</span> (left &lt; right) &#123;  </span><br><span class="line">                <span class="keyword">int</span> sum = nums[left] + nums[right];</span><br><span class="line">                <span class="keyword">if</span> (sum &gt; -nums[i]) right--;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (sum &lt; -nums[i]) left++;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">//找到一个有效三元组</span></span><br><span class="line">                    res.<span class="built_in">push_back</span>(&#123;nums[i],nums[left],nums[right]&#125;);</span><br><span class="line">                    left++;</span><br><span class="line">                    right--;</span><br><span class="line">                    </span><br><span class="line">                    <span class="comment">//去重</span></span><br><span class="line">                    <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[left] == nums[left<span class="number">-1</span>]) left++;</span><br><span class="line">                    <span class="keyword">while</span> (right &lt; right &amp;&amp; nums[right] == nums[right+<span class="number">1</span>]) right--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode-28</title>
     <url>/2021/03/25/Leetcode-28/</url>
     <content><![CDATA[<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>&emsp;&emsp;给定一个仅包含数字<code>2-9</code>的字符串，返回所有它能表示的字母组合。答案可以<strong>任何顺序</strong>返回。给定数字到字母的映射如下(与电话按键相同),<font color=red>1不对应任何字母</font>。<br><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/original_images/17_telephone_keypad.png" alt="avatar"></p>
@@ -896,28 +898,17 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-29</title>
-    <url>/2021/03/25/Leetcode-29/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给定一个链表，删除链表的倒数第<code>n</code>个结点，并且返回链表的头结果。进阶:<font color=red>尝试使用一趟扫描实现</font></p>
+    <title>Leetcode-27</title>
+    <url>/2021/03/24/Leetcode-27/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给定一个包含n个整数的数组<code>nums</code>,判断<code>nums</code>中是否存在三个元素a,b,c,使得a+b+c=0?请你找出所有和为0且不重复的三元组。<font color=red>要求不可以有重复的三元组</font></p>
 <h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p style = "background-color:rgba(240,248,255)">
-  <strong>Input:</strong> head = [1,2,3,4,5], n = 2 <br>
-  <strong>Output:</strong> [1,2,3,5]
+  <strong>Input:</strong> [-1,0,1,2,-1,-4] <br>
+  <strong>Output:</strong> [[-1,-1,2],[-1,0,1]]
 </p>
+&emsp;&emsp;在这个样例中，可以组成零的三元组有[[-1,-1,2],[-1,0,1],[-1,0,1]],但是题目要求去重，所以最后只可以保留[[-1,-1,2],[-1,0,1]];
 
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>对于这道题目我们需要解决的问题两个:</p>
-<ul>
-<li>如何获取倒数第n个结点的信息</li>
-<li>如何删除节点</li>
-</ul>
-<ol>
-<li>首先是获取倒数第n个结点的的信息,这个我们可以通过快慢指针来进行一个实现。<ul>
-<li>快慢节点都开始于前哨节点处</li>
-<li>快节点先移动n个距离，之后fast与slow保持n个间距向后移动。</li>
-<li>当fast移到tail-&gt;next时，即fast为空时，停止移动。</li>
-</ul>
-</li>
-<li>删除节点是通过找到n的上一个节点，并改变其next指向，从而实现删除的目的。<br>具体代码如下所示：<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">removeNthFromEnd</span><span class="params">(ListNode* head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 设置前哨节点</span></span><br><span class="line">        ListNode* dummy = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">-1</span>);</span><br><span class="line">        dummy-&gt;next = head;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置快慢指针</span></span><br><span class="line">        ListNode* slow = dummy;</span><br><span class="line">        ListNode* fast = dummy;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// fast 移到到距离slow size=n的地方</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n+<span class="number">1</span>; ++i) &#123;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 当fast不为空时，进行左右指针的移动</span></span><br><span class="line">        <span class="keyword">while</span> (fast) &#123;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 删除倒数第n个节点</span></span><br><span class="line">        ListNode* delNode = slow-&gt;next;</span><br><span class="line">        slow-&gt;next = delNode-&gt;next;</span><br><span class="line">        <span class="built_in"><span class="keyword">delete</span></span>(delNode);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//返回头节点</span></span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
-</ol>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;三个值的计算可能会比较麻烦，但是固定一个值，仅去计算两数之和就会简单很多。我们可以先对数组进行一个排序，方便待会儿处理左右指针的移动。至于固定一个值，我们可以使用for循环,使用完一个推向下一个。<br>&emsp;&emsp;由于存在数字重复,所以需要对数字进行去重。在固定好第一个值后，我们就要开始操作双指针了。i是值固定，因此我们的left必须为(i+1),right不受影响也就是数组的最后一个值(len-1)。因为$a+b+c=0$,所以$a+b=-c$，接下来就是通过值的比较来寻找有效三元组。<br><br>&emsp;&emsp;当找到一个有效三元组时，left与right需同时变化。这里仍需考虑去重问题如:<code>[-1,-1,-1,3,3,3];left = 1,right =4;</code>，为了避免这种情况,我们需要对数字进行去重。最后重复前面操作就可以得出结果了，具体代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">threeSum</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="comment">// base case</span></span><br><span class="line">        <span class="keyword">int</span> len = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span> (len &lt; <span class="number">3</span>) <span class="keyword">return</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// save result</span></span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt; &gt; res;</span><br><span class="line">        std::<span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(),nums.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">        <span class="comment">//固定一个值</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; len; i++) &#123;</span><br><span class="line">            <span class="comment">//第一个值大于零，则直接返回</span></span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt; <span class="number">0</span>) <span class="keyword">return</span> res;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 去重</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i<span class="number">-1</span>]) <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//双指针操作</span></span><br><span class="line">            <span class="comment">// left起始点在i之后，right 不受影响</span></span><br><span class="line">            <span class="keyword">int</span> left = i + <span class="number">1</span>, right = len <span class="number">-1</span>;</span><br><span class="line">            <span class="keyword">while</span> (left &lt; right) &#123;  </span><br><span class="line">                <span class="keyword">int</span> sum = nums[left] + nums[right];</span><br><span class="line">                <span class="keyword">if</span> (sum &gt; -nums[i]) right--;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (sum &lt; -nums[i]) left++;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">//找到一个有效三元组</span></span><br><span class="line">                    res.<span class="built_in">push_back</span>(&#123;nums[i],nums[left],nums[right]&#125;);</span><br><span class="line">                    left++;</span><br><span class="line">                    right--;</span><br><span class="line">                    </span><br><span class="line">                    <span class="comment">//去重</span></span><br><span class="line">                    <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[left] == nums[left<span class="number">-1</span>]) left++;</span><br><span class="line">                    <span class="keyword">while</span> (right &lt; right &amp;&amp; nums[right] == nums[right+<span class="number">1</span>]) right--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>algorithm</category>
@@ -960,6 +951,37 @@
 </li>
 </ul>
 <p>  时间复杂度为O(n)<br>  <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x &lt; <span class="number">0</span> || (x != <span class="number">0</span> &amp;&amp; x %<span class="number">10</span> == <span class="number">0</span>)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (x &gt; res) &#123;</span><br><span class="line">            res = res * <span class="number">10</span> + x % <span class="number">10</span>;</span><br><span class="line">            x /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (res == x) || (res/<span class="number">10</span> == x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-29</title>
+    <url>/2021/03/25/Leetcode-29/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;给定一个链表，删除链表的倒数第<code>n</code>个结点，并且返回链表的头结果。进阶:<font color=red>尝试使用一趟扫描实现</font></p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> head = [1,2,3,4,5], n = 2 <br>
+  <strong>Output:</strong> [1,2,3,5]
+</p>
+
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>对于这道题目我们需要解决的问题两个:</p>
+<ul>
+<li>如何获取倒数第n个结点的信息</li>
+<li>如何删除节点</li>
+</ul>
+<ol>
+<li>首先是获取倒数第n个结点的的信息,这个我们可以通过快慢指针来进行一个实现。<ul>
+<li>快慢节点都开始于前哨节点处</li>
+<li>快节点先移动n个距离，之后fast与slow保持n个间距向后移动。</li>
+<li>当fast移到tail-&gt;next时，即fast为空时，停止移动。</li>
+</ul>
+</li>
+<li>删除节点是通过找到n的上一个节点，并改变其next指向，从而实现删除的目的。<br>具体代码如下所示：<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">removeNthFromEnd</span><span class="params">(ListNode* head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 设置前哨节点</span></span><br><span class="line">        ListNode* dummy = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">-1</span>);</span><br><span class="line">        dummy-&gt;next = head;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置快慢指针</span></span><br><span class="line">        ListNode* slow = dummy;</span><br><span class="line">        ListNode* fast = dummy;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// fast 移到到距离slow size=n的地方</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n+<span class="number">1</span>; ++i) &#123;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 当fast不为空时，进行左右指针的移动</span></span><br><span class="line">        <span class="keyword">while</span> (fast) &#123;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 删除倒数第n个节点</span></span><br><span class="line">        ListNode* delNode = slow-&gt;next;</span><br><span class="line">        slow-&gt;next = delNode-&gt;next;</span><br><span class="line">        <span class="built_in"><span class="keyword">delete</span></span>(delNode);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//返回头节点</span></span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ol>
 ]]></content>
       <categories>
         <category>algorithm</category>
@@ -1058,6 +1080,49 @@
 
 <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;sum大于0就继续累加，小于0则重新计算子段的和</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxSub = nums[<span class="number">0</span>], curSum = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> n : nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (curSum &lt; <span class="number">0</span>)</span><br><span class="line">                curSum = <span class="number">0</span>;</span><br><span class="line">            curSum += n;</span><br><span class="line">            maxSub = <span class="built_in">max</span>(maxSub,curSum);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxSub;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-33</title>
+    <url>/2021/04/06/Leetcode-33/</url>
+    <content><![CDATA[<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>&emsp;&emsp;给你一个链表,每k个节点一组进行翻转，请你返回翻转之后的链表。k是一个正整数，它的值小于或等于链表的长度。如果节点总数不是k的整倍数，那么请将最后剩余的节点保持原有的顺序。</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> [1,2,3,4,5], k = 2 <br>
+  <strong>Output:</strong> [2,1,4,3,5]
+</p>
+
+<p><img src="https://assets.leetcode.com/uploads/2020/10/03/reverse_ex1.jpg" alt="avatar"></p>
+<p>&emsp;&emsp;由于长度为2，所以我们仅需对前4个节点进行操作。对于最后一个节点保持原样。</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;对于这道题目，我们对其进行逐步分析。首先对于链表这个数据结构来说，它本身就是一个兼具递归与迭代性质的数据结构。认真分析一下，就可以发现这个问题也是具有递归性质的。</p>
+<p>&emsp;&emsp;那么什么是递归性质呢？ 举个例子，我们对于链表调用<code>reverseKGroup(head, 2)</code>。即以两个节点为一组的反转链表。那么对于这两个处理好后，我们就需要对这个链表的后续结点接着操作，这些也就是子问题。</p>
+<p>&emsp;&emsp;利用递归性质，我们可以推导出如下算法：1、先翻转head为头的k个元素；2、将第k+1个元素作为head递归调用reverseGroup函数。3、最后将它们拼接起来，就可以形成最终的代码了。</p>
+<p><font color=red>具体代码实现如下所示</font></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseN</span><span class="params">(ListNode* a,ListNode* b)</span> </span>&#123;</span><br><span class="line">        ListNode* prev = <span class="literal">nullptr</span>;</span><br><span class="line">        ListNode* cur = a;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (cur != b) &#123;</span><br><span class="line">            ListNode* nxt = cur-&gt;next;</span><br><span class="line">            cur-&gt;next = prev;</span><br><span class="line">            prev = cur;</span><br><span class="line">            cur = nxt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="function">ListNode* <span class="title">reverseKGroup</span><span class="params">(ListNode* head, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        ListNode* a = head;</span><br><span class="line">        ListNode* b = head;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; k; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (b == <span class="literal">nullptr</span>) <span class="keyword">return</span> head;</span><br><span class="line">            b = b-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode* res = <span class="built_in">reverseN</span>(a,b);</span><br><span class="line">        a-&gt;next = <span class="built_in">reverseKGroup</span>(b,k);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-34</title>
+    <url>/2021/04/08/Leetcode-34/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;请判断一个链表是否为回文链表</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> 1->2->2->1 <br>
+  <strong>Output:</strong> true
+</p>
+
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;对于回文数来说，我们可以使用双指针对其进行操作。但是对于这道题目，它的数据结构为链表。如果我们想要像数组那样使用双指针，大概还需要一些其它操作。<br>&emsp;&emsp;这道题目使用的是链表数据结构，我们首先应该想到的是,它具有递归与迭代的性质。那我们是否可以使用递归或是迭代去获取它的头尾呢，这样问题就变成了一个如何去遍历它的问题。其实大部分遍历思想，我们都可以参考二叉树的三种遍历:前序、中序、后序。<br>&emsp;&emsp;在这里我们可以使用中序遍历，用right获取链表的尾，用left获取它的头。通过比较判断左右是否相等，从而选出结果。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ListNode* left;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        left = head;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Palindrome</span>(head);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">Palindrome</span><span class="params">(ListNode* right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (right == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">bool</span> res = <span class="built_in">Palindrome</span>(right-&gt;next);</span><br><span class="line">        res = res &amp;&amp; (right-&gt;val == left-&gt;val);</span><br><span class="line">        left = left-&gt;next;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>algorithm</category>
@@ -1401,53 +1466,28 @@
 <li>仿函数(functor): 作为函数使用的对象，用于泛化算法中的操作。</li>
 <li>配接器(adapter): 将一种容器修饰为不同的另一种容器。<br>&emsp;&emsp;大致关系如下图所示<br><img src="https://i.loli.net/2021/04/03/OZ4sXR9YhWMqEvC.png" alt="test_1_.png"></li>
 </ul>
-<h1 id="何谓空间配置器"><a href="#何谓空间配置器" class="headerlink" title="何谓空间配置器"></a>何谓空间配置器</h1><h2 id="空间配置器定义"><a href="#空间配置器定义" class="headerlink" title="空间配置器定义"></a>空间配置器定义</h2><p>&emsp;&emsp;从STL使用的角度来说，空间配置器是最不需要介绍的东西。因为它们早已被容器封装好了，在一切组件后默默付出。但是从实用角度来说，若是不了解STL的空间配置器，无异于空中楼阁，在阅读其它STL实现时都会遇到困难。</p>
-<h2 id="专属空间配置器"><a href="#专属空间配置器" class="headerlink" title="专属空间配置器"></a>专属空间配置器</h2><p>&emsp;&emsp;对于SGI STL来说，很多的项目早已脱离了STL标准规格。因此，SGI STL使用了一个专属的、拥有次层配置(sub-allocation)能力的、效率卓越的特殊配置器的<code>alloc</code>。当然SGI STL也提供了一个默认的内存配置器为<code>allocator</code>,只不过在大部分情况下，我们很少使用这个效率不佳且仅做内存分配与释放的配置器。<br>alloc不同于allocator，它不接受任何参数，以<code>vector</code>为例，它的的标准写法如下：</p>
+<h1 id="空间配置器"><a href="#空间配置器" class="headerlink" title="空间配置器"></a>空间配置器</h1><p>&emsp;&emsp;从STL使用的角度来说，空间配置器是最不需要介绍的东西。因为它们早已被容器封装好了，在一切组件后默默付出。但是从实用角度来说，若是不了解STL的空间配置器，无异于空中楼阁，在阅读其它STL实现时都会遇到困难。</p>
+<h2 id="专属配置器"><a href="#专属配置器" class="headerlink" title="专属配置器"></a>专属配置器</h2><p>&emsp;&emsp;对于SGI STL来说，很多的项目早已脱离了STL标准规格。因此，SGI STL使用了一个专属的、拥有次层配置(sub-allocation)能力的、效率卓越的特殊配置器的<code>alloc</code>。当然SGI STL也提供了一个默认的内存配置器为<code>allocator</code>,只不过在大部分情况下，我们很少使用这个效率不佳且仅做内存分配与释放的配置器。<br>alloc不同于allocator，它不接受任何参数，以<code>vector</code>为例，它的的标准写法如下：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">template &lt;class T, class Alloc &#x3D; alloc&gt; &#x2F;&#x2F; 缺省使用alloc为配置器</span><br><span class="line">class vector &#123;...&#125;;</span><br></pre></td></tr></table></figure>
 
-<h3 id="对象与内存管理"><a href="#对象与内存管理" class="headerlink" title="对象与内存管理"></a>对象与内存管理</h3><p>回到上面的问题，对于C++中new/delete的操作是怎样的？在日常使用中，我们所习惯的操作大致如下：</p>
+<h2 id="对象与内存"><a href="#对象与内存" class="headerlink" title="对象与内存"></a>对象与内存</h2><p>回到上面的问题，对于C++中new/delete的操作是怎样的？在日常使用中，我们所习惯的操作大致如下：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Foo &#123;...&#125;;</span><br><span class="line">Foo* pf &#x3D; new Foo;    &#x2F;&#x2F; 配置内存，然后构造对象</span><br><span class="line">delete pf;            &#x2F;&#x2F; 将对象析构，然后释放内存</span><br></pre></td></tr></table></figure>
-<p><strong>对于这里的new/delete算式都内含了两步的操作</strong></p>
-<ul>
-<li>new <ul>
-<li>调用::operator new 配置内存</li>
-<li>调用Foo::Foo() 构造对象内容</li>
-</ul>
-</li>
-<li>delete <ul>
-<li>调用对象Foo::~Foo()将对象析构</li>
-<li>调用::operator delete 释放内存</li>
-</ul>
-</li>
-</ul>
-<p><strong>为了精密分工，STL allocator 决定将这两个阶段分开</strong></p>
-<ul>
-<li>对于内存<ul>
-<li>分配<ul>
-<li>使用 alloc::allocate();</li>
-</ul>
-</li>
-<li>释放<ul>
-<li>使用 alloc::deallocate();</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>对于对象<ul>
-<li>构造<ul>
-<li>使用::construct();</li>
-</ul>
-</li>
-<li>析构<ul>
-<li>使用::destroy();</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<p>对于这里的new/delete算式都内含了两步的操作<br>&emsp;&emsp;new :调用::operator new 配置内存;调用Foo::Foo() 构造对象内容。<br>&emsp;&emsp;delete:调用对象Foo::~Foo()将对象析构;调用::operator delete 释放内存</p>
+<p>为了精密分工，STL allocator 决定将这两个阶段分开<br>&emsp;&emsp;对于内存:分配时使用 alloc::allocate();释放时使用 alloc::deallocate()。<br>&emsp;&emsp;对于对象:构造时使用::construct();析构时使用::destroy();</p>
 <p><font color=blue>大家可以通过下图来帮助理解与记忆</font><br><img src="https://i.loli.net/2021/04/06/q8dDbe4cSyu92H5.png" alt="demo.png"></p>
-<h1 id="Construct与Destroy"><a href="#Construct与Destroy" class="headerlink" title="Construct与Destroy"></a>Construct与Destroy</h1><p>&emsp;&emsp;通过上图的理解，知道这两个函数是如何完成对象的构造与析构。接下来我们通过对它们源码进行一个深入的理解<br>&emsp;&emsp;在STL中，<code>construct()</code>仅接受一个指针p与一个初值value。它的使用是将初值设定到指针所指向空间上。在C++中placement new运算子也可完成这一操作。<br><img src="https://i.loli.net/2021/04/07/EBGSsMV7PTR3K62.png" alt="demo _1_.png"><br>&emsp;&emsp;对于析构<code>destroy</code>则存在两个版本。第一个版本仅接受一个指针，准备将该指针所指向之物析构掉；第二个版本则是接受[first,last)两个迭代器，将范围内的对象析构掉。为了效率的考虑，调用类型萃取(__type_tratis<T>)防止无效析构拖慢性能。在检查结束后，就会调用第一版本的destroy来析构对象。<br><img src="https://i.loli.net/2021/04/07/f3BM8eiYHSApayv.png" alt="demo _2_.png"></p>
-<h2 id="源码阅读"><a href="#源码阅读" class="headerlink" title="源码阅读"></a>源码阅读</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;new.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T1</span>, <span class="keyword">class</span> <span class="title">T2</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">construct</span><span class="params">(T1* p,<span class="keyword">const</span> T2&amp;value)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">new</span> (p) <span class="built_in">T1</span>(value);    <span class="comment">//placement new;调用T1::T1(value);</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// destory()第一版本,仅接受一个指针</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">(T* pointer)</span> </span>&#123;</span><br><span class="line">  pointer-&gt;~<span class="built_in">T</span>();     <span class="comment">//调用destroy ~T(0)</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下都是destroy() 第二个版本以及它的特化</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">ForwardIterator</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">destory</span><span class="params">(ForwardIterator first,ForwardIterator last)</span> </span>&#123;</span><br><span class="line">  __destroy(first,last,<span class="built_in">value_type</span>(first));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断元素的数值类别(value type)是否有trivial destructor</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">ForwardIterator</span>,<span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span> __destroy(ForwardIterator first, ForwardIterator last,T*) &#123;</span><br><span class="line">  <span class="keyword">typedef</span> <span class="keyword">typename</span> __type_traits::has_trival_destructor trivial_destructor;</span><br><span class="line">  __destroy_aux(first,last,<span class="built_in">trivial_destructor</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果元素的数值类型有non-trival destructor...</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">ForwardIterator</span>&gt;</span></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span></span><br><span class="line">__destroy_aux(ForwardIterator first,ForwardIterator last,__false_type) &#123;</span><br><span class="line">  <span class="keyword">for</span> (; first &lt; last; ++first) </span><br><span class="line">    <span class="built_in">destroy</span>(&amp;*first);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果元素的数值类型有trival destructor..</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">ForwardIterator</span>&gt;</span></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span> __destroy_aux(ForwardIterator,ForwardIterator,__true_type) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下是destory()第二版本针对迭代器为char*与wchar_t*的特化版本</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">(<span class="keyword">char</span>* ,<span class="keyword">char</span>**)</span> </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">(<span class="keyword">wchar_t</span>*,<span class="keyword">wchar_t</span>*)</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="构造与析构"><a href="#构造与析构" class="headerlink" title="构造与析构"></a>构造与析构</h1><p>&emsp;&emsp;通过上图的理解，知道这两个函数是如何完成对象的构造与析构。接下来我们通过对其源码的剖析，对其作用加深理解。</p>
+<h2 id="源码阅读"><a href="#源码阅读" class="headerlink" title="源码阅读"></a>源码阅读</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;new.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">t1</span>, <span class="keyword">class</span> <span class="title">t2</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">construct</span><span class="params">(t1* p,<span class="keyword">const</span> t2&amp;value)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">new</span> (p) <span class="built_in">t1</span>(value);    <span class="comment">//placement new;调用t1::t1(value);</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// destory()第一版本,仅接受一个指针</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">t</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">(t* pointer)</span> </span>&#123;</span><br><span class="line">  pointer-&gt;~<span class="built_in">t</span>();     <span class="comment">//调用destroy ~t(0)</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下都是destroy() 第二个版本以及它的特化</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">forwarditerator</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">destory</span><span class="params">(forwarditerator first,forwarditerator last)</span> </span>&#123;</span><br><span class="line">  __destroy(first,last,<span class="built_in">value_type</span>(first));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断元素的数值类别(value type)是否有trivial destructor</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">forwarditerator</span>,<span class="keyword">class</span> <span class="title">t</span>&gt;</span></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span> __destroy(forwarditerator first, forwarditerator last,t*) &#123;</span><br><span class="line">  <span class="keyword">typedef</span> <span class="keyword">typename</span> __type_traits::has_trival_destructor trivial_destructor;</span><br><span class="line">  __destroy_aux(first,last,<span class="built_in">trivial_destructor</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果元素的数值类型有non-trival destructor...</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">forwarditerator</span>&gt;</span></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span></span><br><span class="line">__destroy_aux(forwarditerator first,forwarditerator last,__false_type) &#123;</span><br><span class="line">  <span class="keyword">for</span> (; first &lt; last; ++first) </span><br><span class="line">    <span class="built_in">destroy</span>(&amp;*first);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果元素的数值类型有trival destructor..</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">forwarditerator</span>&gt;</span></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span> __destroy_aux(forwarditerator,forwarditerator,__true_type) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下是destory()第二版本针对迭代器为char*与wchar_t*的特化版本</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">(<span class="keyword">char</span>* ,<span class="keyword">char</span>**)</span> </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">(<span class="keyword">wchar_t</span>*,<span class="keyword">wchar_t</span>*)</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><p>&emsp;&emsp;在STL源码中，<code>construct()</code>仅接受一个指针p与一个初值value。它的使用是将初值设定到指针所指向空间上。在C++中placement new运算子也可完成这一操作。<br><img src="https://i.loli.net/2021/04/07/EBGSsMV7PTR3K62.png" alt="demo _1_.png"><br>&emsp;&emsp;对于析构<code>destroy</code>则存在两个版本。第一个版本仅接受一个指针，准备将该指针所指向之物析构掉；第二个版本则是接受[first,last)两个迭代器，将范围内的对象析构掉。为了效率的考虑，调用类型萃取<code>__type_traits</code>防止无效析构拖慢性能。在检查结束后，就会调用第一版本的destroy来析构对象。<br><img src="https://i.loli.net/2021/04/07/f3BM8eiYHSApayv.png" alt="demo _2_.png"></p>
+<h1 id="空间配置核心"><a href="#空间配置核心" class="headerlink" title="空间配置核心"></a>空间配置核心</h1><p>剖析完对象构造与析构的源码后，接下来我们一起深入内存的配置与释放之旅，了解空间配置器核心————alloc。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对象构造前的空间配置与对象析构后的空间释放，全由&lt;stl_alloc.h&gt;负责，SGI对此的设计哲学如下：</p>
+<ul>
+<li><font color=red> 向system heap要求空间 </font></li>
+<li><font color=red> 考虑多线程(multi-threads)状态</font></li>
+<li><font color=red> 考虑内存不足的应变措施</font></li>
+<li><font color=red> 考虑过多”小型区块”可能造成的内存碎片(fragment)问题</font></li>
+</ul>
+<p>&emsp;&emsp;考虑到小型区块可能造成的内存破碎问题，SGI设计了双层级配置器。当配置区块&gt;128bytes时，则采用一级配置器。当配置区块&lt;128bytes时，则调用二级配置的memory pool来处理。<br>&emsp;&emsp;之前提及过，alloc这个次层配置、效率卓越的特殊配置器逸脱了STL标准。SGI为其包装了一个接口从而符合STL规格。下面是它们的定义与包装后的代码：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta"># <span class="meta-keyword">ifdef</span> __USER_MALLOC</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">typedef</span> __malloc_alloc_template&lt;<span class="number">0</span>&gt; malloc_alloc;</span><br><span class="line"><span class="keyword">typedef</span> malloc_alloc alloc;</span><br><span class="line"><span class="meta"># <span class="meta-keyword">else</span></span></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">// 令 alloc 为二级配置器</span></span><br><span class="line"><span class="keyword">typedef</span> __default_alloc_template&lt;__NODE_ALLOCATOR_THREADS, <span class="number">0</span>&gt; alloc;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* ! __USER_MALLOC */</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>,<span class="keyword">class</span> <span class="title">Alloc</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">simple_alloc</span> &#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">static</span> T *<span class="title">allocate</span><span class="params">(<span class="keyword">size_t</span> n)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;<span class="keyword">return</span> <span class="number">0</span> == n ? <span class="number">0</span> : (T*)  Alloc::<span class="built_in">allocate</span>(n * <span class="built_in"><span class="keyword">sizeof</span></span>(T));&#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> T *<span class="title">allocate</span><span class="params">(<span class="keyword">void</span>)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;<span class="keyword">return</span> (T*) Alloc::<span class="built_in">allocate</span>(<span class="built_in"><span class="keyword">sizeof</span></span> (T));&#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">deallocate</span><span class="params">(T *p, <span class="keyword">size_t</span> n)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;<span class="keyword">if</span> (<span class="number">0</span> != n) Alloc::<span class="built_in">deallocate</span>(p, n * <span class="built_in"><span class="keyword">sizeof</span></span>(T));&#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">deallocate</span> <span class="params">(T *p)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;Alloc::<span class="built_in">deallocate</span>(p,<span class="built_in"><span class="keyword">sizeof</span></span>(T));&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Read Notes</category>
@@ -2833,49 +2873,6 @@
       </categories>
       <tags>
         <tag>theory</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-33</title>
-    <url>/2021/04/06/Leetcode-33/</url>
-    <content><![CDATA[<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>&emsp;&emsp;给你一个链表,每k个节点一组进行翻转，请你返回翻转之后的链表。k是一个正整数，它的值小于或等于链表的长度。如果节点总数不是k的整倍数，那么请将最后剩余的节点保持原有的顺序。</p>
-<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p style = "background-color:rgba(240,248,255)">
-  <strong>Input:</strong> [1,2,3,4,5], k = 2 <br>
-  <strong>Output:</strong> [2,1,4,3,5]
-</p>
-
-<p><img src="https://assets.leetcode.com/uploads/2020/10/03/reverse_ex1.jpg" alt="avatar"></p>
-<p>&emsp;&emsp;由于长度为2，所以我们仅需对前4个节点进行操作。对于最后一个节点保持原样。</p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;对于这道题目，我们对其进行逐步分析。首先对于链表这个数据结构来说，它本身就是一个兼具递归与迭代性质的数据结构。认真分析一下，就可以发现这个问题也是具有递归性质的。</p>
-<p>&emsp;&emsp;那么什么是递归性质呢？ 举个例子，我们对于链表调用<code>reverseKGroup(head, 2)</code>。即以两个节点为一组的反转链表。那么对于这两个处理好后，我们就需要对这个链表的后续结点接着操作，这些也就是子问题。</p>
-<p>&emsp;&emsp;利用递归性质，我们可以推导出如下算法：1、先翻转head为头的k个元素；2、将第k+1个元素作为head递归调用reverseGroup函数。3、最后将它们拼接起来，就可以形成最终的代码了。</p>
-<p><font color=red>具体代码实现如下所示</font></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseN</span><span class="params">(ListNode* a,ListNode* b)</span> </span>&#123;</span><br><span class="line">        ListNode* prev = <span class="literal">nullptr</span>;</span><br><span class="line">        ListNode* cur = a;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (cur != b) &#123;</span><br><span class="line">            ListNode* nxt = cur-&gt;next;</span><br><span class="line">            cur-&gt;next = prev;</span><br><span class="line">            prev = cur;</span><br><span class="line">            cur = nxt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="function">ListNode* <span class="title">reverseKGroup</span><span class="params">(ListNode* head, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        ListNode* a = head;</span><br><span class="line">        ListNode* b = head;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; k; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (b == <span class="literal">nullptr</span>) <span class="keyword">return</span> head;</span><br><span class="line">            b = b-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode* res = <span class="built_in">reverseN</span>(a,b);</span><br><span class="line">        a-&gt;next = <span class="built_in">reverseKGroup</span>(b,k);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-34</title>
-    <url>/2021/04/08/Leetcode-34/</url>
-    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;请判断一个链表是否为回文链表</p>
-<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p style = "background-color:rgba(240,248,255)">
-  <strong>Input:</strong> 1->2->2->1 <br>
-  <strong>Output:</strong> true
-</p>
-
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;对于回文数来说，我们可以使用双指针对其进行操作。但是对于这道题目，它的数据结构为链表。如果我们想要像数组那样使用双指针，大概还需要一些其它操作。<br>&emsp;&emsp;这道题目使用的是链表数据结构，我们首先应该想到的是,它具有递归与迭代的性质。那我们是否可以使用递归或是迭代去获取它的头尾呢，这样问题就变成了一个如何去遍历它的问题。其实大部分遍历思想，我们都可以参考二叉树的三种遍历:前序、中序、后序。<br>&emsp;&emsp;我们可以使用中序遍历，用right获取链表的尾，用left获取它的头。通过比较判断左右是否相等，从而选出结果。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ListNode* left;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        left = head;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Palindrome</span>(head);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">Palindrome</span><span class="params">(ListNode* right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (right == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">bool</span> res = <span class="built_in">Palindrome</span>(right-&gt;next);</span><br><span class="line">        res = res &amp;&amp; (right-&gt;val == left-&gt;val);</span><br><span class="line">        left = left-&gt;next;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>algorithm</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
       </tags>
   </entry>
 </search>
