@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="最长回文子串">
@@ -28,7 +28,7 @@
 <meta property="og:description" content="最长回文子串">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-20T14:16:00.000Z">
-<meta property="article:modified_time" content="2021-03-20T14:43:01.453Z">
+<meta property="article:modified_time" content="2021-04-07T02:24:35.900Z">
 <meta property="article:author" content="Rabbet">
 <meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary">
@@ -142,7 +142,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">44</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">45</span></a>
 
   </li>
         <li class="menu-item menu-item-links">
@@ -191,6 +191,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -227,10 +228,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-03-20 22:16:00 / 修改时间：22:43:01" itemprop="dateCreated datePublished" datetime="2021-03-20T22:16:00+08:00">2021-03-20</time>
+              <time title="创建时间：2021-03-20 22:16:00" itemprop="dateCreated datePublished" datetime="2021-03-20T22:16:00+08:00">2021-03-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-07 10:24:35" itemprop="dateModified" datetime="2021-04-07T10:24:35+08:00">2021-04-07</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -247,7 +254,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.1k</span>
+              <span>945</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -275,7 +282,7 @@
 &emsp;&emsp;对于这样一个字符串，不止存在一个最长回文子串。可以是bab或aba。
 
 <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;对于这个题目，如果使用翻转的话。对于<code>aacxycaa</code>,反转之后是<code>aacyxcaa</code>,这时最长公共子串为<code>aac</code>,但是正确的回文子串为<code>aa</code>，所以这种方法不可以使用。<br>&emsp;&emsp;这个题目，应该思考如何使用双指针。对于寻找回文串的问题的关键之处在于：从中间开始向两边扩散来判断。首先我们需要先找到这个最长字符串，但是对于字符串来说，它们的个数可能是奇数或是偶数。对于偶数来说，寻找s[i]为中心的回文串；对于奇数，寻找s[i]和s[i+1]为中心的回文串。在寻找的过程中，应该注意边界限制。具体代码如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string longestPalindrome(string s) &#123;</span><br><span class="line">        string res;</span><br><span class="line">        for (int i &#x3D; 0; i &lt;s.size(); i++) &#123;</span><br><span class="line">            &#x2F;&#x2F;以s[i]为中心的最长回文子串</span><br><span class="line">            string s1 &#x3D; Palindrome(s,i,i);</span><br><span class="line">            &#x2F;&#x2F;以s[i+1]为中心的最长回文子串</span><br><span class="line">            string s2 &#x3D; Palindrome(s,i,i+1);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; res &#x3D; longest(res,s1,s2);</span><br><span class="line">            res &#x3D; res.size() &gt; s1.size() ? res : s1;</span><br><span class="line">            res &#x3D; res.size() &gt; s2.size() ? res : s2;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    string Palindrome(string&amp; s,int l, int r) &#123;</span><br><span class="line">        &#x2F;&#x2F; 防止索引越界</span><br><span class="line">        while (l &gt;&#x3D; 0 &amp;&amp; r &lt; s.size() &amp;&amp; s[l] &#x3D;&#x3D; s[r]) &#123;</span><br><span class="line">            &#x2F;&#x2F; 向两边展开</span><br><span class="line">            l--,r++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 返回以 s[l] 和 s[r]为中心的最长字符串</span><br><span class="line">        return s.substr(l+1, r-l-1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">longestPalindrome</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        string res;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;s.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="comment">//以s[i]为中心的最长回文子串</span></span><br><span class="line">            string s1 = <span class="built_in">Palindrome</span>(s,i,i);</span><br><span class="line">            <span class="comment">//以s[i+1]为中心的最长回文子串</span></span><br><span class="line">            string s2 = <span class="built_in">Palindrome</span>(s,i,i+<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// res = longest(res,s1,s2);</span></span><br><span class="line">            res = res.<span class="built_in">size</span>() &gt; s1.<span class="built_in">size</span>() ? res : s1;</span><br><span class="line">            res = res.<span class="built_in">size</span>() &gt; s2.<span class="built_in">size</span>() ? res : s2;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">string <span class="title">Palindrome</span><span class="params">(string&amp; s,<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 防止索引越界</span></span><br><span class="line">        <span class="keyword">while</span> (l &gt;= <span class="number">0</span> &amp;&amp; r &lt; s.<span class="built_in">size</span>() &amp;&amp; s[l] == s[r]) &#123;</span><br><span class="line">            <span class="comment">// 向两边展开</span></span><br><span class="line">            l--,r++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 返回以 s[l] 和 s[r]为中心的最长字符串</span></span><br><span class="line">        <span class="keyword">return</span> s.<span class="built_in">substr</span>(l+<span class="number">1</span>, r-l<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -376,7 +383,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -436,7 +443,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:28</span>
+    <span title="站点阅读时长">1:29</span>
 </div>
 
 
