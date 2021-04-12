@@ -20,20 +20,22 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Two Sum II - Input array is sorted (双指针 ＃167)">
+  <meta name="description" content="从中序遍历与后序遍历序列构造二叉树(二叉树问题 ＃106)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode-17">
-<meta property="og:url" content="http://yoursite.com/2021/02/08/Leetcode-17/index.html">
+<meta property="og:title" content="Leetcode-37">
+<meta property="og:url" content="http://yoursite.com/2021/04/12/Leetcode-37/index.html">
 <meta property="og:site_name" content="Rabbet">
-<meta property="og:description" content="Two Sum II - Input array is sorted (双指针 ＃167)">
+<meta property="og:description" content="从中序遍历与后序遍历序列构造二叉树(二叉树问题 ＃106)">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-02-08T01:13:00.000Z">
-<meta property="article:modified_time" content="2021-04-07T02:22:59.462Z">
+<meta property="og:image" content="https://upload.cc/i1/2021/04/12/LQbykO.png">
+<meta property="article:published_time" content="2021-04-12T00:05:00.000Z">
+<meta property="article:modified_time" content="2021-04-12T01:40:07.694Z">
 <meta property="article:author" content="Rabbet">
 <meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload.cc/i1/2021/04/12/LQbykO.png">
 
-<link rel="canonical" href="http://yoursite.com/2021/02/08/Leetcode-17/">
+<link rel="canonical" href="http://yoursite.com/2021/04/12/Leetcode-37/">
 
 
 <script id="page-configurations">
@@ -46,7 +48,7 @@
   };
 </script>
 
-  <title>Leetcode-17 | Rabbet</title>
+  <title>Leetcode-37 | Rabbet</title>
   
 
 
@@ -206,7 +208,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/08/Leetcode-17/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/12/Leetcode-37/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://i.postimg.cc/Zqsj0dJx/header.jpg">
@@ -219,7 +221,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Leetcode-17
+          Leetcode-37
         </h1>
 
         <div class="post-meta">
@@ -228,16 +230,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-02-08 09:13:00" itemprop="dateCreated datePublished" datetime="2021-02-08T09:13:00+08:00">2021-02-08</time>
+              <time title="创建时间：2021-04-12 08:05:00 / 修改时间：09:40:07" itemprop="dateCreated datePublished" datetime="2021-04-12T08:05:00+08:00">2021-04-12</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-07 10:22:59" itemprop="dateModified" datetime="2021-04-07T10:22:59+08:00">2021-04-07</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -254,7 +250,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1k</span>
+              <span>1.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -263,7 +259,7 @@
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               <span>1 分钟</span>
             </span>
-            <div class="post-description">Two Sum II - Input array is sorted (双指针 ＃167)</div>
+            <div class="post-description">从中序遍历与后序遍历序列构造二叉树(二叉树问题 ＃106)</div>
 
         </div>
       </header>
@@ -274,21 +270,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;在一个培育的整数数组里找到两个数，使它们的和为给定值。书籍有且有一对解。</p>
-<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p>&emsp;&emsp;输入是一个数组(numbers)和一个给定值(target)。输出是两个数的位置，从1开始计数。</p>
-<p style = "background-color:rgba(240,248,255)">
-  <strong>Input:</strong> flowerbed = [2,7,11,15], target = 9<br>
-  <strong>Output:</strong> [1,2]
+        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>&emsp;&emsp;根据一棵树的中序遍历与后序遍历构造二叉树。</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p style = "background-color:rgba(240,248,255)">
+中序遍历 inorder = [9,3,15,20,7]
+后序遍历 postorder = [9,15,7,20,3]
 </p>
-&emsp;&emsp;要这个样例中，第一个数数字(2)和第二个数字(7)的和等于给定值(9)。
-# 题解
-&emsp;&emsp;因为数组已经排好序，我们可以采用方向相反的双指针来寻找这两个数字，一个初始指向最小的元素，即数组最左边，向右遍历；一个初始指向最大的元素，即数组最左边，向左遍历。
-&emsp;&emsp;如果两个指针指向元素的和等于给定值那么它们就是我们要的结果，如果两个指针指向元素的和小于给定值，我们就把左边的指针右移一位，便利当前的和增加一点。如果两个指针指向元素的和大于给定值，我们把右边的指针左移一位，使得当前的和减少一点。
-&emsp;&emsp;可以证明，对于排好序且有解的数组，双指针一定能遍历到最优解。证明方法如下：假设最优俀的两个数的位置分别是<code>l</code>和<code>r</code>
-  * 我们假设在左指针在l左边的时候，右指针已经移动到了r；此时两个指针指向值的和小于给定值，因此左指针会一直右移直到到达l。
-  * 同理，如果我们假设在右指针在r右边的时候，左指针已经移动到了l；此时两个指针指向值的和大于给定值，因此右指针会一直左移直到到达r。
-&emsp;&emsp;所以双指针在任何时候都不可能牌(l,r)之间，又因为不满足条件时指针必须移动一个，所以最终一定会收敛于l和r之间。
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>,r = nums.<span class="built_in">size</span>()<span class="number">-1</span>,n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">while</span> (l &lt;= r) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[l] + nums[r] == target) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[l] + nums[r] &gt; target) --r;</span><br><span class="line">            <span class="keyword">else</span> ++l;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> vector&lt;<span class="keyword">int</span>&gt;&#123;l+<span class="number">1</span>,r+<span class="number">1</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+返回的二叉树如下：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  3</span><br><span class="line"> &#x2F; \</span><br><span class="line">9  20</span><br><span class="line">  &#x2F;  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
+
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;具体题解可以参考<a href="/2021/04/09/Leetcode-36/index.html">这里</a>,这里我就把中序与后序的实现的区别图贴与代码实现贴出来，以供大家参考：</p>
+<p><img src="https://upload.cc/i1/2021/04/12/LQbykO.png" alt="avatar"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; inorder, vector&lt;<span class="keyword">int</span>&gt;&amp; postorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">create</span>(inorder,<span class="number">0</span>,inorder.<span class="built_in">size</span>()<span class="number">-1</span>,</span><br><span class="line">                      postorder,<span class="number">0</span>,postorder.<span class="built_in">size</span>()<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	     <span class="function">TreeNode* <span class="title">create</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; inorder,<span class="keyword">int</span> inStart,<span class="keyword">int</span> inEnd,</span></span></span><br><span class="line"><span class="function"><span class="params">    vector&lt;<span class="keyword">int</span>&gt;&amp; postorder,<span class="keyword">int</span> posStart,<span class="keyword">int</span> posEnd)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 递归出口</span></span><br><span class="line">        <span class="keyword">if</span> (posStart &gt; posEnd) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">int</span> rootval = postorder[posEnd];</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = inStart; i &lt;= inEnd; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (rootval == inorder[i]) &#123;</span><br><span class="line">                index = i;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">		<span class="keyword">int</span> leftsize = index - inStart;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(rootval);</span><br><span class="line">        root-&gt;left = <span class="built_in">create</span>(inorder,inStart,index<span class="number">-1</span>,</span><br><span class="line">                            postorder,posStart,posStart+leftsize<span class="number">-1</span>);</span><br><span class="line">        root-&gt;right = <span class="built_in">create</span>(inorder,index+<span class="number">1</span>,inEnd,</span><br><span class="line">                            postorder,posStart+leftsize,posEnd<span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -307,13 +299,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/02/06/Leetcode-16/" rel="prev" title="Leetcode-16">
-      <i class="fa fa-chevron-left"></i> Leetcode-16
+    <a href="/2021/04/09/Leetcode-36/" rel="prev" title="Leetcode-36">
+      <i class="fa fa-chevron-left"></i> Leetcode-36
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/02/09/Leetcode-18/" rel="next" title="Leetcode-18">
-      Leetcode-18 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -372,7 +361,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="nav-text">输入输出样例</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="nav-text">输入输出样例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-text">题解</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
