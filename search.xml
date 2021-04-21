@@ -3048,8 +3048,13 @@
 <h2 id="list-基本数据结构"><a href="#list-基本数据结构" class="headerlink" title="list 基本数据结构"></a>list 基本数据结构</h2><p>list 自己定义了嵌套类型满足traits编程，list的迭代器类型是bidirectional_iterator_tag类型，并不是一个普通的指针。它的主体结构如下图所示：<br><img src="https://i.loli.net/2021/04/19/GvrZx8kHVPufY7X.png" alt="pic9.png"></p>
 <h2 id="list-构造与析构"><a href="#list-构造与析构" class="headerlink" title="list 构造与析构"></a>list 构造与析构</h2><p>list提供了多个构造函数，其中主要的两类就是：配置n个节点空间、空链表。它们的构造过程如下图所示：<br><img src="https://i.loli.net/2021/04/19/GQzer2npK9DCwdE.png" alt="pic10.png"></p>
 <h2 id="list-基本元素获取"><a href="#list-基本元素获取" class="headerlink" title="list 基本元素获取"></a>list 基本元素获取</h2><p>在了解了对象构造与析构的基础上，我们再继续深入list的基本元素操作有获取头尾、判断链表为空等元素操作。它所包括的基本操作如下所示：<br><img src="https://i.loli.net/2021/04/19/8ktCWuyf9wFRHTE.png" alt="pic11.png"></p>
-<h2 id="list-元素操作"><a href="#list-元素操作" class="headerlink" title="list 元素操作"></a>list 元素操作</h2><p>list所提供的元素操作很多，无法在有限的篇幅中详细讲解。在这里将着重讲解以下几个元素操作：push_front、push_back、pop_front、pop_back、insert、erase。这此包括了元素的插入与删除的基本操作，其它的操作可自行阅读源码进行深入理解。</p>
-<h3 id="list-元素操作——插入"><a href="#list-元素操作——插入" class="headerlink" title="list 元素操作——插入"></a>list 元素操作——插入</h3>]]></content>
+<h2 id="list-元素操作"><a href="#list-元素操作" class="headerlink" title="list 元素操作"></a>list 元素操作</h2><p>list所提供的元素操作很多，无法在有限的篇幅中详细讲解。在这里将着重讲解以下几个元素操作：push_front、push_back、pop_front、pop_back。这此包括了元素的插入与删除的基本操作，其它的操作可自行阅读源码进行深入理解。</p>
+<h3 id="list-元素操作——插入"><a href="#list-元素操作——插入" class="headerlink" title="list 元素操作——插入"></a>list 元素操作——插入</h3><p>在list中，经常使用push_back()与push_front()实现头部插入与尾部插入,其实现大多是通过调用insert()函数来实现这一功能的。在此，仅介绍一种insert的简单形式，通过它来一窥双链表中的头插与尾插。<br><img src="https://i.loli.net/2021/04/20/bxXJvZH6f3Cmcti.png" alt="pic13.png"></p>
+<h3 id="list-元素操作——删除"><a href="#list-元素操作——删除" class="headerlink" title="list 元素操作——删除"></a>list 元素操作——删除</h3><p>对应push_back()与push_front()，它们的删除操作是由pop_back()与pop_front()来管理的。其实实现就是通过对prev、next移动来实现。<br><img src="https://i.loli.net/2021/04/20/NIujGJbmz7CKrXU.png" alt="pic15.png"></p>
+<h2 id="list-优缺点总结"><a href="#list-优缺点总结" class="headerlink" title="list 优缺点总结"></a>list 优缺点总结</h2><p>list是一个双向链表,因为其具有链表的特性，在仅需一些指针操作时，应尽可能的使用list成员函数<br><strong>优点</strong><br>&emsp;&emsp; * 插入删除元素效率很高<br>&emsp;&emsp; * 可在两端进行数据进行操作</p>
+<p><strong>缺点</strong><br>&emsp;&emsp; * 不支持随机访问<br>&emsp;&emsp; * 相对于vector占用内存过多</p>
+<h1 id="deque"><a href="#deque" class="headerlink" title="deque"></a>deque</h1><p>vector 是单向开口的连续线性空间</p>
+]]></content>
       <categories>
         <category>Read Notes</category>
       </categories>
@@ -3181,6 +3186,51 @@
 <p><img src="https://i.loli.net/2021/04/20/lLEVwQq6WroSm7h.png" alt="pic.png"></p>
 <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>首先思考，对应的节点该做什么事情。我们想把节点插入进行，并符合二叉树的规则。那么就是将val的值与root的左子树与右子树的值进行一个比较。遇到空的就插入,具体代码十分清晰。</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">insertIntoBST</span><span class="params">(TreeNode* root, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            TreeNode* root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(val);</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (root-&gt;val &gt; val) root-&gt;left = <span class="built_in">insertIntoBST</span>(root-&gt;left,val);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (root-&gt;val &lt; val) root-&gt;right = <span class="built_in">insertIntoBST</span>(root-&gt;right,val);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-43</title>
+    <url>/2021/04/19/Leetcode-43/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定二叉树的根节点root，返回它的节点值的前序遍历。</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p><img src="https://i.loli.net/2021/04/21/sgObEz12wWmAhTj.png" alt="pci.png"></p>
+<p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> root = [1,null,2,3] <br>
+  <strong>Output:</strong> [1,2,3]
+</p>
+
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>对于二叉树遍历，我们常使用的两种方法：递归、迭代(非递归)<br>一、递归方法三步走：</p>
+<ol>
+<li><p>确定递归的返回类型与函数参数</p>
+<ul>
+<li>仅是用于处理数据，因此我们不需要返回数据</li>
+<li>需要二叉树，并将它的节点存入数组.</li>
+<li>参数为(TreeNode * root, vector<int> res)<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(TreeNode* root, vector&lt;<span class="keyword">int</span>&gt;&amp; res)</span></span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>确定递归的终止条件</p>
+<ul>
+<li>当节点为空时，那么本层的递归就结束了<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>确定单层递归的逻辑</p>
+<ul>
+<li>前序遍历的顺序是:中－》左－》右</li>
+<li>所以应先取中间节点的值<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">res.<span class="built_in">push_back</span>(root-&gt;val);</span><br><span class="line"><span class="built_in">build</span>(root-&gt;left);</span><br><span class="line"><span class="built_in">build</span>(root-&gt;right);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<p>这样的二叉树前序遍历结束了，完整的代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(TreeNode* root,vector&lt;<span class="keyword">int</span>&gt;&amp; res)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 确定递归终止条件</span></span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 确定单层递归的逻辑</span></span><br><span class="line">        res.<span class="built_in">push_back</span>(root-&gt;val);</span><br><span class="line">        <span class="built_in">build</span>(root-&gt;left,res);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="built_in">build</span>(root,res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>二、前序遍历的迭代法<br>前序遍历是中左右，每次先处理的是中间节点，那么先将根节点放入栈中，再将右节点入栈，最后再将左节点入栈。根据这个逻辑，我们可以轻松写出代码。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        stack&lt;TreeNode*&gt; windows;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">nullptr</span>) <span class="keyword">return</span> res;</span><br><span class="line">        windows.<span class="built_in">push</span>(root);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!windows.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            TreeNode* node = windows.<span class="built_in">top</span>();</span><br><span class="line">            windows.<span class="built_in">pop</span>();</span><br><span class="line">            res.<span class="built_in">push_back</span>(node-&gt;val);</span><br><span class="line">            <span class="keyword">if</span> (node-&gt;right) windows.<span class="built_in">push</span>(node-&gt;right);</span><br><span class="line">            <span class="keyword">if</span> (node-&gt;left) windows.<span class="built_in">push</span>(node-&gt;left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>algorithm</category>
