@@ -27,14 +27,14 @@
 <meta property="og:site_name" content="Rabbet">
 <meta property="og:description" content="寻找重复子树(二叉树问题 ＃652)">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i.loli.net/2021/04/13/KrlajWoGTBbPMmE.png">
-<meta property="og:image" content="https://i.loli.net/2021/04/13/918WxQ6ISUZLbg4.png">
+<meta property="og:image" content="https://7894651.xyz/leetcode38/pic2.png">
+<meta property="og:image" content="https://7894651.xyz/leetcode38/pic3.png">
 <meta property="article:published_time" content="2021-04-12T23:28:00.000Z">
-<meta property="article:modified_time" content="2021-04-13T01:37:19.573Z">
+<meta property="article:modified_time" content="2021-05-08T01:10:17.628Z">
 <meta property="article:author" content="Rabbet">
 <meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2021/04/13/KrlajWoGTBbPMmE.png">
+<meta name="twitter:image" content="https://7894651.xyz/leetcode38/pic2.png">
 
 <link rel="canonical" href="http://qfxul.cn/2021/Leetcode-38/">
 
@@ -231,10 +231,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-04-13 07:28:00 / 修改时间：09:37:19" itemprop="dateCreated datePublished" datetime="2021-04-13T07:28:00+08:00">2021-04-13</time>
+              <time title="创建时间：2021-04-13 07:28:00" itemprop="dateCreated datePublished" datetime="2021-04-13T07:28:00+08:00">2021-04-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-08 09:10:17" itemprop="dateModified" datetime="2021-05-08T09:10:17+08:00">2021-05-08</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -275,7 +281,7 @@
 <h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">        <span class="number">1</span></span><br><span class="line">       / \</span><br><span class="line">      <span class="number">2</span>   <span class="number">3</span></span><br><span class="line">     /   / \</span><br><span class="line">    <span class="number">4</span>   <span class="number">2</span>   <span class="number">4</span></span><br><span class="line">       /</span><br><span class="line">      <span class="number">4</span></span><br><span class="line">输出：</span><br><span class="line">      <span class="number">2</span></span><br><span class="line">     /</span><br><span class="line">    <span class="number">4</span></span><br><span class="line">	与</span><br><span class="line">	<span class="number">4</span></span><br></pre></td></tr></table></figure>
 
 <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>&emsp;&emsp;题目的描述可能有点令人困惑，但是通过对上例的全面分析后，你大概就可以明白题目的含义了。</p>
-<p>&emsp;&emsp;首先，节点4本身也可以作为一棵子树，在这棵二叉树中就存在了许多重复的4节点。<br><img src="https://i.loli.net/2021/04/13/KrlajWoGTBbPMmE.png" alt="avatar"><br>&emsp;&emsp;此外，这棵二叉树中同样也存有了重复的以2为节点的子树。<br><img src="https://i.loli.net/2021/04/13/918WxQ6ISUZLbg4.png" alt="avatar"></p>
+<p>&emsp;&emsp;首先，节点4本身也可以作为一棵子树，在这棵二叉树中就存在了许多重复的4节点。<br><img src="https://7894651.xyz/leetcode38/pic2.png" alt="avatar"><br>&emsp;&emsp;此外，这棵二叉树中同样也存有了重复的以2为节点的子树。<br><img src="https://7894651.xyz/leetcode38/pic3.png" alt="avatar"></p>
 <p>&emsp;&emsp;那么对应的数组中就应该存有2,4这两个节点了</p>
 <p>&emsp;&emsp;既然理解题目了就可以动手解题了，对于二叉树问题。还是一个套路，先思考对应的节点应该做什么事情。如果想要知道以自己为根的子树是否重复，是否应该被加入结果列表中?<br>&emsp;&emsp;很明显，我需要知道以下两点：</p>
 <ol>

@@ -27,15 +27,15 @@
 <meta property="og:site_name" content="Rabbet">
 <meta property="og:description" content="Effective C++ 读书笔记-I">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i.loli.net/2021/04/03/OZ4sXR9YhWMqEvC.png">
-<meta property="og:image" content="https://i.loli.net/2021/04/11/WoPyKYHEIX3pZnz.png">
-<meta property="og:image" content="https://i.loli.net/2021/04/11/GANc9283PLpizCg.png">
+<meta property="og:image" content="https://7894651.xyz/effective/pic.png">
+<meta property="og:image" content="https://7894651.xyz/effective/pic1.png">
+<meta property="og:image" content="https://7894651.xyz/effective/pic2.png">
 <meta property="article:published_time" content="2021-03-23T00:27:00.000Z">
-<meta property="article:modified_time" content="2021-04-16T00:35:16.589Z">
+<meta property="article:modified_time" content="2021-05-08T00:15:25.484Z">
 <meta property="article:author" content="Rabbet">
 <meta property="article:tag" content="theory">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2021/04/03/OZ4sXR9YhWMqEvC.png">
+<meta name="twitter:image" content="https://7894651.xyz/effective/pic.png">
 
 <link rel="canonical" href="http://qfxul.cn/2021/Effective-C-Read-Note/">
 
@@ -240,7 +240,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-16 08:35:16" itemprop="dateModified" datetime="2021-04-16T08:35:16+08:00">2021-04-16</time>
+                <time title="修改时间：2021-05-08 08:15:25" itemprop="dateModified" datetime="2021-05-08T08:15:25+08:00">2021-05-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -293,7 +293,7 @@
 </ul>
 </li>
 <li>STL<ul>
-<li>这是Template 程序库，它由六大组件构成。它们有着严格的要求，与它们工作时，我们也必须遵守它们的条约。六大组件图：<br><img src="https://i.loli.net/2021/04/03/OZ4sXR9YhWMqEvC.png" alt="test_1_.png"><br><font color=red><strong>C++语言的高效编程需要根据使用它的不同部分不断变化的。</strong></font></li>
+<li>这是Template 程序库，它由六大组件构成。它们有着严格的要求，与它们工作时，我们也必须遵守它们的条约。六大组件图：<br><img src="https://7894651.xyz/effective/pic.png" alt="avatar"><br><font color=red><strong>C++语言的高效编程需要根据使用它的不同部分不断变化的。</strong></font></li>
 </ul>
 </li>
 </ul>
@@ -359,12 +359,12 @@
 <h1 id="第二章-构造、析构、赋值运算"><a href="#第二章-构造、析构、赋值运算" class="headerlink" title="第二章 构造、析构、赋值运算"></a><center>第二章 构造、析构、赋值运算</center></h1><h2 id="条款五：了解C-默默编写并调用哪些函数"><a href="#条款五：了解C-默默编写并调用哪些函数" class="headerlink" title="条款五：了解C++ 默默编写并调用哪些函数"></a>条款五：了解C++ 默默编写并调用哪些函数</h2><p>&emsp;&emsp;当我们创建了一个空类时，它真的是空类？当我们在编译运行时，编译器会为我们创建一个copy函数、一个assignment操作符、一个析构函数还有一个默认构造函数。这些类型都是public类型且它们都是内联(inline)里面。当然，仅在它们被需要的时候，都会被创建出来。这样就像如下的代码：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Empty</span> &#123;</span></span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">		<span class="built_in">Empty</span>() &#123;..&#125;	<span class="comment">// default构造函数</span></span><br><span class="line">		<span class="built_in">Empty</span>(<span class="keyword">const</span> Empty&amp; rhs) &#123;...&#125;	<span class="comment">//copy构造函数</span></span><br><span class="line">		~<span class="built_in">Empty</span>() &#123;...&#125;		<span class="comment">// 析构函数</span></span><br><span class="line"></span><br><span class="line">		Empty&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> Empty&amp; rhs) &#123;...&#125; <span class="comment">//copy assignment操作符</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>&emsp;&emsp;这些默认函数都提供了哪些功能呢？接下来我们将对它们进行一一分析<br>&emsp;&emsp;首先对于copy构造与assignment操作符的作用仅是把每一个non-static(class 中的成员)成员变量拷贝到目标对象。<br>&emsp;&emsp;对于析构函数，它们仅仅是将对象释放掉。由于是编译器提供，所以它的默认属性是<font color=red>virtualness</font>，在多重继承中这可会导致内存泄漏之类的麻烦问题<br>&emsp;&emsp;默认的构造函数被构造出来，仅仅是为了让满足编译器需要。它们并不会被直接合成出来，只有被需要时都会被合成。它也不会显式设定class的init值。</p>
-<p><img src="https://i.loli.net/2021/04/11/WoPyKYHEIX3pZnz.png" alt="demo12.png"></p>
+<p><img src="https://7894651.xyz/effective/pic1.png" alt="avatar"></p>
 <h2 id="条款六：若不想使用编译器自动生成的函数，就该明确拒绝"><a href="#条款六：若不想使用编译器自动生成的函数，就该明确拒绝" class="headerlink" title="条款六：若不想使用编译器自动生成的函数，就该明确拒绝"></a>条款六：若不想使用编译器自动生成的函数，就该明确拒绝</h2><p>&emsp;&emsp;在一个系统中，若是每个数据都是独有的。那么对于编译器的copy构造与copy assignment操作符，就应该明确拒绝。<br>&emsp;&emsp;但是如何拒绝编译器提供的版本呢？大师提供了一个思路，那么就是在类的private中将它们声明出来，以此来明确拒绝编译器提供的版本。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">demo</span> &#123;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	demo obj1; <span class="comment">// 使用default constructor</span></span><br><span class="line">	<span class="function">demo <span class="title">obj2</span><span class="params">(obj1)</span></span>; <span class="comment">// 企图拷贝obj1 不可以通过编译</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将其替换成,避免使用默认版本</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">demo</span> &#123;</span></span><br><span class="line">	<span class="keyword">private</span>:</span><br><span class="line">		<span class="built_in">demo</span>(<span class="keyword">const</span> demo&amp;); <span class="comment">// 仅声明</span></span><br><span class="line">		demo&amp; <span class="keyword">operator</span>= (<span class="keyword">const</span> demo&amp;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p>&emsp;&emsp;但是对于class 的member function 与友元函数，依旧可以调用private函数。所以最好的办法，使用继承的办法。将copy构造与copy assignment操作符写入基类，用以防止子类调用它们。*</p>
-<h2 id="条款七：-为多态基类声明virtual-析构函数"><a href="#条款七：-为多态基类声明virtual-析构函数" class="headerlink" title="条款七： 为多态基类声明virtual 析构函数"></a>条款七： 为多态基类声明virtual 析构函数</h2><p>&emsp;&emsp;在条款五中，我们提及了virtualness的虚拟函数会导致灾难的。这节我们将深入理解这个背后的原因。<br>&emsp;&emsp;当deirved class经由一个base class指针被删除，而被base class带着一个non-virtual析构函数，其结果未有定义——实际执行时通常发生的是对象的derived成分没被销毁。<br>&emsp;&emsp;如果派生类中含有基类的成员，但是调用析构函数后。诡异的事情发生了，派生类中的基类对象被销毁了，但是对于派生类对象没有被销毁。这就产生了局布销毁的对象，这也是导致资源泄漏、败坏数据结构的源头。给base class 析构加上虚函数，在delete父类指针时，会先调用子类的析构函数，再调用父类析构函数。<br>&emsp;&emsp;当然，对析构使用虚函数仅在多重继承使用。如果是在单继承，随意的使用虚函数会额外的增加编译器的负担。<br><img src="https://i.loli.net/2021/04/11/GANc9283PLpizCg.png" alt="demo17.png"></p>
+<h2 id="条款七：-为多态基类声明virtual-析构函数"><a href="#条款七：-为多态基类声明virtual-析构函数" class="headerlink" title="条款七： 为多态基类声明virtual 析构函数"></a>条款七： 为多态基类声明virtual 析构函数</h2><p>&emsp;&emsp;在条款五中，我们提及了virtualness的虚拟函数会导致灾难的。这节我们将深入理解这个背后的原因。<br>&emsp;&emsp;当deirved class经由一个base class指针被删除，而被base class带着一个non-virtual析构函数，其结果未有定义——实际执行时通常发生的是对象的derived成分没被销毁。<br>&emsp;&emsp;如果派生类中含有基类的成员，但是调用析构函数后。诡异的事情发生了，派生类中的基类对象被销毁了，但是对于派生类对象没有被销毁。这就产生了局布销毁的对象，这也是导致资源泄漏、败坏数据结构的源头。给base class 析构加上虚函数，在delete父类指针时，会先调用子类的析构函数，再调用父类析构函数。<br>&emsp;&emsp;当然，对析构使用虚函数仅在多重继承使用。如果是在单继承，随意的使用虚函数会额外的增加编译器的负担。<br><img src="https://7894651.xyz/effective/pic2.png" alt="avatar"></p>
 <h2 id="条款八：-别让异常逃离析构函数"><a href="#条款八：-别让异常逃离析构函数" class="headerlink" title="条款八： 别让异常逃离析构函数"></a>条款八： 别让异常逃离析构函数</h2><p>&emsp;&emsp;如果我们在析构中捕获异常，如果程序正常结束，一切OK。但是如果调用导致异常，析构将会传播这个异常，将程序带向一个不归路。对于这个问题，我们提供了两个办法来解决。<br>&emsp;&emsp;如果出现异常就通过abort()结束程序。强制结束，也就避免了异常从析构传播出去，提前阻止的不明确行为的发生。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test::~<span class="built_in">test</span>() &#123;</span><br><span class="line">	std::<span class="built_in">abort</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>&emsp;&emsp;一般来说，将异常吞掉会是一个馊主意。但是这种行为可比草率结束程序或发生不明确行为带来的风险好。<br>&emsp;&emsp;对于异常处理，我们最好是提供一个普通函数(非在析构函数中)来执行这个操作。</p>
