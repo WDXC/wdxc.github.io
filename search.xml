@@ -129,130 +129,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Data lab</title>
-    <url>/2021/Data-lab/</url>
-    <content><![CDATA[<h1 id="实验目标"><a href="#实验目标" class="headerlink" title="实验目标"></a>实验目标</h1><p>通过本次实验来熟悉整型和浮点型的位表达形式</p>
-<p>作业内容：</p>
-<table>
-<thead>
-<tr>
-<th align="center">函数名</th>
-<th align="center">内容</th>
-<th align="center">难度</th>
-<th align="center">限制指令数</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">bitXor(int x,int y)</td>
-<td align="center">使用逻辑或和逻辑与代替异或</td>
-<td align="center">1</td>
-<td align="center">14</td>
-</tr>
-<tr>
-<td align="center">tmin(void)</td>
-<td align="center">返回最小的补码</td>
-<td align="center">1</td>
-<td align="center">4</td>
-</tr>
-<tr>
-<td align="center">isTmax(int x)</td>
-<td align="center">x是最大的32位补码</td>
-<td align="center">1</td>
-<td align="center">10</td>
-</tr>
-<tr>
-<td align="center">allOddBits(int x)</td>
-<td align="center">所有的奇数位都为1吗</td>
-<td align="center">2</td>
-<td align="center">12</td>
-</tr>
-<tr>
-<td align="center">negate(int x)</td>
-<td align="center">不使用负号</td>
-<td align="center">2</td>
-<td align="center">5</td>
-</tr>
-<tr>
-<td align="center">isAsciiDigit(int x)</td>
-<td align="center">x是ASCII码吗</td>
-<td align="center">3</td>
-<td align="center">15</td>
-</tr>
-<tr>
-<td align="center">conditional(int x,int y,int z)</td>
-<td align="center">就像 <code>x ? y:x</code></td>
-<td align="center">3</td>
-<td align="center">16</td>
-</tr>
-<tr>
-<td align="center">isLessOrEqual(int x,int y)</td>
-<td align="center"><code>x<=y? 1:0</code></td>
-<td align="center">3</td>
-<td align="center">24</td>
-</tr>
-<tr>
-<td align="center">logicalNeg(int x)</td>
-<td align="center">实现<code>!</code>操作</td>
-<td align="center">4</td>
-<td align="center">12</td>
-</tr>
-<tr>
-<td align="center">howManyBits(int x)</td>
-<td align="center">计算表达式所需的最少位数</td>
-<td align="center">4</td>
-<td align="center">90</td>
-</tr>
-<tr>
-<td align="center">floatScale2(unsigned uf)</td>
-<td align="center">计算<code>2 * uf</code></td>
-<td align="center">4</td>
-<td align="center">30</td>
-</tr>
-<tr>
-<td align="center">floatFloat2Int(unsigned uf)</td>
-<td align="center">计算<code>(int)uf</code></td>
-<td align="center">4</td>
-<td align="center">30</td>
-</tr>
-<tr>
-<td align="center">floatPower2(int x)</td>
-<td align="center">计算<code>(float)x</code></td>
-<td align="center">4</td>
-<td align="center">30</td>
-</tr>
-</tbody></table>
-<h1 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h1><p>一共需要补齐13个函数，所有的修改都保存在<code>bits.c</code>中</p>
-<h2 id="提示与要求："><a href="#提示与要求：" class="headerlink" title="提示与要求："></a>提示与要求：</h2><ol>
-<li>要符合题目编码格式要求</li>
-<li>整型的范围是0到255(0xFF),不可以超过限制</li>
-<li>只能包含参数和局部变量</li>
-<li>一元操作符有<code>!、~</code></li>
-<li>二元操作符有<code>＆、|、＋、<<、>></code></li>
-</ol>
-<h2 id="禁止的操作有"><a href="#禁止的操作有" class="headerlink" title="禁止的操作有:"></a>禁止的操作有:</h2><ol>
-<li>使用任何条件控制语句</li>
-<li>定义或使用任何宏</li>
-<li>在文件中添加额外的函数</li>
-<li>调用任何函数</li>
-<li>使用其它操作符，如<code>&&, ||, -, or ?:</code></li>
-<li>使用任何形式的类型转换</li>
-<li>使用除int外的任意类型(针对整型)</li>
-<li>使用除int，unsigned之外的类型(针对浮点型)</li>
-</ol>
-<h2 id="默认机器的配置："><a href="#默认机器的配置：" class="headerlink" title="默认机器的配置："></a>默认机器的配置：</h2><ol>
-<li>使用2’s complent,32位的机器</li>
-<li>执行算术右移</li>
-<li>移位范围$[0,31]$,如果过大或过小可能会发生不可预测的情况</li>
-</ol>
-<h1 id="题目及解法"><a href="#题目及解法" class="headerlink" title="题目及解法"></a>题目及解法</h1>]]></content>
-      <categories>
-        <category>lab</category>
-      </categories>
-      <tags>
-        <tag>OS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Effective-C++ Reading Notes</title>
     <url>/2021/Effective-C-Read-Note/</url>
     <content><![CDATA[<h1 id="第一章-让自己习惯C"><a href="#第一章-让自己习惯C" class="headerlink" title="第一章 让自己习惯C++"></a><center>第一章 让自己习惯C++</center></h1><h2 id="条款一：视C-为一个语言联邦"><a href="#条款一：视C-为一个语言联邦" class="headerlink" title="条款一：视C++为一个语言联邦"></a>条款一：视C++为一个语言联邦</h2><p>&emsp;&emsp;最初，C++仅是C加上了一些面象对象的特性。经历多年的发展，随着大量特性与功能的加入，使得C++成为了一个无可匹敌的工具。但也是这些特性与功能，会让我们困惑于，我们应如何使用它们，该如何理解这样一个复杂的语言呢？<br>&emsp;&emsp;最简单的方法就是将C++视为一个相关语言的组成的一个联邦，对于C++来说，它大致由四个部分组成：</p>
@@ -407,7 +283,7 @@
   <entry>
     <title>Leetcode-10</title>
     <url>/2020/Leetcode-10/</url>
-    <content><![CDATA[<p>#Question<br> &emsp;&emsp;Implement <code>strStr()</code>.Return the index of the first occurrence of needle in haystack, or <code>-1</code> if <code>needle</code> is not part of <code>haystack</code>.<br> <strong>Clarification:</strong><br> &emsp;&emsp;What should we return when needle is an empty string? This is a great question to ask during an interview.</p>
+    <content><![CDATA[<h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p> &emsp;&emsp;Implement <code>strStr()</code>.Return the index of the first occurrence of needle in haystack, or <code>-1</code> if <code>needle</code> is not part of <code>haystack</code>.<br> <strong>Clarification:</strong><br> &emsp;&emsp;What should we return when needle is an empty string? This is a great question to ask during an interview.</p>
 <p> &emsp;&emsp;For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C’s strstr() and Java’s indexOf().</p>
 <p> <strong>Example1:</strong></p>
 <blockquote>
@@ -421,13 +297,8 @@
 <blockquote>
 <p><strong>Input:</strong> haystack = “”, needle = “”<br><strong>Output:</strong> 0</p>
 </blockquote>
-<p> <strong>Constraints:</strong></p>
-<ul>
-<li><code> 0 <= haystack.length, needle.length <= 5 * 10<sup>4</sup> </code></li>
-<li><code>haystack</code>and <code>needle</code> consist of only lower-case English characters.</li>
-</ul>
-<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><p>##思路一:<br>  &emsp;&emsp;两个字符长度相减+1得到的长度就是需要比较的长度，当needle长度为0时，返回0。当haystack与needle不匹配时，返回-1。当haystack与needle匹配时，返回i的值。时间复杂度为O($n^{2}$),空间复杂度为O(n),具体代码如下：<br>  <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">strStr</span><span class="params">(string haystack, string needle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = haystack.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> n = needle.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> r = m - n + <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; r; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span>  j = i,k = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (k &lt; n &amp;&amp; haystack[j] == needle[k]) </span><br><span class="line">                k++,j++;</span><br><span class="line">            <span class="keyword">if</span> (k == n) <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>##思路二:<br>&emsp;&emsp;KMP(字符串查找算法),lps是needle的索引。这里使用的kmp算法，把needle作为kmp前缀,来进行字符比对。如果字符相同，那么len增加。如果不相等，就要看len的值，如果len的值为0那么就将lps[i]的值设置为0。如果len不为零，那么就把lps[len-1]的值赋给len，这一步是为了防止对应字符中间出现了不相等的，将字符串右移。时间复杂度为O(n); </p>
+<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一:"></a>思路一:</h2><p>  &emsp;&emsp;两个字符长度相减+1得到的长度就是需要比较的长度，当needle长度为0时，返回0。当haystack与needle不匹配时，返回-1。当haystack与needle匹配时，返回i的值。时间复杂度为O($n^{2}$),空间复杂度为O(n),具体代码如下：<br>  <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">strStr</span><span class="params">(string haystack, string needle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = haystack.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> n = needle.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> r = m - n + <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; r; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span>  j = i,k = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (k &lt; n &amp;&amp; haystack[j] == needle[k]) </span><br><span class="line">                k++,j++;</span><br><span class="line">            <span class="keyword">if</span> (k == n) <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二:"></a>思路二:</h2><p>&emsp;&emsp;KMP(字符串查找算法),lps是needle的索引。这里使用的kmp算法，把needle作为kmp前缀,来进行字符比对。如果字符相同，那么len增加。如果不相等，就要看len的值，如果len的值为0那么就将lps[i]的值设置为0。如果len不为零，那么就把lps[len-1]的值赋给len，这一步是为了防止对应字符中间出现了不相等的，将字符串右移。时间复杂度为O(n); </p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">strStr</span><span class="params">(string haystack, string needle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (needle.<span class="built_in">empty</span>()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        string kmp = needle + <span class="string">&quot;#&quot;</span> + haystack;</span><br><span class="line">        <span class="keyword">int</span> m = kmp.<span class="built_in">size</span>(),n = needle.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">lps</span><span class="params">(m,<span class="number">0</span>)</span></span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> len = <span class="number">0</span>,i = <span class="number">1</span>; i &lt; m;) &#123;</span><br><span class="line">            <span class="keyword">if</span> (kmp[len] == kmp[i]) &#123;</span><br><span class="line">                lps[i] = ++len;</span><br><span class="line">                <span class="keyword">if</span> (len == n) </span><br><span class="line">                    <span class="keyword">return</span> i - <span class="number">2</span> * n;</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (len == <span class="number">0</span>) </span><br><span class="line">                 lps[i++] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">else</span> </span><br><span class="line">                len = lps[len - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
@@ -466,10 +337,7 @@
   countAndSay(4) = say "21" = one 2 + one 1 = "12" + "11" = "1211" <br>
 </p>
 
-<p><strong>Constraints:</strong></p>
-<ul>
-<li><code> 1 <= n <= 30 </code></li>
-</ul>
+
 <h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><p>  &emsp;&emsp;<strong>暴力破解法:</strong> 首先确定基础case “1”, ans用于存储输出的字符。count用于计数,如果想要知道4所对应的值，那么知道了3所对应的数值就行了。如果出现了重复就通过while语句来增加对应的值。时间复杂度为O(n),具体代码如下:<br>  <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">countAndSay</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        string res = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (--n) &#123;</span><br><span class="line">            string ans = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ;i &lt; res.<span class="built_in">size</span>() ;i++) &#123;</span><br><span class="line">                <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span> ( (i+<span class="number">1</span> &lt; res.<span class="built_in">size</span>()) &amp;&amp; (res[i] == res[i+<span class="number">1</span>]))</span><br><span class="line">                    i++,count++;</span><br><span class="line">                ans += <span class="built_in">to_string</span>(count) + res[i];</span><br><span class="line">            &#125;</span><br><span class="line">            res = ans;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
@@ -541,13 +409,7 @@
 </p>
 
 
-<p><strong>Constraints:</strong></p>
-<ul>
-<li><code> 1 <= nums.length <= 10<sup>4</sup> </code> </li>
-<li><code> -10<sup>4</sup> <= nums[i] <= 10<sup>4<sup> </code></li>
-<li><code>nums</code> contains <strong>distinct</strong> values sorted in <strong>ascending</strong> order</li>
-<li><code> -10<sup>4</sup> <= target <= 10<sup>4<sup> </code></li>
-</ul>
+
 <h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><h2 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h2><p>&emsp;&emsp;<strong>二分法查找(binary Search):</strong> 首先先确定最高位和最低位的值,因为随着low和high的位置不断变化,<br>所以middle的值是不断再改变的。这里用移位(&gt;&gt;1)代替了除法,这样不会增加运算的复杂性。<br>&emsp;&emsp;如果目标值大于中间值,那么low就要变化;相反，如果目标值小于中间值，high就需要变化;如果目标值正好等于中间值就可以直接输出了。<br>时间复杂度为O(logn),具体代码如下:<br> <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>,high = nums.<span class="built_in">size</span>() - <span class="number">1</span>,n = nums.<span class="built_in">size</span>();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">            <span class="keyword">int</span> middle = low + ((high - low) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (target &gt; nums[middle]) low = middle + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (target &lt; nums[middle]) high = middle - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">return</span> middle;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> low;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <h2 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h2><p>  &emsp;&emsp;<strong>线性查找(linear search):</strong> 将nums的值挨个赋给i,如果i小于目标值,result就自增。相反如果大于等于目标值，就可以直接跳出循环，输出结果了。时间复杂度为O(n),具体代码如下:</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; target)&#123;</span><br><span class="line">                result++;</span><br><span class="line">            &#125; </span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
