@@ -343,18 +343,6 @@
       </tags>
   </entry>
   <entry>
-    <title>乘着火车去远方</title>
-    <url>/2021/Travel-2/</url>
-    <content><![CDATA[<h1 id="什么是远方"><a href="#什么是远方" class="headerlink" title="什么是远方"></a>什么是远方</h1><p>远方，这么一个充满文艺气息的词语。在读书时，总是会时不看到不同的作者对于身处异乡时，对故乡的怀思。当初，我并不能很理解它们，在我看来能够去到远方该是一件多么令人激动的事情，为什么还需要寄思于乡呢？这样的想法，直到我踏上火车前都没有太大的改观。直到，我也成了书中的人，体悟到异乡的苦楚时。我方才逐渐了解远方并不都是美好的，这其中也充满了许多的无奈与心酸。。。</p>
-<h1 id="火车记"><a href="#火车记" class="headerlink" title="火车记"></a>火车记</h1>]]></content>
-      <categories>
-        <category>experience</category>
-      </categories>
-      <tags>
-        <tag>travel</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>浅析iterator</title>
     <url>/2021/Iterator/</url>
     <content><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在日常开发学习中，熟练的使用设计模式可以极大的提高我们的工作效率。诚然，对于那么多的设计模式,我们往往仅会去深入了解日常被使用最多的设计模式。<br>当然，也有一些设计模式，随着高级语言的不断扩展，逐渐走向了没落。一如今天所要讨论的迭代器模式，由于容器的大量使用，使得iterator这一设计模式使用度就降低了许多。那我们就具体聊聊关于迭代器的那些事吧！</p>
