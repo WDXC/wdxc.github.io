@@ -258,6 +258,48 @@
       </tags>
   </entry>
   <entry>
+    <title>简单验证邮件发送应用</title>
+    <url>/2022/mail_timer_apply/</url>
+    <content><![CDATA[<p><img data-src="https://7894651.xyz/mail_timer_apply.md/xmind.png" alt="avatar"></p>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>如今这样一个互联网迅速发展的时代，我们有时总是会需要注册不同的帐号以满足我们日常工作生活的需要。但是在注册时，不同的邮件验证码就成了注册中最为麻烦的一个步骤。从日常使用的角度来看，这样的设计简直就是”中秋夜里打灯笼——多此一举”。当然，切换角度从开发者的角度去度量，这些限制措施则是极有必要的。如发送验证码邮件，就是验证邮箱地址是否可用的一个有有效方法。每次获取验证码后，必须要间隔多少秒后才可以重新获取验证码。这是防止旧的验证码没有被使用就去请求新的验证码内容，从而请求过多导致服务器崩溃。那么这些限制又是依赖什么去实现的，随着应用的设计与完善，我们就可以解答这些问题了。</p>
+<h1 id="发送流程"><a href="#发送流程" class="headerlink" title="发送流程"></a>发送流程</h1><p>为了实现这些限制，我们首先需要厘清发送邮件的流程。</p>
+<h2 id="终端发送"><a href="#终端发送" class="headerlink" title="终端发送"></a>终端发送</h2><p>首先在终端使用telnet连接smtp.qq.com:25，来完成发送邮件的模拟:</p>
+<ol>
+<li><p>发送邮件<br><img data-src="https://7894651.xyz/mail_timer_apply.md/telnet_connect_smtp_qq.png" alt="avatar"></p>
+</li>
+<li><p>邮件接收<br><img data-src="https://7894651.xyz/mail_timer_apply.md/mail_receive.png" alt="avatar"></p>
+<h2 id="分析流程"><a href="#分析流程" class="headerlink" title="分析流程"></a>分析流程</h2><p>从以上的发送中，我们可以很轻松的提取出这个清晰的过程:</p>
+</li>
+<li><p>使用telnet连接到smtp.qq:25这个服务器上，即连接服务邮件服务器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">telnet smtp.qq.com 25</span><br></pre></td></tr></table></figure></li>
+<li><p>发送EHLO命令，通知服务器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">EHLO hello</span><br></pre></td></tr></table></figure></li>
+<li><p>由于qq邮箱需要密码验证，因此使用auth login命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">auth login</span><br></pre></td></tr></table></figure></li>
+<li><p>输入对应的邮件地址与密码</p>
+</li>
+<li><p>告知邮箱服务器发送地址</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mail from: &lt;1508498108@qq.com&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>告知邮箱服务器接收方地址</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rcpt to: &lt;15189121885@163.com&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>发送数据命令: data</p>
+</li>
+<li><p>指定主题: subject</p>
+</li>
+<li><p>换行后输入正文内容</p>
+</li>
+<li><p>输入quit,结束发送</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>apply</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>九月总结</title>
     <url>/2021/Sep_Summary/</url>
     <content><![CDATA[<p>&emsp;&emsp;九月，暑气渐消，金秋悄然而至。这一个月过去的很快，由于没有明确的目标制定，我的九月总是处于一种混乱的状态。为了更好的摆脱这种状态，因此有了这篇总结。在此我将从学习、出行及家庭这三个方面，来详细总结我这混乱九月。</p>
@@ -278,18 +320,6 @@
       </categories>
       <tags>
         <tag>summary</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C++简易邮件发送</title>
-    <url>/2021/mail_timer_apply/</url>
-    <content><![CDATA[<p><img data-src="https://7894651.xyz/mail_timer_apply.md/xmind.png" alt="avatar"></p>
-]]></content>
-      <categories>
-        <category>apply</category>
-      </categories>
-      <tags>
-        <tag>c++</tag>
       </tags>
   </entry>
   <entry>
