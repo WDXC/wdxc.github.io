@@ -246,6 +246,13 @@
   </url>
   
   <url>
+    <loc>https://qfxul.cn/tags/interview/</loc>
+    <lastmod>2022-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://qfxul.cn/tags/c/</loc>
     <lastmod>2022-01-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -254,13 +261,6 @@
   
   <url>
     <loc>https://qfxul.cn/tags/Operating-System/</loc>
-    <lastmod>2022-01-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://qfxul.cn/tags/interview/</loc>
     <lastmod>2022-01-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
