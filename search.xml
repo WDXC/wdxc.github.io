@@ -258,8 +258,49 @@
       </tags>
   </entry>
   <entry>
+    <title>Effective_STL_3</title>
+    <url>/2022/Effective-STL-3/</url>
+    <content><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>关联容器是基于节点的结构，STL关联容器中包含了set、multiset、map、multimap。底层都通过红黑树来实现的，查询效率极高。但并非所有的场景都适合它们，只有正确的遵守它们的游戏规则，才可让它们发挥出最大的效力。</p>
+<h1 id="关联容器"><a href="#关联容器" class="headerlink" title="关联容器"></a>关联容器</h1><p>关联容器中可以分为:标准STL以红黑树为底层的容器、非标准STL以散列表为底层的hash容器。相对于查询而言，hash容器具有着独到的优势，但深入探讨这些问题之前，需要先厘清一个重要的基础论题: 相等与等价的区别?</p>
+<h2 id="相等与等价"><a href="#相等与等价" class="headerlink" title="相等与等价"></a>相等与等价</h2><p>相等的概念，在STL的体现就是operator==()的应用。即简单的两个值的相等判别，如:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">0</span>;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>而等价这个概念则相对于相等就会更加的复杂一些，从下例分析:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CIStringClass</span> &#123;</span>...&#125; <span class="comment">// 不区分大小的类</span></span><br><span class="line">set &lt;string, CIStringClass&gt; tmp;</span><br><span class="line"></span><br><span class="line">tmp.<span class="built_in">insert</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">tmp.<span class="built_in">insert</span>(<span class="string">&quot;hello&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>这里创建了一个不区分大小的类，那么依此创建的一个set，就会认为： “Hello”与”hello”是等价的。而set最后插入的结果就是，仅会接受第一个的插入，而第二个就会被忽略。</p>
+<h2 id="修改set键"><a href="#修改set键" class="headerlink" title="修改set键"></a>修改set键</h2><p>修改set键值?为什么不说修改关联容器键？<br>因为set iterator::operator*最后返回的是一个T&amp;，map返回的是一个const T&amp;。<br>当然，改变键会这导致一个问题，即代码的平台移植性被破坏了。<br>若是你不需要什么平台移植性，仅仅需要修改键，那么你也就应遵守以下的守则:</p>
+<ol>
+<li>找到你需要修改的键</li>
+<li>为这个键做一份拷贝</li>
+<li>修改这个拷贝</li>
+<li>删除原有的这个元素</li>
+<li>插入这个已修改好的拷贝</li>
+</ol>
+<h2 id="包含对象指针的容器指定比较类型"><a href="#包含对象指针的容器指定比较类型" class="headerlink" title="包含对象指针的容器指定比较类型"></a>包含对象指针的容器指定比较类型</h2><p>你有这样一个<code>vector</code>容器，它的内部存储的是<code>string*</code>对象。<br>如果你想要获取对象，那么你可以通过iterator遍历去获取，但是你最后得到的是一个<code>string*</code>对象。<br>而这并不会阻碍我们去获取这个最后的对象，我们仍可以使用<code>**string</code>,解引后获取最终内容。但由于指针排列的顺序不会按照字符串的值进行排序的，因此我们最终可能会得到到下一个不确定的正确的顺序值。<br>显然并不是，我们需要提供一个类，就可以解决这个问题了。</p>
+<h2 id="map的插入方式"><a href="#map的插入方式" class="headerlink" title="map的插入方式"></a>map的插入方式</h2><p>map在插入方式上，我们可以有两种选择： insert插入或operator[]插入。<br>这两种方式需要对应不同的情况:<br>针对于新值创建插入时，我们就使用insert<br>针对现值，更新的插入，我们就应使用operator[]<br>那么对于新值使用operator[]插入，会有哪些影响呢?<br>它会额外付出一些代价:</p>
+<ol>
+<li>使用构造函数创建一个临时对象</li>
+<li>使用析构函数析构掉它</li>
+<li>使用拷贝构造函数进行赋值<br>因此，针对不同的场景，需要将其区分清楚，使用时才不会有困惑。</li>
+</ol>
+<h2 id="关联容器并非查询首选"><a href="#关联容器并非查询首选" class="headerlink" title="关联容器并非查询首选"></a>关联容器并非查询首选</h2><p>思考容器查询会经历么样的步骤?<br>应该有如下三个步骤:</p>
+<ol>
+<li>大量的数据插入</li>
+<li>数据查询</li>
+<li>数据的重组<br>一、三是一个极为耗时的操作，关联容器的插入也需要大量的时间<br>但是对于查询二，它们的效率则是极高的。<br>vector 作为一个序列容器，若是排序完成，拥有随机迭代器的它，查询效率也不会低于关联容器。<br>当然，关键的前提是排序完成。如果没有排序完成，那么查询效率而言，还是关联容器高。</li>
+</ol>
+<h2 id="数据相等时返回false"><a href="#数据相等时返回false" class="headerlink" title="数据相等时返回false"></a>数据相等时返回false</h2><p>若是set中同时插入两个10，它会以10(A)与10(B)的方式进行比较，那么由于比较结果不一致，因此set容器中就存在了这样两个相同的元素。<br>因此，在处理相同元素时，应返回false，避免容器被破坏。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>关联容器使用是一个相对技巧与复杂较高的过程，需要结合不同的场景去选择最适合的容器去应用。</p>
+]]></content>
+      <categories>
+        <category>Read Notes</category>
+      </categories>
+      <tags>
+        <tag>theory</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Effect_STL_2</title>
-    <url>/2022/Effect-STL-2/</url>
+    <url>/2022/Effective-STL-2/</url>
     <content><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>空间配置器，可能是STL中最是默默无闻的组件了。但是，作为STL组件的基石，若是无法深入了解它，那么在学习STL中也会阻碍不断。有了前期的准备，那么再去了解一下vector与string的使用与规则，那便也是水到渠成的事情了。</p>
 <h1 id="空间配置与常用容器"><a href="#空间配置与常用容器" class="headerlink" title="空间配置与常用容器"></a>空间配置与常用容器</h1><p>STL基础空间配置器中，这里主要着重描述Allocator配置子，这里将从两个方面来描述Allocator，它的使用限制与使用场景。</p>
 <h2 id="Allocator使用限制"><a href="#Allocator使用限制" class="headerlink" title="Allocator使用限制"></a>Allocator使用限制</h2><p>Allocator原先的作用是管理内存，但是容器设计中却没有得到应用。这就导致了一个问题，即多数容器不会使用配置子去申请空间内存。<br>Eg:</p>
@@ -304,6 +345,11 @@
 <li>由于目标值的因素，不会存在多余的空间</li>
 <li>交换完成后，数据空间被收缩，临时变量被销毁</li>
 </ol>
+<h2 id="vector容器"><a href="#vector容器" class="headerlink" title="vector容器"></a>vector<bool>容器</h2><p>vector<bool> ans 作为容器它需要具备两个条件：</p>
+<ol>
+<li>ans必须是包含对象T的容器</li>
+<li>ans必须支持operator[]<br>然而，实际情况上是，vector并非存储了bool,而是采用了类似于bitfield的概念。vector中的一个字节可以存储8个bool(仅占用一个bit)，这也是vector节省空间的结果。<br>当然，如果你果真有去存储bool这样的需求，你可以使用deque<boo>或bitset去进行存储，它们具有你想让vector<bool>完成的所有功能。</li>
+</ol>
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>vecotr与string 都是日常开发时，最常使用的容器。除了熟练的掌握之外，对于其内里的实现与使用规则也是需要深入理解的。</p>
 ]]></content>
       <categories>
@@ -315,7 +361,7 @@
   </entry>
   <entry>
     <title>Effect_STL 阅读笔记(一)</title>
-    <url>/2022/Effect-STL-1/</url>
+    <url>/2022/Effective-STL-1/</url>
     <content><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>C++语言是其实是一个语言的联邦，它既有C语言的强大，又提供了面向对象的方法，方法的灵活实现与复用又是可以通过STL来实现。STL是一个集合，它包含了迭代器、算法、容器等，但最为人所熟知是主要是容器。容器具有着极强的扩展性与适配性，因此学习STL就是对容器的掌握与理解。</p>
 <h1 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h1><p>STL中提供了多种类型的容器:</p>
 <ol>
