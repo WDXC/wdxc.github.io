@@ -258,7 +258,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Effective_STL_5</title>
+    <title>Effective_STL 阅读笔记(五)</title>
     <url>/2022/Effective-STL-5/</url>
     <content><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>STL算法有的是对于单个数据的处理，有对于区间数据的处理。单个数据的处理算法如: remove,它们仅仅对单个数据负责，而区间数据则不同。算法需要对区间的所有数据进行处理，因此效率衡量也是极为重要的，那么这个效率是如何保证的呢？</p>
 <h1 id="STL算法"><a href="#STL算法" class="headerlink" title="STL算法"></a>STL算法</h1><h2 id="排序的区间参数"><a href="#排序的区间参数" class="headerlink" title="排序的区间参数"></a>排序的区间参数</h2><p>STL中对区间排序有需求的算法有:</p>
@@ -284,7 +284,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Effective_STL_4</title>
+    <title>Effective_STL 阅读笔记(四)</title>
     <url>/2022/Effective-STL-4/</url>
     <content><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>STL中为了更好的遍历、访问数据，为容器提供了迭代器。不同于for循环的遍历方式，迭代器不会暴露数据内部的联系，保证数据的安全。有了迭代器的基石，STL又为容器提供了诸多的算法，大大提高了数据的处理效率。处理数据时，迭代器的与算法的选择则会成为我们优化代码的一个基本门槛。</p>
 <h1 id="迭代器与算法"><a href="#迭代器与算法" class="headerlink" title="迭代器与算法"></a>迭代器与算法</h1><p>STL内部一共提供了四种迭代器: iterator、const_iterator、reverse_iterator、const_reverse_iterator。</p>
@@ -301,7 +301,9 @@
 <li>创建一个iterator迭代器</li>
 <li>将iterator指针指向 const_iterator初始位置</li>
 </ol>
-<h2 id="算法中的区间目标"><a href="#算法中的区间目标" class="headerlink" title="算法中的区间目标"></a>算法中的区间目标</h2><p>当新对象添加进来时，总是认为STL会为数据准备好了空间，可以直接使用而不关心。但事实上并非如此，如下例所示:<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">transmogrify</span><span class="params">(<span class="keyword">int</span> x)</span> <span class="comment">// 生成新值</span></span></span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; ans</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用transform向目标区别的尾部添加新值</span></span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line"><span class="built_in">transform</span>(ans.<span class="built_in">begin</span>(), ans.<span class="built_in">end</span>(), res.<span class="built_in">end</span>(), transmogrify);</span><br></pre></td></tr></table></figure><br>这样有一个问题，即res.end()本身是没有对象，那么开辟*(res.end())+1同样也是没有对象的。显而易见，这会向一个不存在的地址写入数据，而这样会导致程序出错。</p>
+<h2 id="算法中的区间目标"><a href="#算法中的区间目标" class="headerlink" title="算法中的区间目标"></a>算法中的区间目标</h2><p>当新对象添加进来时，总是认为STL会为数据准备好了空间，可以直接使用而不关心。但事实上并非如此，如下例所示:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">transmogrify</span><span class="params">(<span class="keyword">int</span> x)</span> <span class="comment">// 生成新值</span></span></span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; ans</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用transform向目标区别的尾部添加新值</span></span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line"><span class="built_in">transform</span>(ans.<span class="built_in">begin</span>(), ans.<span class="built_in">end</span>(), res.<span class="built_in">end</span>(), transmogrify);</span><br></pre></td></tr></table></figure>
+<p>这样有一个问题，即res.end()本身是没有对象，那么开辟*(res.end())+1同样也是没有对象的。显而易见，这会向一个不存在的地址写入数据，而这样会导致程序出错。</p>
 <p>STL提供了back_inserter来处理，其实就是调用back_push来插入数据，这样在扩展数据容量的同时，也保证了数据写入的安全性。当然，如果有头部插入的需求，我们可以使用front_inserter来处理。<br>当然，你考虑到vector扩容所带来的影响，你也可以使用reserve来对vector的capacity进行预扩展，记住这是capacity，不是真正的size，若是使用transfrom安全的方式插入仍会导致程序错误。</p>
 <h2 id="算法之排序"><a href="#算法之排序" class="headerlink" title="算法之排序"></a>算法之排序</h2><p>若是提到排序，STL中的sort必然是首推，但是并非所有情况下的它都是最优的选择。如下面各种不同的场景。</p>
 <ol>
@@ -321,11 +323,15 @@
       </tags>
   </entry>
   <entry>
-    <title>Effective_STL_3</title>
+    <title>Effective_STL 阅读笔记(三)</title>
     <url>/2022/Effective-STL-3/</url>
     <content><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>关联容器是基于节点的结构，STL关联容器中包含了set、multiset、map、multimap。底层都通过红黑树来实现的，查询效率极高。但并非所有的场景都适合它们，只有正确的遵守它们的游戏规则，才可让它们发挥出最大的效力。</p>
 <h1 id="关联容器"><a href="#关联容器" class="headerlink" title="关联容器"></a>关联容器</h1><p>关联容器中可以分为:标准STL以红黑树为底层的容器、非标准STL以散列表为底层的hash容器。相对于查询而言，hash容器具有着独到的优势，但深入探讨这些问题之前，需要先厘清一个重要的基础论题: 相等与等价的区别?</p>
-<h2 id="相等与等价"><a href="#相等与等价" class="headerlink" title="相等与等价"></a>相等与等价</h2><p>相等的概念，在STL的体现就是operator==()的应用。即简单的两个值的相等判别，如:<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">0</span>;</span><br><span class="line">...</span><br></pre></td></tr></table></figure><br>而等价这个概念则相对于相等就会更加的复杂一些，从下例分析:<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CIStringClass</span> &#123;</span>...&#125; <span class="comment">// 不区分大小的类</span></span><br><span class="line">set &lt;string, CIStringClass&gt; tmp;</span><br><span class="line"></span><br><span class="line">tmp.<span class="built_in">insert</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">tmp.<span class="built_in">insert</span>(<span class="string">&quot;hello&quot;</span>);</span><br></pre></td></tr></table></figure><br>这里创建了一个不区分大小的类，那么依此创建的一个set，就会认为： “Hello”与”hello”是等价的。而set最后插入的结果就是，仅会接受第一个的插入，而第二个就会被忽略。</p>
+<h2 id="相等与等价"><a href="#相等与等价" class="headerlink" title="相等与等价"></a>相等与等价</h2><p>相等的概念，在STL的体现就是operator==()的应用。即简单的两个值的相等判别，如:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">0</span>;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>而等价这个概念则相对于相等就会更加的复杂一些，从下例分析:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CIStringClass</span> &#123;</span>...&#125; <span class="comment">// 不区分大小的类</span></span><br><span class="line">set &lt;string, CIStringClass&gt; tmp;</span><br><span class="line"></span><br><span class="line">tmp.<span class="built_in">insert</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">tmp.<span class="built_in">insert</span>(<span class="string">&quot;hello&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>这里创建了一个不区分大小的类，那么依此创建的一个set，就会认为： “Hello”与”hello”是等价的。而set最后插入的结果就是，仅会接受第一个的插入，而第二个就会被忽略。</p>
 <h2 id="修改set键"><a href="#修改set键" class="headerlink" title="修改set键"></a>修改set键</h2><p>修改set键值?为什么不说修改关联容器键？<br>因为set iterator::operator*最后返回的是一个T&amp;，map返回的是一个const T&amp;。<br>当然，改变键会这导致一个问题，即代码的平台移植性被破坏了。<br>若是你不需要什么平台移植性，仅仅需要修改键，那么你也就应遵守以下的守则:</p>
 <ol>
 <li>找到你需要修改的键</li>
@@ -358,7 +364,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Effect_STL_2</title>
+    <title>Effective_STL 阅读笔记(二)</title>
     <url>/2022/Effective-STL-2/</url>
     <content><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>空间配置器，可能是STL中最是默默无闻的组件了。但是，作为STL组件的基石，若是无法深入了解它，那么在学习STL中也会阻碍不断。有了前期的准备，那么再去了解一下vector与string的使用与规则，那便也是水到渠成的事情了。</p>
 <h1 id="空间配置与常用容器"><a href="#空间配置与常用容器" class="headerlink" title="空间配置与常用容器"></a>空间配置与常用容器</h1><p>STL基础空间配置器中，这里主要着重描述Allocator配置子，这里将从两个方面来描述Allocator，它的使用限制与使用场景。</p>
