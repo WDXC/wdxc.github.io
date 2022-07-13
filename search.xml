@@ -258,6 +258,32 @@
       </tags>
   </entry>
   <entry>
+    <title>Effective_STL_5</title>
+    <url>/2022/Effective-STL-5/</url>
+    <content><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>STL算法有的是对于单个数据的处理，有对于区间数据的处理。单个数据的处理算法如: remove,它们仅仅对单个数据负责，而区间数据则不同。算法需要对区间的所有数据进行处理，因此效率衡量也是极为重要的，那么这个效率是如何保证的呢？</p>
+<h1 id="STL算法"><a href="#STL算法" class="headerlink" title="STL算法"></a>STL算法</h1><h2 id="排序的区间参数"><a href="#排序的区间参数" class="headerlink" title="排序的区间参数"></a>排序的区间参数</h2><p>STL中对区间排序有需求的算法有:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">binary_search  lower_bound</span><br><span class="line">upper_bound    equal_range</span><br><span class="line">set_union      set_intersection</span><br><span class="line">set_difference set_symmetric_difference</span><br><span class="line">merge          inplace_merge</span><br><span class="line">includes</span><br></pre></td></tr></table></figure>
+
+<p>提供了有序区间，那么效率就有了保证。如set_union、set_intersection、set_difference、set_symmetric_difference它们的时间复杂度是线性的，如果用户提供的参数是一个非排序区间，就会导致算法无法在线性的时间内完成。<br>这里的排序还有一个要求，即是不可与算法的排序相冲突，举例而言： binary_search默认情况下，会假设区间为升序，而你去提供了一个降序的函数子，那么想要得到一个正确的结果显然不会那么容易。</p>
+<h2 id="copy-if算法"><a href="#copy-if算法" class="headerlink" title="copy_if算法"></a>copy_if算法</h2><p>STL提供了11种copy算法，但独独没有提供copy_if算法。虽然没有提供，但我们也同样可以实现一个。<br>具体实现如下:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Inputiterator,</span><br><span class="line">          <span class="keyword">typename</span> Outputiterator,</span><br><span class="line">          <span class="keyword">typename</span> Predicate&gt;</span><br><span class="line"><span class="built_in">copy_if</span> (Inputiterator begin, Inputiterator end, Outputiterator destBegin, Predicate p) &#123;</span><br><span class="line">  <span class="keyword">while</span> (begin != end) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">p</span>(*begin)) *destBegin++ = *begin;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> destBegin;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="区间统计"><a href="#区间统计" class="headerlink" title="区间统计"></a>区间统计</h2><p>若要计算一个vector的总和，可以不再需要烦琐的手写for循环，而是使用STL提供的accumulate算法。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line"><span class="built_in">accumulate</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p>这样就可以十分快捷的计算出它的总和。但它不仅仅限制于此，它还可以实现计算字符的总长:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">string::size_type</span><br><span class="line"><span class="built_in">stringlengthSum</span>(string::size_type sumSofar, <span class="keyword">const</span> string&amp; s) &#123;</span><br><span class="line">  <span class="keyword">return</span> sumSofar + s.<span class="built_in">size</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">set&lt;string&gt; ss;</span><br><span class="line">...</span><br><span class="line">string::size_type len =</span><br><span class="line">  <span class="built_in">accumulate</span>(ss.<span class="built_in">begin</span>(), ss.<span class="built_in">end</span>(), <span class="keyword">static_cast</span>&lt;string::size_type&gt;(<span class="number">0</span>), stringlengthSum);</span><br></pre></td></tr></table></figure>
+<p>这样一个简单的字符总数统计就完成了。</p>
+<p>STL额外也提供了一个区间统计算法for_each(),字面上看去，就可以知道它会对区间的每个数据进行操作。是的，它是可以用于区间数据的合法。它不同于accumulate直接的返回值，for_each返回的是一个函数拷贝，使用上也不如accumulate。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>STL中的算法需要不断去使用与学习，阅读只不过帮助我们更好的跳过使用中的暗坑。真正的理解与使用，仍需大量的实践累积。</p>
+]]></content>
+      <categories>
+        <category>Read Notes</category>
+      </categories>
+      <tags>
+        <tag>theory</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Effective_STL_4</title>
     <url>/2022/Effective-STL-4/</url>
     <content><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>STL中为了更好的遍历、访问数据，为容器提供了迭代器。不同于for循环的遍历方式，迭代器不会暴露数据内部的联系，保证数据的安全。有了迭代器的基石，STL又为容器提供了诸多的算法，大大提高了数据的处理效率。处理数据时，迭代器的与算法的选择则会成为我们优化代码的一个基本门槛。</p>
