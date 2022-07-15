@@ -258,6 +258,30 @@
       </tags>
   </entry>
   <entry>
+    <title>二分查找</title>
+    <url>/2022/Leetcode-48/</url>
+    <content><![CDATA[<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target  ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><p style = "background-color:rgba(240,248,255)">
+  <strong>Input:</strong> nums = [-1,0,3,5,9,12], target = 9 <br>
+  <strong>Output:</strong>  4
+</p>
+
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>二分查找法法步骤:</p>
+<ol>
+<li>首先，从排序的数组的中间开始搜索，若值与目标相等，则搜索结束，否则就执行下一步。</li>
+<li>如果目标元素大于/小于中间元素，则收缩右/左的边界继续查找，然后重复(1)的操作。</li>
+</ol>
+<p>本题就是使用这样的方法去实现的:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = nums.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">            <span class="keyword">int</span> middle = left + (right-left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[middle] &gt; target ) &#123;</span><br><span class="line">                right--;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[middle] &lt; target) &#123;</span><br><span class="line">                left++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> middle;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Effective_STL 阅读笔记(五)</title>
     <url>/2022/Effective-STL-5/</url>
     <content><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>STL算法有的是对于单个数据的处理，有对于区间数据的处理。单个数据的处理算法如: remove,它们仅仅对单个数据负责，而区间数据则不同。算法需要对区间的所有数据进行处理，因此效率衡量也是极为重要的，那么这个效率是如何保证的呢？</p>
@@ -425,7 +449,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Effect_STL 阅读笔记(一)</title>
+    <title>Effective_STL 阅读笔记(一)</title>
     <url>/2022/Effective-STL-1/</url>
     <content><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>C++语言是其实是一个语言的联邦，它既有C语言的强大，又提供了面向对象的方法，方法的灵活实现与复用又是可以通过STL来实现。STL是一个集合，它包含了迭代器、算法、容器等，但最为人所熟知是主要是容器。容器具有着极强的扩展性与适配性，因此学习STL就是对容器的掌握与理解。</p>
 <h1 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h1><p>STL中提供了多种类型的容器:</p>
