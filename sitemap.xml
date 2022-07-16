@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://qfxul.cn/2022/C-Primer-1/</loc>
+    
+    <lastmod>2022-07-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://qfxul.cn/2020/Leetcode_archive/</loc>
     
     <lastmod>2022-07-15</lastmod>
@@ -274,7 +283,7 @@
 
   <url>
     <loc>https://qfxul.cn/</loc>
-    <lastmod>2022-07-15</lastmod>
+    <lastmod>2022-07-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -282,63 +291,63 @@
   
   <url>
     <loc>https://qfxul.cn/tags/summary/</loc>
-    <lastmod>2022-07-15</lastmod>
+    <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://qfxul.cn/tags/theory/</loc>
-    <lastmod>2022-07-15</lastmod>
+    <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://qfxul.cn/tags/leetcode/</loc>
-    <lastmod>2022-07-15</lastmod>
+    <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://qfxul.cn/tags/travel/</loc>
-    <lastmod>2022-07-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://qfxul.cn/tags/interview/</loc>
-    <lastmod>2022-07-15</lastmod>
+    <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://qfxul.cn/tags/locker/</loc>
-    <lastmod>2022-07-15</lastmod>
+    <lastmod>2022-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://qfxul.cn/tags/interview/</loc>
+    <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://qfxul.cn/tags/c/</loc>
-    <lastmod>2022-07-15</lastmod>
+    <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://qfxul.cn/tags/Operating-System/</loc>
-    <lastmod>2022-07-15</lastmod>
+    <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://qfxul.cn/tags/%E6%AF%95%E4%B8%9A/</loc>
-    <lastmod>2022-07-15</lastmod>
+    <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -347,49 +356,49 @@
   
   <url>
     <loc>https://qfxul.cn/categories/experience/</loc>
-    <lastmod>2022-07-15</lastmod>
+    <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://qfxul.cn/categories/Read-Notes/</loc>
-    <lastmod>2022-07-15</lastmod>
+    <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://qfxul.cn/categories/algorithm/</loc>
-    <lastmod>2022-07-15</lastmod>
+    <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://qfxul.cn/categories/MySQL/</loc>
-    <lastmod>2022-07-15</lastmod>
+    <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://qfxul.cn/categories/theory/</loc>
-    <lastmod>2022-07-15</lastmod>
+    <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://qfxul.cn/categories/apply/</loc>
-    <lastmod>2022-07-15</lastmod>
+    <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://qfxul.cn/categories/%E6%9D%82%E8%AE%B0/</loc>
-    <lastmod>2022-07-15</lastmod>
+    <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
